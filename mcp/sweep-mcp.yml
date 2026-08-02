@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://www.sweep.io/sweep-model-context-protocol
+name: Sweep MCP
+summary: >-
+  Sweep publishes an official Model Context Protocol (MCP) server that connects
+  Salesforce (and Sweep's governed metadata layer) to AI assistants such as
+  Claude and ChatGPT, letting agents query governed CRM context in natural
+  language. Marketed as "the missing layer that connects Salesforce to Claude
+  and ChatGPT." No public remote endpoint URL, transport, or tool schema is
+  documented on the marketing page; connection is provisioned through the Sweep
+  app (app.sweep.io) for authenticated accounts.
+docs:
+- https://www.sweep.io/sweep-model-context-protocol
+- https://www.sweep.io/mcp-revenue-leaders
+transport: unknown
+endpoint: null
+authentication: Sweep account (provisioned via app.sweep.io); mechanism not publicly documented
+capabilities:
+- Query Salesforce pipeline health in natural language
+- Retrieve conversion rates and sales velocity
+- Surface governed insights and metadata context from connected systems
+tools: []
+notes: >-
+  Official first-party MCP server confirmed from the provider's own marketing
+  page. Tool list is not published; left empty rather than fabricated. Sweep has
+  no public OpenAPI, so a candidate tool list cannot be derived either.

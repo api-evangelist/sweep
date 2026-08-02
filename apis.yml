@@ -1,9 +1,30 @@
 aid: sweep
 name: Sweep
-description: 'Sweep is a company surfaced as a portfolio company of bessemer-venture-partners, homebrew,
-  insight-partners and added to the API Evangelist network as a stub for enrichment. Sector: cloud. This
-  profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Sweep is the agentic layer for enterprise systems. By connecting to platforms
+  like Salesforce, Snowflake, ServiceNow, and HubSpot, Sweep reads live metadata
+  and gives AI agents the context they need to understand, plan, and govern
+  changes safely across complex systems. It unifies discovery, design, and build
+  into one continuous workflow — auto-generating living documentation of every
+  flow, field, and rule; visualizing end-to-end business processes; running
+  metadata agents that audit and optimize org configuration; and shipping
+  Salesforce automations, lead routing, alerts, and deduplication without custom
+  code. Sweep also publishes an official Model Context Protocol (MCP) server that
+  connects Salesforce context to AI assistants such as Claude and ChatGPT. Sweep
+  is backed by Bessemer Venture Partners, Homebrew, and Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/sweep/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.sanity.io/images/9eu1m6zu/production/374242d70c2b95ec76d45f450e2ef6fe33024c38-4320x1951.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -14,10 +35,18 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Cloud
+- Salesforce
+- RevOps
+- Metadata
+- Governance
+- AI Agents
+- Model Context Protocol
+- Automation
+- Documentation
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -27,3 +56,30 @@ maintainers:
 common:
 - type: Website
   url: https://www.sweep.io/
+- type: Blog
+  url: https://www.sweep.io/blog
+- type: Pricing
+  url: https://www.sweep.io/pricing
+- type: Login
+  url: https://app.sweep.io/
+- type: Support
+  url: https://www.sweep.io/contact
+- type: TermsOfService
+  url: https://www.sweep.io/terms
+- type: PrivacyPolicy
+  url: https://www.sweep.io/privacy
+- type: Compliance
+  url: https://www.sweep.io/security-compliance-governance
+- type: MCPServer
+  url: mcp/sweep-mcp.yml
+- type: LLMsTxt
+  url: llms/sweep-llms.txt
+- type: Conformance
+  url: conformance/sweep-conformance.yml
+- type: DomainSecurity
+  url: security/sweep-domain-security.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1

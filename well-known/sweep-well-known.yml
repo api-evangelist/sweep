@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of https://www.sweep.io and https://app.sweep.io
+host: https://www.sweep.io
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /llms.txt
+  status: 200
+  file: ../llms/sweep-llms.txt
+notes: >-
+  No /.well-known/ discovery documents are published. app.sweep.io returns
+  HTTP 200 for /.well-known/security.txt but the body is the SPA HTML shell,
+  not a real RFC 9116 security.txt, so it is not recorded as a hit. A real
+  llms.txt is published at the marketing root and is captured verbatim under
+  llms/. A security contact (security@sweep.io) is published via the domain's
+  CAA iodef record (see security/sweep-domain-security.yml).

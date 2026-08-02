@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.sweep.io/security-compliance-governance
+standards:
+- id: soc2
+  conforms: true
+  evidence: 'Provider states "SOC2 compliant" on its security, compliance & governance page'
+- id: iso-27001
+  conforms: false
+  evidence: not claimed on the public security/compliance page
+- id: gdpr
+  conforms: false
+  evidence: not explicitly claimed on the reviewed pages
+- id: hipaa
+  conforms: false
+- id: oauth2
+  conforms: false
+  evidence: no public OpenAPI or documented OAuth surface
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no public API specification to assert against
+compliance_program:
+  published: true
+  url: https://www.sweep.io/security-compliance-governance
+  certifications:
+  - SOC 2
+notes: >-
+  Sweep is a governance/observability layer over Salesforce and connected
+  systems; its own public compliance posture is SOC 2. No public API spec
+  exists, so cross-cutting API standards (OAuth2, RFC 9457, etc.) cannot be
+  asserted and are recorded as non-conforming/unknown rather than fabricated.

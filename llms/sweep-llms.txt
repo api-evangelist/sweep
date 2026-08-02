@@ -1,0 +1,241 @@
+# Sweep
+
+
+> Sweep is the agentic layer for enterprise systems. By connecting to platforms like Salesforce, Snowflake, ServiceNow, and more, Sweep gives AI agents the context they need to understand, plan, and govern changes safely across complex systems. Sweep connects discovery, design, and build into one continuous workflow, enabling teams and AI agents to analyze impact, plan changes, and ship projects in hours instead of months, without rebuilding existing systems or replatforming.
+
+
+## Start here
+
+
+- [Sweep platform overview](https://www.sweep.io/): The agentic layer that gives AI agents context to understand and govern enterprise systems
+- [Why Sweep](https://www.sweep.io/why-sweep): Ship enterprise system changes in days instead of months — without rebuilding or replatforming
+- [Customers](https://www.sweep.io/customers): How enterprises govern change across Salesforce and connected systems with Sweep
+- [Pricing](https://www.sweep.io/pricing): Sweep pricing plans
+- [Request a demo](https://www.sweep.io/lp-demo-request): See Sweep applied to your enterprise systems in a guided demo
+- [Watch a tour](https://www.sweep.io/watch-a-tour): Self-serve product tour of the Sweep agentic layer
+- [Blog](https://www.sweep.io/blog): Writing on agentic enterprise systems, AI readiness, RevOps, and metadata
+
+
+## Platforms
+
+
+- [Salesforce](https://www.sweep.io/salesforce): Give AI agents the context to understand, plan, and govern changes across Salesforce
+- [Snowflake](https://www.sweep.io/snowflake): Trace data and logic lineage between Salesforce and Snowflake
+- [ServiceNow](https://www.sweep.io/servicenow): Connect Salesforce and ServiceNow with shared metadata and change context
+- [HubSpot](https://www.sweep.io/hubspot): Sweep for teams running HubSpot alongside Salesforce
+- [Data360](https://www.sweep.io/data360): A 360° view of data and logic across connected enterprise systems
+
+
+## Agentic Layer
+
+
+- [The Agentic Layer](https://www.sweep.io/agentic-layer): Sweep's vision of an agentic layer over enterprise systems
+- [Metadata Agents](https://www.sweep.io/metadata-agents): AI agents that read live metadata to document, design, and govern enterprise systems
+- [AI-powered Salesforce documentation](https://www.sweep.io/ai-powered-salesforce-documentation): Living documentation of every flow, field, and rule — generated and maintained by AI
+- [Agentic workspace for Salesforce](https://www.sweep.io/agentic-workspace-for-salesforce): One workspace for discovery, design, and build on Salesforce
+- [Sweep Model Context Protocol (MCP)](https://www.sweep.io/sweep-model-context-protocol): Expose enterprise system metadata to AI agents through MCP
+- [Multi-Org Mode](https://www.sweep.io/multi-org-mode): Manage, compare, and govern multiple Salesforce orgs from one workspace
+
+
+## Agentic Ops
+
+
+- [Salesforce automations](https://www.sweep.io/salesforce-automations): AI-built Salesforce automations that replace Process Builder, Flow, and Apex sprawl
+- [Salesforce alerts in Slack and Microsoft Teams](https://www.sweep.io/salesforce-alerts-slack-microsoft-teams): Route Salesforce events into Slack or Teams without custom code
+- [Salesforce duplicate management](https://www.sweep.io/salesforce-duplicate-management): Audit, resolve, and prevent duplicate accounts and leads in Salesforce
+- [Deduplication and matching](https://www.sweep.io/deduplication-and-matching): Metadata-aware matching that eliminates duplicates across enterprise records
+- [Sweep Alerts](https://www.sweep.io/sweep-alerts): Proactive alerts on pipeline, data, and config changes in Salesforce
+- [HubSpot integration](https://www.sweep.io/hubspot-integration): Sync HubSpot and Salesforce with full visibility into routing and attribution
+- [Slack integration](https://www.sweep.io/sweep-slack-integration): Trigger Slack actions and alerts from Salesforce events
+- [Workflow automation](https://www.sweep.io/workflow-automation): Modernize Salesforce workflow rules without rebuilding from scratch
+- [Pipeline automations](https://www.sweep.io/pipeline-automations): Automate pipeline movement, stage updates, and rep handoffs in Salesforce
+- [Process Agent](https://www.sweep.io/process-agent): AI agent that maps and explains end-to-end business processes
+- [Monitoring Agent](https://www.sweep.io/monitoring-agent): Continuous monitoring of Salesforce changes, errors, and drift
+- [User Support Agent](https://www.sweep.io/user-support-agent): AI assistant that resolves Salesforce user questions and access requests
+
+
+## Use cases
+
+
+- [Operational excellence](https://www.sweep.io/operational-excellence): Build operational rigor into Salesforce processes
+- [Tech debt management](https://www.sweep.io/tech-debt-management): Quantify, prioritize, and remediate Salesforce technical debt
+- [AI and automation readiness](https://www.sweep.io/ai-and-automation-readiness): Prepare enterprise system metadata for AI agents and Agentforce
+- [Implementation](https://www.sweep.io/implementation): How Sweep implementations move teams from discovery to build in days
+- [Documentation and discovery](https://www.sweep.io/documentation-and-discovery): Surface undocumented logic, dependencies, and tribal knowledge across Salesforce
+- [Security, compliance, and governance](https://www.sweep.io/security-compliance-governance): Govern permissions, changes, and audit trails for SOC 2, ISO, and beyond
+- [Artifacts](https://www.sweep.io/artifacts): Sweep's library of original research and assets
+- [CPQ documentation](https://www.sweep.io/documentation-cpq): Make Salesforce CPQ price rules, product rules, and configurations transparent and auditable
+- [Salesforce validation rules](https://www.sweep.io/salesforce-validation-rules): Document, audit, and rationalize validation rules across your Salesforce org
+- [Data Quality Engine](https://www.sweep.io/data-quality-engine): Find and fix Salesforce data quality issues at scale
+- [Data Orchestration](https://www.sweep.io/data-orchestration): Orchestrate data flows across Salesforce and connected systems
+- [Customize business process on Salesforce](https://www.sweep.io/customize-business-process-on-salesforce): Tailor Salesforce to actual business processes without custom code
+- [Salesforce Agentforce assessment](https://www.sweep.io/salesforce-agentforce-assessment): Diagnose metadata, permissions, and process gaps blocking Agentforce ROI
+- [Agentic assessment for Agentforce](https://www.sweep.io/agentic-assessment-for-agentforce): Assess Salesforce readiness for Agentforce before deploying
+- [Salesforce admin tools](https://www.sweep.io/admin-tools): Tooling that scales Salesforce admin productivity across complex orgs
+
+
+## By company size
+
+
+- [Enterprise](https://www.sweep.io/enterprise): Sweep for enterprise Salesforce orgs with multi-org, multi-cloud complexity
+- [SMB](https://www.sweep.io/smb): Sweep for mid-market teams getting more out of Salesforce
+
+
+## By team
+
+
+- [GTM leadership](https://www.sweep.io/gtm-leadership): Visibility and control for CROs and GTM execs running on Salesforce
+- [GTM teams](https://www.sweep.io/gtm-teams): Tooling for sales, marketing, and CS teams operating in Salesforce
+- [RevOps and operations](https://www.sweep.io/operations): How RevOps teams scale Salesforce without scaling headcount
+- [Marketing operations](https://www.sweep.io/marketing): How marketing ops teams use Sweep for routing, attribution, and HubSpot-Salesforce sync
+- [Salesforce admins](https://www.sweep.io/sf-admins): How Salesforce admins use Sweep to document, audit, and ship faster
+- [Accidental Salesforce admin](https://www.sweep.io/accidental-salesforce-admin): For non-admins who inherited a Salesforce org and need to make sense of it
+- [Accelerate pipeline](https://www.sweep.io/accelerate-pipeline): Remove friction across the Salesforce pipeline funnel
+- [MCP for revenue leaders](https://www.sweep.io/mcp-revenue-leaders): How revenue leaders connect AI agents to Salesforce via MCP
+- [Salesforce implementation service](https://www.sweep.io/salesforce-implementation-service): Salesforce implementation services — discovery to build in days, not months
+
+
+## Comparisons
+
+
+- [Sweep vs Elements.cloud](https://www.sweep.io/blog/sweep-vs-elements-cloud): How Sweep compares to Elements.cloud on documentation, automation, and AI
+- [Alternatives to Elements.cloud](https://www.sweep.io/blog/alternatives-to-elements-cloud-for-salesforce-documentation): Modern alternatives to Elements.cloud for Salesforce documentation
+- [Sweep vs Hubbl](https://www.sweep.io/blog/5-reasons-sweep-beats-hubbl-for-salesforce-ops): How Sweep compares to Hubbl for Salesforce ops
+- [Alternatives to Hubbl](https://www.sweep.io/blog/alternatives-to-hubble-for-salesforce-org-intelligence): Alternatives to Hubbl for Salesforce org intelligence
+- [Sweep vs LeanData](https://www.sweep.io/blog/sweep-vs-leandata): How Sweep compares to LeanData for Salesforce routing
+- [Sweep vs RingLead](https://www.sweep.io/blog/sweep-vs-ringlead): How Sweep compares to RingLead for Salesforce deduplication
+- [Sweep vs Rattle](https://www.sweep.io/blog/sweep-vs-rattle): How Sweep compares to Rattle for Salesforce-Slack workflows
+- [Sweep vs Copado](https://www.sweep.io/blog/sweep-vs-copado-enterprise-salesforce-change-management): How Sweep governs Salesforce change without forcing teams to rebuild or replatform
+- [Salesforce Flow vs Sweep automation](https://www.sweep.io/blog/salesforce-flow-vs-sweep-automation): How Sweep automations differ from native Salesforce Flow
+
+
+## Research and reports
+
+
+- [State of Enterprise Systems: Salesforce Edition](https://www.sweep.io/the-state-of-enterprise-systems): Sweep's 2026 research on the Velocity Tax, Visibility Gap, and AI Multiplier in enterprise Salesforce orgs
+- [Reports](https://www.sweep.io/reports): Sweep research and original studies on enterprise systems
+- [Reactive to Ready ebook](https://www.sweep.io/reactive-to-ready-ebook): Move Salesforce orgs from reactive admin to AI-ready
+- [Stop Lying to Your AI ebook](https://www.sweep.io/stop-lying-to-your-ai-ebook): Why metadata hygiene is the prerequisite for trustworthy enterprise AI
+
+
+## Guides: AI and Agentforce readiness
+
+
+- [The ultimate guide to AI readiness in Salesforce](https://www.sweep.io/blog/the-ultimate-guide-to-ai-readiness-in-salesforce-from-metadata-to-agents): End-to-end guide to preparing Salesforce metadata for AI agents
+- [Agentforce metadata readiness checklist](https://www.sweep.io/blog/the-agentforce-metadata-readiness-checklist): What to fix in Salesforce before deploying Agentforce
+- [What are Metadata Agents?](https://www.sweep.io/blog/what-are-metadata-agents): A primer on metadata-aware AI agents in enterprise systems
+- [The metadata moment](https://www.sweep.io/blog/the-metadata-moment-why-data-about-data-is-crucial-to-ai-success): Why metadata is the missing layer for enterprise AI success
+- [Why 95% of AI pilots fail](https://www.sweep.io/blog/why-95-percent-of-ai-pilots-fail): Why enterprise AI pilots stall before production
+- [Agentforce vs Einstein Copilot](https://www.sweep.io/blog/agentforce-vs-einstein-copilot): How Agentforce differs from Einstein Copilot for Salesforce teams
+- [Guide to Salesforce AI agents implementation](https://www.sweep.io/blog/guide-to-salesforce-ai-agents-implementation): How to implement AI agents on top of Salesforce safely
+- [The road to AI: prepare your Salesforce org for 2026](https://www.sweep.io/blog/the-road-to-ai-prepare-your-salesforce-org-for-2026): A 2026 readiness roadmap for Salesforce orgs
+- [Top 5 tools for Agentforce implementation](https://www.sweep.io/blog/the-top-5-tools-for-successful-agentforce-implementation): The tools needed to make Agentforce projects succeed
+- [Best AI tools for Salesforce admins, 2026](https://www.sweep.io/blog/the-12-best-ai-tools-for-salesforce-admins-for-2026): A curated list of AI tools for Salesforce admins in 2026
+- [What is a Salesforce MCP server](https://www.sweep.io/blog/what-is-a-salesforce-mcp-server): What a Salesforce MCP server is and why it matters for AI agents
+- [Model Context Protocol for Salesforce](https://www.sweep.io/blog/model-context-protocol-salesforce): How MCP changes what AI agents can see inside Salesforce
+
+
+## Guides: documentation and process
+
+
+- [Salesforce documentation: the living source of truth](https://www.sweep.io/blog/salesforce-documentation-the-complete-living-source-of-truth-with-ai): How to build living Salesforce documentation with AI
+- [CPQ documentation guide](https://www.sweep.io/blog/cpq-documentation-guide): A practical guide to documenting Salesforce CPQ
+- [Business process mapping](https://www.sweep.io/blog/business-process-mapping): Map business processes that actually match Salesforce reality
+- [Salesforce process mapping](https://www.sweep.io/blog/salesforce-process-mapping-visualize-and-fix-broken-hand-offs): Visualize and fix broken handoffs across Salesforce processes
+- [Salesforce flow documentation and impact analysis](https://www.sweep.io/blog/salesforce-flow-documentation-impact-analysis-guide): Document Salesforce flows and analyze downstream impact before shipping
+- [What is impact analysis](https://www.sweep.io/blog/what-is-impact-analysis-a-practical-guide): A practical guide to enterprise system impact analysis
+- [Best tools for Salesforce process mapping and documentation](https://www.sweep.io/blog/best-tools-for-salesforce-process-mapping-documentation): A comparison of Salesforce documentation and process tools
+
+
+## Guides: routing, dedup, data quality
+
+
+- [Guide to Salesforce lead routing](https://www.sweep.io/blog/guide-salesforce-lead-routing): How to design Salesforce lead routing that actually works
+- [Lead assignment rules in Salesforce](https://www.sweep.io/blog/getting-started-with-lead-assignment-rules-in-salesforce): A starter guide to Salesforce lead assignment rules
+- [Round-robin lead routing](https://www.sweep.io/blog/optimizing-sales-round-robin-lead-routing): Optimize round-robin lead routing in Salesforce
+- [Salesforce territory management](https://www.sweep.io/blog/getting-started-with-salesforce-territory-management): A practical guide to Salesforce territory management
+- [Best Salesforce deduplication tools](https://www.sweep.io/blog/best-salesforce-deduplication-tools-for-enterprise-orgs): A comparison of Salesforce deduplication tools for the enterprise
+- [Salesforce deduplication: why dirty data is killing your CRM](https://www.sweep.io/blog/salesforce-deduplication-why-dirty-data-is-killing-your-crm): Why duplicate Salesforce data quietly destroys revenue
+- [Salesforce data hygiene best practices](https://www.sweep.io/blog/best-practices-salesforce-data-hygiene): Best practices for keeping Salesforce data clean at scale
+
+
+## Guides: tech debt, governance, permissions
+
+
+- [How to manage Salesforce technical debt in 2026](https://www.sweep.io/blog/how-to-manage-technical-debt-in-2026): A modern approach to managing Salesforce tech debt
+- [Assess Salesforce technical debt step-by-step](https://www.sweep.io/blog/assessing-your-salesforce-technical-debt-a-step-by-step-guide): A step-by-step framework for assessing Salesforce tech debt
+- [7 metrics that reveal your true Salesforce tech debt](https://www.sweep.io/blog/7-metrics-that-reveal-your-true-salesforce-technical-debt): The metrics that quantify Salesforce tech debt
+- [Best tech debt management tools, 2026](https://www.sweep.io/blog/best-tech-debt-management-tools-in-2026): A comparison of tools for managing Salesforce tech debt
+- [Best solutions for governing Salesforce change at scale](https://www.sweep.io/blog/best-solutions-for-governing-change-in-salesforce-at-scale): How enterprises govern Salesforce change without slowing delivery
+- [Salesforce permission sets explained](https://www.sweep.io/blog/salesforce-permission-sets-explained-a-complete-guide): A complete guide to Salesforce permission sets
+- [Salesforce permission audits in complex environments](https://www.sweep.io/blog/salesforce-permission-audits-complex-environments): How to audit Salesforce permissions across complex orgs
+- [Salesforce tool consolidation guide](https://www.sweep.io/blog/salesforce-tool-consolidation-guide): Consolidate the Salesforce add-on stack without breaking GTM
+
+
+## Guides: migrations and platform decisions
+
+
+- [Migrating off Salesforce CPQ](https://www.sweep.io/blog/migrating-off-salesforce-cpq): What to consider when leaving Salesforce CPQ
+- [Salesforce CPQ end of sale: what to do](https://www.sweep.io/blog/salesforce-cpq-end-of-sale-what-to-do): What to do about the Salesforce CPQ end-of-sale announcement
+- [Migrating CRM from HubSpot to Salesforce](https://www.sweep.io/blog/migrating-your-crm-from-hubspot-to-salesforce): A guide to migrating CRM from HubSpot to Salesforce
+- [Merge Salesforce orgs after acquisition](https://www.sweep.io/blog/merge-salesforce-orgs-acquisition): How to merge Salesforce orgs after an M&A without replatforming
+
+
+## Guides: sales methodologies
+
+
+- [MEDDPIC sales process](https://www.sweep.io/blog/meddpic-sales-process): The MEDDPIC sales qualification process explained
+- [MEDDIC sales methodology](https://www.sweep.io/blog/the-meddic-sales-methodology-explained): MEDDIC sales methodology, end to end
+- [MEDDIC vs BANT](https://www.sweep.io/blog/meddic-bant-sales-methodology): MEDDIC vs BANT sales qualification compared
+- [SPICED sales methodology](https://www.sweep.io/blog/spiced-sales-methodology): The SPICED sales methodology explained
+- [How to calculate ARR](https://www.sweep.io/blog/how-to-calculate-annual-recurring-revenue-arr): How to calculate annual recurring revenue
+- [How to build a sales forecast](https://www.sweep.io/blog/how-to-create-a-sales-forecast-methods-and-examples): Sales forecasting methods and worked examples
+
+
+## Troubleshooting
+
+
+- [Fix Apex CPU Time Limit Exceeded](https://www.sweep.io/blog/how-to-fix-apex-cpu-time-limit-exceeded-in-salesforce): Diagnose and fix Apex CPU Time Limit Exceeded in Salesforce
+- [Fix INSUFFICIENT_ACCESS_ON_CROSS_REFERENCE_ENTITY](https://www.sweep.io/blog/how-to-fix-insufficient_access_on_cross_reference_entity): How to fix INSUFFICIENT_ACCESS_ON_CROSS_REFERENCE_ENTITY in Salesforce
+- [Fix Too Many SOQL Queries 101](https://www.sweep.io/blog/how-to-fix-limitexception-too-many-soql-queries-101): How to fix the SOQL 101 limit in Salesforce
+- [Fix Too Many DML Statements 151](https://www.sweep.io/blog/how-to-fix-too-many-dml-statements-151-in-salesforce): How to fix Too Many DML Statements 151 in Salesforce
+- [Fix FIELD_CUSTOM_VALIDATION_EXCEPTION](https://www.sweep.io/blog/fix-salesforce-field-custom-validation-exception): How to fix FIELD_CUSTOM_VALIDATION_EXCEPTION in Salesforce
+- [Fix REQUIRED_FIELD_MISSING](https://www.sweep.io/blog/salesforce-required_field_missing-error-how-to-fix-it): How to fix REQUIRED_FIELD_MISSING errors in Salesforce
+- [The 5 Salesforce errors that break Agentforce](https://www.sweep.io/blog/the-5-salesforce-errors-that-break-agentforce): Common Salesforce errors that derail Agentforce deployments
+- [Catalog of Agentforce errors](https://www.sweep.io/blog/catalog-of-agentforce-errors): A reference catalog of Agentforce errors and fixes
+
+
+## Customer stories
+
+
+- [Brex cut Salesforce investigation time 70-90%](https://www.sweep.io/blog/how-brex-reduced-salesforce-investigation-time-by-70-90-with-sweep): How Brex cut Salesforce investigation time 70-90% with Sweep
+- [Augury cut delivery time 50%](https://www.sweep.io/blog/augury-cut-salesforce-delivery-time-by-50-percent-with-sweep): How Augury halved Salesforce delivery time with Sweep
+- [Camunda consolidated tech stack](https://www.sweep.io/blog/camunda-consolidates-tech-stack-with-sweep): How Camunda consolidated Salesforce add-ons with Sweep
+- [ClearGov Salesforce transformation](https://www.sweep.io/blog/cleargov-salesforce-transformation): How ClearGov transformed its Salesforce operations with Sweep
+- [B2B SaaS cut troubleshooting 97%](https://www.sweep.io/blog/b2b-saas-cuts-troubleshooting-by-97): How a B2B SaaS company cut Salesforce troubleshooting 97% with Sweep
+- [EquityBee case study](https://www.sweep.io/blog/equity-bee-case-study): How EquityBee uses Sweep
+- [SailPoint](https://www.sweep.io/blog/sailpoint): How SailPoint uses Sweep on Salesforce
+
+
+## Templates
+
+
+- [Sweep templates library](https://www.sweep.io/templates): Pre-built Salesforce funnels, automations, alerts, dashboards, and validation rules
+
+
+## Optional
+
+
+- [About Sweep](https://www.sweep.io/about): Sweep's mission, team, and approach to the agentic layer
+- [Contact](https://www.sweep.io/contact): Contact Sweep
+- [Partner program](https://www.sweep.io/partner-program): Sweep's partner program for consultancies and SIs
+- [Careers](https://www.sweep.io/sweep-careers): Open roles at Sweep
+- [Open source](https://www.sweep.io/open-source): Sweep's open-source contributions
+- [FAQ](https://www.sweep.io/faq): Common questions about Sweep
+- [Blog: AI and automation readiness](https://www.sweep.io/blog/category/ai-and-automation-readiness): Posts on preparing enterprise systems for AI and automation
+- [Blog: Documentation and discovery](https://www.sweep.io/blog/category/documentation-and-discovery): Posts on Salesforce documentation and org discovery
+- [Blog: Operational excellence](https://www.sweep.io/blog/category/operational-excellence): Posts on operational excellence
+- [Blog: Tech debt management](https://www.sweep.io/blog/category/tech-debt-management): Posts on technical debt
+- [Blog: Permissions, security, auditability](https://www.sweep.io/blog/category/permissions-security-auditability): Posts on Salesforce permissions and security
+- [Blog: Implementation](https://www.sweep.io/blog/category/implementation): Posts on enterprise system implementation
+- [Blog: In the news](https://www.sweep.io/blog/category/in-the-news): Sweep in the press

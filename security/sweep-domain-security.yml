@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.sweep.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  3 23:59:59 2027 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: sweep.io
+  dnssec: false
+  caa:
+  - 0 issue "pki.goog"
+  - 0 issuewild "amazon.com"
+  - 0 iodef "mailto:security@sweep.io"
+  - 0 issue "amazon.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
