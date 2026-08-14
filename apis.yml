@@ -1,17 +1,13 @@
 aid: sweep
 name: Sweep
-description: >-
-  Sweep is the agentic layer for enterprise systems. By connecting to platforms
-  like Salesforce, Snowflake, ServiceNow, and HubSpot, Sweep reads live metadata
-  and gives AI agents the context they need to understand, plan, and govern
-  changes safely across complex systems. It unifies discovery, design, and build
-  into one continuous workflow — auto-generating living documentation of every
-  flow, field, and rule; visualizing end-to-end business processes; running
-  metadata agents that audit and optimize org configuration; and shipping
-  Salesforce automations, lead routing, alerts, and deduplication without custom
-  code. Sweep also publishes an official Model Context Protocol (MCP) server that
-  connects Salesforce context to AI assistants such as Claude and ChatGPT. Sweep
-  is backed by Bessemer Venture Partners, Homebrew, and Insight Partners.
+description: Sweep is the agentic layer for enterprise systems. By connecting to platforms like Salesforce, Snowflake,
+  ServiceNow, and HubSpot, Sweep reads live metadata and gives AI agents the context they need to understand, plan,
+  and govern changes safely across complex systems. It unifies discovery, design, and build into one continuous
+  workflow — auto-generating living documentation of every flow, field, and rule; visualizing end-to-end business
+  processes; running metadata agents that audit and optimize org configuration; and shipping Salesforce automations,
+  lead routing, alerts, and deduplication without custom code. Sweep also publishes an official Model Context Protocol
+  (MCP) server that connects Salesforce context to AI assistants such as Claude and ChatGPT. Sweep is backed by
+  Bessemer Venture Partners, Homebrew, and Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/sweep/refs/heads/main/apis.yml
 accessModel:
   pricing: unknown
@@ -31,11 +27,11 @@ x-backed-by:
 - bessemer-venture-partners
 - homebrew
 - insight-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: public-openapi-and-remote-mcp
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-08-14'
 tags:
 - Company
 - Cloud
@@ -47,7 +43,74 @@ tags:
 - Model Context Protocol
 - Automation
 - Documentation
-apis: []
+- API
+- REST API
+- OpenAPI
+- Enterprise Systems
+- Snowflake
+- ServiceNow
+- Data Governance
+apis:
+- name: Sweep API
+  description: Sweep's public REST API — the contract behind the Sweep agentic workspace. 698 operations across
+    591 paths covering CRM org connection and metadata (Salesforce, HubSpot, Snowflake, ServiceNow, Workato, Data360),
+    the documentation platform (element search, dependencies, dependents, summaries, source and per-element chat),
+    AI retrievers and AI agents, automations, funnels and funnel maps, assignment groups, territories, rollups,
+    scheduling, campaigns, deployments, projects, comments and MCP connectors. Bearer JWT authentication; JSON request
+    and response bodies; served from api.sweep.io with a public Swagger UI at /api and the machine-readable document
+    at /api-json.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - salesforce
+  - metadata
+  - governance
+  - documentation
+  - crm
+  - ai-agents
+  - automation
+  - revops
+  - snowflake
+  - servicenow
+  - hubspot
+  - rest
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+  - type: Overlay
+    url: overlays/sweep-api-overlay.yaml
+- name: Sweep MCP Server
+  description: Sweep's official hosted Model Context Protocol server — a remote SSE endpoint at https://sweepmcp.com/sse
+    that connects a Sweep-governed view of Salesforce and connected enterprise systems to MCP clients such as Claude.
+    Authorization is OAuth 2.0 with dynamic client registration and PKCE, advertised via RFC 8414 authorization-server
+    metadata at https://sweepmcp.com/.well-known/oauth-authorization-server. Included in Sweep's Platform tier and
+    above.
+  humanURL: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
+  baseURL: https://sweepmcp.com/sse
+  tags:
+  - mcp
+  - model-context-protocol
+  - agent-native
+  - salesforce
+  - metadata
+  - oauth
+  properties:
+  - type: MCPServer
+    url: mcp/sweep-mcp.yml
+  - type: ToolCrosswalk
+    url: mcp/sweep-tool-crosswalk.yml
+  - type: Documentation
+    url: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -78,8 +141,44 @@ common:
   url: conformance/sweep-conformance.yml
 - type: DomainSecurity
   url: security/sweep-domain-security.yml
+- type: Documentation
+  url: https://help.sweep.io/en/
+- type: GettingStarted
+  url: https://help.sweep.io/en/articles/12844319-academy-overview
+- type: APIReference
+  url: https://api.sweep.io/api
+- type: OpenAPI
+  url: openapi/sweep-api-openapi.yml
+- type: Authentication
+  url: authentication/sweep-authentication.yml
+- type: Conventions
+  url: conventions/sweep-conventions.yml
+- type: DataModel
+  url: data-model/sweep-data-model.yml
+- type: ErrorCatalog
+  url: errors/sweep-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/sweep-lifecycle.yml
+- type: Overlay
+  url: overlays/sweep-api-overlay.yaml
+- type: Packages
+  url: packages/sweep-packages.yml
+- type: Plans
+  url: plans/sweep-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sweep-rate-limits.yml
+- type: AgenticAccess
+  url: agentic-access/sweep-agentic-access.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: ToolCrosswalk
+  url: mcp/sweep-tool-crosswalk.yml
+- type: TrustCenter
+  url: security/sweep-trust-center.yml
+- type: WellKnown
+  url: well-known/sweep-well-known.yml
 x-enrichment:
-  date: '2026-07-21'
+  date: '2026-08-14'
   status: enriched
-  artifacts_added: 5
+  artifacts_added: 21
   pass: local-v1
