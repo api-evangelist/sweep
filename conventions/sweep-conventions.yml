@@ -1,0 +1,89 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/sweep-api-openapi.yml + live probes of https://api.sweep.io
+docs: null
+authentication:
+  style: http bearer
+  format: JWT
+  header: 'Authorization: Bearer <token>'
+  scheme_name: bearer
+  applied: 'per-operation security: [{bearer: []}] on all authenticated operations'
+  unauthenticated_operations: 11
+  detail: authentication/sweep-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  evidence: The string "idempoten" appears zero times in the published OpenAPI, and no idempotency key
+    header, parameter or retry-safety contract is documented in the help center. 358 of 698 operations
+    are unsafe write methods with no replay protection.
+  note: No Idempotency pointer is emitted for this provider — there is no idempotency contract to point
+    at.
+pagination:
+  style: limit/offset
+  uniform: false
+  params:
+  - name: limit
+    in: query
+    operations: 12
+  - name: offset
+    in: query
+    occurrences: 17
+  - name: pageSize
+    in: query
+    occurrences: 4
+  response_fields: []
+  note: Pagination is applied inconsistently — most list operations return an unbounded array with no
+    envelope, no total count and no next-page token. There is no cursor/nextToken vocabulary anywhere
+    in the spec.
+filtering_sorting:
+  params:
+  - searchTerm
+  - activeOnly
+  - direction
+  - dateFrom
+  - dateTo
+  - scoreMin
+  - scoreMax
+  - metadataTypes
+  - sortBy
+  note: Filtering vocabulary is per-controller, not cross-cutting.
+field_expansion:
+  supported: false
+metadata:
+  supported: false
+  note: No generic user-defined metadata bag on resources; Sweep's "metadata" is the connected-system
+    metadata it reads, not an API convention.
+request_tracing:
+  request_id_header: null
+  observed_response_headers:
+  - 'x-powered-by: Express'
+  note: No request-id or correlation header is returned on live responses, so a caller cannot quote an
+    id to support.
+versioning:
+  scheme: none
+  current: 0.1 (info.version in the OpenAPI)
+  in_path: false
+  in_header: false
+  note: 'Paths are unversioned (e.g. /crm-orgs, /sweep_fields). There is no /v1 prefix, version header,
+    or dated version train. Two path families expose their own deprecation by naming: /mcp/apikey and
+    /mcp-deprecated/apikey.'
+error_envelope:
+  shape: '{"message","error","statusCode"}'
+  rfc9457: false
+  detail: errors/sweep-problem-types.yml
+rate_limit_signalling:
+  headers: []
+  documented: false
+  detail: rate-limits/sweep-rate-limits.yml
+path_style:
+  note: Mixed casing conventions — kebab-case (/crm-orgs, /sweep-fields consumers) and snake_case (/sweep_fields)
+    coexist in the same API.
+content_type:
+  request: application/json
+  response: application/json
+cross_links:
+  authentication: authentication/sweep-authentication.yml
+  errors: errors/sweep-problem-types.yml
+  lifecycle: lifecycle/sweep-lifecycle.yml
+  rate_limits: rate-limits/sweep-rate-limits.yml
+  data_model: data-model/sweep-data-model.yml

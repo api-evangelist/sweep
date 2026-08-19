@@ -1,0 +1,21 @@
+generated: '2026-08-14'
+method: probed
+source: https://help.sweep.io/ (searched "rate limit" — no result), https://api.sweep.io/api (Swagger
+  UI), live unauthenticated probes of https://api.sweep.io/crm-orgs and https://api.sweep.io/health
+limit_count: 0
+rate_limits: []
+response_headers_observed: []
+headers_checked:
+- X-RateLimit-Limit
+- X-RateLimit-Remaining
+- X-RateLimit-Reset
+- RateLimit-Limit
+- RateLimit-Remaining
+- RateLimit-Reset
+- Retry-After
+exhaustion_status: null
+notes: 'Sweep publishes no rate-limit documentation. The OpenAPI at https://api.sweep.io/api-json declares
+  only 200/201/202 responses across all 698 operations — no 429 is described anywhere in the contract.
+  Live unauthenticated responses from api.sweep.io carry no X-RateLimit-*, RateLimit-* or Retry-After
+  headers (only `x-powered-by: Express`). An agent therefore has no runtime throttling signal to read.
+  Recorded as an honest zero.'

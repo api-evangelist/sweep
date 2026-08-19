@@ -1,0 +1,64 @@
+generated: '2026-08-14'
+method: generated
+source: openapi/sweep-api-openapi.yml
+skills:
+- file: sweep-connect-and-inventory-a-salesforce-org.md
+  name: Connect a Salesforce org and inventory its metadata
+  api: openapi/sweep-api-openapi.yml
+  operations:
+  - CrmOrgsController_getOrgs
+  - CrmOrgsController_createOrgs
+  - CrmOrgsController_getSFDCOAuthPath
+  - CrmOrgsController_handleSFDCOAuthAuthorizationCode
+  - CrmOrgsController_getOrg
+  - CrmOrgsController_getSalesforceObjectTypes
+  - CrmOrgsController_getObjectTypes
+  - CrmOrgsController_getAllFunnelsAndRecordTypes
+  - CrmOrgsController_listUsers
+  - CrmOrgsController_listQueues
+- file: sweep-trace-metadata-dependencies.md
+  name: Trace a metadata element and its blast radius
+  api: openapi/sweep-api-openapi.yml
+  operations:
+  - DocumentationPlatformController_listSalesforceObjects
+  - DocumentationPlatformController_listSalesforceElementTypes
+  - DocumentationPlatformController_getSalesforceObjectDetailElements
+  - DocumentationPlatformController_listSalesforceElements
+  - DocumentationPlatformController_getSalesforceElementDependencies
+  - DocumentationPlatformController_getSalesforceElementDependents
+  - DocumentationPlatformController_searchElements
+  - DocumentationPlatformController_findElementByName
+  - DocumentationPlatformController_getElementSummary
+  - DocumentationPlatformController_getElementSource
+  - DocumentationPlatformController_chatWithElement
+- file: sweep-audit-automations.md
+  name: Audit automations before deploying one
+  api: openapi/sweep-api-openapi.yml
+  operations:
+  - AutomationController_getAutomations
+  - AutomationController_getAutomationById
+  - AutomationController_getVersionHistory
+  - AutomationController_listAutomationsExecutionOrder
+  - AutomationController_listAlertsExecutionOrder
+  - AutomationController_listAssignmentsExecutionOrder
+  - AutomationController_createReadOnlyAutomation
+  - AutomationController_deployAutomation
+  - AutomationController_toggleActivation
+- file: sweep-govern-mcp-connectors.md
+  name: Govern outbound MCP connectors and tool policies
+  api: openapi/sweep-api-openapi.yml
+  operations:
+  - McpConnectorsController_getConnectors
+  - McpConnectorsController_createConnector
+  - McpConnectorsController_getOAuthAuthorizationUrl
+  - McpConnectorsController_handleOAuthCallback
+  - McpConnectorsController_getConnectionTools
+  - McpConnectorsController_updateConnectionToolPolicies
+  - McpConnectorsController_deleteConnection
+  - McpConnectorsController_deleteConnector
+  - AgenticFeaturesController_getAgenticFeatureSettings
+  - AgenticFeaturesController_getDataAccessSettings
+  - AgenticFeaturesController_updateDataAccessSettings
+  - MCPController_getTemporaryApikey[0]
+notes: Generated from the published Sweep OpenAPI. Every operationId referenced was verified verbatim
+  against openapi/_original/sweep-openapi.json. Sweep publishes no AGENTS.md or first-party skill files.

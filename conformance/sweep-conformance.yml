@@ -1,10 +1,60 @@
-generated: '2026-07-21'
+generated: '2026-08-14'
 method: searched
-source: https://www.sweep.io/security-compliance-governance
+source: https://www.sweep.io/security-compliance-governance, https://security.sweep.io/, https://api.sweep.io/api-json,
+  https://sweepmcp.com/.well-known/oauth-authorization-server
 standards:
+- id: openapi-3.0
+  conforms: true
+  evidence: Published OpenAPI 3.0.0 at https://api.sweep.io/api-json — 591 paths, 698 operations, 320
+    component schemas.
+- id: oauth2
+  conforms: true
+  evidence: MCP server at https://sweepmcp.com/sse authorizes via OAuth 2.0 authorization-code grant.
+    The REST API itself does not use OAuth — it takes a bearer JWT.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: true
+  evidence: HTTP 200 at https://sweepmcp.com/.well-known/oauth-authorization-server
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://sweepmcp.com/register advertised in the authorization-server
+    metadata
+- id: rfc7636-pkce
+  conforms: true
+  evidence: 'code_challenge_methods_supported: [plain, S256]'
+- id: rfc9728-oauth-protected-resource-metadata
+  conforms: false
+  evidence: HTTP 404 at https://sweepmcp.com/.well-known/oauth-protected-resource
+- id: mcp
+  conforms: true
+  evidence: Official hosted MCP server, SSE transport, documented in the provider help centre.
+- id: rfc6750-bearer-token
+  conforms: true
+  evidence: http bearer securityScheme (bearerFormat JWT) on the REST API; RFC 6750 invalid_token error
+    on the MCP endpoint.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are the NestJS {message,error,statusCode} envelope on application/json; no problem+json
+    anywhere in the spec or on live responses.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: 404 on /.well-known/security.txt for every host probed.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No deprecation or sunset policy published; 0 operations marked deprecated in the spec.
+- id: openid-connect
+  conforms: false
+  evidence: No /.well-known/openid-configuration on any host. SSO is sold as an Enterprise line item but
+    the mechanism is not publicly documented.
+- id: a2a
+  conforms: false
+  evidence: No agent card at /.well-known/agent-card.json or /.well-known/agent.json on any host.
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document and no published event catalogue.
 - id: soc2
   conforms: true
-  evidence: 'Provider states "SOC2 compliant" on its security, compliance & governance page'
+  evidence: Provider states "SOC2 compliant" on https://www.sweep.io/security-compliance-governance and
+    operates a trust centre at https://security.sweep.io/
 - id: iso-27001
   conforms: false
   evidence: not claimed on the public security/compliance page
@@ -13,19 +63,14 @@ standards:
   evidence: not explicitly claimed on the reviewed pages
 - id: hipaa
   conforms: false
-- id: oauth2
+- id: pci-dss
   conforms: false
-  evidence: no public OpenAPI or documented OAuth surface
-- id: rfc9457-problem-details
-  conforms: false
-  evidence: no public API specification to assert against
 compliance_program:
   published: true
   url: https://www.sweep.io/security-compliance-governance
   certifications:
   - SOC 2
-notes: >-
-  Sweep is a governance/observability layer over Salesforce and connected
-  systems; its own public compliance posture is SOC 2. No public API spec
-  exists, so cross-cutting API standards (OAuth2, RFC 9457, etc.) cannot be
-  asserted and are recorded as non-conforming/unknown rather than fabricated.
+  trust_center: https://security.sweep.io/
+notes: Upgraded from the 2026-07-21 pass, which recorded "no public API specification to assert against".
+  A real OpenAPI and a real OAuth-protected MCP server were found, so the cross-cutting standards are
+  now asserted against evidence rather than absence.

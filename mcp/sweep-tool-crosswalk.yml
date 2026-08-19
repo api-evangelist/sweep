@@ -1,0 +1,171 @@
+generated: '2026-08-14'
+method: derived
+source: mcp/sweep-mcp.yml + openapi/sweep-api-openapi.yml
+surfaces:
+  openapi:
+    file: openapi/sweep-api-openapi.yml
+    source_url: https://api.sweep.io/api-json
+    operations: 698
+    paths: 591
+    gated: false
+    note: The document itself is anonymous; every operation it describes requires a bearer JWT.
+  graphql: null
+  mcp:
+    url: https://sweepmcp.com/sse
+    transport: sse
+    gated: true
+    note: tools/list returns 401 invalid_token without an OAuth token, and no tool list is published in
+      the docs, so no tool names exist to bind.
+crosswalk: []
+mcp_only: []
+rest_only:
+- capability: AI Retrievers
+  rest_operations: 95
+- capability: Backoffice
+  rest_operations: 75
+- capability: Documentation Platform
+  rest_operations: 49
+- capability: Ai Agents
+  rest_operations: 49
+- capability: Automations
+  rest_operations: 48
+- capability: Scheduling Dashboard
+  rest_operations: 29
+- capability: Documentation Salesforce
+  rest_operations: 26
+- capability: Data Integrations
+  rest_operations: 24
+- capability: CRM Orgs
+  rest_operations: 23
+- capability: projects
+  rest_operations: 22
+- capability: Users
+  rest_operations: 18
+- capability: Funnels
+  rest_operations: 14
+- capability: SFDC Callout
+  rest_operations: 11
+- capability: Funnel Maps
+  rest_operations: 11
+- capability: Campaigns
+  rest_operations: 10
+- capability: Comments
+  rest_operations: 9
+- capability: hubspot
+  rest_operations: 9
+- capability: AI Prompts
+  rest_operations: 9
+- capability: scheduling (public)
+  rest_operations: 9
+- capability: Assignment Groups
+  rest_operations: 8
+- capability: Rollups
+  rest_operations: 8
+- capability: MCP Connectors
+  rest_operations: 8
+- capability: reporting
+  rest_operations: 7
+- capability: SFDC Callout — Scheduling
+  rest_operations: 7
+- capability: AI User Skills
+  rest_operations: 6
+- capability: Orgs
+  rest_operations: 5
+- capability: Sweep Fields
+  rest_operations: 5
+- capability: Data Integrations (Unauthenticated)
+  rest_operations: 5
+- capability: Salesforce change feed
+  rest_operations: 5
+- capability: ServiceNow Orgs
+  rest_operations: 4
+- capability: Deployments
+  rest_operations: 4
+- capability: Templates
+  rest_operations: 4
+- capability: RequestChanges
+  rest_operations: 4
+- capability: Territories
+  rest_operations: 4
+- capability: workflows
+  rest_operations: 4
+- capability: roles
+  rest_operations: 4
+- capability: ThirdPartyFunnels
+  rest_operations: 4
+- capability: ai-attachments
+  rest_operations: 4
+- capability: best-practices
+  rest_operations: 4
+- capability: Agentic Features
+  rest_operations: 4
+- capability: Data 360 Orgs
+  rest_operations: 4
+- capability: User SFDC Connection
+  rest_operations: 4
+- capability: Snowflake Orgs
+  rest_operations: 3
+- capability: Notifications
+  rest_operations: 3
+- capability: Account Selection
+  rest_operations: 3
+- capability: Stages
+  rest_operations: 2
+- capability: Diff
+  rest_operations: 2
+- capability: Non Admin Salesforce Connector (unauthenticated)
+  rest_operations: 2
+- capability: DevopsCenter
+  rest_operations: 2
+- capability: Dashboard
+  rest_operations: 2
+- capability: Utility-bar
+  rest_operations: 2
+- capability: ai-session
+  rest_operations: 2
+- capability: MCP
+  rest_operations: 2
+- capability: Simulation
+  rest_operations: 2
+- capability: Health
+  rest_operations: 1
+- capability: Workato Orgs
+  rest_operations: 1
+- capability: Homepage
+  rest_operations: 1
+- capability: Webapp
+  rest_operations: 1
+- capability: Users (unauthenticated)
+  rest_operations: 1
+- capability: FunnelsAnalytics
+  rest_operations: 1
+- capability: hubspot connector (unauthenticated)
+  rest_operations: 1
+- capability: Global
+  rest_operations: 1
+- capability: Python
+  rest_operations: 1
+- capability: Logo Dev
+  rest_operations: 1
+- capability: ai-stream
+  rest_operations: 1
+- capability: Product Plan
+  rest_operations: 1
+- capability: Teams Integrations (Unauthenticated)
+  rest_operations: 1
+- capability: AI Artifacts (unauthenticated)
+  rest_operations: 1
+- capability: graph-db
+  rest_operations: 1
+coverage:
+  tools_named: 0
+  tools_bound: 0
+  mcp_only: 0
+  rest_operations_total: 698
+  rest_operations_with_tool: 0
+  binding_possible: false
+notes: 'This crosswalk records a real, measurable divergence rather than a mapping: Sweep ships BOTH a
+  698-operation REST contract and a hosted MCP server, and there is no published way to relate them. The
+  MCP tool list is OAuth-gated and undocumented, so every REST operation is rest_only by default and zero
+  tools can be bound. Nothing is guessed. Re-run this artifact with an authenticated tools/list to produce
+  the actual bindings; the REST side already carries the real input schemas each tool would inherit.'

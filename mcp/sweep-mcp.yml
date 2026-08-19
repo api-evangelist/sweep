@@ -1,28 +1,88 @@
-generated: '2026-07-21'
-method: searched
+generated: '2026-08-14'
+method: probed
 status: published
-source: https://www.sweep.io/sweep-model-context-protocol
+source: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
 name: Sweep MCP
-summary: >-
-  Sweep publishes an official Model Context Protocol (MCP) server that connects
-  Salesforce (and Sweep's governed metadata layer) to AI assistants such as
-  Claude and ChatGPT, letting agents query governed CRM context in natural
-  language. Marketed as "the missing layer that connects Salesforce to Claude
-  and ChatGPT." No public remote endpoint URL, transport, or tool schema is
-  documented on the marketing page; connection is provisioned through the Sweep
-  app (app.sweep.io) for authenticated accounts.
+summary: Sweep's official hosted MCP server. It exposes a Sweep-governed view of Salesforce and connected
+  enterprise systems to MCP clients, marketed as "the missing layer that connects Salesforce to Claude
+  and ChatGPT". The endpoint is live and reachable; the tool list is behind OAuth.
 docs:
+- https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
 - https://www.sweep.io/sweep-model-context-protocol
 - https://www.sweep.io/mcp-revenue-leaders
-transport: unknown
-endpoint: null
-authentication: Sweep account (provisioned via app.sweep.io); mechanism not publicly documented
+deployment:
+  mode: remote
+  endpoint: https://sweepmcp.com/sse
+  transport: sse
+  auth: oauth
+  verified: probed
+  checked: '2026-08-14'
+  evidence:
+  - url: https://sweepmcp.com/sse
+    http_status: 401
+    body: '{"error":"invalid_token","error_description":"Missing or invalid access token"}'
+    note: endpoint is live and OAuth-protected
+  - url: https://sweepmcp.com/.well-known/oauth-authorization-server
+    http_status: 200
+    note: RFC 8414 authorization-server metadata; saved verbatim to well-known/sweep-mcp-oauth-authorization-server.json
+  - url: https://sweepmcp.com/mcp
+    http_status: 404
+    note: no streamable-HTTP endpoint at /mcp — SSE only
+  install: null
+  package: null
+  note: 'No stdio/npx package is published. Remote-only. sweepmcp.com is a different registrable domain
+    from sweep.io, and that is justified from the provider''s own documentation: Sweep''s help-centre
+    article "Using the Sweep MCP Server" instructs users to add a connector with Server URL https://sweepmcp.com/sse.'
+authorization:
+  model: OAuth 2.0 authorization code with PKCE and dynamic client registration (RFC 7591)
+  issuer: https://sweepmcp.com
+  authorization_endpoint: https://sweepmcp.com/authorize
+  token_endpoint: https://sweepmcp.com/token
+  registration_endpoint: https://sweepmcp.com/register
+  revocation_endpoint: https://sweepmcp.com/token
+  grant_types:
+  - authorization_code
+  - refresh_token
+  code_challenge_methods:
+  - plain
+  - S256
+  token_endpoint_auth_methods:
+  - client_secret_basic
+  - client_secret_post
+  - none
+  scopes_advertised: null
+  protected_resource_metadata:
+    url: https://sweepmcp.com/.well-known/oauth-protected-resource
+    status: 404
+    note: RFC 9728 protected-resource metadata is NOT served, so a client cannot discover the resource
+      identifier or required scopes ahead of the challenge.
+  file: well-known/sweep-mcp-oauth-authorization-server.json
+clients_supported:
+- Claude (Max, Team or Enterprise) via Connectors
+entitlement: Listed as a Platform-tier and above feature on https://www.sweep.io/pricing.
 capabilities:
 - Query Salesforce pipeline health in natural language
 - Retrieve conversion rates and sales velocity
 - Surface governed insights and metadata context from connected systems
 tools: []
-notes: >-
-  Official first-party MCP server confirmed from the provider's own marketing
-  page. Tool list is not published; left empty rather than fabricated. Sweep has
-  no public OpenAPI, so a candidate tool list cannot be derived either.
+tools_status: gated
+tools_note: 'tools/list could not be enumerated: POST to https://sweepmcp.com/sse returns HTTP 401 invalid_token
+  without an OAuth access token, and Sweep publishes no tool list in its docs ("the Sweep MCP server displays
+  the number of tools Claude can access" is as specific as the help article gets). Left empty rather than
+  fabricated — real input schemas require authenticated introspection with a Sweep Platform-tier account.'
+related_rest_surface:
+  note: 'The REST API at https://api.sweep.io carries first-class MCP plumbing of its own: GET /mcp/apikey
+    issues a temporary API key (MCPController_getTemporaryApikey), and an 8-operation "MCP Connectors"
+    surface lets a Sweep account register OUTBOUND third-party MCP servers, run their OAuth, and set per-tool
+    policies.'
+  operations:
+  - MCPController_getTemporaryApikey[0]
+  - MCPController_getTemporaryApikey[1]
+  - McpConnectorsController_getConnectors
+  - McpConnectorsController_createConnector
+  - McpConnectorsController_getOAuthAuthorizationUrl
+  - McpConnectorsController_handleOAuthCallback
+  - McpConnectorsController_deleteConnector
+  - McpConnectorsController_getConnectionTools
+  - McpConnectorsController_updateConnectionToolPolicies
+  - McpConnectorsController_deleteConnection

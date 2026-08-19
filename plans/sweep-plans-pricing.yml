@@ -1,0 +1,104 @@
+generated: '2026-08-14'
+method: searched
+source: https://www.sweep.io/pricing
+currency: USD
+billing_note: All platform tiers are quoted per month, billed annually. Every tier routes through "Contact
+  Sales"; there is no self-serve checkout.
+plan_count: 4
+plans:
+- name: Agentic Starter
+  price: 2500
+  currency: USD
+  period: month
+  billing: annual
+  audience: Companies under 300 employees
+  included:
+  - Documentation agent
+  - 2 users
+  - Visual workspace
+  - Ops Bundle (10 users)
+  - Single Salesforce org
+  - 1 sandbox
+  mcp_included: false
+  signup: contact-sales
+- name: Foundation
+  price: 5000
+  currency: USD
+  period: month
+  billing: annual
+  popular: true
+  included:
+  - Documentation agent
+  - 5 users
+  - Permission agent
+  - Monitoring agents
+  - Visual workspace (read/write)
+  - Single Salesforce org
+  - 1 sandbox
+  mcp_included: false
+  signup: contact-sales
+- name: Platform
+  price: 7000
+  currency: USD
+  period: month
+  billing: annual
+  included:
+  - Everything in Foundation
+  - 10 users
+  - Build mode
+  - Process agents
+  - Artifacts
+  - Model Context Protocol (MCP)
+  - Agentforce Navigator
+  - 3 sandboxes
+  mcp_included: true
+  signup: contact-sales
+- name: Enterprise
+  price: null
+  price_label: Let's talk
+  currency: USD
+  period: null
+  billing: annual
+  included:
+  - Everything in Platform
+  - Multi-org support (1 org included)
+  - Multiple platform support
+  - 10 sandboxes
+  - Priority support & SLA
+  - Custom integrations
+  - Dedicated success manager
+  - Single sign-on (SSO)
+  mcp_included: true
+  signup: contact-sales
+addons:
+- name: Routing and Matching
+  price: 40
+  unit: user/month
+- name: Alerts
+  price: 20
+  unit: user/month
+- name: Scheduling
+  price: 20
+  unit: user/month
+- name: Dedupe
+  price: 10
+  unit: user/month
+- name: Ops Bundle
+  price: 75
+  unit: user/month
+- name: Marketing Attribution
+  price: 6000
+  unit: year
+- name: User Support Agent
+  price: 5
+  unit: user/month
+- name: Additional Sandbox
+  price: 20000
+  unit: year
+- name: Sweep Admins
+  price: 6000
+  unit: year
+api_access: No API-specific or metered API plan is published. API and MCP access follow the platform tier;
+  MCP is listed as a Platform-tier and above feature.
+notes: Prices are list prices published on the public pricing page as of the generated date. No per-call,
+  per-token or quota pricing is published for the REST API.

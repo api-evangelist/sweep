@@ -1,0 +1,50 @@
+generated: '2026-08-14'
+method: probed
+source: live probes of https://api.sweep.io/* plus openapi/_original/sweep-openapi.json
+format: vendor-json
+rfc9457: false
+envelope:
+  media_type: application/json
+  shape: '{"message": <string|string[]>, "error": <string>, "statusCode": <int>}'
+  fields:
+  - name: message
+    type: string or array of string
+    note: human-readable message; NestJS class-validator returns an array of field violations on 400
+  - name: error
+    type: string
+    note: HTTP reason phrase; omitted on 401 from the auth guard
+  - name: statusCode
+    type: integer
+    note: mirrors the HTTP status
+  note: NestJS/Express default exception filter. No RFC 9457 application/problem+json, no error type URI,
+    no machine-readable error code.
+spec_gap: 'The published OpenAPI describes NO error responses at all: across 698 operations only 200 (511),
+  201 (186) and 202 (1) are declared. Every problem type below was observed on the live API, not read
+  from the contract.'
+problems:
+- status: 401
+  title: Unauthorized
+  body: '{"message":"Unauthorized","statusCode":401}'
+  cause: 'Missing or invalid bearer JWT on any operation carrying security: [{bearer: []}]'
+  remediation: 'Send Authorization: Bearer <JWT>.'
+  observed_at: https://api.sweep.io/crm-orgs
+  method: GET
+  observed: '2026-08-14'
+- status: 404
+  title: Not Found
+  body: '{"message":"Cannot GET /<path>","error":"Not Found","statusCode":404}'
+  cause: Unrouted path — the router echoes the method and path
+  remediation: Check the path against the OpenAPI document at https://api.sweep.io/api-json.
+  observed_at: https://api.sweep.io/openapi.json
+  method: GET
+  observed: '2026-08-14'
+mcp_errors:
+- status: 401
+  title: invalid_token
+  body: '{"error":"invalid_token","error_description":"Missing or invalid access token"}'
+  surface: https://sweepmcp.com/sse
+  note: OAuth 2.0 bearer error per RFC 6750 on the MCP endpoint. This surface DOES use a standard error
+    shape; the REST API does not.
+  observed: '2026-08-14'
+notes: No public error-code reference or error catalog is published by Sweep. Not a payments provider
+  — no decline codes.

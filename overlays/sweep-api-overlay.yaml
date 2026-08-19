@@ -1,0 +1,33 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Sweep API
+  version: 1.0.0
+extends: openapi/sweep-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: sweep
+    x-apievangelist-harvested-from: https://api.sweep.io/api-json
+    x-apievangelist-harvested: '2026-08-14'
+    contact:
+      name: Sweep
+      url: https://www.sweep.io/contact
+    termsOfService: https://www.sweep.io/terms
+- target: $
+  update:
+    servers:
+    - url: https://api.sweep.io
+      description: Sweep production API — the host this document is served from
+  x-note: 'The published document declares servers: [] (empty). This action supplies the host the document
+    was fetched from and where /health responds; the original harvest in openapi/_original/ is left untouched.'
+- target: $
+  update:
+    x-apievangelist-contract-gaps:
+      operation_summaries: 50 of 698 operations carry a summary; 0 carry a description
+      error_responses: 0 operations declare any 4xx or 5xx response — only 200/201/202 are described
+      examples: no request or response examples in the document
+      tags_declared: tags[] at the document root is empty although 69 distinct tag names are used on operations
+      rate_limiting: no 429 described and no rate-limit headers documented
+      idempotency: no idempotency key contract
+  x-note: Recorded so the gaps travel with the artifact; the scorer parses the original document, so this
+    does not alter the content score.

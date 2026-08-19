@@ -1,0 +1,60 @@
+generated: '2026-08-14'
+method: searched
+source: https://help.sweep.io/en/articles/13612029-using-the-trigger-integration-action-webhook-in-sweep-automations,
+  openapi/sweep-api-openapi.yml
+asyncapi_published: false
+webhook_catalog_published: false
+pointer_emitted: false
+pointer_rationale: No Webhooks or AsyncAPI pointer is emitted. What Sweep ships is an OUTBOUND, user-configured
+  HTTP action inside its automation builder — the caller supplies the verb, URL, headers and body — not
+  a subscribable webhook surface with published event types and payload schemas. Emitting a Webhooks pointer
+  on that basis would credit Sweep with an event contract it does not publish.
+outbound_http_action:
+  name: Trigger Integration Action (Webhook)
+  docs: https://help.sweep.io/en/articles/13612029-using-the-trigger-integration-action-webhook-in-sweep-automations
+  description: '"Send data to external systems via webhook when records are created or updated."'
+  schema: AutomationActionParamsWebhook in openapi/sweep-api-openapi.yml
+  verbs:
+  - GET
+  - POST
+  - PUT
+  - PATCH
+  - DELETE
+  configurable:
+  - path (string template)
+  - queryParams
+  - headers
+  - body
+  - integrationId
+  - followUpActions
+  event_types_published: false
+  payload_schema_published: false
+  retry_policy_published: false
+  signing_published: false
+polling_surfaces:
+- name: Salesforce change feed
+  operations:
+  - SalesforceChangeFeedController_getChangeFeed
+  - SalesforceChangeFeedController_getNotifications
+  - SalesforceChangeFeedController_addNotification
+  - SalesforceChangeFeedController_editNotification
+  - SalesforceChangeFeedController_deleteNotification
+  note: A pull feed of Salesforce metadata changes with configurable criteria-based notifications. Read
+    by polling; no push channel is exposed to API consumers.
+- name: AI streaming
+  operations:
+  - AiStreamController_handleStreamCompletion
+  note: POST /ai-stream/{streamId} — internal stream-completion callback, not a consumer-facing event
+    API.
+inbound_integrations:
+- name: Slack events
+  operations:
+  - DataIntegrationsUnauthenticatedController_SlackIncomingEvents
+  - DataIntegrationsUnauthenticatedController_SlackInteractiveEvents
+  - DataIntegrationsUnauthenticatedController_SlackExternalSelect
+  note: Sweep RECEIVES Slack events — Sweep is the subscriber here, not the publisher.
+- name: Microsoft Teams messages
+  operations:
+  - TeamsIntegrationUnauthenticatedController_handleMessage
+notes: Recorded so the absence is explicit and auditable. Sweep has no event surface an API consumer can
+  subscribe to.

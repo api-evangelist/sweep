@@ -1,0 +1,13 @@
+generated: '2026-08-14'
+method: derived
+source: openapi/sweep-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/sweep-api-openapi.yml

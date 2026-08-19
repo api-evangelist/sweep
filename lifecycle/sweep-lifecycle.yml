@@ -1,0 +1,45 @@
+generated: '2026-08-14'
+method: searched
+source: https://api.sweep.io/api-json, https://help.sweep.io/, https://www.sweep.io/sitemap.xml, DNS probe
+  of status.sweep.io
+versioning:
+  scheme: none
+  current: '0.1'
+  docs: null
+  evidence: info.version "0.1" in the published OpenAPI; no version segment in any of the 591 paths and
+    no version header documented.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  evidence: 'No deprecation or sunset policy is published. The OpenAPI marks 0 of 698 operations deprecated:
+    true, although a /mcp-deprecated/apikey path exists, so deprecation is signalled by path naming rather
+    than by the contract.'
+deprecated_operations: []
+sla:
+  url: null
+  uptime_target: null
+  evidence: A "Priority support & SLA" line item appears on the Enterprise tier of https://www.sweep.io/pricing,
+    but no SLA document or uptime target is published.
+status_page: null
+status_page_evidence:
+- url: https://status.sweep.io
+  result: NXDOMAIN
+- url: https://www.sweep.io/sitemap.xml
+  result: HTTP 200 — no status, uptime or trust-availability page listed
+changelog: null
+changelog_evidence:
+- url: https://www.sweep.io/changelog
+  status: 404
+- url: https://www.sweep.io/release-notes
+  status: 404
+- url: https://www.sweep.io/whats-new
+  status: 404
+health_endpoint:
+  url: https://api.sweep.io/health
+  status: 200
+  note: Returns {"status":"ok","version":"<git sha>","uptime":<seconds>,...} unauthenticated — the only
+    runtime availability signal Sweep exposes, and the only place a build version is published.
+notes: 'No StatusPage, Deprecation or ChangeLog pointer is emitted: none of those surfaces exist. This
+  is a recorded absence, not an unfinished probe.'

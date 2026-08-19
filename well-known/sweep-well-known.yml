@@ -1,25 +1,72 @@
-generated: '2026-07-21'
+generated: '2026-08-14'
 method: searched
-source: live probes of https://www.sweep.io and https://app.sweep.io
-host: https://www.sweep.io
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
-- path: /llms.txt
-  status: 200
-  file: ../llms/sweep-llms.txt
-notes: >-
-  No /.well-known/ discovery documents are published. app.sweep.io returns
-  HTTP 200 for /.well-known/security.txt but the body is the SPA HTML shell,
-  not a real RFC 9116 security.txt, so it is not recorded as a hit. A real
-  llms.txt is published at the marketing root and is captured verbatim under
-  llms/. A security contact (security@sweep.io) is published via the domain's
-  CAA iodef record (see security/sweep-domain-security.yml).
+source: live probes of https://www.sweep.io, https://app.sweep.io, https://api.sweep.io and https://sweepmcp.com
+hosts:
+- host: https://sweepmcp.com
+  role: MCP server
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: sweep-mcp-oauth-authorization-server.json
+    spec: RFC 8414
+    note: Real JSON document — issuer, authorize/token/register/revocation endpoints, PKCE S256, dynamic
+      client registration.
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: https://www.sweep.io
+  role: marketing site
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 200
+    file: ../llms/sweep-llms.txt
+    note: Real llms.txt, captured verbatim.
+- host: https://api.sweep.io
+  role: REST API
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/mcp.json
+    status: 404
+  - path: /api-json
+    status: 200
+    note: Not a /.well-known/ path, but this is where the OpenAPI actually lives; recorded so the discovery
+      trail is complete.
+- host: https://app.sweep.io
+  role: web application
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    hit: false
+    note: SOFT 200 — the single-page-app catch-all returns the HTML shell for every /.well-known/* path,
+      including agent-card.json, agent.json and mcp.json. None of these are documents; all are recorded
+      as misses.
+hit_count: 2
+notes: 'One real /.well-known/ document exists across the whole estate: the RFC 8414 OAuth authorization-server
+  metadata on the MCP host. No security.txt, no OIDC discovery, no api-catalog, no ai-plugin.json, no
+  agent card. The app.sweep.io 200s are a SPA catch-all and are explicitly NOT counted.'

@@ -1,0 +1,22 @@
+generated: '2026-08-14'
+method: searched
+source: npm registry search, PyPI, GitHub org github.com/sweep-io, https://www.sweep.io/open-source, https://help.sweep.io/
+packages: []
+package_count: 0
+registries_checked:
+- registry: npm
+  query: registry.npmjs.org/-/v1/search?text=sweep.io
+  result: no first-party Sweep client library published
+- registry: pypi
+  query: pypi.org/pypi/sweep/json
+  result: HTTP 200 but the "sweep" project on PyPI is an unrelated third-party package; sweep-io and sweepio
+    are 404
+- registry: github
+  query: api.github.com/orgs/sweep-io
+  result: HTTP 200, org display name "Sweep", 1 public repo (a fork of xyflow/xyflow). No SDK, no CLI.
+    The org is NOT linked from any sweep.io page, so first-party ownership is unconfirmed and no GitHubOrganization
+    pointer is emitted.
+notes: Sweep publishes a 698-operation REST API at https://api.sweep.io (Swagger UI at /api, document
+  at /api-json) but ships no first-party client library in any public registry, and no CLI. Consumers
+  hand-roll HTTP against the bearer-JWT API or use the hosted MCP server at https://sweepmcp.com/sse.
+  Recorded as an honest zero, not a gap in the probe.

@@ -1,4 +1,4 @@
-generated: '2026-07-21'
+generated: '2026-08-14'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
@@ -8,14 +8,51 @@ hosts:
   cert_expires: Feb  3 23:59:59 2027 GMT
   hsts: true
   hsts_max_age: 31536000
+- host: api.sweep.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan  3 23:59:59 2027 GMT
+  hsts: null
+- host: help.sweep.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 18 21:04:47 2026 GMT
+  hsts: true
+  hsts_max_age: 15552000
+- host: sweepmcp.com
+  https: true
+  tls_version: TLSv1.3
+  http_version: HTTP/2
+  cert_expires: Sep 24 13:00:52 2026 GMT
+  cert_issuer: Google Trust Services WE1
+  edge: cloudflare
+  hsts: false
+  hsts_max_age: null
+  note: MCP server host. Probed manually — the mechanical probe only walked *.sweep.io.
+- host: security.sweep.io
+  https: true
+  role: trust centre
+  note: HTTP 200, JS-rendered Scytale trust centre.
 domains:
 - domain: sweep.io
   dnssec: false
   caa:
-  - 0 issue "pki.goog"
   - 0 issuewild "amazon.com"
   - 0 iodef "mailto:security@sweep.io"
   - 0 issue "amazon.com"
+  - 0 issue "pki.goog"
   spf: true
   dmarc: true
   dmarc_policy: reject
+- domain: sweepmcp.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+  dmarc_policy: null
+  note: 'The MCP host runs on a separate registrable domain from sweep.io and inherits none of sweep.io''s
+    posture: no CAA, no DNSSEC, no SPF, no DMARC, and no HSTS header on the OAuth metadata response. sweep.io
+    itself is p=reject with CAA pinning and an iodef security contact.'
+notes: Two registrable domains are in play. sweep.io publishes SPF, DMARC p=reject, CAA including iodef
+  mailto:security@sweep.io, and HSTS on www; it does not sign DNSSEC. sweepmcp.com — which serves the
+  OAuth-protected MCP endpoint an agent actually calls — publishes none of these.

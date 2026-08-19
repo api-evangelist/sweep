@@ -1,0 +1,24 @@
+generated: '2026-08-14'
+method: probed
+probe: true
+url: https://security.sweep.io/
+platform: Scytale (the trust-centre bundle loads https://api.scytale.ai)
+certifications:
+- SOC 2
+certifications_source: https://www.sweep.io/security-compliance-governance — the provider states "SOC2
+  compliant". The trust centre itself is client-side rendered, so its certification list is not machine-readable.
+evidence:
+- source: https://security.sweep.io/
+  http_status: 200
+  content_type: text/html
+  signal: <title>Trust Center</title>; SPA shell served from Sweep's own subdomain
+- source: https://security.sweep.io/main.8f323eb1d028c9a65ab0.js
+  http_status: 200
+  signal: references https://api.scytale.ai — Scytale-operated trust centre
+- source: https://www.sweep.io/security-compliance-governance
+  http_status: 200
+  signal: '"SOC2 compliant"'
+machine_readable: false
+notes: 'The trust centre is real but JS-rendered: every path under security.sweep.io returns the same
+  200 HTML shell, so the certification list, sub-processors and documents cannot be read without executing
+  JavaScript. Recorded as a verified presence with an unreadable payload.'
