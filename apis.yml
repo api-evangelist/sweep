@@ -36,6 +36,23 @@ tags:
 - Company
 - Cloud
 - Salesforce
+- Revenue Operations
+- Metadata
+- Governance
+- AI Agents
+- MCP
+- Automation
+- Documentation
+- REST API
+- OpenAPI
+- Enterprise Systems
+- Snowflake
+- ServiceNow
+- Data Governance
+tags_raw:
+- Company
+- Cloud
+- Salesforce
 - RevOps
 - Metadata
 - Governance
@@ -62,6 +79,19 @@ apis:
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
+  - Salesforce
+  - Metadata
+  - Governance
+  - Documentation
+  - CRM
+  - AI Agents
+  - Automation
+  - Revenue Operations
+  - Snowflake
+  - ServiceNow
+  - HubSpot
+  - REST
+  tags_raw:
   - salesforce
   - metadata
   - governance
@@ -98,6 +128,12 @@ apis:
   humanURL: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
   baseURL: https://sweepmcp.com/sse
   tags:
+  - MCP
+  - agent-native
+  - Salesforce
+  - Metadata
+  - Authentication
+  tags_raw:
   - mcp
   - model-context-protocol
   - agent-native
