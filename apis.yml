@@ -68,63 +68,13 @@ tags_raw:
 - ServiceNow
 - Data Governance
 apis:
-- name: Sweep API
-  description: Sweep's public REST API — the contract behind the Sweep agentic workspace. 698 operations across
-    591 paths covering CRM org connection and metadata (Salesforce, HubSpot, Snowflake, ServiceNow, Workato, Data360),
-    the documentation platform (element search, dependencies, dependents, summaries, source and per-element chat),
-    AI retrievers and AI agents, automations, funnels and funnel maps, assignment groups, territories, rollups,
-    scheduling, campaigns, deployments, projects, comments and MCP connectors. Bearer JWT authentication; JSON request
-    and response bodies; served from api.sweep.io with a public Swagger UI at /api and the machine-readable document
-    at /api-json.
-  humanURL: https://api.sweep.io/api
-  baseURL: https://api.sweep.io
-  tags:
-  - Salesforce
-  - Metadata
-  - Governance
-  - Documentation
-  - CRM
-  - AI Agents
-  - Automation
-  - Revenue Operations
-  - Snowflake
-  - ServiceNow
-  - HubSpot
-  - REST
-  tags_raw:
-  - salesforce
-  - metadata
-  - governance
-  - documentation
-  - crm
-  - ai-agents
-  - automation
-  - revops
-  - snowflake
-  - servicenow
-  - hubspot
-  - rest
-  properties:
-  - type: OpenAPI
-    url: openapi/sweep-api-openapi.yml
-  - type: APIReference
-    url: https://api.sweep.io/api
-  - type: Authentication
-    url: authentication/sweep-authentication.yml
-  - type: Conventions
-    url: conventions/sweep-conventions.yml
-  - type: DataModel
-    url: data-model/sweep-data-model.yml
-  - type: ErrorCatalog
-    url: errors/sweep-problem-types.yml
-  - type: Overlay
-    url: overlays/sweep-api-overlay.yaml
 - name: Sweep MCP Server
-  description: Sweep's official hosted Model Context Protocol server — a remote SSE endpoint at https://sweepmcp.com/sse
-    that connects a Sweep-governed view of Salesforce and connected enterprise systems to MCP clients such as Claude.
-    Authorization is OAuth 2.0 with dynamic client registration and PKCE, advertised via RFC 8414 authorization-server
-    metadata at https://sweepmcp.com/.well-known/oauth-authorization-server. Included in Sweep's Platform tier and
-    above.
+  description: >-
+    Sweep's official hosted Model Context Protocol server — a remote SSE endpoint at https://sweepmcp.com/sse
+    that connects a Sweep-governed view of Salesforce and connected enterprise systems to MCP clients
+    such as Claude. Authorization is OAuth 2.0 with dynamic client registration and PKCE, advertised via
+    RFC 8414 authorization-server metadata at https://sweepmcp.com/.well-known/oauth-authorization-server.
+    Included in Sweep's Platform tier and above.
   humanURL: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
   baseURL: https://sweepmcp.com/sse
   tags:
@@ -147,6 +97,1394 @@ apis:
     url: mcp/sweep-tool-crosswalk.yml
   - type: Documentation
     url: https://help.sweep.io/en/articles/11432955-using-the-sweep-mcp-server
+- aid: sweep:sweep-account-selection-api
+  name: Sweep Account Selection API
+  description: The Account Selection API from Sweep — 2 operation(s) for account selection.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Account Selection
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-account-selection-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-agentic-features-api
+  name: Sweep Agentic Features API
+  description: The Agentic Features API from Sweep — 2 operation(s) for agentic features.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Agentic Features
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-agentic-features-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-agents-api
+  name: Sweep Ai Agents API
+  description: The Ai Agents API from Sweep — 42 operation(s) for ai agents.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Ai Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-agents-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-artifacts-unauthenticated-api
+  name: Sweep AI Artifacts (unauthenticated) API
+  description: >-
+    The AI Artifacts (unauthenticated) API from Sweep — 1 operation(s) for ai artifacts (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - AI Artifacts (unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-artifacts-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-attachments-api
+  name: Sweep AI Attachments API
+  description: The ai-attachments API from Sweep — 4 operation(s) for ai-attachments.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - ai-attachments
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-attachments-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-prompts-api
+  name: Sweep AI Prompts API
+  description: The AI Prompts API from Sweep — 5 operation(s) for ai prompts.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - AI Prompts
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-prompts-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-retrievers-api
+  name: Sweep AI Retrievers API
+  description: The AI Retrievers API from Sweep — 91 operation(s) for ai retrievers.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - AI Retrievers
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-retrievers-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-session-api
+  name: Sweep AI Session API
+  description: The ai-session API from Sweep — 2 operation(s) for ai-session.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - ai-session
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-session-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-stream-api
+  name: Sweep AI Stream API
+  description: The ai-stream API from Sweep — 1 operation(s) for ai-stream.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - ai-stream
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-stream-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-ai-user-skills-api
+  name: Sweep AI User Skills API
+  description: The AI User Skills API from Sweep — 3 operation(s) for ai user skills.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - AI User Skills
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-ai-user-skills-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-assignment-groups-api
+  name: Sweep Assignment Groups API
+  description: The Assignment Groups API from Sweep — 3 operation(s) for assignment groups.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Assignment Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-assignment-groups-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-automations-api
+  name: Sweep Automations API
+  description: The Automations API from Sweep — 43 operation(s) for automations.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Automations
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-automations-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-backoffice-api
+  name: Sweep Backoffice API
+  description: The Backoffice API from Sweep — 67 operation(s) for backoffice.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Backoffice
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-backoffice-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-best-practices-api
+  name: Sweep Best Practices API
+  description: The best-practices API from Sweep — 2 operation(s) for best-practices.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - best-practices
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-best-practices-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-campaigns-api
+  name: Sweep Campaigns API
+  description: The Campaigns API from Sweep — 7 operation(s) for campaigns.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-campaigns-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-comments-api
+  name: Sweep Comments API
+  description: The Comments API from Sweep — 7 operation(s) for comments.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-comments-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-crm-orgs-api
+  name: Sweep CRM Orgs API
+  description: The CRM Orgs API from Sweep — 21 operation(s) for crm orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - CRM Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-crm-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-dashboard-api
+  name: Sweep Dashboard API
+  description: The Dashboard API from Sweep — 2 operation(s) for dashboard.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-dashboard-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-data-360-orgs-api
+  name: Sweep Data 360 Orgs API
+  description: The Data 360 Orgs API from Sweep — 4 operation(s) for data 360 orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Data 360 Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-data-360-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-data-integrations-api
+  name: Sweep Data Integrations API
+  description: The Data Integrations API from Sweep — 20 operation(s) for data integrations.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Data Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-data-integrations-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-data-integrations-unauthenticated-api
+  name: Sweep Data Integrations (Unauthenticated) API
+  description: >-
+    The Data Integrations (Unauthenticated) API from Sweep — 5 operation(s) for data integrations (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Data Integrations (Unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-data-integrations-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-deployments-api
+  name: Sweep Deployments API
+  description: The Deployments API from Sweep — 4 operation(s) for deployments.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Deployments
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-deployments-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-devopscenter-api
+  name: Sweep Devops Center API
+  description: The DevopsCenter API from Sweep — 1 operation(s) for devopscenter.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - DevopsCenter
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-devopscenter-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-diff-api
+  name: Sweep Diff API
+  description: The Diff API from Sweep — 2 operation(s) for diff.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Diff
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-diff-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-documentation-platform-api
+  name: Sweep Documentation Platform API
+  description: The Documentation Platform API from Sweep — 49 operation(s) for documentation platform.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Documentation Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-documentation-platform-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-documentation-salesforce-api
+  name: Sweep Documentation Salesforce API
+  description: >-
+    The Documentation Salesforce API from Sweep — 21 operation(s) for documentation salesforce.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Documentation Salesforce
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-documentation-salesforce-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-funnel-maps-api
+  name: Sweep Funnel Maps API
+  description: The Funnel Maps API from Sweep — 9 operation(s) for funnel maps.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Funnel Maps
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-funnel-maps-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-funnels-api
+  name: Sweep Funnels API
+  description: The Funnels API from Sweep — 9 operation(s) for funnels.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Funnels
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-funnels-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-funnelsanalytics-api
+  name: Sweep Funnels Analytics API
+  description: The FunnelsAnalytics API from Sweep — 1 operation(s) for funnelsanalytics.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - FunnelsAnalytics
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-funnelsanalytics-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-global-api
+  name: Sweep Global API
+  description: The Global API from Sweep — 1 operation(s) for global.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Global
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-global-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-graph-db-api
+  name: Sweep Graph Db API
+  description: The graph-db API from Sweep — 1 operation(s) for graph-db.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - graph-db
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-graph-db-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-health-api
+  name: Sweep Health API
+  description: The Health API from Sweep — 1 operation(s) for health.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-health-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-homepage-api
+  name: Sweep Homepage API
+  description: The Homepage API from Sweep — 1 operation(s) for homepage.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Homepage
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-homepage-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-hubspot-api
+  name: Sweep Hubspot API
+  description: The hubspot API from Sweep — 9 operation(s) for hubspot.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - hubspot
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-hubspot-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-hubspot-connector-unauthenticated-api
+  name: Sweep hubspot connector (unauthenticated) API
+  description: >-
+    The hubspot connector (unauthenticated) API from Sweep — 1 operation(s) for hubspot connector (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - hubspot connector (unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-hubspot-connector-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-logo-dev-api
+  name: Sweep Logo Dev API
+  description: The Logo Dev API from Sweep — 1 operation(s) for logo dev.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Logo Dev
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-logo-dev-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-mcp-api
+  name: Sweep MCP API
+  description: The MCP API from Sweep — 2 operation(s) for mcp.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - MCP
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-mcp-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-mcp-connectors-api
+  name: Sweep MCP Connectors API
+  description: The MCP Connectors API from Sweep — 6 operation(s) for mcp connectors.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - MCP Connectors
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-mcp-connectors-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-non-admin-salesforce-connector-unauthenticated-api
+  name: Sweep Non Admin Salesforce Connector (unauthenticated) API
+  description: >-
+    The Non Admin Salesforce Connector (unauthenticated) API from Sweep — 2 operation(s) for non admin
+    salesforce connector (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Non Admin Salesforce Connector (unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-non-admin-salesforce-connector-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-notifications-api
+  name: Sweep Notifications API
+  description: The Notifications API from Sweep — 3 operation(s) for notifications.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-notifications-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-orgs-api
+  name: Sweep Orgs API
+  description: The Orgs API from Sweep — 3 operation(s) for orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-product-plan-api
+  name: Sweep Product Plan API
+  description: The Product Plan API from Sweep — 1 operation(s) for product plan.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Product Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-product-plan-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-projects-api
+  name: Sweep Projects API
+  description: The projects API from Sweep — 17 operation(s) for projects.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - projects
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-projects-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-python-api
+  name: Sweep Python API
+  description: The Python API from Sweep — 1 operation(s) for python.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Python
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-python-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-reporting-api
+  name: Sweep Reporting API
+  description: The reporting API from Sweep — 7 operation(s) for reporting.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-reporting-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-requestchanges-api
+  name: Sweep Request Changes API
+  description: The RequestChanges API from Sweep — 3 operation(s) for requestchanges.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - RequestChanges
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-requestchanges-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-roles-api
+  name: Sweep Roles API
+  description: The roles API from Sweep — 3 operation(s) for roles.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - roles
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-roles-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-rollups-api
+  name: Sweep Rollups API
+  description: The Rollups API from Sweep — 5 operation(s) for rollups.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Rollups
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-rollups-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-salesforce-change-feed-api
+  name: Sweep Salesforce change feed API
+  description: The Salesforce change feed API from Sweep — 3 operation(s) for salesforce change feed.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Salesforce change feed
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-salesforce-change-feed-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-scheduling-dashboard-api
+  name: Sweep Scheduling Dashboard API
+  description: The Scheduling Dashboard API from Sweep — 18 operation(s) for scheduling dashboard.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Scheduling Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-scheduling-dashboard-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-scheduling-public-api
+  name: Sweep scheduling (public) API
+  description: The scheduling (public) API from Sweep — 8 operation(s) for scheduling (public).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - scheduling (public)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-scheduling-public-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-servicenow-orgs-api
+  name: Sweep ServiceNow Orgs API
+  description: The ServiceNow Orgs API from Sweep — 3 operation(s) for servicenow orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - ServiceNow Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-servicenow-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-sfdc-callout-api
+  name: Sweep SFDC Callout API
+  description: The SFDC Callout API from Sweep — 9 operation(s) for sfdc callout.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - SFDC Callout
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-sfdc-callout-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-sfdc-callout-scheduling-api
+  name: Sweep SFDC Callout — Scheduling API
+  description: >-
+    The SFDC Callout — Scheduling API from Sweep — 6 operation(s) for sfdc callout — scheduling.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - SFDC Callout — Scheduling
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-sfdc-callout-scheduling-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-simulation-api
+  name: Sweep Simulation API
+  description: The Simulation API from Sweep — 2 operation(s) for simulation.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Simulation
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-simulation-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-snowflake-orgs-api
+  name: Sweep Snowflake Orgs API
+  description: The Snowflake Orgs API from Sweep — 3 operation(s) for snowflake orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Snowflake Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-snowflake-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-stages-api
+  name: Sweep Stages API
+  description: The Stages API from Sweep — 2 operation(s) for stages.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Stages
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-stages-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-sweep-fields-api
+  name: Sweep Sweep Fields API
+  description: The Sweep Fields API from Sweep — 4 operation(s) for sweep fields.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Sweep Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-sweep-fields-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-teams-integrations-unauthenticated-api
+  name: Sweep Teams Integrations (Unauthenticated) API
+  description: >-
+    The Teams Integrations (Unauthenticated) API from Sweep — 1 operation(s) for teams integrations (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Teams Integrations (Unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-teams-integrations-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-templates-api
+  name: Sweep Templates API
+  description: The Templates API from Sweep — 4 operation(s) for templates.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-templates-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-territories-api
+  name: Sweep Territories API
+  description: The Territories API from Sweep — 2 operation(s) for territories.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Territories
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-territories-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-thirdpartyfunnels-api
+  name: Sweep Third Party Funnels API
+  description: The ThirdPartyFunnels API from Sweep — 2 operation(s) for thirdpartyfunnels.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - ThirdPartyFunnels
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-thirdpartyfunnels-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-user-sfdc-connection-api
+  name: Sweep User SFDC Connection API
+  description: The User SFDC Connection API from Sweep — 4 operation(s) for user sfdc connection.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - User SFDC Connection
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-user-sfdc-connection-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-users-api
+  name: Sweep Users API
+  description: The Users API from Sweep — 15 operation(s) for users.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-users-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-users-unauthenticated-api
+  name: Sweep Users (unauthenticated) API
+  description: The Users (unauthenticated) API from Sweep — 1 operation(s) for users (unauthenticated).
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Users (unauthenticated)
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-users-unauthenticated-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-utility-bar-api
+  name: Sweep Utility Bar API
+  description: The Utility-bar API from Sweep — 2 operation(s) for utility-bar.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Utility-bar
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-utility-bar-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-webapp-api
+  name: Sweep Webapp API
+  description: The Webapp API from Sweep — 1 operation(s) for webapp.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Webapp
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-webapp-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-workato-orgs-api
+  name: Sweep Workato Orgs API
+  description: The Workato Orgs API from Sweep — 1 operation(s) for workato orgs.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - Workato Orgs
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-workato-orgs-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
+- aid: sweep:sweep-workflows-api
+  name: Sweep Workflows API
+  description: The workflows API from Sweep — 2 operation(s) for workflows.
+  humanURL: https://api.sweep.io/api
+  baseURL: https://api.sweep.io
+  tags:
+  - workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/sweep-workflows-api-openapi.yml
+  - type: APIReference
+    url: https://api.sweep.io/api
+  - type: Authentication
+    url: authentication/sweep-authentication.yml
+  - type: Conventions
+    url: conventions/sweep-conventions.yml
+  - type: DataModel
+    url: data-model/sweep-data-model.yml
+  - type: ErrorCatalog
+    url: errors/sweep-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
