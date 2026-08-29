@@ -9,6 +9,18 @@ description: Sweep is the agentic layer for enterprise systems. By connecting to
   (MCP) server that connects Salesforce context to AI assistants such as Claude and ChatGPT. Sweep is backed by
   Bessemer Venture Partners, Homebrew, and Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/sweep/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
@@ -1491,6 +1503,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/sweep-capability-edges.yml
+  name: Sweep Business Capability Map
 - type: Website
   url: https://www.sweep.io/
 - type: Blog
