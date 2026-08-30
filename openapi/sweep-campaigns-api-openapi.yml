@@ -1,0 +1,225 @@
+openapi: 3.2.0
+info:
+  title: Sweep Campaigns API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Campaigns
+paths:
+  /campaigns:
+    get:
+      operationId: CampaignsController_getCampaigns
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+    post:
+      operationId: CampaignsController_writeCampaign
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteCampaignDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignDto'
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/campaign-member-status/{campaignId}:
+    get:
+      operationId: CampaignsController_getCampaignMemberStatusOfCampaign
+      parameters:
+      - name: campaignId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CampaignMemberStatus'
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+    delete:
+      operationId: CampaignsController_deleteCampaignMemberStatus
+      parameters:
+      - name: campaignId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReplaceStatusDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/campaign/{campaignId}:
+    patch:
+      operationId: CampaignsController_upsertCampaign
+      parameters:
+      - name: campaignId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteCampaignDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+    delete:
+      operationId: CampaignsController_deleteCampaign
+      parameters:
+      - name: campaignId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/all-campaign-member-status:
+    get:
+      operationId: CampaignsController_getAllCampaignMemberStatus
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/campaign-member-status:
+    post:
+      operationId: CampaignsController_addCampaignMemberStatusToCampaign
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteCampaignMemberStatusDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CampaignMemberStatus'
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/campaign-member-status/{campaignMemberStatusId}:
+    patch:
+      operationId: CampaignsController_updateCampaignMemberStatus
+      parameters:
+      - name: campaignMemberStatusId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCampaignMemberStatusDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+  /campaigns/fields:
+    get:
+      operationId: CampaignsController_getFieldNamesForCampaigns
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Campaigns
+components:
+  schemas:
+    UpdateCampaignMemberStatusDto:
+      type: object
+      properties: {}
+    ReplaceStatusDto:
+      type: object
+      properties: {}
+    CampaignDto:
+      type: object
+      properties: {}
+    WriteCampaignDto:
+      type: object
+      properties: {}
+    WriteCampaignMemberStatusDto:
+      type: object
+      properties: {}
+    CampaignMemberStatus:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

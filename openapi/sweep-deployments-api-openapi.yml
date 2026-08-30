@@ -1,0 +1,380 @@
+openapi: 3.2.0
+info:
+  title: Sweep Deployments API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Deployments
+paths:
+  /deployments/crm-orgs:
+    post:
+      operationId: DeploymentsController_createDeployment
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentRequestDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: "Deploys a funnel snapshot to a CrmOrg, and creates a deployment record in the database\n\nTODO make this an asynchronous API https://sweep.atlassian.net/browse/SWEEP-210\n\n@body - the snapshot id or funnelId. If a funnelId is passed, we first create a snapshot then deploy the\n        snapshot."
+      tags:
+      - Deployments
+  /deployments/crm-orgs/{crmOrgId}:
+    get:
+      operationId: DeploymentsController_getCrmOrgDeployments
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: active
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FunnelDeploymentDto'
+      security:
+      - bearer: []
+      summary: get deployments representations for in a given crmOrg
+      tags:
+      - Deployments
+  /deployments/{deploymentId}:
+    get:
+      operationId: DeploymentsController_getDeployment
+      parameters:
+      - name: deploymentId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelDeploymentDto'
+      security:
+      - bearer: []
+      tags:
+      - Deployments
+  /deployments:
+    get:
+      operationId: DeploymentsController_getDeployments
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: active
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FunnelDeploymentDto'
+      security:
+      - bearer: []
+      summary: 'get deployments, for
+
+        specific funnel, and a possibly time range'
+      tags:
+      - Deployments
+components:
+  schemas:
+    DeploymentRequestDto:
+      type: object
+      properties:
+        snapshotId:
+          type: string
+        funnelId:
+          type: string
+      required:
+      - snapshotId
+      - funnelId
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    FunnelSnapshotDto:
+      type: object
+      properties:
+        apiName:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        ord:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeploymentDto'
+      required:
+      - apiName
+      - id
+      - name
+      - createdAt
+      - createdById
+      - ord
+      - funnelDetails
+      - deployments
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelDeploymentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrgName:
+          type: string
+        crmOrgIsSandbox:
+          type: boolean
+        snapshotName:
+          type: string
+        deployedById:
+          type: string
+        deployedAt:
+          format: date-time
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshotDto'
+        apiName:
+          type: string
+        name:
+          type: string
+        moreAdvancedDraft:
+          type: boolean
+        moreAdvancedSnapshots:
+          type: number
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrgName
+      - crmOrgIsSandbox
+      - snapshotName
+      - deployedById
+      - deployedAt
+      - snapshot
+      - apiName
+      - name
+      - moreAdvancedDraft
+      - moreAdvancedSnapshots
+      - status
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

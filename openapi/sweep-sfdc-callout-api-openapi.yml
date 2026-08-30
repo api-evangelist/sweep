@@ -1,0 +1,347 @@
+openapi: 3.2.0
+info:
+  title: Sweep SFDC Callout API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: SFDC Callout
+paths:
+  /sfdc-callout/ai-support/chats:
+    post:
+      operationId: SfdcCalloutController_createSupportChat
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSupportChatDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - SFDC Callout
+    get:
+      operationId: SfdcCalloutController_listSupportChats
+      parameters:
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - SFDC Callout
+  /sfdc-callout/ai-support/chats/{chatId}:
+    patch:
+      operationId: SfdcCalloutController_sendSupportMessage
+      parameters:
+      - name: chatId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendSupportMessageDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - SFDC Callout
+    get:
+      operationId: SfdcCalloutController_getSupportChat
+      parameters:
+      - name: chatId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - SFDC Callout
+  /sfdc-callout/external-messages:
+    post:
+      operationId: SfdcCalloutController_externalMessage
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - SFDC Callout
+  /sfdc-callout/create-channels:
+    post:
+      operationId: SfdcCalloutController_createChannels
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SfdcCreateChannelsRequestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SfdcCreateChannelResponse'
+      tags:
+      - SFDC Callout
+  /sfdc-callout/job-execution:
+    post:
+      operationId: SfdcCalloutController_createJobs
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - SFDC Callout
+  /sfdc-callout/job-executions:
+    post:
+      operationId: SfdcCalloutController_createJobExecutions
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateJobExecutionsDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - SFDC Callout
+  /sfdc-callout/job-executions/results:
+    post:
+      operationId: SfdcCalloutController_getJobExecutionResults
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetJobExecutionResultDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobExecutionResult'
+      tags:
+      - SFDC Callout
+  /sfdc-callout/job-execution/results:
+    post:
+      operationId: SfdcCalloutController_getJobResults
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetJobExecutionResultDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobExecutionResult'
+      tags:
+      - SFDC Callout
+  /sfdc-callout/field-utilization:
+    post:
+      operationId: SfdcCalloutController_receiveFieldUtilization
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - SFDC Callout
+components:
+  schemas:
+    SfdcCreateChannelRequest:
+      type: object
+      properties:
+        requestId:
+          type: string
+        actionId:
+          type: string
+        recordId:
+          type: string
+        objectName:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+      required:
+      - requestId
+      - actionId
+      - recordId
+      - objectName
+    SfdcCreateChannelResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+        resultParams:
+          $ref: '#/components/schemas/CreateChannelResult'
+      required:
+      - requestId
+      - resultParams
+    Field:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        value:
+          type: string
+      required:
+      - fieldIds
+      - value
+    GetJobExecutionResultDto:
+      type: object
+      properties: {}
+    SfdcSupportMessageDto:
+      type: object
+      properties:
+        role:
+          type: number
+          enum: []
+        content:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - role
+      - content
+      - createdAt
+    JobExecutionResult:
+      type: object
+      properties: {}
+    SendSupportMessageDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        message:
+          $ref: '#/components/schemas/SfdcSupportMessageDto'
+        timeoutMs:
+          type: number
+      required:
+      - userId
+      - message
+    SfdcCreateChannelsRequestDto:
+      type: object
+      properties:
+        createChannelRequests:
+          type: array
+          items:
+            $ref: '#/components/schemas/SfdcCreateChannelRequest'
+      required:
+      - createChannelRequests
+    CreateChannelResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - PARTIAL_SUCCESS
+          - ERROR
+        channelId:
+          type: string
+        errorMessage:
+          type: string
+      required:
+      - status
+    CreateSupportChatDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        fullName:
+          type: string
+        recordId:
+          type: string
+        pageUrl:
+          type: string
+        objectName:
+          type: string
+        message:
+          $ref: '#/components/schemas/SfdcSupportMessageDto'
+        timeoutMs:
+          type: number
+      required:
+      - userId
+      - message
+    CreateJobExecutionsDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

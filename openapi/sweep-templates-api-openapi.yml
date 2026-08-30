@@ -1,0 +1,144 @@
+openapi: 3.2.0
+info:
+  title: Sweep Templates API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Templates
+paths:
+  /templates:
+    get:
+      operationId: TemplatesController_getShortTemplates
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      summary: Returns all short templates.
+      tags:
+      - Templates
+  /templates/{templateId}:
+    get:
+      operationId: TemplatesController_getTemplate
+      parameters:
+      - name: templateId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Templates
+  /templates/{funnelMapId}:
+    post:
+      operationId: TemplatesController_funnelMapToTemplate
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Templates
+  /templates/{templateId}/convert:
+    post:
+      operationId: TemplatesController_convertTemplate
+      parameters:
+      - name: templateId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertTemplateDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Templates
+components:
+  schemas:
+    CreateTemplateDto:
+      type: object
+      properties:
+        description:
+          type: string
+        imageUrl:
+          type: string
+          format: uri
+      required:
+      - description
+      - imageUrl
+    ConvertTemplateDto:
+      type: object
+      properties:
+        fieldMapping:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldMappingDto'
+      required:
+      - fieldMapping
+    FieldMappingDto:
+      type: object
+      properties:
+        fromTemplateFieldId:
+          type: string
+        toSweepFieldId:
+          type: string
+      required:
+      - fromTemplateFieldId
+      - toSweepFieldId
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

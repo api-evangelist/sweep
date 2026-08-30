@@ -1,0 +1,724 @@
+openapi: 3.2.0
+info:
+  title: Sweep Data Integrations API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Data Integrations
+paths:
+  /data-integrations/slack/oauth2-code:
+    post:
+      operationId: DataIntegrationsController_handleSlackAuthAuthorizationCode
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SlackOAuthDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/slack/recipients:
+    get:
+      operationId: DataIntegrationsController_getSlackRecipients
+      parameters:
+      - name: ids
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: invalidate-cache
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Data Integrations
+  /data-integrations/slack:
+    get:
+      operationId: DataIntegrationsController_getSlackConnectionDetails
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SlackConnectionDto'
+      tags:
+      - Data Integrations
+    patch:
+      operationId: DataIntegrationsController_editSlackConnection
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSlackConnectionDto'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+    delete:
+      operationId: DataIntegrationsController_disconnectSlackApp
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/audit:
+    get:
+      operationId: DataIntegrationsController_getAudit
+      parameters:
+      - name: automationId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: actionType
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: status
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: customIntegrationId
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: search
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: startTime
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: endTime
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: nextId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/custom-integrations:
+    get:
+      operationId: DataIntegrationsController_getCustomIntegrations
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Data Integrations
+    post:
+      operationId: DataIntegrationsController_createCustomIntegrations
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCustomIntegrationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Data Integrations
+  /data-integrations/custom-integrations/{integrationId}:
+    put:
+      operationId: DataIntegrationsController_editCustomIntegrations
+      parameters:
+      - name: integrationId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertCustomIntegrationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Data Integrations
+    delete:
+      operationId: DataIntegrationsController_delete
+      parameters:
+      - name: integrationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: dry-run
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/custom-integrations/{integrationId}/reveal-password:
+    get:
+      operationId: DataIntegrationsController_getCustomIntegrationPassword
+      parameters:
+      - name: integrationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      tags:
+      - Data Integrations
+  /data-integrations/teams/oauth2-callback:
+    post:
+      operationId: DataIntegrationsController_oauth2Callback
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamsOAuthDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      tags:
+      - Data Integrations
+  /data-integrations/teams/recipients:
+    get:
+      operationId: DataIntegrationsController_getTeamsRecipients
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsRecipientInfo'
+      tags:
+      - Data Integrations
+  /data-integrations/teams/channels/{teamId}:
+    get:
+      operationId: DataIntegrationsController_getChannelsByTeam
+      parameters:
+      - name: teamId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsRecipientInfo'
+      tags:
+      - Data Integrations
+  /data-integrations/webhook/test:
+    post:
+      operationId: DataIntegrationsController_testWebhook
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookTestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Data Integrations
+  /data-integrations/teams/connection-status:
+    get:
+      operationId: DataIntegrationsController_getTeamsConnectionDetails
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/teams/recipients-by-id:
+    get:
+      operationId: DataIntegrationsController_resolveReceipientNames
+      parameters:
+      - name: ids
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsRecipientInfo'
+      tags:
+      - Data Integrations
+  /data-integrations/teams:
+    delete:
+      operationId: DataIntegrationsController_disconnectTeamsApp
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations
+  /data-integrations/teams/recipients/search:
+    get:
+      operationId: DataIntegrationsController_searchTeamsUsers
+      parameters:
+      - name: query
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: top
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsRecipientInfo'
+      tags:
+      - Data Integrations
+  /data-integrations/teams/users/count:
+    get:
+      operationId: DataIntegrationsController_getTeamsUsersCount
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: number
+      tags:
+      - Data Integrations
+  /data-integrations/teams/users-by-team/{teamId}:
+    get:
+      operationId: DataIntegrationsController_getTeamMembers
+      parameters:
+      - name: teamId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsRecipientInfo'
+      tags:
+      - Data Integrations
+  /data-integrations/teams/all:
+    get:
+      operationId: DataIntegrationsController_getAllTeams
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsWithInstallationStatus'
+      tags:
+      - Data Integrations
+  /data-integrations/teams/install:
+    post:
+      operationId: DataIntegrationsController_installSweepOnTeams
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsWithInstallationStatus'
+      tags:
+      - Data Integrations
+  /data-integrations/teams/uninstall:
+    post:
+      operationId: DataIntegrationsController_uninstallSweepOnTeams
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TeamsWithInstallationStatus'
+      tags:
+      - Data Integrations
+components:
+  schemas:
+    WebhookTestDto:
+      type: object
+      properties:
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/Field'
+        action:
+          $ref: '#/components/schemas/AutomationActionWebhook'
+      required:
+      - fields
+      - action
+    SlackOAuthDto:
+      type: object
+      properties: {}
+    Logo:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
+    KeyValueStringTemplate:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          $ref: '#/components/schemas/StringTemplate'
+      required:
+      - key
+      - value
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    OptionalCondition:
+      type: object
+      properties:
+        isCriteria:
+          type: boolean
+        criteria:
+          $ref: '#/components/schemas/SweepCondition'
+    Field:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        value:
+          type: string
+      required:
+      - fieldIds
+      - value
+    AutomationActionParamsWebhook:
+      type: object
+      properties:
+        verb:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+        path:
+          $ref: '#/components/schemas/StringTemplate'
+        queryParams:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValueStringTemplate'
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/KeyValueStringTemplate'
+        body:
+          type: object
+        integrationId:
+          type: string
+        followUpActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutomationConditionalActions'
+      required:
+      - verb
+      - path
+      - queryParams
+      - headers
+      - body
+      - integrationId
+      - followUpActions
+    SweepCondition:
+      type: object
+      properties:
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - criteria
+      - criteriaLogic
+    StringTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - template
+      - variables
+    TeamsWithInstallationStatus:
+      type: object
+      properties:
+        label:
+          type: string
+        id:
+          type: string
+        type:
+          enum:
+          - channel
+          - user
+          - team
+          - user_stored_in_salesforce_field
+          - channel_stored_in_sweep
+          - channel_stored_in_salesforce_field
+          type: string
+        isSweepAppInstalled:
+          type: boolean
+      required:
+      - label
+      - id
+      - type
+      - isSweepAppInstalled
+    TeamsOAuthDto:
+      type: object
+      properties:
+        code:
+          type: string
+        state:
+          type: string
+      required:
+      - code
+      - state
+    TeamsRecipientInfo:
+      type: object
+      properties:
+        label:
+          type: string
+        id:
+          type: string
+        type:
+          enum:
+          - channel
+          - user
+          - team
+          - user_stored_in_salesforce_field
+          - channel_stored_in_sweep
+          - channel_stored_in_salesforce_field
+          type: string
+      required:
+      - label
+      - id
+      - type
+    AutomationConditionalActions:
+      type: object
+      properties:
+        _id:
+          type: string
+        when:
+          $ref: '#/components/schemas/OptionalCondition'
+        actions:
+          type: array
+          items:
+            type: object
+        _name:
+          type: string
+      required:
+      - _id
+      - actions
+      - _name
+    UpsertCustomIntegrationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        baseUrl:
+          type: string
+          format: uri
+        authentication:
+          type: object
+        logo:
+          $ref: '#/components/schemas/Logo'
+      required:
+      - name
+      - baseUrl
+      - authentication
+    AutomationActionWebhook:
+      type: object
+      properties:
+        actionType:
+          enum: []
+          type: number
+          default: WEBHOOK
+        actionParams:
+          $ref: '#/components/schemas/AutomationActionParamsWebhook'
+        _id:
+          type: string
+      required:
+      - actionType
+      - actionParams
+      - _id
+    SlackConnectionDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - connected
+          - error
+          - invalid_credentials
+          - initialization
+          - not_initialized
+        upgradeRequired:
+          type: boolean
+        includeSandboxes:
+          type: boolean
+      required:
+      - status
+      - includeSandboxes
+    EditSlackConnectionDto:
+      type: object
+      properties:
+        includeSandboxes:
+          type: boolean
+      required:
+      - includeSandboxes
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

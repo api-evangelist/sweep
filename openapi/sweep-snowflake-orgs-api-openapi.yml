@@ -1,0 +1,143 @@
+openapi: 3.2.0
+info:
+  title: Sweep Snowflake Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Snowflake Orgs
+paths:
+  /snowflake-orgs:
+    post:
+      operationId: SnowflakeOrgController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSnowflakeOrgDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: Create a new Snowflake org
+      tags:
+      - Snowflake Orgs
+  /snowflake-orgs/databases:
+    post:
+      operationId: SnowflakeOrgController_listDatabasesWithCredentials
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetDatabasesDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      summary: List available databases using provided credentials (no org required)
+      tags:
+      - Snowflake Orgs
+  /snowflake-orgs/{orgId}:
+    delete:
+      operationId: SnowflakeOrgController_delete
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Delete a Snowflake org
+      tags:
+      - Snowflake Orgs
+components:
+  schemas:
+    CreateSnowflakeOrgDto:
+      type: object
+      properties:
+        snowflakeAccountIdentifier:
+          type: string
+          pattern: /^[a-zA-Z0-9_\-]+$/i
+          description: Snowflake account identifier (e.g., ORGNAME-ACCOUNTNAME or account locator)
+          example: MYORG-MYACCOUNT
+        username:
+          type: string
+          description: Snowflake username for authentication
+          example: my_user
+        privateKey:
+          type: string
+          description: RSA private key in PEM format for key pair authentication
+          example: REDACTED_PRIVATE_KEY_EXAMPLE
+        name:
+          type: string
+          maxLength: 255
+          description: Display name for the Snowflake org
+          example: Production Snowflake
+        database:
+          type: string
+          maxLength: 255
+          description: Database name to use for this Snowflake org
+          example: ANALYTICS_DB
+      required:
+      - snowflakeAccountIdentifier
+      - username
+      - privateKey
+      - name
+      - database
+    GetDatabasesDto:
+      type: object
+      properties:
+        credentials:
+          description: Snowflake credentials for temporary connection
+          allOf:
+          - $ref: '#/components/schemas/SnowflakeCredentialsDto'
+      required:
+      - credentials
+    SnowflakeCredentialsDto:
+      type: object
+      properties:
+        snowflakeAccountIdentifier:
+          type: string
+          pattern: /^[a-zA-Z0-9_\-]+$/i
+          description: Snowflake account identifier (e.g., ORGNAME-ACCOUNTNAME or account locator)
+          example: MYORG-MYACCOUNT
+        username:
+          type: string
+          description: Snowflake username for authentication
+          example: my_user
+        privateKey:
+          type: string
+          description: RSA private key in PEM format for key pair authentication
+          example: REDACTED_PRIVATE_KEY_EXAMPLE
+      required:
+      - snowflakeAccountIdentifier
+      - username
+      - privateKey
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

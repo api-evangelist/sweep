@@ -1,0 +1,488 @@
+openapi: 3.2.0
+info:
+  title: Sweep Rollups API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Rollups
+paths:
+  /rollups:
+    get:
+      operationId: RollupController_getRollups
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RollupDto'
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+    post:
+      operationId: RollupController_createRollup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRollupDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollupDto'
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+  /rollups/{rollupId}:
+    get:
+      operationId: RollupController_getRollupById
+      parameters:
+      - name: rollupId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: includeReadOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+    delete:
+      operationId: RollupController_deleteRollup
+      parameters:
+      - name: rollupId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+  /rollups/read-only:
+    post:
+      operationId: RollupController_createReadOnlyRollup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRollupDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+  /rollups/{rollupId}/{versionId}:
+    put:
+      operationId: RollupController_editRollup
+      parameters:
+      - name: rollupId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRollupDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RollupDto'
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+    post:
+      operationId: RollupController_deployRollup
+      parameters:
+      - name: rollupId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployRollupDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+  /rollups/admin-notification/{rollupId}/{versionId}:
+    patch:
+      operationId: RollupController_notifyAdminOnRollup
+      parameters:
+      - name: rollupId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Rollups
+components:
+  schemas:
+    SweepFieldOutgoingDto:
+      type: object
+      properties:
+        id:
+          type: string
+        objectName:
+          type: string
+        sweepFieldName:
+          type: string
+        sfFieldName:
+          type: string
+        fieldType:
+          type: string
+          enum:
+          - Id
+          - Address
+          - AutoNumber
+          - Checkbox
+          - Currency
+          - Date
+          - DateTime
+          - Email
+          - Html
+          - EncryptedText
+          - Geolocation
+          - Hierarchy
+          - LongTextArea
+          - Lookup
+          - MasterDetail
+          - MultiselectPicklist
+          - Name
+          - Name2
+          - Number
+          - Percent
+          - Phone
+          - Picklist
+          - Summary
+          - Text
+          - TextArea
+          - Time
+          - Unknown
+          - Url
+          - FormulaCheckbox
+          - FormulaCurrency
+          - FormulaDate
+          - FormulaDateTime
+          - FormulaNumber
+          - FormulaPercent
+          - FormulaText
+          - FormulaTime
+          - Combobox
+        isCompound:
+          type: boolean
+        properties:
+          type: object
+        origin:
+          type: string
+          enum:
+          - SF_STANDARD
+          - SF_CUSTOM
+          - SWEEP_CUSTOM
+          - MP_CUSTOM
+        isRequired:
+          type: boolean
+        isCreatedInSweep:
+          type: boolean
+        helpText:
+          type: string
+        description:
+          type: string
+        compoundFieldId:
+          type: string
+        rollup:
+          type: object
+      required:
+      - objectName
+      - sweepFieldName
+      - fieldType
+      - properties
+      - rollup
+    SweepFieldRollupDto:
+      type: object
+      properties:
+        id:
+          type: string
+        objectName:
+          type: string
+        sweepFieldName:
+          type: string
+        sfFieldName:
+          type: string
+        fieldType:
+          enum:
+          - Id
+          - Address
+          - AutoNumber
+          - Checkbox
+          - Currency
+          - Date
+          - DateTime
+          - Email
+          - Html
+          - EncryptedText
+          - Geolocation
+          - Hierarchy
+          - LongTextArea
+          - Lookup
+          - MasterDetail
+          - MultiselectPicklist
+          - Name
+          - Name2
+          - Number
+          - Percent
+          - Phone
+          - Picklist
+          - Summary
+          - Text
+          - TextArea
+          - Time
+          - Unknown
+          - Url
+          - FormulaCheckbox
+          - FormulaCurrency
+          - FormulaDate
+          - FormulaDateTime
+          - FormulaNumber
+          - FormulaPercent
+          - FormulaText
+          - FormulaTime
+          - Combobox
+          type: string
+        compoundFieldId:
+          type: string
+        isCompound:
+          type: boolean
+        properties:
+          type: object
+        origin:
+          enum:
+          - SF_STANDARD
+          - SF_CUSTOM
+          - SWEEP_CUSTOM
+          - MP_CUSTOM
+          type: string
+        isRequired:
+          type: boolean
+        isCreatedInSweep:
+          type: boolean
+        helpText:
+          type: string
+        description:
+          type: string
+        pinToFunnelMap:
+          type: string
+        sfDisplayType:
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - EMAIL
+          - GEOLOCATION
+          - TEXTAREA
+          - LONGTEXTAREA
+          - REFERENCE
+          - MULTIPICKLIST
+          - NUMBER
+          - PERCENT
+          - PHONE
+          - PICKLIST
+          - COMBOBOX
+          - STRING
+          - TIME
+          - URL
+          - INTEGER
+          - DOUBLE
+          - ID
+          - ENCRYPTEDSTRING
+          - Unknown
+          type: string
+        rollup:
+          type: object
+      required:
+      - objectName
+      - sweepFieldName
+      - fieldType
+      - properties
+    RollupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rollupId:
+          type: string
+        versionId:
+          type: string
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldOutgoingDto'
+        crmOrgId:
+          type: string
+        accountId:
+          type: string
+        objectName:
+          type: string
+        status:
+          enum:
+          - Draft
+          - Deployed
+          type: string
+        isActive:
+          type: boolean
+        notifyAdmin:
+          type: boolean
+        priority:
+          type: number
+        type:
+          type: string
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - name
+      - rollupId
+      - versionId
+      - rollupField
+      - crmOrgId
+      - accountId
+      - objectName
+      - status
+      - isActive
+      - notifyAdmin
+      - priority
+      - type
+      - createdById
+      - createdAt
+      - updatedById
+      - updatedAt
+    CreateRollupDto:
+      type: object
+      properties:
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
+        objectName:
+          type: string
+      required:
+      - rollupField
+      - objectName
+    DeployRollupDto:
+      type: object
+      properties:
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - deployToOrgIds
+    UpdateRollupDto:
+      type: object
+      properties:
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
+      required:
+      - rollupField
+    AdminNotificationDto:
+      type: object
+      properties:
+        note:
+          type: string
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,316 @@
+openapi: 3.2.0
+info:
+  title: Sweep Fields API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Sweep Fields
+paths:
+  /sweep_fields:
+    get:
+      operationId: SweepFieldsController_getSweepFields
+      parameters:
+      - name: objectType
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: fieldIds
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: includeSiblings
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: detectLeadingCandidates
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: includeDescriptionValueSetNameRequired
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: typeGroups
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Sweep Fields
+    post:
+      operationId: SweepFieldsController_createSweepField
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: draft
+        required: true
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SweepFieldBaseDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Sweep Fields
+  /sweep_fields/ids-by-names:
+    get:
+      operationId: SweepFieldsController_getSweepFieldIdsByApiName
+      parameters:
+      - name: fieldNames
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FieldIdsDto'
+      security:
+      - bearer: []
+      tags:
+      - Sweep Fields
+  /sweep_fields/{id}:
+    get:
+      operationId: SweepFieldsController_getSweepField
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeReadOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Sweep Fields
+  /sweep_fields/{fieldId}:
+    put:
+      operationId: SweepFieldsController_updateSweepFields
+      parameters:
+      - name: fieldId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldUpdateDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Sweep Fields
+components:
+  schemas:
+    FieldUpdateDto:
+      type: object
+      properties:
+        field:
+          $ref: '#/components/schemas/SweepFieldBaseDto'
+        enableDeduceValuesOrder:
+          type: boolean
+      required:
+      - field
+    SweepFieldBaseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        objectName:
+          type: string
+        sweepFieldName:
+          type: string
+        sfFieldName:
+          type: string
+        fieldType:
+          type: string
+          enum:
+          - Id
+          - Address
+          - AutoNumber
+          - Checkbox
+          - Currency
+          - Date
+          - DateTime
+          - Email
+          - Html
+          - EncryptedText
+          - Geolocation
+          - Hierarchy
+          - LongTextArea
+          - Lookup
+          - MasterDetail
+          - MultiselectPicklist
+          - Name
+          - Name2
+          - Number
+          - Percent
+          - Phone
+          - Picklist
+          - Summary
+          - Text
+          - TextArea
+          - Time
+          - Unknown
+          - Url
+          - FormulaCheckbox
+          - FormulaCurrency
+          - FormulaDate
+          - FormulaDateTime
+          - FormulaNumber
+          - FormulaPercent
+          - FormulaText
+          - FormulaTime
+          - Combobox
+        compoundFieldId:
+          type: string
+        isCompound:
+          type: boolean
+        properties:
+          type: object
+        origin:
+          type: string
+          enum:
+          - SF_STANDARD
+          - SF_CUSTOM
+          - SWEEP_CUSTOM
+          - MP_CUSTOM
+        isRequired:
+          type: boolean
+        isCreatedInSweep:
+          type: boolean
+        helpText:
+          type: string
+        description:
+          type: string
+        pinToFunnelMap:
+          type: string
+        sfDisplayType:
+          type: string
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - EMAIL
+          - GEOLOCATION
+          - TEXTAREA
+          - LONGTEXTAREA
+          - REFERENCE
+          - MULTIPICKLIST
+          - NUMBER
+          - PERCENT
+          - PHONE
+          - PICKLIST
+          - COMBOBOX
+          - STRING
+          - TIME
+          - URL
+          - INTEGER
+          - DOUBLE
+          - ID
+          - ENCRYPTEDSTRING
+          - Unknown
+      required:
+      - objectName
+      - sweepFieldName
+      - fieldType
+      - properties
+    FieldIdsDto:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            required: true
+            type: array
+            items:
+              type: string
+      required:
+      - fieldIds
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,265 @@
+openapi: 3.2.0
+info:
+  title: Sweep Assignment Groups API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Assignment Groups
+paths:
+  /assignment_groups:
+    get:
+      operationId: AssignmentGroupsController_getAssignmentGroups
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+    post:
+      operationId: AssignmentGroupsController_insertGroup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignmentGroupSetterDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssignmentGroupSetterDto'
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+  /assignment_groups/credit-queue:
+    get:
+      operationId: AssignmentGroupsController_getCreditQueue
+      parameters:
+      - name: groupApiName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+    post:
+      operationId: AssignmentGroupsController_createCreditQueue
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditQueueCreateConfigDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+    put:
+      operationId: AssignmentGroupsController_updateCreditQueue
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditQueueUpdateConfigDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+  /assignment_groups/{groupId}:
+    get:
+      operationId: AssignmentGroupsController_getAssignmentGroup
+      parameters:
+      - name: groupId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+    delete:
+      operationId: AssignmentGroupsController_deleteGroup
+      parameters:
+      - name: groupId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+    put:
+      operationId: AssignmentGroupsController_updateGroup
+      parameters:
+      - name: groupId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssignmentGroupSetterDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssignmentGroupSetterDto'
+      security:
+      - bearer: []
+      tags:
+      - Assignment Groups
+components:
+  schemas:
+    CreditQueueCreateConfigDto:
+      type: object
+      properties:
+        groupApiName:
+          type: string
+        creditsList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditQueueCreateRecordDto'
+      required:
+      - groupApiName
+      - creditsList
+    CreditQueueUpdateConfigDto:
+      type: object
+      properties:
+        recordsToUpdate:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditQueueUpdateRecordDto'
+        recordsToDelete:
+          type: array
+          items:
+            type: string
+    CreditQueueUpdateRecordDto:
+      type: object
+      properties:
+        sfId:
+          type: string
+        index:
+          type: number
+      required:
+      - sfId
+      - index
+    AssignmentGroupAvatarDto:
+      type: object
+      properties:
+        emoji:
+          $ref: '#/components/schemas/EmojiDto'
+        imageUrl:
+          type: string
+        imageUploadBase64:
+          type: string
+    EmojiDto:
+      type: object
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
+    AssignmentGroupMemberSetterDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        membershipActive:
+          type: boolean
+        weight:
+          type: number
+        limitValue:
+          type: number
+        creditCount:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - membershipActive
+      - weight
+    CreditQueueCreateRecordDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        creditsTargetAmount:
+          type: number
+      required:
+      - userId
+      - creditsTargetAmount
+    AssignmentGroupSetterDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        avatar:
+          $ref: '#/components/schemas/AssignmentGroupAvatarDto'
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssignmentGroupMemberSetterDto'
+        groupLimit:
+          type: object
+      required:
+      - name
+      - description
+      - avatar
+      - members
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

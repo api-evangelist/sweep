@@ -1,0 +1,2187 @@
+openapi: 3.2.0
+info:
+  title: Sweep Backoffice API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Backoffice
+paths:
+  /backoffice/accounts:
+    get:
+      operationId: BackofficeController_getAllAccounts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+    post:
+      operationId: BackofficeController_updateAccountsMany
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/users:
+    get:
+      operationId: BackofficeController_getAllUsers
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/accounts/installed-packages:
+    get:
+      operationId: BackofficeController_getInstalledPackagesForFreeAccounts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}:
+    post:
+      operationId: BackofficeController_releaseAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: completeOnboarding
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{crmOrgId}/sweep_transactions_log:
+    get:
+      operationId: BackofficeController_getSweepTransactionsLog
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: startDate
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: endDate
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{crmOrgId}/fetch:
+    get:
+      operationId: BackofficeController_fetch
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: operation
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/force-refresh-token:
+    post:
+      operationId: BackofficeController_forceRefreshToken
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/force-refresh-user-token:
+    post:
+      operationId: BackofficeController_forceRefreshUserToken
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/all/get_soql:
+    get:
+      operationId: BackofficeController_getAnySoqlQueryAllOrgs
+      parameters:
+      - name: query
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: useToolingApi
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/ai_agents/{agentId}/trigger_scan:
+    get:
+      operationId: BackofficeController_triggerScan
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{crmOrgId}/get_soql:
+    get:
+      operationId: BackofficeController_getAnySoqlQuery
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: query
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: useToolingApi
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: maxFetch
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/crm_orgs:
+    get:
+      operationId: BackofficeController_getAllCrmOrgs
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CrmOrg'
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/orgs:
+    get:
+      operationId: BackofficeController_getAllOrgs
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/orgs/{orgId}/fetch:
+    post:
+      operationId: BackofficeController_fetchAnyOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: factoryReset
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/orgs/{orgId}/metadata-search:
+    get:
+      operationId: BackofficeController_searchOrgMetadata
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/orgs/{orgId}:
+    get:
+      operationId: BackofficeController_getOrgById
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/snowflake-orgs/{orgId}/query:
+    post:
+      operationId: BackofficeController_runSnowflakeQuery
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm-orgs/{crmOrgId}:
+    get:
+      operationId: BackofficeController_getCrmOrgById
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{crmOrgId}/salesforce-event-monitoring-log-export:
+    post:
+      operationId: BackofficeController_exportSalesforceEventMonitoringLogs
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalesforceEventMonitoringLogExportDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm-orgs/{crmOrgId}/tier:
+    put:
+      operationId: BackofficeController_updateCrmOrgTier
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: tier
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/parse-all:
+    post:
+      operationId: BackofficeController_parseAllOrgs
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/housekeeping/purge-salto-workspaces:
+    post:
+      operationId: BackofficeController_archiveAllSaltoWorkspaces
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/recovery/init-missing-bare-repos:
+    post:
+      operationId: BackofficeController_recoverMissingBareRepos
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/ai-projects/backfill-origin-template-ids:
+    post:
+      operationId: BackofficeController_backfillPlaybookOriginTemplateIds
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/invite:
+    post:
+      operationId: BackofficeController_inviteUserToAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: email
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/users:
+    get:
+      operationId: BackofficeController_getUsersByAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/roles:
+    get:
+      operationId: BackofficeController_getRoleGroupsForAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/users/{userId}/role:
+    put:
+      operationId: BackofficeController_updateUserRole
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/users/{userId}:
+    delete:
+      operationId: BackofficeController_removeUser
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/move-user:
+    post:
+      operationId: BackofficeController_moveUserToAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: email
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm-orgs/{crmOrgId}/automations:
+    get:
+      operationId: BackofficeController_getAutomationsMetadata
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/trial:
+    put:
+      operationId: BackofficeController_setTrialEnd
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: daysCount
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/accounts/{orgId}/named-credential:
+    post:
+      operationId: BackofficeController_createNamedCredential
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+    delete:
+      operationId: BackofficeController_deleteNamedCredential
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/mp-version:
+    post:
+      operationId: BackofficeController_updateMPVersionFile
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      summary: Update a file in s3 folder
+      tags:
+      - Backoffice
+  /backoffice/cache:
+    get:
+      operationId: BackofficeController_getValueFromCache
+      parameters:
+      - name: key
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+    delete:
+      operationId: BackofficeController_deleteValueFromCache
+      parameters:
+      - name: key
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/analyse/{objectName}:
+    get:
+      operationId: BackofficeController_createOrgAnalysisJob
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/unused-apex-classes:
+    get:
+      operationId: BackofficeController_analyzeUnusedApexClasses
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeNonDefaultNamespaces
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/job-execution/failed:
+    get:
+      operationId: BackofficeController_getFailedJobExecutions
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobExecution'
+      tags:
+      - Backoffice
+  /backoffice/auto-fetch/org/{orgId}:
+    get:
+      operationId: BackofficeController_getAutoFetchByOrgId
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+    put:
+      operationId: BackofficeController_updateAutoFetchByOrgId
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/opt-monitoring:
+    post:
+      operationId: BackofficeController_changeOrgOptMonitoring
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: boolean
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/lock/{lockKey}:
+    get:
+      operationId: BackofficeController_isLocked
+      parameters:
+      - name: lockKey
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+      tags:
+      - Backoffice
+  /backoffice/lock/{lockKey}/{ownerId}:
+    delete:
+      operationId: BackofficeController_releaseLock
+      parameters:
+      - name: lockKey
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: ownerId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+      tags:
+      - Backoffice
+    get:
+      operationId: BackofficeController_getLock
+      parameters:
+      - name: lockKey
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: ownerId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: expiresInMs
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: timeoutMs
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+      tags:
+      - Backoffice
+  /backoffice/product-plan/available-product-policies:
+    get:
+      operationId: BackofficeController_getAvailablePlan
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/product-plan/available-features:
+    get:
+      operationId: BackofficeController_getAvailableFeatures
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/product-plan/{accountId}:
+    get:
+      operationId: BackofficeController_getPlan
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+    patch:
+      operationId: BackofficeController_updatePolicy
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlanDto'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/product-plan/{accountId}/features:
+    put:
+      operationId: BackofficeController_updateFeaturesForSelectedFeatureProductPolicy
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFeaturePlanDto'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+    get:
+      operationId: BackofficeController_getAllowedFeaturePlanForAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/dump-automations/{folderName}:
+    get:
+      operationId: BackofficeController_dumpAutomations
+      parameters:
+      - name: folderName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/restart-python-agent:
+    post:
+      operationId: BackofficeController_restartPythonAgent
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/crm_orgs/{orgId}/ai-process-mining:
+    post:
+      operationId: BackofficeController_createAiProcessMiningFunnels
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/opensearch/reset-index/{orgId}:
+    post:
+      operationId: BackofficeController_reindexOpenSearch
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/opensearch/migrate-index/{orgId}:
+    post:
+      operationId: BackofficeController_migrateOpenSearchIndex
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/opensearch/purge-inactive-index/{orgId}:
+    post:
+      operationId: BackofficeController_purgeInactiveOpenSearchIndex
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/opensearch/search-by-content/{orgId}:
+    post:
+      operationId: BackofficeController_searchByContent
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - Backoffice
+  /backoffice/opensearch/search-by-filename/{orgId}:
+    post:
+      operationId: BackofficeController_searchByFilename
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/opensearch/raw-search/{orgId}:
+    post:
+      operationId: BackofficeController_rawSearch
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/opensearch/scope/{orgId}:
+    get:
+      operationId: BackofficeController_getOpenSearchScope
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenSearchScope'
+      tags:
+      - Backoffice
+    put:
+      operationId: BackofficeController_updateOpenSearchScope
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OpenSearchScope'
+      tags:
+      - Backoffice
+  /backoffice/agent-files/{fileId}/generate-summary:
+    post:
+      operationId: BackofficeController_generateAgentFileSummary
+      parameters:
+      - name: fileId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-files/regenerate-all-summaries:
+    post:
+      operationId: BackofficeController_regenerateAllAgentFileSummaries
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/accounts/{accountId}/copy-prompt-group/{promptGroupId}:
+    post:
+      operationId: BackofficeController_copyPromptGroupToAccounts
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: promptGroupId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries:
+    get:
+      operationId: BackofficeController_getAgentSummaries
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: mode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: sortBy
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries/stats:
+    get:
+      operationId: BackofficeController_getAgentSummariesStats
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: mode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries/accounts:
+    get:
+      operationId: BackofficeController_getAccountGroupedSummaries
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: mode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries/users:
+    get:
+      operationId: BackofficeController_getUserGroupedSummaries
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: mode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries/agents:
+    get:
+      operationId: BackofficeController_getAgentGroupedSummaries
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: mode
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/agent-summaries/modes:
+    get:
+      operationId: BackofficeController_getModeGroupedSummaries
+      parameters:
+      - name: accountId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: userEmail
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: agentName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: scoreMin
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: scoreMax
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: dateFrom
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: dateTo
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Backoffice
+  /backoffice/ai-artifacts/{versionId}:
+    get:
+      operationId: BackofficeController_getAiArtifactByVersionId
+      parameters:
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      summary: 'Fetch a single AI artifact by its version id (primary key of AiArtifact).
+
+        `versionId` matches the naming used in the dashboard''s artifact API and in the
+
+        `[Artifact: <title> (ID: <artifactId>, Version: <versionId>)]` markers embedded
+
+        in AgentSummary.answer. Used by the backoffice Agent Summaries UI to preview
+
+        the artifact referenced by a summary on-demand.'
+      tags:
+      - Backoffice
+  /backoffice/sync-graph-db-batch:
+    post:
+      operationId: BackofficeController_syncGraphDbBatch
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Backoffice
+components:
+  schemas:
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    JobExecution:
+      type: object
+      properties:
+        jobId:
+          type: string
+        jobStatus:
+          type: string
+          enum:
+          - NOT_STARTED
+          - IN_PROGRESS
+          - COMPLETED
+        executionParams:
+          $ref: '#/components/schemas/JobExecutionParams'
+        resultStatus:
+          type: string
+          enum:
+          - SUCCESS
+          - ERROR
+        resultDetails:
+          $ref: '#/components/schemas/JobResultDetails'
+        createdAt:
+          format: date-time
+          type: string
+        startedAt:
+          format: date-time
+          type: string
+        completedAt:
+          format: date-time
+          type: string
+        crmOrgId:
+          type: string
+      required:
+      - jobId
+      - jobStatus
+      - executionParams
+      - resultStatus
+      - resultDetails
+      - createdAt
+      - startedAt
+      - completedAt
+      - crmOrgId
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
+      - createdById
+      - createdBy
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    OpenSearchScope:
+      type: object
+      properties:
+        id:
+          type: string
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        searchIndexName:
+          type: string
+        migrateToIndexName:
+          type:
+          - string
+          - 'null'
+        enableIngest:
+          type: boolean
+        lastSyncedVersion:
+          type:
+          - string
+          - 'null'
+        ongoingSyncVersion:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - orgId
+      - org
+      - searchIndexName
+      - migrateToIndexName
+      - enableIngest
+      - lastSyncedVersion
+      - ongoingSyncVersion
+      - createdAt
+      - updatedAt
+    RoleGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    UpdatePlanDto:
+      type: object
+      properties: {}
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    JobResultDetails:
+      type: object
+      properties: {}
+    RoleGroupAccountRole:
+      type: object
+      properties:
+        role:
+          type: object
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - roleGroupId
+      - roleGroup
+    FunnelDeployment:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        snapshotId:
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshot'
+        deployedById:
+          type: string
+        deployedBy:
+          $ref: '#/components/schemas/User'
+        deployedAt:
+          format: date-time
+          type: string
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrg
+      - snapshotId
+      - snapshot
+      - deployedById
+      - deployedBy
+      - deployedAt
+      - status
+    CrmOrg:
+      type: object
+      properties:
+        id:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        name:
+          type: string
+        platform:
+          type: string
+        instanceUrl:
+          type: string
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        isDemo:
+          type: boolean
+        isConnected:
+          type: object
+          default: false
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        fetchStatus:
+          enum:
+          - fetching
+          - initial_fetching
+          - error
+          - fetched
+          - invalid_credentials
+          type: string
+        lastSuccessfulFetchTs:
+          type: number
+        disconnectedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        accountId:
+          type: string
+        connectedUser:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        optMonitoring:
+          type: boolean
+        graphVersion:
+          type:
+          - string
+          - 'null'
+        graphDbReleaseChannel:
+          enum:
+          - stable
+          - beta
+          - shadow
+          type:
+          - string
+          - 'null'
+        tier:
+          enum:
+          - T0
+          - T1
+          type: string
+      required:
+      - id
+      - org
+      - name
+      - platform
+      - instanceUrl
+      - isSandbox
+      - isMain
+      - isDemo
+      - isConnected
+      - createdById
+      - createdBy
+      - fetchStatus
+      - lastSuccessfulFetchTs
+      - disconnectedAt
+      - createdAt
+      - updatedAt
+      - accountId
+      - connectedUser
+      - account
+      - deployments
+      - optMonitoring
+      - graphVersion
+      - graphDbReleaseChannel
+      - tier
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    JobExecutionParams:
+      type: object
+      properties: {}
+    UpdateFeaturePlanDto:
+      type: object
+      properties: {}
+    Org:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+      - id
+      - accountId
+      - account
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    SalesforceEventMonitoringLogExportDto:
+      type: object
+      properties: {}
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,499 @@
+openapi: 3.2.0
+info:
+  title: Sweep Users API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Users
+paths:
+  /users:
+    get:
+      operationId: UsersController_getUser
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserDto'
+      security:
+      - bearer: []
+      summary: Get current logged in user.
+      tags:
+      - Users
+    patch:
+      operationId: UsersController_patchUserDetails
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditUserDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Patches user details
+      tags:
+      - Users
+  /users/permissions:
+    get:
+      operationId: UsersController_getPermissions
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/{userId}:
+    delete:
+      operationId: UsersController_deleteUser
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/account/trial:
+    post:
+      operationId: UsersController_startTrial
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/account/onboarding:
+    patch:
+      operationId: UsersController_updateOnboardingStatus
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOnboardingStatusDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/account/invitations:
+    post:
+      operationId: UsersController_createInvitation
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InvitationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/account/invitations/{email}:
+    delete:
+      operationId: UsersController_removeInvitation
+      parameters:
+      - name: email
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/account:
+    get:
+      operationId: UsersController_getUsersAndInvitationOfAccount
+      parameters:
+      - name: includeInvitations
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Get Users and pending invitations of account.
+      tags:
+      - Users
+  /users/ws-code:
+    get:
+      operationId: UsersController_getWSRegistrationCode
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      summary: 'returns WebSocket Registration code.
+
+        This is used to connect between the websocket and the user ID.
+
+        TODO: Deprecate for a more holistic solution that uses the Bearer token in the WebSocket.'
+      tags:
+      - Users
+  /users/preferences:
+    get:
+      operationId: UsersController_getUserPreferences
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPreferencesDto'
+      security:
+      - bearer: []
+      summary: Returns the user preferences for the current user
+      tags:
+      - Users
+    patch:
+      operationId: UsersController_patchUserPreferences
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPreferencesDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Patches user preferences
+      tags:
+      - Users
+    put:
+      operationId: UsersController_putUserPreferences
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPreferencesDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Replaces the preferences
+      tags:
+      - Users
+  /users/{userId}/role:
+    put:
+      operationId: UsersController_updateUserRoleGroup
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRoleDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Change user role
+      tags:
+      - Users
+  /users/image:
+    post:
+      operationId: UsersController_uploadImage
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImageDataDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/clearbit-enrichment:
+    get:
+      operationId: UsersController_getClearbitEnrichment
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/hubspot-enrichment:
+    post:
+      operationId: UsersController_setHubspotEnrichment
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Users
+  /users/{orgId}/mcp-org:
+    post:
+      operationId: UsersController_setMcpOrgForUser
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Users
+components:
+  schemas:
+    ImageDataDto:
+      type: object
+      properties:
+        image:
+          type: string
+      required:
+      - image
+    InvitationDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        roleGroupId:
+          type: string
+        message:
+          type: string
+        template:
+          type: string
+          enum:
+          - FUNNEL
+          - ACCOUNT
+        entryPointId:
+          type: string
+        entryPointName:
+          type: string
+      required:
+      - email
+      - roleGroupId
+      - template
+      - entryPointId
+      - entryPointName
+    UserRoleDto:
+      type: object
+      properties:
+        roleGroupId:
+          type: string
+      required:
+      - roleGroupId
+    UpdateOnboardingStatusDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+      required:
+      - status
+    GetStartedDto:
+      type: object
+      properties: {}
+    QuestionnaireDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - COMPLETED
+          - NOT_COMPLETED
+        data:
+          $ref: '#/components/schemas/QuestionnaireDataDto'
+      required:
+      - status
+    UserPreferencesDto:
+      type: object
+      properties:
+        getStarted:
+          $ref: '#/components/schemas/GetStartedDto'
+        defaultCreationCrmOrgId:
+          type:
+          - string
+          - 'null'
+        questionnaire:
+          $ref: '#/components/schemas/QuestionnaireDto'
+        tableColumnSettings:
+          type: array
+          items:
+            type: object
+    QuestionnaireDataDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - ADMIN
+          - BUSINESS_SYSTEMS
+          - OPERATIONS
+          - SALES
+          - MARKETING
+          - CUSTOMER_SUCCESS
+          - CONSULTANT
+          - OTHER
+        interests:
+          type: array
+          items:
+            type: string
+            enum:
+            - DOCUMENTATION
+            - AUTOMATIONS
+            - ALERTS
+            - ROLLUPS
+            - ROUTING
+            - DEDUPE
+            - VISUALIZE
+            - PLAN
+            - TRACK_CHANGES
+            - OTHER
+    EditUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        emoji:
+          $ref: '#/components/schemas/UserEmojiDto'
+    UserDto:
+      type: object
+      properties:
+        id:
+          type: string
+        canResetPassword:
+          type: boolean
+        name:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        email:
+          type: string
+        account:
+          type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+          required:
+          - id
+          - name
+        roles:
+          type: array
+          items:
+            type: string
+        emoji:
+          $ref: '#/components/schemas/UserEmojiDto'
+        preferences:
+          $ref: '#/components/schemas/UserPreferencesDto'
+        mcpOrgId:
+          type: string
+      required:
+      - id
+      - canResetPassword
+      - name
+      - imageUrl
+      - jobTitle
+      - email
+      - account
+      - emoji
+      - preferences
+    UserEmojiDto:
+      type: object
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
+      required:
+      - content
+      - bgColor
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

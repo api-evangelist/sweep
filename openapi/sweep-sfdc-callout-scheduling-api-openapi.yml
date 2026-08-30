@@ -1,0 +1,100 @@
+openapi: 3.2.0
+info:
+  title: Sweep SFDC Callout — Scheduling API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: SFDC Callout — Scheduling
+paths:
+  /sfdc-callout/scheduling/rep/availability-settings:
+    get:
+      operationId: SfdcCalloutSchedulingController_getAvailabilitySettings
+      parameters:
+      - name: sfUserId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+    put:
+      operationId: SfdcCalloutSchedulingController_updateAvailabilitySettings
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+  /sfdc-callout/scheduling/rep/connection-status:
+    get:
+      operationId: SfdcCalloutSchedulingController_getConnectionStatus
+      parameters:
+      - name: sfUserId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+  /sfdc-callout/scheduling/rep/oauth-url/google:
+    get:
+      operationId: SfdcCalloutSchedulingController_getGoogleOAuthUrl
+      parameters:
+      - name: sfUserId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+  /sfdc-callout/scheduling/rep/oauth-url/zoom:
+    get:
+      operationId: SfdcCalloutSchedulingController_getZoomOAuthUrl
+      parameters:
+      - name: sfUserId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+  /sfdc-callout/scheduling/rep/disconnect/google:
+    post:
+      operationId: SfdcCalloutSchedulingController_disconnectGoogle
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+  /sfdc-callout/scheduling/rep/disconnect/zoom:
+    post:
+      operationId: SfdcCalloutSchedulingController_disconnectZoom
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      tags:
+      - SFDC Callout — Scheduling
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

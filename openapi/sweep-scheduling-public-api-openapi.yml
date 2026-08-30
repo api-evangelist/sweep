@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Sweep scheduling (public) API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: scheduling (public)
+paths:
+  /scheduling/webhook/{formId}:
+    post:
+      operationId: SchedulingPublicUnauthenticatedController_webhook
+      parameters:
+      - name: formId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadSubmissionDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+  /scheduling/booking/{token}:
+    get:
+      operationId: SchedulingPublicUnauthenticatedController_getBookingDetails
+      parameters:
+      - name: token
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+  /scheduling/availability/{token}:
+    get:
+      operationId: SchedulingPublicUnauthenticatedController_getAvailability
+      parameters:
+      - name: token
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: startDate
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: days
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      tags:
+      - scheduling (public)
+  /scheduling/book/{token}:
+    post:
+      operationId: SchedulingPublicUnauthenticatedController_book
+      parameters:
+      - name: token
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookSlotDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+  /scheduling/reschedule/{token}:
+    post:
+      operationId: SchedulingPublicUnauthenticatedController_reschedule
+      parameters:
+      - name: token
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookSlotDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+  /scheduling/book-link/{linkId}:
+    get:
+      operationId: SchedulingPublicUnauthenticatedController_resolveBookingLink
+      parameters:
+      - name: linkId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+    post:
+      operationId: SchedulingPublicUnauthenticatedController_submitBookingLink
+      parameters:
+      - name: linkId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LeadSubmissionDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - scheduling (public)
+  /scheduling/google/callback:
+    get:
+      operationId: SchedulingPublicUnauthenticatedController_googleCallback
+      parameters:
+      - name: code
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: state
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - scheduling (public)
+  /scheduling/zoom/callback:
+    get:
+      operationId: SchedulingPublicUnauthenticatedController_zoomCallback
+      parameters:
+      - name: code
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: state
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - scheduling (public)
+components:
+  schemas:
+    LeadSubmissionDto:
+      type: object
+      properties:
+        lead:
+          type: object
+      required:
+      - lead
+    BookSlotDto:
+      type: object
+      properties:
+        startTime:
+          type: string
+        timezone:
+          type: string
+      required:
+      - startTime
+      - timezone
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

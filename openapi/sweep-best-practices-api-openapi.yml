@@ -1,0 +1,165 @@
+openapi: 3.2.0
+info:
+  title: Sweep Best Practices API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: best-practices
+paths:
+  /best-practices:
+    get:
+      operationId: BestPracticesController_getAllBestPractices
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BestPracticeResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - best-practices
+    post:
+      operationId: BestPracticesController_createBestPractice
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBestPracticeDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BestPracticeResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - best-practices
+  /best-practices/{id}:
+    patch:
+      operationId: BestPracticesController_updateBestPractice
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBestPracticeDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BestPracticeResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - best-practices
+    delete:
+      operationId: BestPracticesController_deleteBestPractice
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - best-practices
+components:
+  schemas:
+    CreateBestPracticeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+      required:
+      - name
+      - severity
+      - text
+      - applicableDomain
+      - applicableResourceType
+    UpdateBestPracticeDto:
+      type: object
+      properties:
+        severity:
+          type: object
+      required:
+      - severity
+    BestPracticeResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        isSystem:
+          type: boolean
+        applicableDomain:
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+          type: string
+        applicableResourceType:
+          type: string
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - severity
+      - text
+      - isSystem
+      - applicableDomain
+      - applicableResourceType
+      - accountId
+      - createdAt
+      - updatedAt
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

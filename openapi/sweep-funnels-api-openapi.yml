@@ -1,0 +1,814 @@
+openapi: 3.2.0
+info:
+  title: Sweep Funnels API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Funnels
+paths:
+  /funnels/funnel-name-availability:
+    get:
+      operationId: FunnelsController_checkFunnelNameAvailability
+      parameters:
+      - name: funnelName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Returns all funnels.
+      tags:
+      - Funnels
+  /funnels:
+    post:
+      operationId: FunnelsController_createFunnel
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFunnelDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelDto'
+      security:
+      - bearer: []
+      summary: 'Creates a new funnel.
+
+        New funnel is created with default version name - V1'
+      tags:
+      - Funnels
+  /funnels/convert-record-type:
+    post:
+      operationId: FunnelsController_convertRecordTypeToFunnel
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConvertRecordTypeToFunnelDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelDto'
+      security:
+      - bearer: []
+      summary: Creates a new funnel from a record type.
+      tags:
+      - Funnels
+  /funnels/funnel-from-record-type:
+    get:
+      operationId: FunnelsController_getFunnelAndSnapshotIdFromRecordType
+      parameters:
+      - name: recordTypeName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: Given a record type, Returns a funnel id if the funnel exists and its snapshot and deployment id if it's deployed
+      tags:
+      - Funnels
+  /funnels/{funnelId}/snapshots:
+    get:
+      operationId: FunnelsController_getFunnelSnapshots
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FunnelSnapshotDto'
+      security:
+      - bearer: []
+      summary: get all snapshots of a specific funnel
+      tags:
+      - Funnels
+    post:
+      operationId: FunnelsController_createFunnelSnapshot
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelSnapshotDto'
+      security:
+      - bearer: []
+      summary: '@body - either a funnel id or a funnelDto for saving'
+      tags:
+      - Funnels
+  /funnels/{funnelId}/snapshots/{snapshotId}:
+    get:
+      operationId: FunnelsController_getFunnelSnapshot
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: snapshotId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: get a snapshot
+      tags:
+      - Funnels
+    patch:
+      operationId: FunnelsController_setSnapshotName
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: snapshotId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFunnelSnapshotDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelSnapshotDto'
+      security:
+      - bearer: []
+      summary: rename a snapshot
+      tags:
+      - Funnels
+  /funnels/{funnelId}:
+    get:
+      operationId: FunnelsController_getFunnel
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelDto'
+      security:
+      - bearer: []
+      summary: Returns a single funnel.
+      tags:
+      - Funnels
+    patch:
+      operationId: FunnelsController_updateFunnel
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFunnelDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: "Will replace Update funnel properties.\nFor example, if we want to create a snapshot of a previous state and restore state form\n\nIf funnelDetails is included in the payload it is overridden. if it's\n\n// TODO crmOrgId is passed as a query string parameter, while its usually needed when writing funnelDetails\n        it is odd.\n@updateFunnelRequest - include funnelDetails, name, and possibly additional snapshots to create"
+      tags:
+      - Funnels
+    put:
+      operationId: FunnelsController_restoreSnapshot
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestoreFunnelDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelDto'
+      security:
+      - bearer: []
+      summary: 'For Restoring snapshots.
+
+        Resets a funnel''s details/state. The override request contains a reference to
+
+        a past snapshot.'
+      tags:
+      - Funnels
+    delete:
+      operationId: FunnelsController_deleteFunnel
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Delete a funnel.
+      tags:
+      - Funnels
+  /funnels/{funnelId}/recordTypes:
+    get:
+      operationId: FunnelsController_getRecordTypes
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelRecordTypesDto'
+      security:
+      - bearer: []
+      tags:
+      - Funnels
+  /funnels/{funnelId}/biSettings:
+    put:
+      operationId: FunnelsController_updateBISettings
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BISettingsDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BISettingsDto'
+      security:
+      - bearer: []
+      summary: Update BI settings of funnel.
+      tags:
+      - Funnels
+components:
+  schemas:
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    FunnelRecordTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        objectName:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - objectName
+      - label
+      - description
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    LeadingFieldDto:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+        values:
+          type: array
+          items:
+            type: object
+      required:
+      - name
+      - label
+      - values
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    RestoreFunnelDto:
+      type: object
+      properties:
+        sourceSnapshotId:
+          type: string
+        preserveCurrent:
+          type: boolean
+      required:
+      - sourceSnapshotId
+      - preserveCurrent
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    ConvertRecordTypeToFunnelDto:
+      type: object
+      properties:
+        funnelName:
+          type: string
+        recordTypeName:
+          type: string
+        recordTypeDescription:
+          type: string
+        objectName:
+          type: string
+        leadingField:
+          $ref: '#/components/schemas/LeadingFieldDto'
+        defaultCrmOrgId:
+          type: string
+      required:
+      - funnelName
+      - recordTypeName
+      - objectName
+      - leadingField
+      - defaultCrmOrgId
+    CreateFunnelDto:
+      type: object
+      properties:
+        funnelName:
+          type: string
+        templateDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+      required:
+      - funnelName
+      - templateDetails
+    FunnelRecordTypesDto:
+      type: object
+      properties:
+        recordTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordTypeDto'
+      required:
+      - recordTypes
+    FunnelDeploymentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrgName:
+          type: string
+        crmOrgIsSandbox:
+          type: boolean
+        snapshotName:
+          type: string
+        deployedById:
+          type: string
+        deployedAt:
+          format: date-time
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshotDto'
+        apiName:
+          type: string
+        name:
+          type: string
+        moreAdvancedDraft:
+          type: boolean
+        moreAdvancedSnapshots:
+          type: number
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrgName
+      - crmOrgIsSandbox
+      - snapshotName
+      - deployedById
+      - deployedAt
+      - snapshot
+      - apiName
+      - name
+      - moreAdvancedDraft
+      - moreAdvancedSnapshots
+      - status
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    BIFlagDto:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - TIMESTAMP
+          - OWNER
+          - OWNER_ROLE
+        value:
+          type: boolean
+      required:
+      - name
+      - value
+    FunnelSnapshotDto:
+      type: object
+      properties:
+        apiName:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        ord:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeploymentDto'
+      required:
+      - apiName
+      - id
+      - name
+      - createdAt
+      - createdById
+      - ord
+      - funnelDetails
+      - deployments
+    UpdateFunnelDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+      required:
+      - name
+      - description
+      - funnelDetails
+    RecordTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        objectName:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - objectName
+      - label
+      - description
+    FunnelDto:
+      type: object
+      properties:
+        id:
+          type: string
+        apiName:
+          type: string
+        accountId:
+          type: string
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        restoredFromSnapshot:
+          type: number
+        createdById:
+          type: string
+        updatedById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        biSettings:
+          $ref: '#/components/schemas/BISettingsDto'
+        pendingChanges:
+          type: boolean
+        isDeployed:
+          type: boolean
+        recordType:
+          deprecated: true
+          allOf:
+          - $ref: '#/components/schemas/FunnelRecordTypeDto'
+        description:
+          type: string
+        sweepFields:
+          type: object
+        fieldUsage:
+          type: object
+      required:
+      - id
+      - apiName
+      - accountId
+      - crmOrgId
+      - name
+      - funnelDetails
+      - restoredFromSnapshot
+      - createdById
+      - updatedById
+      - createdAt
+      - updatedAt
+      - biSettings
+      - pendingChanges
+      - isDeployed
+      - recordType
+      - description
+      - fieldUsage
+    BISettingsDto:
+      type: object
+      properties:
+        flags:
+          type: array
+          items:
+            $ref: '#/components/schemas/BIFlagDto'
+      required:
+      - flags
+    UpdateFunnelSnapshotDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

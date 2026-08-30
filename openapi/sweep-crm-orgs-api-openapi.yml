@@ -1,0 +1,657 @@
+openapi: 3.2.0
+info:
+  title: Sweep CRM Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: CRM Orgs
+paths:
+  /crm-orgs:
+    get:
+      operationId: CrmOrgsController_getOrgs
+      parameters:
+      - name: connectedOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/new:
+    post:
+      operationId: CrmOrgsController_createOrgs
+      parameters:
+      - name: demo
+        required: true
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrmOrgCreateDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/salesforce-oauth:
+    get:
+      operationId: CrmOrgsController_getSFDCOAuthPath
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}:
+    get:
+      operationId: CrmOrgsController_getOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+    patch:
+      operationId: CrmOrgsController_updateOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrmOrgUpdateDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/emailTemplates:
+    get:
+      operationId: CrmOrgsController_getEmailTemplates
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/object-types/{objectName}/child-relationship-names:
+    get:
+      operationId: CrmOrgsController_getChildRelationshipNames
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/apex-classes:
+    get:
+      operationId: CrmOrgsController_getApexClasses
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/salesforce-oauth2-code:
+    post:
+      operationId: CrmOrgsController_handleSFDCOAuthAuthorizationCode
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrmOrgOAuthDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/connect-anyway:
+    post:
+      operationId: CrmOrgsController_connectAnyway
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/object-types:
+    get:
+      operationId: CrmOrgsController_getObjectTypes
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: returns the available object types in the specified salto workspace of orgId
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/object-types-2:
+    get:
+      operationId: CrmOrgsController_getObjectTypes2
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: triggerableObjectsOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: updateableObjectsOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: createableObjectsOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: queryableObjectsOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: applyFiltersToBig5
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: countRecordTypes
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: returns the available object types in the specified salesforce orgId
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/users/member-properties:
+    get:
+      operationId: CrmOrgsController_listUsersWithMemberProperties
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeInactive
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: returns all users in org from the managed package
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/users:
+    get:
+      operationId: CrmOrgsController_listUsers
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includeInactive
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: returns all users in org (managed package not required)
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/users/{userId}/timeOff:
+    post:
+      operationId: CrmOrgsController_createUserTimeOff
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrmOrgUserTimeOff'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/users/{userId}/timeOff/{timeOffId}:
+    put:
+      operationId: CrmOrgsController_updateUserTimeOff
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: timeOffId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CrmOrgUserTimeOff'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+    delete:
+      operationId: CrmOrgsController_deleteUserTimeOff
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: timeOffId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/queues:
+    get:
+      operationId: CrmOrgsController_listQueues
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: returns all queues in org
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/funnels-and-record-types:
+    get:
+      operationId: CrmOrgsController_getAllFunnelsAndRecordTypes
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelsAndRecordTypesDto'
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/objects:
+    get:
+      operationId: CrmOrgsController_getSalesforceObjectTypes
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/objects/{objectName}/funnels-and-record-types:
+    get:
+      operationId: CrmOrgsController_getObjectFunnelsAndRecordTypes
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/objects/{objectName}/record-types/{recordTypeName}:
+    get:
+      operationId: CrmOrgsController_getLeadingFieldCandidatesForRecordType
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: recordTypeName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+  /crm-orgs/org/{orgId}/sweep-permission-set-group-assignment:
+    post:
+      operationId: CrmOrgsController_assignPermissionSetGroup
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: all
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - CRM Orgs
+components:
+  schemas:
+    CrmOrgCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        platform:
+          type: string
+          enum:
+          - salesforce
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
+      required:
+      - name
+      - platform
+      - isSandbox
+    FunnelsAndRecordTypesDto:
+      type: object
+      properties:
+        orgId:
+          type: string
+        activeOnly:
+          type: boolean
+        objectsData:
+          type: array
+          items:
+            type: object
+      required:
+      - orgId
+      - activeOnly
+      - objectsData
+    CrmOrgUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    CustomEcaDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
+      - clientSecret
+    CrmOrgUserTimeOff:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          enum:
+          - TIME_OFF
+          - SNOOZE
+          type: string
+        description:
+          type: string
+        startDate:
+          format: date-time
+          type: string
+        endDate:
+          format: date-time
+          type: string
+        timezone:
+          type: string
+      required:
+      - id
+      - type
+      - description
+      - startDate
+      - endDate
+      - timezone
+    CrmOrgOAuthDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        authCode:
+          type: string
+        isSandbox:
+          type: boolean
+        isOnboardingFastFetch:
+          type: boolean
+      required:
+      - crmOrgId
+      - authCode
+      - isSandbox
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

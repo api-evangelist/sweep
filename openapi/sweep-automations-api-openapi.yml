@@ -1,0 +1,1688 @@
+openapi: 3.2.0
+info:
+  title: Sweep Automations API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Automations
+paths:
+  /automations:
+    get:
+      operationId: AutomationController_getAutomations
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: all
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+    post:
+      operationId: AutomationController_createAutomation
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/{automationId}:
+    get:
+      operationId: AutomationController_getAutomationById
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: includeReadOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+    delete:
+      operationId: AutomationController_deleteAutomation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/{automationId}/history:
+    get:
+      operationId: AutomationController_getVersionHistory
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/read-only:
+    post:
+      operationId: AutomationController_createReadOnlyAutomation
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts:
+    post:
+      operationId: AutomationController_createAlert
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/marketing-attributions:
+    post:
+      operationId: AutomationController_createMarketingAttribution
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/marketing-attributions/templates:
+    post:
+      operationId: AutomationController_createMarketingAttributionTemplates
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments:
+    post:
+      operationId: AutomationController_createAssignment
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching:
+    post:
+      operationId: AutomationController_createDedupeOrMatching
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/ai-create:
+    post:
+      operationId: AutomationController_createAutomationWithAi
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationWithAiDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoTemplatesStructDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editAutomation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editAlert
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/marketing-attributions/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editMarketingAttribution
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editAssignment
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editDedupeOrMatching
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployAutomation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployAlert
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/marketing-attributions/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployMarketingAttribution
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployAssignment
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployDedupeOrMatching
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/ai-impact-analysis-chat:
+    post:
+      operationId: AutomationController_createAutomationAiImpactAnalysisChat
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiChatDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/ai-impact-analysis-chat:
+    post:
+      operationId: AutomationController_createAssignmentAiImpactAnalysisChat
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AiChatDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/activation/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_toggleActivation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationActivationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts/activation/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_toggleAlertActivation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationActivationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/activation/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_toggleAssignmentActivation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationActivationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching/activation/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_toggleDedupeOrMatchingActivation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationActivationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/admin-notification/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_notifyAdminOnAutomation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts/admin-notification/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_notifyAdminOnAlert
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/admin-notification/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_notifyAdminOnAssignment
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching/admin-notification/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_notifyAdminOnDedupeOrMatching
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/alerts/{automationId}:
+    delete:
+      operationId: AutomationController_deleteAlert
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/assignments/{automationId}:
+    delete:
+      operationId: AutomationController_deleteAssignment
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/marketing-attributions/{automationId}:
+    delete:
+      operationId: AutomationController_deleteMarketingAttribution
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/dedupe-matching/{automationId}:
+    delete:
+      operationId: AutomationController_deleteDedupeOrMatching
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking:
+    post:
+      operationId: AutomationController_createBooking
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAutomationDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking/{automationId}/{versionId}:
+    put:
+      operationId: AutomationController_editBooking
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAutomationDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutomationDto'
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking/deployment/{automationId}/{versionId}:
+    post:
+      operationId: AutomationController_deployBooking
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployAutomationDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking/activation/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_toggleBookingActivation
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutomationActivationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking/{automationId}:
+    delete:
+      operationId: AutomationController_deleteBooking
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/booking/admin-notification/{automationId}/{versionId}:
+    patch:
+      operationId: AutomationController_notifyAdminOnBooking
+      parameters:
+      - name: automationId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: versionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AdminNotificationDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/order/Default:
+    get:
+      operationId: AutomationController_listAutomationsExecutionOrder
+      parameters:
+      - name: triggerType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: enterStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: exitStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: inStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+    post:
+      operationId: AutomationController_deployAutomationsExecutionOrder
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/order/Alert:
+    get:
+      operationId: AutomationController_listAlertsExecutionOrder
+      parameters:
+      - name: triggerType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: enterStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: exitStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: inStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+    post:
+      operationId: AutomationController_deployAlertsExecutionOrder
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+  /automations/order/Assignment:
+    get:
+      operationId: AutomationController_listAssignmentsExecutionOrder
+      parameters:
+      - name: triggerType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: enterStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: exitStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: inStep
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: funnelId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Automations
+    post:
+      operationId: AutomationController_deployAssignmentsExecutionOrder
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Automations
+components:
+  schemas:
+    AutomationTriggerDateArrives:
+      type: object
+      properties:
+        relativeTime:
+          type: string
+          enum:
+          - exact
+          - before
+          - after
+        sourceField:
+          $ref: '#/components/schemas/AutomationImmediateFieldReference'
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Hours
+          - Days
+          - Weeks
+      required:
+      - relativeTime
+      - sourceField
+    FunnelRecordTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        objectName:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - objectName
+      - label
+      - description
+    AutomationImmediateFieldReference:
+      type: object
+      properties:
+        _leadingFieldId:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+      required:
+      - _leadingFieldId
+      - _leadingFieldLabels
+    AutomationSchedule:
+      type: object
+      properties:
+        offset:
+          type: object
+        executeTime:
+          type: string
+          pattern: /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
+        startDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        endDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        timezone:
+          type: string
+      required:
+      - executeTime
+      - startDate
+      - timezone
+    AutomationParamsFieldUpdate:
+      type: object
+      properties:
+        _leadingFieldId:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        fieldType:
+          type: string
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - EMAIL
+          - GEOLOCATION
+          - TEXTAREA
+          - LONGTEXTAREA
+          - REFERENCE
+          - MULTIPICKLIST
+          - NUMBER
+          - PERCENT
+          - PHONE
+          - PICKLIST
+          - COMBOBOX
+          - STRING
+          - TIME
+          - URL
+          - INTEGER
+          - DOUBLE
+          - ID
+          - ENCRYPTEDSTRING
+          - Unknown
+        operator:
+          type: string
+        operatorValue:
+          type: object
+      required:
+      - _leadingFieldId
+      - _leadingFieldLabels
+      - operator
+    CreateAutomationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
+        objectName:
+          type: string
+        type:
+          enum:
+          - Default
+          - Assignment
+          - Alert
+          - Dedupe
+          - Matching
+          - ScheduledAssignment
+          - ScheduledReport
+          - ScheduledJob
+          - MarketingAttribution
+          - Booking
+          type: string
+        orderHint:
+          $ref: '#/components/schemas/CreateAutomationOrderHintDto'
+      required:
+      - name
+      - automationDetails
+      - type
+    UpdateAutomationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
+      required:
+      - name
+      - automationDetails
+    AdminNotificationDto:
+      type: object
+      properties:
+        note:
+          type: string
+    AutomationRecordTypeRef:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      required:
+      - name
+      - label
+    CreateAutomationOrderHintDto:
+      type: object
+      properties:
+        orderGroupId:
+          type: string
+        insertBeforeAutomationId:
+          type: string
+      required:
+      - orderGroupId
+    AutomationTriggerTimeInStep:
+      type: object
+      properties:
+        stage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Hours
+          - Days
+          - Weeks
+      required:
+      - stage
+      - offsetValue
+      - offsetType
+    AutomationActivationDto:
+      type: object
+      properties:
+        isActive:
+          type: boolean
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        deployAs:
+          enum:
+          - AUTOMATION
+          - FLOW
+          type: string
+      required:
+      - isActive
+      - deployToOrgIds
+    DelayActionsParams:
+      type: object
+      properties:
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Minutes
+          - Hours
+          - Days
+        shouldReevaluate:
+          type: boolean
+      required:
+      - offsetValue
+      - offsetType
+    AutomationTriggerStageTransitionParams:
+      type: object
+      properties:
+        fromStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        toStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+    AutomationDto:
+      type: object
+      properties:
+        automationId:
+          type: string
+        versionId:
+          type: string
+        versionName:
+          type: string
+        name:
+          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
+        crmOrgId:
+          type: string
+        accountId:
+          type: string
+        objectName:
+          type: string
+        status:
+          enum:
+          - Draft
+          - Deployed
+          type: string
+        deployedAs:
+          enum:
+          - AUTOMATION
+          - FLOW
+          type: string
+        isActive:
+          type: boolean
+        notifyAdmin:
+          type: boolean
+        priority:
+          type: number
+        type:
+          enum:
+          - Default
+          - Assignment
+          - Alert
+          - Dedupe
+          - Matching
+          - ScheduledAssignment
+          - ScheduledReport
+          - ScheduledJob
+          - MarketingAttribution
+          - Booking
+          type: string
+        funnelRecordType:
+          $ref: '#/components/schemas/FunnelRecordTypeDto'
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - automationId
+      - versionId
+      - versionName
+      - name
+      - automationDetails
+      - crmOrgId
+      - accountId
+      - status
+      - isActive
+      - notifyAdmin
+      - priority
+      - type
+      - createdById
+      - createdAt
+      - updatedById
+      - updatedAt
+    AutoTemplatesStructDto:
+      type: object
+      properties:
+        fieldsList:
+          type: array
+          items:
+            type: string
+        automation:
+          type: object
+      required:
+      - fieldsList
+      - automation
+    AutomationParams:
+      type: object
+      properties:
+        fieldUpdate:
+          $ref: '#/components/schemas/AutomationParamsFieldUpdate'
+        stageExit:
+          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
+        stageEnter:
+          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
+        timeInStep:
+          $ref: '#/components/schemas/AutomationTriggerTimeInStep'
+        dateArrive:
+          $ref: '#/components/schemas/AutomationTriggerDateArrives'
+        schedule:
+          $ref: '#/components/schemas/AutomationSchedule'
+    SweepCondition:
+      type: object
+      properties:
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - criteria
+      - criteriaLogic
+    AutomationDetailsWithFunnelIdDto:
+      type: object
+      properties:
+        funnelId:
+          type: string
+        automationParams:
+          $ref: '#/components/schemas/AutomationParams'
+        recordTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/AutomationRecordTypeRef'
+        when:
+          $ref: '#/components/schemas/OptionalCondition'
+        delay:
+          $ref: '#/components/schemas/DelayActionsParams'
+        actions:
+          type: array
+          items:
+            type: object
+        triggerType:
+          type: string
+          enum:
+          - FIELD_UPDATE
+          - STAGE_EXIT
+          - STAGE_ENTER
+          - TIME_IN_STEP
+          - DATE_ARRIVE
+          - ON_CREATE
+          - ON_UPDATE
+          - ON_UPSERT
+          - SCHEDULED
+          - BOOKING_REQUEST
+        getDataAction:
+          type: object
+        permissionMode:
+          type: string
+          enum:
+          - USER_MODE
+          - SYSTEM_MODE
+      required:
+      - automationParams
+      - actions
+      - triggerType
+    DeployAutomationDto:
+      type: object
+      properties:
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        deployAs:
+          enum:
+          - AUTOMATION
+          - FLOW
+          type: string
+      required:
+      - deployToOrgIds
+    OptionalCondition:
+      type: object
+      properties:
+        isCriteria:
+          type: boolean
+        criteria:
+          $ref: '#/components/schemas/SweepCondition'
+    AutomationParamsStageReference:
+      type: object
+      properties:
+        _stageId:
+          type: string
+        stageName:
+          type: string
+      required:
+      - _stageId
+      - stageName
+    AiChatDto:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        message:
+          type: string
+        context:
+          type: object
+        isFirstMessage:
+          type: boolean
+      required:
+      - sessionId
+      - message
+      - context
+      - isFirstMessage
+    CreateAutomationWithAiDto:
+      type: object
+      properties:
+        description:
+          type: string
+      required:
+      - description
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

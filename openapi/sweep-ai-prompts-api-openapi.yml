@@ -1,0 +1,311 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI Prompts API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: AI Prompts
+paths:
+  /ai-prompts/prompt-groups:
+    get:
+      operationId: AiPromptsController_getPromptGroups
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromptGroupResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+    post:
+      operationId: AiPromptsController_createPromptGroup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePromptGroupDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptGroupResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+  /ai-prompts:
+    get:
+      operationId: AiPromptsController_getPrompts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromptResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+    post:
+      operationId: AiPromptsController_createPrompt
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePromptDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+  /ai-prompts/prompt-groups/{groupId}:
+    patch:
+      operationId: AiPromptsController_updatePromptGroup
+      parameters:
+      - name: groupId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePromptGroupDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptGroupResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+    delete:
+      operationId: AiPromptsController_deletePromptGroup
+      parameters:
+      - name: groupId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+  /ai-prompts/{promptId}:
+    patch:
+      operationId: AiPromptsController_updatePrompt
+      parameters:
+      - name: promptId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePromptDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromptResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+    delete:
+      operationId: AiPromptsController_deletePrompt
+      parameters:
+      - name: promptId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+  /ai-prompts/optimize:
+    post:
+      operationId: AiPromptsController_optimizePrompt
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OptimizePromptDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - AI Prompts
+components:
+  schemas:
+    UpdatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
+    OptimizePromptDto:
+      type: object
+      properties:
+        promptText:
+          type: string
+      required:
+      - promptText
+    UpdatePromptGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+    PromptResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type:
+          - string
+          - 'null'
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        updatedById:
+          type: string
+      required:
+      - id
+      - name
+      - promptText
+      - accountId
+      - createdAt
+      - updatedAt
+    PromptGroupResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+        iconName:
+          type: string
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        updatedById:
+          type: string
+      required:
+      - id
+      - name
+      - isPinned
+      - accountId
+      - createdAt
+      - updatedAt
+    CreatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
+      required:
+      - name
+      - promptText
+    CreatePromptGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+        iconName:
+          type: string
+      required:
+      - name
+      - isPinned
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

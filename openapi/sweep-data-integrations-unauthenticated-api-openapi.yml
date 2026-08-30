@@ -1,0 +1,119 @@
+openapi: 3.2.0
+info:
+  title: Sweep Data Integrations (Unauthenticated) API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Data Integrations (Unauthenticated)
+paths:
+  /data-integrations/slack/redirect-to-oauth:
+    get:
+      operationId: DataIntegrationsUnauthenticatedController_redirectToSlackAuthPath
+      parameters:
+      - name: state
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations (Unauthenticated)
+  /data-integrations/slack/incoming-events:
+    post:
+      operationId: DataIntegrationsUnauthenticatedController_SlackIncomingEvents
+      parameters:
+      - name: X-Slack-Request-Timestamp
+        required: true
+        in: header
+        schema:
+          type: string
+      - name: X-Slack-Signature
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Buffer'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations (Unauthenticated)
+  /data-integrations/slack/interactive-components-events:
+    post:
+      operationId: DataIntegrationsUnauthenticatedController_SlackInteractiveEvents
+      parameters:
+      - name: X-Slack-Request-Timestamp
+        required: true
+        in: header
+        schema:
+          type: string
+      - name: X-Slack-Signature
+        required: true
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations (Unauthenticated)
+  /data-integrations/slack/external-select:
+    post:
+      operationId: DataIntegrationsUnauthenticatedController_SlackExternalSelect
+      parameters:
+      - name: X-Slack-Request-Timestamp
+        required: true
+        in: header
+        schema:
+          type: string
+      - name: X-Slack-Signature
+        required: true
+        in: header
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Buffer'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations (Unauthenticated)
+  /data-integrations/teams/redirect-to-oauth:
+    get:
+      operationId: DataIntegrationsUnauthenticatedController_redirectToMsTeamsOAuthPath
+      parameters:
+      - name: data
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Integrations (Unauthenticated)
+components:
+  schemas:
+    Buffer:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

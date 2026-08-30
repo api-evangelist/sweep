@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  title: Sweep Diff API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Diff
+paths:
+  /diff/snapshots/{snapshotId}:
+    get:
+      operationId: DiffController_diffBySnapshotId
+      parameters:
+      - name: snapshotId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Diff
+  /diff/funnels/{funnelId}:
+    get:
+      operationId: DiffController_diffByFunnelId
+      parameters:
+      - name: funnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Diff
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

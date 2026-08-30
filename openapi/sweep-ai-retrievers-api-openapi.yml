@@ -1,0 +1,4493 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI Retrievers API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: AI Retrievers
+paths:
+  /ai-retrievers/whoami:
+    get:
+      operationId: AiRetrieversController_getMe
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/parse/{objectName}:
+    get:
+      operationId: AiRetrieversController_getObjectParsedData
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: withFieldsUtilization
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/objects/{objectName}/sweep-automations:
+    get:
+      operationId: AiRetrieversController_getObjectSweepAutomations
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/field-consumers/sfdc:
+    get:
+      operationId: AiRetrieversController_getFieldConsumers
+      parameters:
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: fieldName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/field-consumers/sweep:
+    get:
+      operationId: AiRetrieversController_getFieldSweepConsumers
+      parameters:
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: fieldName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}:
+    get:
+      operationId: AiRetrieversController_getConfigurationByName
+      parameters:
+      - name: configurationName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: metadataType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}/nacl:
+    get:
+      operationId: AiRetrieversController_getConfigurationNacl
+      parameters:
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/objects/{objectName}/nacl:
+    get:
+      operationId: AiRetrieversController_getObjectNacl
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-automation/{automationName}/matches:
+    get:
+      operationId: AiRetrieversController_getAutomationMatches
+      parameters:
+      - name: automationName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-automation/{automationName}:
+    get:
+      operationId: AiRetrieversController_getAutomationByName
+      parameters:
+      - name: automationName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/best-practices:
+    get:
+      operationId: AiRetrieversController_getBestPractices
+      parameters:
+      - name: bestPracticeId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: keyword
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: name
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: applicableResourceType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: severity
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/issues/{agentId}/map:
+    get:
+      operationId: AiRetrieversController_getIssueMap
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/issues/{agentId}:
+    get:
+      operationId: AiRetrieversController_searchIssues
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: issueId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: keyword
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: resourceType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: resourceName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: severity
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: status
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: resolvedInSalesforce
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/issues/{agentId}/history:
+    get:
+      operationId: AiRetrieversController_getIssuesHistory
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: configurationName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: configurationType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: bestPracticeName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}/dependencies:
+    get:
+      operationId: AiRetrieversController_getConfigurationDependencies
+      parameters:
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}/consumers:
+    get:
+      operationId: AiRetrieversController_getConfigurationConsumers
+      parameters:
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-automation/{automationName}/dependencies:
+    get:
+      operationId: AiRetrieversController_getSweepAutomationDependencies
+      parameters:
+      - name: automationName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}/cpq-relationships:
+    get:
+      operationId: AiRetrieversController_getCpqRelationships
+      parameters:
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configuration/{configurationName}/cpq-relationships/implementations:
+    get:
+      operationId: AiRetrieversController_getCpqRelationshipsImplementations
+      parameters:
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: activeOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-territories:
+    get:
+      operationId: AiRetrieversController_getSweepTerritories
+      parameters:
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/users/{userId}:
+    get:
+      operationId: AiRetrieversController_getUser
+      parameters:
+      - name: userId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-time-off:
+    get:
+      operationId: AiRetrieversController_getSweepTimeOff
+      parameters:
+      - name: userIds
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: includeInactive
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/records/{recordId}:
+    get:
+      operationId: AiRetrieversController_getRecordData
+      parameters:
+      - name: recordId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/run-soql:
+    post:
+      operationId: AiRetrieversController_getAnySoqlQuery
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SfdcRunSoqlQueryDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/run-soql-next:
+    post:
+      operationId: AiRetrieversController_getAnySoqlQueryMore
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SfdcRunSoqlNextQueryDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/event-monitoring/list-events:
+    post:
+      operationId: AiRetrieversController_listEventMonitoringEvents
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventMonitoringListEventsDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/event-monitoring/aggregate:
+    post:
+      operationId: AiRetrieversController_aggregateEventMonitoringEvents
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventMonitoringAggregateDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/run-aggregate-soql:
+    post:
+      operationId: AiRetrieversController_runAggregateSoqlQuery
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SfdcRunSoqlQueryDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/run-detailed-soql:
+    post:
+      operationId: AiRetrieversController_runDetailedSoqlQuery
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SfdcRunSoqlQueryDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/salesforce-limits:
+    get:
+      operationId: AiRetrieversController_getOrgLimits
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sobject-describe/{objectName}:
+    get:
+      operationId: AiRetrieversController_getSObjectDescribe
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/sweep-assignment-groups:
+    get:
+      operationId: AiRetrieversController_getSweepAssignmentGroups
+      parameters:
+      - name: groupId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: nameContains
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: memberNameContains
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/report-type-fields:
+    get:
+      operationId: AiRetrieversController_getReportTypeFields
+      parameters:
+      - name: reportType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: isCustomType
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/report-types:
+    get:
+      operationId: AiRetrieversController_getReportTypes
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/deploy-metadata-xml:
+    post:
+      operationId: AiRetrieversController_deployMetadataXml
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeployMetadataDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/deploy-salesforce-records:
+    post:
+      operationId: AiRetrieversController_deploySalesforceRecords
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploySalesforceRecordsDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: 'Deploy (CREATE or UPDATE) Salesforce records via the REST Data API.
+
+
+        NOTE: Salesforce REST API limits writes to 200 records per call. The Python
+
+        client enforces this cap; we do not re-validate here.
+
+
+        TODO: Gate with a dedicated @Permissions(''access:deploy-salesforce-records'')
+
+        claim once defined. Currently access is controlled by ApiKeyAuthGuard
+
+        + isBuildModeEnabled on the account.'
+      tags:
+      - AI Retrievers
+  /ai-retrievers/retrieve-metadata-xml:
+    get:
+      operationId: AiRetrieversController_retrieveMetadataXml
+      parameters:
+      - name: metadataType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataXmlName
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/configurations-ai-summaries:
+    post:
+      operationId: AiRetrieversController_getConfigurationsAiSummaries
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfigurationsSummariesDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/permission-set-definition:
+    get:
+      operationId: AiRetrieversController_getPermissionSetDefinition
+      parameters:
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: sections
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: objects
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: countOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/profile-definition:
+    get:
+      operationId: AiRetrieversController_getProfileDefinition
+      parameters:
+      - name: id
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: sections
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: objects
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: countOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/records/{recordId}/documents:
+    get:
+      operationId: AiRetrieversController_getRecordDocuments
+      parameters:
+      - name: recordId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/metadata-types/{metadataTypeName}:
+    get:
+      operationId: AiRetrieversController_listMetadata
+      parameters:
+      - name: metadataTypeName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/metadata-types/settings/{settingsType}:
+    get:
+      operationId: AiRetrieversController_getSettingsNaclOrTypes
+      parameters:
+      - name: settingsType
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/funnel-map/{funnelMapId}:
+    put:
+      operationId: AiRetrieversController_updateFunnelMapWithMetadata
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FunnelMapUpdateFunnelMapDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FunnelMap'
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/search-metadata:
+    post:
+      operationId: AiRetrieversController_searchMetadataPost
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchMetadataDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/recordtypes-with-potential-leading-fields:
+    get:
+      operationId: AiRetrieversController_getRecordTypesWithPotentialLeadingFields
+      parameters:
+      - name: objectName
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/objects/counters:
+    get:
+      operationId: AiRetrieversController_queryDocumentationObjectCounters
+      parameters:
+      - name: objectNames
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: topN
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: sortBy
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: sortOrder
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: includeManaged
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: includeStandard
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DocumentationObjectCounters'
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/audit-trail:
+    get:
+      operationId: AiRetrieversController_queryAuditTrail
+      parameters:
+      - name: date_from
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+      - name: date_to
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: search_text
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: created_by_name
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/mcp-connections:
+    get:
+      operationId: AiRetrieversController_getMcpConnections
+      parameters:
+      - name: connectionIds
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/search-snowflake-elements:
+    get:
+      operationId: AiRetrieversController_searchSnowflakeElements
+      parameters:
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: elementTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: schema
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-element-by-name/{name}:
+    get:
+      operationId: AiRetrieversController_getSnowflakeElementByName
+      parameters:
+      - name: name
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: schema
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-element/{metadataId}/implementation:
+    get:
+      operationId: AiRetrieversController_getSnowflakeElementImplementation
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-element/{metadataId}/relationships:
+    get:
+      operationId: AiRetrieversController_getSnowflakeElementRelationships
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-elements/{elementType}:
+    get:
+      operationId: AiRetrieversController_listSnowflakeElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: schema
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-element-summaries:
+    post:
+      operationId: AiRetrieversController_getSnowflakeElementSummaries
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/snowflake-element-distribution:
+    get:
+      operationId: AiRetrieversController_getSnowflakeElementDistribution
+      parameters:
+      - name: nodeType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupProperty
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: relationship
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-table/{tableName}/fields:
+    get:
+      operationId: AiRetrieversController_getServiceNowTableFields
+      parameters:
+      - name: tableName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/search-servicenow-elements:
+    get:
+      operationId: AiRetrieversController_searchServiceNowElements
+      parameters:
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: elementTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-element-by-name/{name}:
+    get:
+      operationId: AiRetrieversController_getServiceNowElementByName
+      parameters:
+      - name: name
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-element/{metadataId}/implementation:
+    get:
+      operationId: AiRetrieversController_getServiceNowElementImplementation
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-element/{metadataId}/relationships:
+    get:
+      operationId: AiRetrieversController_getServiceNowElementRelationships
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-elements/{elementType}:
+    get:
+      operationId: AiRetrieversController_listServiceNowElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-element-summaries:
+    post:
+      operationId: AiRetrieversController_getServiceNowElementSummaries
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/servicenow-element-distribution:
+    get:
+      operationId: AiRetrieversController_getServiceNowElementDistribution
+      parameters:
+      - name: nodeType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupProperty
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: relationship
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/search-data360-elements:
+    get:
+      operationId: AiRetrieversController_searchData360Elements
+      parameters:
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: elementTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element-by-name/{name}:
+    get:
+      operationId: AiRetrieversController_getData360ElementByName
+      parameters:
+      - name: name
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element/{metadataId}/implementation:
+    get:
+      operationId: AiRetrieversController_getData360ElementImplementation
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element/{metadataId}/relationships:
+    get:
+      operationId: AiRetrieversController_getData360ElementRelationships
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element/{metadataId}/child-count:
+    get:
+      operationId: AiRetrieversController_getData360ElementChildCount
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element-distribution:
+    get:
+      operationId: AiRetrieversController_getData360ElementDistribution
+      parameters:
+      - name: nodeType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupProperty
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: relationship
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-elements/{elementType}:
+    get:
+      operationId: AiRetrieversController_listData360Elements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/data360-element-summaries:
+    post:
+      operationId: AiRetrieversController_getData360ElementSummaries
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/search-workato-elements:
+    get:
+      operationId: AiRetrieversController_searchWorkatoElements
+      parameters:
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: elementTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: pageSize
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element-by-name/{name}:
+    get:
+      operationId: AiRetrieversController_getWorkatoElementByName
+      parameters:
+      - name: name
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element/{metadataId}/implementation:
+    get:
+      operationId: AiRetrieversController_getWorkatoElementImplementation
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element/{metadataId}/relationships:
+    get:
+      operationId: AiRetrieversController_getWorkatoElementRelationships
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element/{metadataId}/child-count:
+    get:
+      operationId: AiRetrieversController_getWorkatoElementChildCount
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: elementType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element-distribution:
+    get:
+      operationId: AiRetrieversController_getWorkatoElementDistribution
+      parameters:
+      - name: nodeType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupProperty
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: groupType
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: relationship
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: direction
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-elements/{elementType}:
+    post:
+      operationId: AiRetrieversController_listWorkatoElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkatoListElementsDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-recipes-referencing-field:
+    get:
+      operationId: AiRetrieversController_listWorkatoRecipesReferencingField
+      parameters:
+      - name: fieldPrefix
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      - name: offset
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/workato-element-summaries:
+    post:
+      operationId: AiRetrieversController_getWorkatoElementSummaries
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/retrieve-metadata-types:
+    post:
+      operationId: AiRetrieversController_retrieveMetadataTypes
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RetrieveMetadataTypesDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/agent-files:
+    post:
+      operationId: AiRetrieversController_createAgentFile
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiAgentFile'
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+    put:
+      operationId: AiRetrieversController_updateAgentFile
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AiAgentFile'
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/artifacts/latest:
+    get:
+      operationId: AiRetrieversController_getLatestArtifact
+      parameters:
+      - name: artifactId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}:
+    get:
+      operationId: ProjectToolsController_getProject
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: includePromptBodies
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+    patch:
+      operationId: ProjectToolsController_updateProject
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectToolsDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/prompts/search:
+    get:
+      operationId: ProjectToolsController_searchPrompts
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: query
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: limit
+        required: true
+        in: query
+        schema:
+          type: number
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/sections:
+    post:
+      operationId: ProjectToolsController_createSection
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectToolsSectionDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/sections/{sectionId}:
+    patch:
+      operationId: ProjectToolsController_updateSection
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: sectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectToolsSectionDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+    delete:
+      operationId: ProjectToolsController_deleteSection
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: sectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/sections/{sectionId}/prompts:
+    post:
+      operationId: ProjectToolsController_createPrompt
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: sectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProjectToolsPromptDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/prompts/{promptId}:
+    patch:
+      operationId: ProjectToolsController_updatePrompt
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: promptId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectToolsPromptDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+    delete:
+      operationId: ProjectToolsController_deletePrompt
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: promptId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+  /ai-retrievers/projects/{projectId}/sections/{sectionId}/prompts/reorder:
+    patch:
+      operationId: ProjectToolsController_reorderPrompts
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: sectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReorderProjectToolsPromptsDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI Retrievers
+components:
+  schemas:
+    BestPractice:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        isSystem:
+          type: boolean
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - severity
+      - text
+      - isSystem
+      - applicableDomain
+      - applicableResourceType
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - updatedById
+      - updatedBy
+      - createdAt
+      - updatedAt
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    FreePosition:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+      required:
+      - x
+      - y
+    FunnelMapHubspot:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    SfdcRunSoqlNextQueryDto:
+      type: object
+      properties: {}
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    AiAgentBestPractice:
+      type: object
+      properties:
+        aiAgentId:
+          type: string
+        bestPracticeId:
+          type: string
+        aiAgent:
+          $ref: '#/components/schemas/AiAgent'
+        bestPractice:
+          $ref: '#/components/schemas/BestPractice'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - aiAgentId
+      - bestPracticeId
+      - aiAgent
+      - bestPractice
+      - createdAt
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    AiProjectPrompt:
+      type: object
+      properties:
+        id:
+          type: string
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+        isCompleted:
+          type: boolean
+        completedById:
+          type:
+          - string
+          - 'null'
+        completedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+      required:
+      - id
+      - promptTitle
+      - promptText
+      - mode
+      - isCompleted
+      - completedById
+      - completedAt
+      - projectId
+      - project
+    DeployMetadataDto:
+      type: object
+      properties: {}
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelMapStickyNote:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        stickyNoteId:
+          type: string
+        backgroundColor:
+          type: string
+        richText:
+          type: string
+        textScale:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - stickyNoteId
+      - backgroundColor
+      - richText
+      - textScale
+      - sectionId
+      - section
+      - xyPosition
+      - width
+      - height
+    ThirdPartyFunnel:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          type: object
+        steps:
+          type: array
+          items:
+            type: object
+        funnelLinks:
+          type: array
+          items:
+            type: object
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+      required:
+      - id
+      - accountId
+      - account
+      - name
+      - description
+      - steps
+      - funnelLinks
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+    RetrieveMetadataTypesDto:
+      type: object
+      properties: {}
+    ReorderProjectToolsPromptsDto:
+      type: object
+      properties:
+        promptIds:
+          maxItems: 500
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - promptIds
+    FunnelMapSection:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        sectionId:
+          type: string
+        backgroundColor:
+          type: string
+        name:
+          type: string
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - sectionId
+      - backgroundColor
+      - name
+      - xyPosition
+      - width
+      - height
+    AiAgent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - Documentation
+          - Process Optimization
+          - MonitoringV2
+          - Permissions
+          - Support
+          type: string
+        contextComponents:
+          type: object
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+        projectId:
+          type:
+          - string
+          - 'null'
+        project:
+          allOf:
+          - $ref: '#/components/schemas/AiProject'
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        bestPractices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentBestPractice'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentMetadataElement'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - contextComponents
+      - userInstructions
+      - systemInstructions
+      - projectId
+      - project
+      - orgId
+      - org
+      - files
+      - bestPractices
+      - metadataElements
+      - createdAt
+      - updatedAt
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
+      - createdById
+      - createdBy
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    AiAgentFile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+          type: string
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        summary:
+          type: string
+        contentHash:
+          type:
+          - string
+          - 'null'
+          description: 'Null until the shared summary row exists. MySQL permits this because a composite
+
+            foreign key with a null part is not checked.'
+        fileCache:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFileCache'
+        status:
+          enum:
+          - processing
+          - completed
+          - failed
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - agentId
+      - agent
+      - createdById
+      - createdBy
+      - createdAt
+      - summary
+      - contentHash
+      - fileCache
+      - status
+    RoleGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    AiChatFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - createdById
+      - createdBy
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
+    WorkatoEdgePredicateDto:
+      type: object
+      properties:
+        field:
+          type: string
+          enum:
+          - projectId
+          - folderId
+          - connectionId
+          - collaboratorId
+          - tag
+          - app
+          - recipeId
+        op:
+          type: string
+          enum:
+          - has
+          - hasNot
+        value:
+          type: string
+      required:
+      - field
+      - op
+      - value
+    AiTableArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        markdown:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - markdown
+      - createdAt
+      - updatedAt
+    FunnelMapThirdParty:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        thirdPartyFunnelId:
+          type: string
+        thirdPartyFunnel:
+          $ref: '#/components/schemas/ThirdPartyFunnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - thirdPartyFunnelId
+      - thirdPartyFunnel
+      - row
+      - column
+      - sectionId
+      - section
+    FunnelMapText:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        textId:
+          type: string
+        richText:
+          type: string
+        textScale:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - textId
+      - richText
+      - textScale
+      - sectionId
+      - section
+      - xyPosition
+      - width
+      - height
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    AiProjectSection:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        sortOrder:
+          type: number
+        type:
+          enum:
+          - prompts
+          - artifacts
+          - files
+          type: string
+        isDefault:
+          type: boolean
+          description: 'When true, this section is the auto-placement target for new artifacts
+
+            produced by `processFinalResult()`. Only one default section per project
+
+            (only applicable when `type = artifacts`).
+
+            A default section can be renamed; it can be deleted only when empty.
+
+            If deleted and new artifacts arrive, it is re-created automatically.'
+        runMode:
+          description: 'How "Run section" executes prompts. Only applicable when `type = prompts`.
+
+            - `individual`: each prompt creates its own chat (default)
+
+            - `queue`: one chat, prompts run as sequential messages'
+          enum:
+          - individual
+          - queue
+          type: string
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiProjectSectionItem'
+      required:
+      - id
+      - name
+      - sortOrder
+      - type
+      - isDefault
+      - runMode
+      - projectId
+      - project
+      - items
+    AiProjectOriginTemplate:
+      type: object
+      properties:
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+        originTemplateExternalId:
+          type: string
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+      required:
+      - projectId
+      - project
+      - originTemplateExternalId
+    UpdateProjectToolsDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        instructions:
+          type: string
+    WorkatoListElementsDto:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkatoEdgePredicateDto'
+        limit:
+          type: number
+          minimum: 1
+        offset:
+          type: number
+          minimum: 0
+    AiAgentMetadataElement:
+      type: object
+      properties:
+        aiAgentId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        aiAgent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - aiAgentId
+      - name
+      - type
+      - aiAgent
+      - createdAt
+    AiArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        artifactId:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        code:
+          type: string
+        version:
+          type: number
+        isShared:
+          type: boolean
+        isPublic:
+          type: boolean
+        toolResults:
+          type:
+          - object
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - artifactId
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - code
+      - version
+      - isShared
+      - isPublic
+      - toolResults
+      - createdAt
+      - updatedAt
+    FunnelMapUpdateFunnelMapDto:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            type: object
+        version:
+          type: number
+      required:
+      - operations
+      - version
+    UpdateProjectToolsPromptDto:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
+    Funnel:
+      type: object
+      properties:
+        id:
+          type: string
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        restoredFromSnapshot:
+          type: number
+        currentlyDeployedSnapshotId:
+          type: string
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        description:
+          type: string
+        objectName:
+          type: string
+        leadingFieldId:
+          type: string
+        recordTypeName:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        biSettings:
+          $ref: '#/components/schemas/BISettingsDto'
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+      required:
+      - id
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelDetails
+      - restoredFromSnapshot
+      - currentlyDeployedSnapshotId
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - description
+      - objectName
+      - leadingFieldId
+      - recordTypeName
+      - updatedAt
+      - biSettings
+      - crmOrgId
+      - crmOrg
+    EventMonitoringListEventsDto:
+      type: object
+      properties:
+        eventType:
+          type: string
+        startDate:
+          type: string
+          pattern: ISO_DATE
+        endDate:
+          type: string
+          pattern: ISO_DATE
+        filters:
+          type: object
+        fields:
+          type: array
+          items:
+            type: string
+        orderBy:
+          type: string
+        countOnly:
+          type: boolean
+        distinct:
+          type: boolean
+      required:
+      - eventType
+      - startDate
+      - endDate
+    EventMonitoringAggregateDto:
+      type: object
+      properties:
+        eventType:
+          type: string
+        startDate:
+          type: string
+          pattern: ISO_DATE
+        endDate:
+          type: string
+          pattern: ISO_DATE
+        groupBy:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        filters:
+          type: object
+        orderBy:
+          type: string
+        limit:
+          type: number
+          minimum: 1
+          maximum: 200000
+      required:
+      - eventType
+      - startDate
+      - endDate
+      - groupBy
+    RoleGroupAccountRole:
+      type: object
+      properties:
+        role:
+          type: object
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - roleGroupId
+      - roleGroup
+    CreateProjectToolsPromptDto:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
+        sortOrder:
+          type: number
+          minimum: 0
+      required:
+      - title
+      - body
+      - mode
+    FunnelMapRecordType:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        recordTypeName:
+          type: string
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - recordTypeName
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    AiAgentFileCache:
+      type: object
+      properties:
+        contentHash:
+          type: string
+        name:
+          type: string
+        summary:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - contentHash
+      - name
+      - summary
+      - files
+      - createdAt
+      - updatedAt
+    AiProject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        visibility:
+          enum:
+          - team
+          - private
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        autonomyMode:
+          enum:
+          - guided
+          - balanced
+          - autonomous
+          type:
+          - string
+          - 'null'
+        originTemplateId:
+          description: 'API-facing origin template id. Not a DB column — populated from
+
+            `originTemplate.originTemplateExternalId` when that relation is loaded.'
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+          type:
+          - string
+          - 'null'
+        originTemplate:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectOriginTemplate'
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiProjectSection'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - description
+      - visibility
+      - accountId
+      - account
+      - createdById
+      - autonomyMode
+      - agent
+      - sections
+      - createdAt
+      - updatedAt
+    FunnelDeployment:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        snapshotId:
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshot'
+        deployedById:
+          type: string
+        deployedBy:
+          $ref: '#/components/schemas/User'
+        deployedAt:
+          format: date-time
+          type: string
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrg
+      - snapshotId
+      - snapshot
+      - deployedById
+      - deployedBy
+      - deployedAt
+      - status
+    SweepFieldToFunnelMapPin:
+      type: object
+      properties:
+        accountId:
+          type: string
+        sweepFieldId:
+          type: string
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+      required:
+      - accountId
+      - sweepFieldId
+      - funnelMapId
+      - funnelMap
+    CrmOrg:
+      type: object
+      properties:
+        id:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        name:
+          type: string
+        platform:
+          type: string
+        instanceUrl:
+          type: string
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        isDemo:
+          type: boolean
+        isConnected:
+          type: object
+          default: false
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        fetchStatus:
+          enum:
+          - fetching
+          - initial_fetching
+          - error
+          - fetched
+          - invalid_credentials
+          type: string
+        lastSuccessfulFetchTs:
+          type: number
+        disconnectedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        accountId:
+          type: string
+        connectedUser:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        optMonitoring:
+          type: boolean
+        graphVersion:
+          type:
+          - string
+          - 'null'
+        graphDbReleaseChannel:
+          enum:
+          - stable
+          - beta
+          - shadow
+          type:
+          - string
+          - 'null'
+        tier:
+          enum:
+          - T0
+          - T1
+          type: string
+      required:
+      - id
+      - org
+      - name
+      - platform
+      - instanceUrl
+      - isSandbox
+      - isMain
+      - isDemo
+      - isConnected
+      - createdById
+      - createdBy
+      - fetchStatus
+      - lastSuccessfulFetchTs
+      - disconnectedAt
+      - createdAt
+      - updatedAt
+      - accountId
+      - connectedUser
+      - account
+      - deployments
+      - optMonitoring
+      - graphVersion
+      - graphDbReleaseChannel
+      - tier
+    FunnelMapMember:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        funnelId:
+          type: string
+        funnel:
+          $ref: '#/components/schemas/Funnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - funnelId
+      - funnel
+      - row
+      - column
+      - sectionId
+      - section
+    FunnelMap:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        defaultCrmOrgId:
+          type: string
+        defaultCrmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        version:
+          type: number
+        isPinned:
+          type: boolean
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapSection'
+        funnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapMember'
+        thirdPartyFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapThirdParty'
+        recordTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapRecordType'
+        hubspotFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapHubspot'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapMetadataElement'
+        stickyNotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapStickyNote'
+        texts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapText'
+        sweepFieldsPins:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldToFunnelMapPin'
+      required:
+      - id
+      - accountId
+      - account
+      - name
+      - defaultCrmOrgId
+      - defaultCrmOrg
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - version
+      - isPinned
+      - sections
+      - funnels
+      - thirdPartyFunnels
+      - recordTypes
+      - hubspotFunnels
+      - metadataElements
+      - stickyNotes
+      - texts
+      - sweepFieldsPins
+    SearchMetadataDto:
+      type: object
+      properties: {}
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    SfdcRunSoqlQueryDto:
+      type: object
+      properties: {}
+    ConfigurationsSummariesDto:
+      type: object
+      properties: {}
+    AiChat:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        aiChatDetails:
+          type: object
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        userId:
+          type:
+          - string
+          - 'null'
+        sfdcUserId:
+          type:
+          - string
+          - 'null'
+        isFavorite:
+          type: boolean
+        folderId:
+          type:
+          - string
+          - 'null'
+        folder:
+          $ref: '#/components/schemas/AiChatFolder'
+        chatContext:
+          type: string
+        chatSource:
+          enum:
+          - Sweep
+          - Salesforce
+          type: string
+      required:
+      - id
+      - name
+      - aiChatDetails
+      - orgId
+      - org
+      - accountId
+      - account
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
+      - userId
+      - sfdcUserId
+      - isFavorite
+      - folderId
+      - folder
+      - chatContext
+      - chatSource
+    CreateProjectToolsSectionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        runMode:
+          type: string
+          enum:
+          - individual
+          - queue
+        sortOrder:
+          type: number
+          minimum: 0
+      required:
+      - name
+      - runMode
+    Org:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+      - id
+      - accountId
+      - account
+    DocumentationObjectCounters:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        label:
+          type: string
+        namespace:
+          type: string
+        customFields:
+          type: number
+        standardFields:
+          type: number
+        flows:
+          type: number
+        processBuilderFlows:
+          type: number
+        workflowRules:
+          type: number
+        apexTriggers:
+          type: number
+        apexClasses:
+          type: number
+        approvalProcesses:
+          type: number
+        validationRules:
+          type: number
+        layouts:
+          type: number
+        recordTypes:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - crmOrgId
+      - name
+      - crmOrg
+      - label
+      - namespace
+      - customFields
+      - standardFields
+      - flows
+      - processBuilderFlows
+      - workflowRules
+      - apexTriggers
+      - apexClasses
+      - approvalProcesses
+      - validationRules
+      - layouts
+      - recordTypes
+      - createdAt
+      - updatedAt
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    BIFlagDto:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - TIMESTAMP
+          - OWNER
+          - OWNER_ROLE
+        value:
+          type: boolean
+      required:
+      - name
+      - value
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    FunnelMapMetadataElement:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        org:
+          $ref: '#/components/schemas/Org'
+        crmOrgId:
+          type: string
+        metadataId:
+          type: string
+        funnelLinks:
+          type: array
+          items:
+            type: object
+        color:
+          type: string
+        icon:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - org
+      - crmOrgId
+      - metadataId
+      - funnelLinks
+      - color
+      - icon
+      - row
+      - column
+      - sectionId
+      - section
+    UpdateProjectToolsSectionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        sortOrder:
+          type: number
+          minimum: 0
+    DeploySalesforceRecordsDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        records:
+          description: 'Array of plain JSON objects keyed by Salesforce field API name.
+
+            For `UPDATE`, each record MUST include an `Id` field.'
+          type: array
+          items:
+            type: object
+        operation:
+          type: string
+          enum:
+          - CREATE
+          - UPDATE
+        allOrNothing:
+          type: boolean
+          description: 'If true (default), Salesforce rolls back the whole batch when any record
+
+            fails. If false, each record is committed independently.'
+      required:
+      - objectName
+      - records
+      - operation
+    AiProjectSectionItem:
+      type: object
+      properties:
+        id:
+          type: string
+        sortOrder:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/AiProjectSection'
+        promptId:
+          type:
+          - string
+          - 'null'
+        prompt:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectPrompt'
+        artifactId:
+          type:
+          - string
+          - 'null'
+        artifact:
+          allOf:
+          - $ref: '#/components/schemas/AiArtifact'
+        tableArtifactId:
+          type:
+          - string
+          - 'null'
+        tableArtifact:
+          allOf:
+          - $ref: '#/components/schemas/AiTableArtifact'
+        fileId:
+          type:
+          - string
+          - 'null'
+        file:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFile'
+      required:
+      - id
+      - sortOrder
+      - sectionId
+      - section
+      - promptId
+      - prompt
+      - artifactId
+      - artifact
+      - tableArtifactId
+      - tableArtifact
+      - fileId
+      - file
+    BISettingsDto:
+      type: object
+      properties:
+        flags:
+          type: array
+          items:
+            $ref: '#/components/schemas/BIFlagDto'
+      required:
+      - flags
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

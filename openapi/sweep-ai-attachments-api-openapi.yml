@@ -1,0 +1,109 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI Attachments API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: ai-attachments
+paths:
+  /ai-attachments/parse:
+    post:
+      operationId: AiAttachmentsController_parse
+      parameters: []
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - ai-attachments
+  /ai-attachments/{id}/download-url:
+    get:
+      operationId: AiAttachmentsController_getDownloadUrl
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - ai-attachments
+  /ai-attachments/{id}/preview:
+    get:
+      operationId: AiAttachmentsController_getPreview
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - ai-attachments
+  /ai-attachments/chats/{chatId}/upload-urls:
+    post:
+      operationId: AiAttachmentsController_getUploadUrls
+      parameters:
+      - name: chatId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChatAttachmentsUploadUrlsDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - ai-attachments
+components:
+  schemas:
+    ChatAttachmentsUploadUrlsDto:
+      type: object
+      properties:
+        attachmentIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - attachmentIds
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

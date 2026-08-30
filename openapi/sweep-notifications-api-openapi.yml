@@ -1,0 +1,96 @@
+openapi: 3.2.0
+info:
+  title: Sweep Notifications API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Notifications
+paths:
+  /notifications:
+    get:
+      operationId: NotificationsController_getNotifications
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetNotificationsResponseDto'
+      security:
+      - bearer: []
+      tags:
+      - Notifications
+  /notifications/events/read:
+    post:
+      operationId: NotificationsController_eventReadNotifications
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Notifications
+  /notifications/events/read-all:
+    post:
+      operationId: NotificationsController_eventReadAllNotifications
+      parameters: []
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Notifications
+components:
+  schemas:
+    GetNotificationsResponseDto:
+      type: object
+      properties:
+        totalUnread:
+          type: number
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientNotificationDto'
+      required:
+      - totalUnread
+      - notifications
+    ClientNotificationDto:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        senderId:
+          type: string
+          format: uuid
+        title:
+          type: string
+        body:
+          type: string
+        deepLink:
+          type: string
+        isRead:
+          type: boolean
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - senderId
+      - title
+      - body
+      - deepLink
+      - isRead
+      - createdAt
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

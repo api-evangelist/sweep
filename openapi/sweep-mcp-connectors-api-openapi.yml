@@ -1,0 +1,223 @@
+openapi: 3.2.0
+info:
+  title: Sweep MCP Connectors API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: MCP Connectors
+paths:
+  /mcp-connectors:
+    get:
+      operationId: McpConnectorsController_getConnectors
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+    post:
+      operationId: McpConnectorsController_createConnector
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterServerDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+  /mcp-connectors/{serverId}/oauth/url:
+    get:
+      operationId: McpConnectorsController_getOAuthAuthorizationUrl
+      parameters:
+      - name: serverId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+  /mcp-connectors/{serverId}/oauth/callback:
+    post:
+      operationId: McpConnectorsController_handleOAuthCallback
+      parameters:
+      - name: serverId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OAuthCallbackDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+  /mcp-connectors/{serverId}:
+    delete:
+      operationId: McpConnectorsController_deleteConnector
+      parameters:
+      - name: serverId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+  /mcp-connectors/connections/{connectionId}/tool-policies:
+    get:
+      operationId: McpConnectorsController_getConnectionTools
+      parameters:
+      - name: connectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+  /mcp-connectors/connections/{connectionId}:
+    put:
+      operationId: McpConnectorsController_updateConnectionToolPolicies
+      parameters:
+      - name: connectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateToolPoliciesDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+    delete:
+      operationId: McpConnectorsController_deleteConnection
+      parameters:
+      - name: connectionId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - MCP Connectors
+components:
+  schemas:
+    ToolPolicyDto:
+      type: object
+      properties:
+        name:
+          type: string
+        policy:
+          type: string
+          enum:
+          - allowed
+          - denied
+          - needs_approval
+      required:
+      - name
+      - policy
+    RegisterServerDto:
+      type: object
+      properties:
+        serverType:
+          type: string
+          maxLength: 255
+          pattern: /^[a-zA-Z0-9_-]+$/
+        serverUrl:
+          type: string
+          maxLength: 500
+          format: uri
+        clientCredentials:
+          $ref: '#/components/schemas/ClientCredentialsDto'
+      required:
+      - serverType
+    ClientCredentialsDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
+    UpdateToolPoliciesDto:
+      type: object
+      properties:
+        toolPolicies:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolPolicyDto'
+      required:
+      - toolPolicies
+    OAuthCallbackDto:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

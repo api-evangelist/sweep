@@ -1,0 +1,149 @@
+openapi: 3.2.0
+info:
+  title: Sweep Agentic Features API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Agentic Features
+paths:
+  /agentic-features:
+    get:
+      operationId: AgenticFeaturesController_getAgenticFeatureSettings
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Agentic Features
+    patch:
+      operationId: AgenticFeaturesController_overrideAgenticFeatureSettings
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAgenticFeaturesSettingsDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Agentic Features
+  /agentic-features/data-access-settings:
+    get:
+      operationId: AgenticFeaturesController_getDataAccessSettings
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Agentic Features
+    patch:
+      operationId: AgenticFeaturesController_updateDataAccessSettings
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Agentic Features
+components:
+  schemas:
+    ChatRetentionSettingsDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        value:
+          type: number
+          minimum: 1
+          maximum: 999
+        unit:
+          type: string
+          enum:
+          - days
+          - months
+        excludeFavorites:
+          type: boolean
+      required:
+      - enabled
+      - value
+      - unit
+      - excludeFavorites
+    OrgSettingsDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        settings:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+      required:
+      - crmOrgId
+      - name
+      - settings
+    AgenticFeaturesSettingsDto:
+      type: object
+      properties:
+        enableAggregateSoqlQueries:
+          type: boolean
+        enableDetailedSoqlQueries:
+          type: boolean
+        enableEventMonitoring:
+          type: boolean
+        enableAgenticRouting:
+          type: boolean
+        enableSweepExecutionLogs:
+          type: boolean
+        dataAccessMode:
+          type: string
+          enum:
+          - integration_user
+          - end_user
+        chatRetentionSettings:
+          $ref: '#/components/schemas/ChatRetentionSettingsDto'
+      required:
+      - enableAggregateSoqlQueries
+      - enableDetailedSoqlQueries
+      - enableEventMonitoring
+      - enableAgenticRouting
+      - enableSweepExecutionLogs
+      - dataAccessMode
+      - chatRetentionSettings
+    UpdateAgenticFeaturesSettingsDto:
+      type: object
+      properties:
+        defaults:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+        orgSettings:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrgSettingsDto'
+      required:
+      - defaults
+      - orgSettings
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

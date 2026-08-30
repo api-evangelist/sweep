@@ -1,0 +1,91 @@
+openapi: 3.2.0
+info:
+  title: Sweep Account Selection API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Account Selection
+paths:
+  /account-selection/accounts:
+    get:
+      operationId: AccountSelectionController_getUserAccounts
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      summary: 'Get all accounts associated with the authenticated user''s sub.
+
+        This endpoint is used during account selection and does not require
+
+        an account context to be established yet.'
+      tags:
+      - Account Selection
+    post:
+      operationId: AccountSelectionController_createAccount
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: 'Create a new Auth0 organization for the authenticated user.
+
+        This will create an Auth0 organization and associate the user as a member.
+
+        Returns the Auth0 organization ID.'
+      tags:
+      - Account Selection
+  /account-selection/accounts/{accountId}:
+    delete:
+      operationId: AccountSelectionController_deactivateAccount
+      parameters:
+      - name: accountId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: 'Deactivate an account (soft delete).
+
+        Only allows deactivation if the account has exactly one user.
+
+        Throws BadRequestException if the account has multiple users.'
+      tags:
+      - Account Selection
+components:
+  schemas:
+    CreateAccountDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

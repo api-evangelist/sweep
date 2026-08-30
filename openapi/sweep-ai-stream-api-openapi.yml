@@ -1,0 +1,49 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI Stream API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: ai-stream
+paths:
+  /ai-stream/{streamId}:
+    post:
+      operationId: AiStreamController_handleStreamCompletion
+      parameters:
+      - name: streamId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StreamCompletionDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+      - ai-stream
+components:
+  schemas:
+    StreamCompletionDto:
+      type: object
+      properties:
+        chat_id:
+          type: string
+        final_result:
+          type: object
+      required:
+      - chat_id
+      - final_result
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

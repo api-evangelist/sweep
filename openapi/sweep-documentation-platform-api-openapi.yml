@@ -1,0 +1,1364 @@
+openapi: 3.2.0
+info:
+  title: Sweep Documentation Platform API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Documentation Platform
+paths:
+  /documentation-platform/snowflake/search:
+    get:
+      operationId: DocumentationPlatformController_searchElements
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: schema
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/search-by-metadata:
+    get:
+      operationId: DocumentationPlatformController_findElementByName
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: schema
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{metadataId}/dependencies:
+    get:
+      operationId: DocumentationPlatformController_getElementDependencies
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{metadataId}/dependents:
+    get:
+      operationId: DocumentationPlatformController_getElementDependents
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{metadataId}/summary:
+    get:
+      operationId: DocumentationPlatformController_getElementSummary
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{metadataId}/source:
+    get:
+      operationId: DocumentationPlatformController_getElementSource
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{metadataId}/chat:
+    post:
+      operationId: DocumentationPlatformController_chatWithElement
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationChatRequestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/snowflake/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/search:
+    get:
+      operationId: DocumentationPlatformController_searchData360Elements
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/search-by-metadata:
+    get:
+      operationId: DocumentationPlatformController_findData360ElementByName
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/dependencies:
+    get:
+      operationId: DocumentationPlatformController_getData360ElementDependencies
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/dependents:
+    get:
+      operationId: DocumentationPlatformController_getData360ElementDependents
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/children:
+    get:
+      operationId: DocumentationPlatformController_getData360ElementChildren
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/summary:
+    get:
+      operationId: DocumentationPlatformController_getData360ElementSummary
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/source:
+    get:
+      operationId: DocumentationPlatformController_getData360ElementSource
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{metadataId}/chat:
+    post:
+      operationId: DocumentationPlatformController_chatWithData360Element
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationChatRequestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/data360/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listData360Elements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/search:
+    get:
+      operationId: DocumentationPlatformController_searchWorkatoElements
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/search-by-metadata:
+    get:
+      operationId: DocumentationPlatformController_findWorkatoElementByName
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{metadataId}/dependencies:
+    get:
+      operationId: DocumentationPlatformController_getWorkatoElementDependencies
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{metadataId}/dependents:
+    get:
+      operationId: DocumentationPlatformController_getWorkatoElementDependents
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{metadataId}/children:
+    get:
+      operationId: DocumentationPlatformController_getWorkatoElementChildren
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{metadataId}/source:
+    get:
+      operationId: DocumentationPlatformController_getWorkatoElementSource
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{metadataId}/summary:
+    get:
+      operationId: DocumentationPlatformController_getWorkatoElementSummary
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/workato/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listWorkatoElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/search:
+    get:
+      operationId: DocumentationPlatformController_searchHubspotElements
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/search-by-metadata:
+    get:
+      operationId: DocumentationPlatformController_findHubspotElementByName
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataTypes
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/dependencies:
+    get:
+      operationId: DocumentationPlatformController_getHubspotElementDependencies
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/dependents:
+    get:
+      operationId: DocumentationPlatformController_getHubspotElementDependents
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/children:
+    get:
+      operationId: DocumentationPlatformController_getHubspotElementChildren
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/summary:
+    get:
+      operationId: DocumentationPlatformController_getHubspotElementSummary
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/source:
+    get:
+      operationId: DocumentationPlatformController_getHubspotElementSource
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{metadataId}/chat:
+    post:
+      operationId: DocumentationPlatformController_chatWithHubspotElement
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationChatRequestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/hubspot/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listHubspotElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/search:
+    get:
+      operationId: DocumentationPlatformController_searchServiceNowElements
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/search-by-metadata:
+    get:
+      operationId: DocumentationPlatformController_findServiceNowElementByName
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: searchTerm
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/tables/{tableName}/fields:
+    get:
+      operationId: DocumentationPlatformController_getServiceNowTableFields
+      parameters:
+      - name: tableName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: metadataId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/{metadataId}/summary:
+    get:
+      operationId: DocumentationPlatformController_getServiceNowElementSummary
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/{metadataId}/chat:
+    post:
+      operationId: DocumentationPlatformController_chatWithServiceNowElement
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationChatRequestDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/{metadataId}/source:
+    get:
+      operationId: DocumentationPlatformController_getServiceNowElementSource
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/{metadataId}/choices:
+    get:
+      operationId: DocumentationPlatformController_getServiceNowFieldChoices
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/servicenow/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listServiceNowElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/objects:
+    get:
+      operationId: DocumentationPlatformController_listSalesforceObjects
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/element-types:
+    get:
+      operationId: DocumentationPlatformController_listSalesforceElementTypes
+      parameters:
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/objects/{objectName}/elements:
+    get:
+      operationId: DocumentationPlatformController_getSalesforceObjectDetailElements
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: type
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/objects/{objectName}/counters:
+    get:
+      operationId: DocumentationPlatformController_getSalesforceObjectCounters
+      parameters:
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/{elementType}:
+    get:
+      operationId: DocumentationPlatformController_listSalesforceElements
+      parameters:
+      - name: elementType
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/{metadataId}/dependencies:
+    get:
+      operationId: DocumentationPlatformController_getSalesforceElementDependencies
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+  /documentation-platform/salesforce/{metadataId}/dependents:
+    get:
+      operationId: DocumentationPlatformController_getSalesforceElementDependents
+      parameters:
+      - name: metadataId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: orgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Documentation Platform
+components:
+  schemas:
+    DocumentationChatRequestDto:
+      type: object
+      properties:
+        message:
+          type: string
+          description: User message to the documentation agent
+        sessionId:
+          type: string
+          description: Chat session identifier
+        isFirstMessage:
+          type: boolean
+          description: Whether this is the first message in the session
+      required:
+      - message
+      - sessionId
+      - isFirstMessage
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

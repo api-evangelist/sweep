@@ -1,0 +1,82 @@
+openapi: 3.2.0
+info:
+  title: Sweep User SFDC Connection API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: User SFDC Connection
+paths:
+  /user-sfdc-connection/{crmOrgId}/status:
+    get:
+      operationId: UserSfdcConnectionController_getConnectionStatus
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - User SFDC Connection
+  /user-sfdc-connection/{crmOrgId}/oauth/url:
+    get:
+      operationId: UserSfdcConnectionController_getOAuthUrl
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - User SFDC Connection
+  /user-sfdc-connection/{crmOrgId}/oauth/callback:
+    post:
+      operationId: UserSfdcConnectionController_handleOAuthCallback
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - User SFDC Connection
+  /user-sfdc-connection/{crmOrgId}:
+    delete:
+      operationId: UserSfdcConnectionController_disconnect
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - User SFDC Connection
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

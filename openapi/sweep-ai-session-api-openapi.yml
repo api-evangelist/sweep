@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI Session API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: ai-session
+paths:
+  /ai-session:
+    get:
+      operationId: AiSessionController_getSessions
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - ai-session
+  /ai-session/{sessionId}:
+    put:
+      operationId: AiSessionController_updateSessionStatus
+      parameters:
+      - name: sessionId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSessionStatusDto'
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - ai-session
+components:
+  schemas:
+    UpdateSessionStatusDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Open
+          - Ask_Admin
+          - Closed_By_Rep
+          - Closed_By_Admin
+      required:
+      - status
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

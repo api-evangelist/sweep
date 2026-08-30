@@ -1,0 +1,172 @@
+openapi: 3.2.0
+info:
+  title: Sweep Workflows API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: workflows
+paths:
+  /workflows:
+    get:
+      operationId: WorkflowController_getWorkflows
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkflowDto'
+      security:
+      - bearer: []
+      tags:
+      - workflows
+    post:
+      operationId: WorkflowController_createWorkflow
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkflowDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowDto'
+      security:
+      - bearer: []
+      tags:
+      - workflows
+    put:
+      operationId: WorkflowController_updateWorkflow
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWorkflowDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WorkflowDto'
+      security:
+      - bearer: []
+      tags:
+      - workflows
+  /workflows/{workflowId}:
+    delete:
+      operationId: WorkflowController_deleteWorkflow
+      parameters:
+      - name: workflowId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - workflows
+components:
+  schemas:
+    WorkflowDetailsDto:
+      type: object
+      properties:
+        when:
+          type: object
+        actions:
+          type: array
+          items:
+            type: object
+        onlyEnrollsManually:
+          type: boolean
+      required:
+      - actions
+      - onlyEnrollsManually
+    WorkflowDto:
+      type: object
+      properties:
+        hubspotWorkflowId:
+          type: string
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        accountId:
+          type: string
+        objectName:
+          type: string
+        isActive:
+          type: boolean
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - hubspotWorkflowId
+      - name
+      - workflowDetails
+      - accountId
+      - objectName
+      - isActive
+      - createdById
+      - createdAt
+      - updatedById
+      - updatedAt
+    CreateWorkflowDto:
+      type: object
+      properties:
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        objectName:
+          type: string
+        enrollExistingContacts:
+          type: boolean
+      required:
+      - name
+      - workflowDetails
+      - objectName
+    UpdateWorkflowDto:
+      type: object
+      properties:
+        workflowId:
+          type: string
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        enrollExistingContacts:
+          type: boolean
+      required:
+      - workflowId
+      - name
+      - workflowDetails
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

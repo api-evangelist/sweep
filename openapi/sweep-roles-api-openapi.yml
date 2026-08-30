@@ -1,0 +1,110 @@
+openapi: 3.2.0
+info:
+  title: Sweep Roles API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: roles
+paths:
+  /roles/groups:
+    get:
+      operationId: RolesController_getRoleGroups
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - roles
+  /roles/group:
+    post:
+      operationId: RolesController_createRoleGroup
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertRoleGroupDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - roles
+  /roles/group/{id}:
+    put:
+      operationId: RolesController_updateRoleGroup
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertRoleGroupDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - roles
+    delete:
+      operationId: RolesController_deleteRoleGroup
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - roles
+components:
+  schemas:
+    UpsertRoleGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        roleGroupLevels:
+          type: object
+        description:
+          type: string
+      required:
+      - name
+      - roleGroupLevels
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

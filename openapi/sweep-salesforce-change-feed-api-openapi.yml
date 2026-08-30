@@ -1,0 +1,254 @@
+openapi: 3.2.0
+info:
+  title: Sweep Salesforce change feed API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Salesforce change feed
+paths:
+  /sf-change-feed:
+    get:
+      operationId: SalesforceChangeFeedController_getChangeFeed
+      parameters:
+      - name: sortBy
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: sortKey
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: crmOrgs
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sfUserNames
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: sections
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: startTime
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+      - name: endTime
+        required: true
+        in: query
+        schema:
+          format: date-time
+          type: string
+      - name: actionText
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: withFilters
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SalesforceChangeFeedDto'
+      tags:
+      - Salesforce change feed
+  /sf-change-feed/notifications:
+    post:
+      operationId: SalesforceChangeFeedController_addNotification
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSalesforceChangeFeedNotificationDto'
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Salesforce change feed
+    get:
+      operationId: SalesforceChangeFeedController_getNotifications
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Salesforce change feed
+  /sf-change-feed/notifications/{id}:
+    put:
+      operationId: SalesforceChangeFeedController_editNotification
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSalesforceChangeFeedNotificationDto'
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Salesforce change feed
+    delete:
+      operationId: SalesforceChangeFeedController_deleteNotification
+      parameters:
+      - name: id
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Salesforce change feed
+components:
+  schemas:
+    SalesforceChangeFeedCriterionDto:
+      type: object
+      properties:
+        criterionId:
+          type: string
+          minLength: 1
+        fieldName:
+          type: string
+          minLength: 1
+        operator:
+          type: string
+          minLength: 1
+        value:
+          type: string
+          minLength: 1
+      required:
+      - criterionId
+      - fieldName
+      - operator
+      - value
+    UpdateSalesforceChangeFeedNotificationDto:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        criteriaLogic:
+          type: string
+        crmOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        isActive:
+          type: boolean
+        criteria:
+          minItems: 1
+          type: array
+          items:
+            $ref: '#/components/schemas/SalesforceChangeFeedCriterionDto'
+        actions:
+          minItems: 1
+          type: array
+          items:
+            type: object
+      required:
+      - name
+      - criteriaLogic
+      - crmOrgIds
+      - isActive
+      - criteria
+      - actions
+    SalesforceChangeFeedFilterList:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+        sfUserNames:
+          type: array
+          items:
+            type: string
+        crmOrgs:
+          type: array
+          items:
+            type: string
+        nameSpaces:
+          type: array
+          items:
+            type: string
+      required:
+      - sections
+      - sfUserNames
+      - crmOrgs
+      - nameSpaces
+    SalesforceChangeFeedItem:
+      type: object
+      properties:
+        sfId:
+          type: string
+        crmOrgId:
+          type: string
+        sfUserName:
+          type: string
+        action:
+          type: string
+        section:
+          type: string
+        nameSpace:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+      required:
+      - sfId
+      - crmOrgId
+      - sfUserName
+      - action
+      - section
+      - nameSpace
+      - timestamp
+    SalesforceChangeFeedDto:
+      type: object
+      properties:
+        changeFeedList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SalesforceChangeFeedItem'
+        filters:
+          $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
+      required:
+      - changeFeedList
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

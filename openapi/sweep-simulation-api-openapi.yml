@@ -1,0 +1,64 @@
+openapi: 3.2.0
+info:
+  title: Sweep Simulation API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Simulation
+paths:
+  /simulation/run:
+    post:
+      operationId: SimulationController_runSimulation
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunSimulationDto'
+      responses:
+        '202':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Simulation
+  /simulation/result:
+    get:
+      operationId: SimulationController_getSimulationResult
+      parameters:
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: tracedUserId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Simulation
+components:
+  schemas:
+    RunSimulationDto:
+      type: object
+      properties: {}
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

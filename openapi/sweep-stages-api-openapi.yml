@@ -1,0 +1,74 @@
+openapi: 3.2.0
+info:
+  title: Sweep Stages API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Stages
+paths:
+  /stages:
+    get:
+      operationId: StagesController_getLeadingFieldsMetadata
+      parameters:
+      - name: leadingFieldIds
+        required: true
+        in: query
+        schema:
+          type: array
+          items:
+            type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      summary: Returns an aggregation of metadata entries for a list of leading fields.
+      tags:
+      - Stages
+  /stages/{fieldId}/metadata/{stageName}:
+    get:
+      operationId: StagesController_getLeadingFieldMetadataForSingleStage
+      parameters:
+      - name: fieldId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: stageName
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: crmOrgId
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Stages
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

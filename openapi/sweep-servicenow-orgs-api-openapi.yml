@@ -1,0 +1,156 @@
+openapi: 3.2.0
+info:
+  title: Sweep ServiceNow Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: ServiceNow Orgs
+paths:
+  /servicenow-orgs:
+    post:
+      operationId: ServiceNowOrgController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceNowOrgDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: Create a new ServiceNow org
+      tags:
+      - ServiceNow Orgs
+  /servicenow-orgs/{orgId}:
+    patch:
+      operationId: ServiceNowOrgController_reconnect
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceNowCredentialsDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      summary: Reconnect a ServiceNow org with updated credentials
+      tags:
+      - ServiceNow Orgs
+    delete:
+      operationId: ServiceNowOrgController_delete
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Delete a ServiceNow org
+      tags:
+      - ServiceNow Orgs
+  /servicenow-orgs/{orgId}/fetch:
+    post:
+      operationId: ServiceNowOrgController_triggerFetch
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: Manually trigger metadata fetch for a ServiceNow org
+      tags:
+      - ServiceNow Orgs
+components:
+  schemas:
+    CreateServiceNowOrgDto:
+      type: object
+      properties:
+        instanceUrl:
+          type: string
+          format: uri
+          description: ServiceNow instance URL
+          example: https://mycompany.service-now.com
+        clientId:
+          type: string
+          description: OAuth Client ID for ServiceNow integration
+          example: abc123def456
+        clientSecret:
+          type: string
+          description: OAuth Client Secret for ServiceNow integration
+          example: secret_value_here
+        name:
+          type: string
+          maxLength: 255
+          description: Display name for the ServiceNow org
+          example: Production ServiceNow
+        environmentType:
+          enum:
+          - Development
+          - Test
+          - Production
+          type: string
+          example: Production
+          description: ServiceNow instance environment scope
+      required:
+      - instanceUrl
+      - clientId
+      - clientSecret
+      - name
+      - environmentType
+    ServiceNowCredentialsDto:
+      type: object
+      properties:
+        instanceUrl:
+          type: string
+          format: uri
+          description: ServiceNow instance URL
+          example: https://mycompany.service-now.com
+        clientId:
+          type: string
+          description: OAuth Client ID for ServiceNow integration
+          example: abc123def456
+        clientSecret:
+          type: string
+          description: OAuth Client Secret for ServiceNow integration
+          example: secret_value_here
+      required:
+      - instanceUrl
+      - clientId
+      - clientSecret
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

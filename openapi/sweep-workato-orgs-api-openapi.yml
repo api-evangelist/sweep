@@ -1,0 +1,75 @@
+openapi: 3.2.0
+info:
+  title: Sweep Workato Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Workato Orgs
+paths:
+  /workato-orgs:
+    post:
+      operationId: WorkatoOrgController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWorkatoOrgDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Workato Orgs
+components:
+  schemas:
+    WorkatoCredentialsDto:
+      type: object
+      properties:
+        baseUrl:
+          type: string
+          format: uri
+          description: Workato Developer API base URL (`https://{workspace}/api` only; not the bare workspace origin)
+          example: https://www.workato.com/api
+        apiToken:
+          type: string
+          description: 'Workato API client secret only (no "Bearer" prefix; the server sends Authorization: Bearer on each request)'
+      required:
+      - baseUrl
+      - apiToken
+    CreateWorkatoOrgDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 255
+          example: Production Workato
+        credentials:
+          $ref: '#/components/schemas/WorkatoCredentialsDto'
+        environmentType:
+          enum:
+          - Development
+          - Test
+          - Production
+          type: string
+          example: Development
+          description: Workato environment the API client token is scoped to (assigned in Workspace admin → API clients)
+      required:
+      - name
+      - credentials
+      - environmentType
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

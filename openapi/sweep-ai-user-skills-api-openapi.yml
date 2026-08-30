@@ -1,0 +1,205 @@
+openapi: 3.2.0
+info:
+  title: Sweep AI User Skills API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: AI User Skills
+paths:
+  /ai-agents/{agentId}/user-skills:
+    get:
+      operationId: AiUserSkillsController_listSkills
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+    post:
+      operationId: AiUserSkillsController_createSkill
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserSkillDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+  /ai-agents/{agentId}/user-skills/{skillId}:
+    get:
+      operationId: AiUserSkillsController_getSkill
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: skillId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+    patch:
+      operationId: AiUserSkillsController_updateSkill
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: skillId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserSkillDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+    delete:
+      operationId: AiUserSkillsController_deleteSkill
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: skillId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+  /ai-agents/{agentId}/user-skills/{skillId}/enabled:
+    patch:
+      operationId: AiUserSkillsController_setSkillEnabled
+      parameters:
+      - name: agentId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: skillId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetUserSkillEnabledDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - AI User Skills
+components:
+  schemas:
+    UpdateUserSkillDto:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 1024
+          pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
+        instructions:
+          type: string
+    SetUserSkillEnabledDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
+    CreateUserSkillDto:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 64
+          pattern: USER_SKILL_NAME_REGEX
+        description:
+          type: string
+          maxLength: 1024
+          pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
+        instructions:
+          type: string
+      required:
+      - name
+      - description
+      - instructions
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

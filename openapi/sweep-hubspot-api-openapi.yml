@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  title: Sweep Hubspot API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: hubspot
+paths:
+  /hubspot:
+    get:
+      operationId: HubSpotController_getOrgs
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/org/{orgId}:
+    get:
+      operationId: HubSpotController_getOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/oauth2-callback:
+    get:
+      operationId: HubSpotController_oauth2Callback
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: string
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/new:
+    post:
+      operationId: HubSpotController_createOrgs
+      parameters:
+      - name: demo
+        required: true
+        in: query
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HubspotCrmOrgCreateDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/fields/{orgId}/{objectName}:
+    get:
+      operationId: HubSpotController_getFields
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: objectName
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/{orgId}:
+    delete:
+      operationId: HubSpotController_deleteOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/workflow/{workflowId}:
+    get:
+      operationId: HubSpotController_getWorkflowFromHubpsot
+      parameters:
+      - name: workflowId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/event-components:
+    get:
+      operationId: HubSpotController_getOrgByType
+      parameters:
+      - name: type
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+  /hubspot/membership-lists:
+    get:
+      operationId: HubSpotController_getMembershipLists
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      tags:
+      - hubspot
+components:
+  schemas:
+    HubspotCrmOrgCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        isMain:
+          type: boolean
+      required:
+      - name
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

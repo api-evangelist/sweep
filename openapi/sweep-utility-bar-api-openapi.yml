@@ -1,0 +1,90 @@
+openapi: 3.2.0
+info:
+  title: Sweep Utility Bar API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Utility-bar
+paths:
+  /utility-bar:
+    post:
+      operationId: UtilityBarController_toggleAiSupportForApps
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToggleUtilityBarDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Utility-bar
+  /utility-bar/apps:
+    get:
+      operationId: UtilityBarController_getApps
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SalesforceAppDto'
+      security:
+      - bearer: []
+      tags:
+      - Utility-bar
+components:
+  schemas:
+    SalesforceAppDto:
+      type: object
+      properties:
+        developerName:
+          type: string
+        label:
+          type: string
+        logoUrl:
+          type: string
+        hasSweepSupport:
+          type: boolean
+      required:
+      - developerName
+      - label
+      - logoUrl
+      - hasSweepSupport
+    ToggleUtilityBarDto:
+      type: object
+      properties:
+        toggleOn:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
+        toggleOff:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
+    AppUtilityBarDto:
+      type: object
+      properties:
+        appDeveloperName:
+          type: string
+        hasSweepSupport:
+          type: boolean
+      required:
+      - appDeveloperName
+      - hasSweepSupport
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,121 @@
+openapi: 3.2.0
+info:
+  title: Sweep Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Orgs
+paths:
+  /orgs:
+    get:
+      operationId: OrgsController_getAllOrgs
+      parameters:
+      - name: connectedOnly
+        required: true
+        in: query
+        schema:
+          type: boolean
+      - name: orgType
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+      security:
+      - bearer: []
+      summary: Returns a unified view of CRM orgs, Snowflake orgs, Data360 orgs, and ServiceNow orgs.
+      tags:
+      - Orgs
+  /orgs/{orgId}:
+    delete:
+      operationId: OrgsController_deleteOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Orgs
+    get:
+      operationId: OrgsController_getOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - bearer: []
+      tags:
+      - Orgs
+    patch:
+      operationId: OrgsController_renameOrg
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Orgs
+  /orgs/{orgId}/fetch:
+    post:
+      operationId: OrgsController_fetchWorkspace
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: factory-reset
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: boolean
+      security:
+      - bearer: []
+      tags:
+      - Orgs
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,29 @@
+openapi: 3.2.0
+info:
+  title: Sweep Product Plan API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Product Plan
+paths:
+  /plans/allowed-features:
+    get:
+      operationId: PlanController_getAllowedFeatures
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Product Plan
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

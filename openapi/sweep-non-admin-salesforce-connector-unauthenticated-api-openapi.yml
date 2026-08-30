@@ -1,0 +1,59 @@
+openapi: 3.2.0
+info:
+  title: Sweep Non Admin Salesforce Connector (unauthenticated) API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Non Admin Salesforce Connector (unauthenticated)
+paths:
+  /non-admin-sfdc-connector/salesforce-redirect-to-oauth:
+    get:
+      operationId: NonAdminSalesforceConnectorUnauthenticatedController_redirectToSFDCOAuthPath
+      parameters:
+      - name: data
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Non Admin Salesforce Connector (unauthenticated)
+  /non-admin-sfdc-connector/oauth2-callback:
+    get:
+      operationId: NonAdminSalesforceConnectorUnauthenticatedController_oauth2Callback
+      parameters:
+      - name: code
+        required: true
+        in: query
+        schema:
+          type: string
+      - name: state
+        required: true
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+      tags:
+      - Non Admin Salesforce Connector (unauthenticated)
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

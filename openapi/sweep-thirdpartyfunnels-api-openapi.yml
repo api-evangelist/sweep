@@ -1,0 +1,218 @@
+openapi: 3.2.0
+info:
+  title: Sweep Third Party Funnels API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: ThirdPartyFunnels
+paths:
+  /third-party-funnels:
+    get:
+      operationId: ThirdPartyFunnelsController_getAllFunnels
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ThirdPartyFunnelDto'
+      security:
+      - bearer: []
+      tags:
+      - ThirdPartyFunnels
+    post:
+      operationId: ThirdPartyFunnelsController_createFunnel
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertThirdPartyFunnelDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdPartyFunnelDto'
+      security:
+      - bearer: []
+      tags:
+      - ThirdPartyFunnels
+  /third-party-funnels/{thirdPartyFunnelId}:
+    put:
+      operationId: ThirdPartyFunnelsController_updateThirdPartyFunnel
+      parameters:
+      - name: thirdPartyFunnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpsertThirdPartyFunnelDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdPartyFunnelDto'
+      security:
+      - bearer: []
+      tags:
+      - ThirdPartyFunnels
+    delete:
+      operationId: ThirdPartyFunnelsController_deleteThirdPartyFunnel
+      parameters:
+      - name: thirdPartyFunnelId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - ThirdPartyFunnels
+components:
+  schemas:
+    StepConnectionDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        targetId:
+          type: string
+      required:
+      - _id
+      - targetId
+    ThirdPartyFunnelDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          $ref: '#/components/schemas/ThirdPartySystemDto'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThirdPartyStepsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+      required:
+      - id
+      - name
+      - description
+      - steps
+      - funnelLinks
+    StepPositionDto:
+      type: object
+      properties:
+        row:
+          type: number
+        column:
+          type: number
+      required:
+      - row
+      - column
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    ThirdPartySystemDto:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
+    UpsertThirdPartyFunnelDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          $ref: '#/components/schemas/ThirdPartySystemDto'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThirdPartyStepsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+      required:
+      - name
+      - description
+      - steps
+      - funnelLinks
+    ThirdPartyStepsDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        stepConnections:
+          type: array
+          items:
+            $ref: '#/components/schemas/StepConnectionDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        position:
+          $ref: '#/components/schemas/StepPositionDto'
+      required:
+      - id
+      - name
+      - stepConnections
+      - funnelLinks
+      - position
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

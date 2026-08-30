@@ -1,0 +1,372 @@
+openapi: 3.2.0
+info:
+  title: Sweep Comments API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Comments
+paths:
+  /comments/{funnelMapId}:
+    get:
+      operationId: CommentsController_fetchCommentThreadsByFunnelMapId
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: excludeResolved
+        required: true
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Comments
+    post:
+      operationId: CommentsController_createCommentThread
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommentThreadDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentThreadDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}/resolved:
+    patch:
+      operationId: CommentsController_updateCommentThreadResolved
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentThreadDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}/position:
+    patch:
+      operationId: CommentsController_updateCommentThreadPosition
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommentThreadPositionDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentThreadDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}/read:
+    patch:
+      operationId: CommentsController_updateCommentThreadReadBy
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentThreadDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}/commentReplies:
+    post:
+      operationId: CommentsController_createCommentReply
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommentReplyDto'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentReplyDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}:
+    delete:
+      operationId: CommentsController_deleteCommentThread
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Comments
+  /comments/{funnelMapId}/{commentThreadId}/commentReplies/{commentReplyId}:
+    delete:
+      operationId: CommentsController_deleteCommentReply
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentReplyId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      tags:
+      - Comments
+    patch:
+      operationId: CommentsController_updateCommentReply
+      parameters:
+      - name: funnelMapId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentThreadId
+        required: true
+        in: path
+        schema:
+          type: string
+      - name: commentReplyId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCommentReplyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommentReplyDto'
+      security:
+      - bearer: []
+      tags:
+      - Comments
+components:
+  schemas:
+    CreateCommentReplyDto:
+      type: object
+      properties:
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+        transientId:
+          type: string
+      required:
+      - commentBody
+      - mentionedUserIds
+    CreateCommentThreadDto:
+      type: object
+      properties:
+        positionX:
+          type: number
+        positionY:
+          type: number
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - positionX
+      - positionY
+      - commentBody
+      - mentionedUserIds
+    CommentReplyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        commentBody:
+          type: string
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - commentBody
+      - createdById
+      - createdAt
+      - updatedAt
+      - mentionedUserIds
+    UpdateCommentReplyDto:
+      type: object
+      properties:
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - commentBody
+      - mentionedUserIds
+    CommentThreadDto:
+      type: object
+      properties:
+        id:
+          type: string
+        positionX:
+          type: number
+        positionY:
+          type: number
+        isResolved:
+          type: boolean
+        isRead:
+          type: boolean
+        commentReplies:
+          type: array
+          items:
+            $ref: '#/components/schemas/CommentReplyDto'
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        funnelMapId:
+          type: string
+      required:
+      - id
+      - positionX
+      - positionY
+      - isResolved
+      - commentReplies
+      - createdById
+      - createdAt
+      - funnelMapId
+    UpdateCommentThreadPositionDto:
+      type: object
+      properties:
+        positionX:
+          type: number
+        positionY:
+          type: number
+      required:
+      - positionX
+      - positionY
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

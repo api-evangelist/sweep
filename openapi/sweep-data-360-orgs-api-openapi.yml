@@ -1,0 +1,192 @@
+openapi: 3.2.0
+info:
+  title: Sweep Data 360 Orgs API
+  description: This is a publicly available Sweep API.
+  version: '0.1'
+  contact: {}
+servers:
+- url: https://api.sweep.io
+  description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
+tags:
+- name: Data 360 Orgs
+paths:
+  /data360-orgs/new:
+    post:
+      operationId: Data360OrgController_createOrg
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateData360OrgDto'
+      responses:
+        '201':
+          description: Data 360 org created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data360OrgResponseDto'
+      security:
+      - bearer: []
+      summary: Create a new Data 360 org
+      tags:
+      - Data 360 Orgs
+  /data360-orgs/org/{orgId}/salesforce-oauth:
+    get:
+      operationId: Data360OrgController_getOAuthUrl
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        description: Data 360 Org ID
+        schema:
+          type: string
+      - name: isSandbox
+        required: false
+        in: query
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: ''
+      security:
+      - bearer: []
+      summary: Get Salesforce OAuth URL with Data 360 scopes
+      tags:
+      - Data 360 Orgs
+  /data360-orgs/salesforce-oauth2-code:
+    post:
+      operationId: Data360OrgController_handleOAuthCode
+      parameters:
+      - name: skipDuplicateCheck
+        required: false
+        in: query
+        description: Skip duplicate instance URL check (for reconnection)
+        schema:
+          type: boolean
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data360OAuthDto'
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: Exchange OAuth code for tokens
+      tags:
+      - Data 360 Orgs
+  /data360-orgs/{orgId}/complete-connection:
+    post:
+      operationId: Data360OrgController_completeConnection
+      parameters:
+      - name: orgId
+        required: true
+        in: path
+        description: Data 360 Org ID
+        schema:
+          type: string
+      responses:
+        '201':
+          description: ''
+      security:
+      - bearer: []
+      summary: Complete connection (skip duplicate check)
+      tags:
+      - Data 360 Orgs
+components:
+  schemas:
+    Data360OrgResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Org ID
+        name:
+          type: string
+          description: Org name
+        instanceUrl:
+          type: string
+          description: Salesforce instance URL
+        tenantUrl:
+          type: string
+          description: Data 360 tenant URL
+        isSandbox:
+          type: boolean
+          description: Is sandbox org
+        isConnected:
+          type: boolean
+          description: Is org connected
+        fetchStatus:
+          enum:
+          - fetching
+          - initial_fetching
+          - error
+          - fetched
+          - invalid_credentials
+          type: string
+          description: Fetch status
+        lastFetchedAt:
+          format: date-time
+          type: string
+          description: Last successful fetch timestamp
+        createdAt:
+          format: date-time
+          type: string
+          description: Creation timestamp
+        updatedAt:
+          format: date-time
+          type: string
+          description: Last update timestamp
+        connectedUser:
+          type: string
+          description: Connected Salesforce username
+        createdById:
+          type: string
+          description: User ID who created the org
+      required:
+      - id
+      - name
+      - isSandbox
+      - isConnected
+      - createdAt
+      - updatedAt
+    CreateData360OrgDto:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Org name
+          example: Production Data 360
+        isSandbox:
+          type: boolean
+          description: Is sandbox org
+          example: false
+      required:
+      - name
+      - isSandbox
+    Data360OAuthDto:
+      type: object
+      properties:
+        orgId:
+          type: string
+          description: Data 360 Org ID
+        authCode:
+          type: string
+          description: OAuth authorization code
+        isSandbox:
+          type: boolean
+          description: Is sandbox org
+          example: false
+      required:
+      - orgId
+      - authCode
+      - isSandbox
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
