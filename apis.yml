@@ -1,13 +1,14 @@
 aid: sweep
 name: Sweep
-description: Sweep is the agentic layer for enterprise systems. By connecting to platforms like Salesforce, Snowflake,
-  ServiceNow, and HubSpot, Sweep reads live metadata and gives AI agents the context they need to understand, plan,
-  and govern changes safely across complex systems. It unifies discovery, design, and build into one continuous
-  workflow — auto-generating living documentation of every flow, field, and rule; visualizing end-to-end business
-  processes; running metadata agents that audit and optimize org configuration; and shipping Salesforce automations,
-  lead routing, alerts, and deduplication without custom code. Sweep also publishes an official Model Context Protocol
-  (MCP) server that connects Salesforce context to AI assistants such as Claude and ChatGPT. Sweep is backed by
-  Bessemer Venture Partners, Homebrew, and Insight Partners.
+description: Sweep is the agentic layer for enterprise systems. By connecting to platforms like Salesforce,
+  Snowflake, ServiceNow, and HubSpot, Sweep reads live metadata and gives AI agents the context they need
+  to understand, plan, and govern changes safely across complex systems. It unifies discovery, design,
+  and build into one continuous workflow — auto-generating living documentation of every flow, field,
+  and rule; visualizing end-to-end business processes; running metadata agents that audit and optimize
+  org configuration; and shipping Salesforce automations, lead routing, alerts, and deduplication without
+  custom code. Sweep also publishes an official Model Context Protocol (MCP) server that connects Salesforce
+  context to AI assistants such as Claude and ChatGPT. Sweep is backed by Bessemer Venture Partners, Homebrew,
+  and Insight Partners.
 url: https://raw.githubusercontent.com/api-evangelist/sweep/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -43,7 +44,7 @@ x-tier: profiled
 x-tier-reason: public-openapi-and-remote-mcp
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-08-14'
+modified: '2026-09-16'
 tags:
 - Company
 - Cloud
@@ -81,8 +82,7 @@ tags_raw:
 - Data Governance
 apis:
 - name: Sweep MCP Server
-  description: >-
-    Sweep's official hosted Model Context Protocol server — a remote SSE endpoint at https://sweepmcp.com/sse
+  description: Sweep's official hosted Model Context Protocol server — a remote SSE endpoint at https://sweepmcp.com/sse
     that connects a Sweep-governed view of Salesforce and connected enterprise systems to MCP clients
     such as Claude. Authorization is OAuth 2.0 with dynamic client registration and PKCE, advertised via
     RFC 8414 authorization-server metadata at https://sweepmcp.com/.well-known/oauth-authorization-server.
@@ -173,8 +173,7 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-ai-artifacts-unauthenticated-api
   name: Sweep AI Artifacts (unauthenticated) API
-  description: >-
-    The AI Artifacts (unauthenticated) API from Sweep — 1 operation(s) for ai artifacts (unauthenticated).
+  description: The AI Artifacts (unauthenticated) API from Sweep — 1 operation(s) for ai artifacts (unauthenticated).
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -518,8 +517,8 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-data-integrations-unauthenticated-api
   name: Sweep Data Integrations (Unauthenticated) API
-  description: >-
-    The Data Integrations (Unauthenticated) API from Sweep — 5 operation(s) for data integrations (unauthenticated).
+  description: The Data Integrations (Unauthenticated) API from Sweep — 5 operation(s) for data integrations
+    (unauthenticated).
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -621,8 +620,7 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-documentation-salesforce-api
   name: Sweep Documentation Salesforce API
-  description: >-
-    The Documentation Salesforce API from Sweep — 21 operation(s) for documentation salesforce.
+  description: The Documentation Salesforce API from Sweep — 21 operation(s) for documentation salesforce.
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -804,8 +802,8 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-hubspot-connector-unauthenticated-api
   name: Sweep hubspot connector (unauthenticated) API
-  description: >-
-    The hubspot connector (unauthenticated) API from Sweep — 1 operation(s) for hubspot connector (unauthenticated).
+  description: The hubspot connector (unauthenticated) API from Sweep — 1 operation(s) for hubspot connector
+    (unauthenticated).
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -885,9 +883,8 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-non-admin-salesforce-connector-unauthenticated-api
   name: Sweep Non Admin Salesforce Connector (unauthenticated) API
-  description: >-
-    The Non Admin Salesforce Connector (unauthenticated) API from Sweep — 2 operation(s) for non admin
-    salesforce connector (unauthenticated).
+  description: The Non Admin Salesforce Connector (unauthenticated) API from Sweep — 2 operation(s) for
+    non admin salesforce connector (unauthenticated).
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -1197,8 +1194,7 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-sfdc-callout-scheduling-api
   name: Sweep SFDC Callout — Scheduling API
-  description: >-
-    The SFDC Callout — Scheduling API from Sweep — 6 operation(s) for sfdc callout — scheduling.
+  description: The SFDC Callout — Scheduling API from Sweep — 6 operation(s) for sfdc callout — scheduling.
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
@@ -1277,7 +1273,7 @@ apis:
   - type: ErrorCatalog
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-sweep-fields-api
-  name: Sweep Sweep Fields API
+  name: Sweep Fields API
   description: The Sweep Fields API from Sweep — 4 operation(s) for sweep fields.
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
@@ -1298,8 +1294,8 @@ apis:
     url: errors/sweep-problem-types.yml
 - aid: sweep:sweep-teams-integrations-unauthenticated-api
   name: Sweep Teams Integrations (Unauthenticated) API
-  description: >-
-    The Teams Integrations (Unauthenticated) API from Sweep — 1 operation(s) for teams integrations (unauthenticated).
+  description: The Teams Integrations (Unauthenticated) API from Sweep — 1 operation(s) for teams integrations
+    (unauthenticated).
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
