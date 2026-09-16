@@ -1559,7 +1559,7 @@ common:
 - type: APIReference
   url: https://api.sweep.io/api
 - type: OpenAPI
-  url: openapi/sweep-api-openapi.yml
+  url: openapi/_original/sweep-api-openapi.yml
 - type: Authentication
   url: authentication/sweep-authentication.yml
 - type: Conventions
