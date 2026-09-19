@@ -337,6 +337,8 @@ apis:
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
+  - Automation
+  tags_raw:
   - Automations
   properties:
   - type: OpenAPI
@@ -461,6 +463,8 @@ apis:
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -1078,6 +1082,8 @@ apis:
   humanURL: https://api.sweep.io/api
   baseURL: https://api.sweep.io
   tags:
+  - Rollup
+  tags_raw:
   - Rollups
   properties:
   - type: OpenAPI
