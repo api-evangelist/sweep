@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: projects
+- name: Projects
 paths:
   /projects:
     post:
@@ -30,7 +30,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller create project
+      x-summary-source: derived
     get:
       operationId: AiProjectsController_listProjects
       parameters:
@@ -51,7 +53,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller list projects
+      x-summary-source: derived
   /projects/agent-ids:
     get:
       operationId: AiProjectsController_listProjectAgentIds
@@ -68,7 +72,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller list project agent ids
+      x-summary-source: derived
   /projects/by-agent/{agentId}:
     get:
       operationId: AiProjectsController_getProjectByAgent
@@ -88,7 +94,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller get project by agent
+      x-summary-source: derived
   /projects/{projectId}/duplicate:
     post:
       operationId: AiProjectsController_duplicateProject
@@ -110,7 +118,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller duplicate project
+      x-summary-source: derived
   /projects/{projectId}:
     get:
       operationId: AiProjectsController_getProject
@@ -130,7 +140,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller get project
+      x-summary-source: derived
     patch:
       operationId: AiProjectsController_updateProject
       parameters:
@@ -155,7 +167,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller update project
+      x-summary-source: derived
     delete:
       operationId: AiProjectsController_deleteProject
       parameters:
@@ -170,7 +184,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller delete project
+      x-summary-source: derived
   /projects/{projectId}/prompts/reset:
     patch:
       operationId: AiProjectsController_resetAllPrompts
@@ -186,7 +202,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller reset all prompts
+      x-summary-source: derived
   /projects/{projectId}/sections/{sectionId}/prompts/reset:
     patch:
       operationId: AiProjectsController_resetSectionPrompts
@@ -207,7 +225,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller reset section prompts
+      x-summary-source: derived
   /projects/{projectId}/prompts/{promptId}/complete:
     patch:
       operationId: AiProjectsController_completePrompt
@@ -228,7 +248,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller complete prompt
+      x-summary-source: derived
   /projects/{projectId}/prompts/{promptId}/chats:
     get:
       operationId: AiProjectsController_getPromptHistory
@@ -255,7 +277,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller get prompt history
+      x-summary-source: derived
   /projects/{projectId}/sections/reorder:
     patch:
       operationId: AiProjectsController_reorderSections
@@ -277,7 +301,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller reorder sections
+      x-summary-source: derived
   /projects/{projectId}/sections:
     post:
       operationId: AiProjectsController_addSection
@@ -303,7 +329,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller add section
+      x-summary-source: derived
   /projects/{projectId}/sections/{sectionId}:
     patch:
       operationId: AiProjectsController_updateSection
@@ -330,7 +358,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller update section
+      x-summary-source: derived
     delete:
       operationId: AiProjectsController_deleteSection
       parameters:
@@ -350,7 +380,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller delete section
+      x-summary-source: derived
   /projects/{projectId}/sections/{sectionId}/items:
     post:
       operationId: AiProjectsController_addSectionItem
@@ -381,7 +413,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller add section item
+      x-summary-source: derived
   /projects/{projectId}/items/{itemId}/move:
     patch:
       operationId: AiProjectsController_moveItem
@@ -408,7 +442,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller move item
+      x-summary-source: derived
   /projects/{projectId}/items/{itemId}:
     patch:
       operationId: AiProjectsController_updateSectionItem
@@ -435,7 +471,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller update section item
+      x-summary-source: derived
     delete:
       operationId: AiProjectsController_deleteSectionItem
       parameters:
@@ -455,7 +493,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller delete section item
+      x-summary-source: derived
   /projects/{projectId}/sections/{sectionId}/items/reorder:
     patch:
       operationId: AiProjectsController_reorderItems
@@ -482,7 +522,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller reorder items
+      x-summary-source: derived
   /projects/{projectId}/memory:
     post:
       operationId: AiProjectsController_addToMemory
@@ -508,669 +550,65 @@ paths:
       security:
       - bearer: []
       tags:
-      - projects
+      - Projects
+      summary: Ai projects controller add to memory
+      x-summary-source: derived
 components:
   schemas:
-    BestPractice:
+    AddToMemoryDto:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        severity:
-          type: object
-        text:
-          type: string
-        isSystem:
-          type: boolean
-        applicableDomain:
-          type: string
-          enum:
-          - MetadataMonitoring
-          - BusinessProcess
-        applicableResourceType:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - severity
-      - text
-      - isSystem
-      - applicableDomain
-      - applicableResourceType
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - updatedById
-      - updatedBy
-      - createdAt
-      - updatedAt
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    AiAgentBestPractice:
-      type: object
-      properties:
-        aiAgentId:
-          type: string
-        bestPracticeId:
-          type: string
-        aiAgent:
-          $ref: '#/components/schemas/AiAgent'
-        bestPractice:
-          $ref: '#/components/schemas/BestPractice'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - aiAgentId
-      - bestPracticeId
-      - aiAgent
-      - bestPractice
-      - createdAt
-    AddSectionDto:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-          enum:
-          - prompts
-          - artifacts
-          - files
-        runMode:
-          type: string
-          enum:
-          - individual
-          - queue
-      required:
-      - name
-      - type
-      - runMode
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    MoveItemDto:
-      type: object
-      properties:
-        toSectionId:
+        fileId:
           type: string
           format: uuid
-        newIndex:
-          type: number
-          minimum: 0
       required:
-      - toSectionId
-      - newIndex
-    User:
+      - fileId
+    DuplicateProjectDto:
       type: object
       properties:
-        id:
-          type: string
-        sub:
-          type: string
-        email:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        preferences:
-          type: object
         name:
-          type: string
-        emoji:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
-      required:
-      - id
-      - sub
-      - email
-      - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
-      - roleGroupId
-      - createdAt
-      - updatedAt
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    AiProjectPrompt:
-      type: object
-      properties:
-        id:
-          type: string
-        promptTitle:
-          type: string
-        promptText:
           type: string
         mode:
           type: string
           enum:
-          - none
-          - researchMode
-          - buildMode
-          - multiOrgMode
-          - artifactMode
-        isCompleted:
-          type: boolean
-        completedById:
-          type:
-          - string
-          - 'null'
-        completedAt:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        projectId:
+          - playbook_only
+          - with_conversations
+        targetOrgId:
           type: string
-        project:
-          $ref: '#/components/schemas/AiProject'
       required:
-      - id
-      - promptTitle
-      - promptText
+      - name
       - mode
-      - isCompleted
-      - completedById
-      - completedAt
-      - projectId
-      - project
-    ReorderItemsDto:
-      type: object
-      properties:
-        itemIds:
-          maxItems: 500
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - itemIds
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    AiAgent:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - Documentation
-          - Process Optimization
-          - MonitoringV2
-          - Permissions
-          - Support
-          type: string
-        contextComponents:
-          type: object
-        userInstructions:
-          type: string
-        systemInstructions:
-          type: string
-        projectId:
-          type:
-          - string
-          - 'null'
-        project:
-          allOf:
-          - $ref: '#/components/schemas/AiProject'
-        orgId:
-          type: string
-        org:
-          $ref: '#/components/schemas/Org'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        bestPractices:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentBestPractice'
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentMetadataElement'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - contextComponents
-      - userInstructions
-      - systemInstructions
-      - projectId
-      - project
-      - orgId
-      - org
-      - files
-      - bestPractices
-      - metadataElements
-      - createdAt
-      - updatedAt
-    FunnelSnapshot:
-      type: object
-      properties:
-        id:
-          type: string
-        ord:
-          type: number
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        apiName:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        funnelName:
-          type: string
-        description:
-          type: string
-        recordTypeName:
-          type: string
-        restoredFromSnapshot:
-          type: number
-        funnelDetails:
-          $ref: '#/components/schemas/FunnelDetailsDto'
-        deployments:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelDeployment'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - ord
-      - createdById
-      - createdBy
-      - apiName
-      - accountId
-      - account
-      - name
-      - funnelName
-      - description
-      - recordTypeName
-      - restoredFromSnapshot
-      - funnelDetails
-      - deployments
-      - createdAt
-    AiAgentFile:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
-          type: string
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        summary:
-          type: string
-        contentHash:
-          type:
-          - string
-          - 'null'
-          description: 'Null until the shared summary row exists. MySQL permits this because a composite
-
-            foreign key with a null part is not checked.'
-        fileCache:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFileCache'
-        status:
-          enum:
-          - processing
-          - completed
-          - failed
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - agentId
-      - agent
-      - createdById
-      - createdBy
-      - createdAt
-      - summary
-      - contentHash
-      - fileCache
-      - status
-    FunnelPluginsDto:
-      type: object
-      properties: {}
-    RoleGroup:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        type:
-          type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        updatedAt:
-          format: date-time
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-      required:
-      - id
-      - accountId
-      - account
-      - type
-      - accountRoles
-      - orgRoles
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
-      - name
-    AiChatFolder:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - createdById
-      - createdBy
-      - agentId
-      - agent
-      - createdAt
-      - updatedAt
-    AiTableArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        chatId:
-          type: string
-        chat:
-          $ref: '#/components/schemas/AiChat'
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        title:
-          type: string
-        markdown:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - chatId
-      - chat
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - title
-      - markdown
-      - createdAt
-      - updatedAt
-    CreateArtifactSectionDto:
+    CreatePromptSectionDto:
       type: object
       properties:
         name:
           type: string
-      required:
-      - name
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
+        prompts:
           type: array
           items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    UpdateSectionDto:
-      type: object
-      properties:
-        name:
-          type: string
+            $ref: '#/components/schemas/CreatePromptDto'
         runMode:
           type: string
           enum:
           - individual
           - queue
+      required:
+      - name
+      - prompts
+      - runMode
+    Org:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+      - id
+      - accountId
+      - account
     AiProjectSection:
       type: object
       properties:
@@ -1225,30 +663,214 @@ components:
       - projectId
       - project
       - items
-    AiProjectOriginTemplate:
+    CreateFileSectionDto:
       type: object
       properties:
+        name:
+          type: string
+        files:
+          maxItems: 20
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateTemplateFileRefDto'
+      required:
+      - name
+    UpdateSectionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        runMode:
+          type: string
+          enum:
+          - individual
+          - queue
+    AiProjectSectionItem:
+      type: object
+      properties:
+        id:
+          type: string
+        sortOrder:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/AiProjectSection'
+        promptId:
+          type:
+          - string
+          - 'null'
+        prompt:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectPrompt'
+        artifactId:
+          type:
+          - string
+          - 'null'
+        artifact:
+          allOf:
+          - $ref: '#/components/schemas/AiArtifact'
+        tableArtifactId:
+          type:
+          - string
+          - 'null'
+        tableArtifact:
+          allOf:
+          - $ref: '#/components/schemas/AiTableArtifact'
+        fileId:
+          type:
+          - string
+          - 'null'
+        file:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFile'
+      required:
+      - id
+      - sortOrder
+      - sectionId
+      - section
+      - promptId
+      - prompt
+      - artifactId
+      - artifact
+      - tableArtifactId
+      - tableArtifact
+      - fileId
+      - file
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
+      - createdById
+      - createdBy
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    AiProjectPrompt:
+      type: object
+      properties:
+        id:
+          type: string
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+        isCompleted:
+          type: boolean
+        completedById:
+          type:
+          - string
+          - 'null'
+        completedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
         projectId:
           type: string
         project:
           $ref: '#/components/schemas/AiProject'
-        originTemplateExternalId:
-          type: string
-          enum:
-          - blank
-          - cpq-agentforce-revenue-management
-          - process-builder-to-flow
-          - profiles-permission-set-groups-migration
-          - visualforce-aura-lwc-modernization
-          - field-cleanup-hygiene
-          - salesforce-winter-27-release-prep
-          - ai-security-risk-remediation
-          - product-catalog-rationalization
-          - agentforce-readiness
       required:
+      - id
+      - promptTitle
+      - promptText
+      - mode
+      - isCompleted
+      - completedById
+      - completedAt
       - projectId
       - project
-      - originTemplateExternalId
     AiAgentMetadataElement:
       type: object
       properties:
@@ -1269,6 +891,125 @@ components:
       - type
       - aiAgent
       - createdAt
+    AiAgentBestPractice:
+      type: object
+      properties:
+        aiAgentId:
+          type: string
+        bestPracticeId:
+          type: string
+        aiAgent:
+          $ref: '#/components/schemas/AiAgent'
+        bestPractice:
+          $ref: '#/components/schemas/BestPractice'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - aiAgentId
+      - bestPracticeId
+      - aiAgent
+      - bestPractice
+      - createdAt
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    AddSectionDto:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - prompts
+          - artifacts
+          - files
+        runMode:
+          type: string
+          enum:
+          - individual
+          - queue
+      required:
+      - name
+      - type
+      - runMode
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
     ReorderSectionsDto:
       type: object
       properties:
@@ -1287,6 +1028,179 @@ components:
       required:
       - type
       - sectionIds
+    AiTableArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        markdown:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - markdown
+      - createdAt
+      - updatedAt
+    MoveItemDto:
+      type: object
+      properties:
+        toSectionId:
+          type: string
+          format: uuid
+        newIndex:
+          type: number
+          minimum: 0
+      required:
+      - toSectionId
+      - newIndex
+    CreateProjectDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        promptSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreatePromptSectionDto'
+        artifactSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateArtifactSectionDto'
+        fileSections:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateFileSectionDto'
+        autonomyMode:
+          type: string
+          enum:
+          - guided
+          - balanced
+          - autonomous
+        originTemplateId:
+          type: string
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+      required:
+      - name
+    CreateArtifactSectionDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    AddSectionItemDto:
+      type: object
+      properties:
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
+        fileId:
+          type: string
+          format: uuid
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    AiChatFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - createdById
+      - createdBy
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
     AiArtifact:
       type: object
       properties:
@@ -1343,70 +1257,6 @@ components:
       - toolResults
       - createdAt
       - updatedAt
-    CreateFileSectionDto:
-      type: object
-      properties:
-        name:
-          type: string
-        files:
-          maxItems: 20
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateTemplateFileRefDto'
-      required:
-      - name
-    AddSectionItemDto:
-      type: object
-      properties:
-        promptTitle:
-          type: string
-        promptText:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - artifactMode
-          - researchMode
-          - buildMode
-        fileId:
-          type: string
-          format: uuid
-    AddToMemoryDto:
-      type: object
-      properties:
-        fileId:
-          type: string
-          format: uuid
-      required:
-      - fileId
-    RoleGroupAccountRole:
-      type: object
-      properties:
-        role:
-          type: object
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - roleGroupId
-      - roleGroup
-    UpdateSectionItemDto:
-      type: object
-      properties:
-        promptTitle:
-          type: string
-        promptText:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - artifactMode
-          - researchMode
-          - buildMode
     AiProject:
       type: object
       properties:
@@ -1483,18 +1333,252 @@ components:
       - sections
       - createdAt
       - updatedAt
-    CreatePromptDto:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    AiAgentFileCache:
+      type: object
+      properties:
+        contentHash:
+          type: string
+        name:
+          type: string
+        summary:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - contentHash
+      - name
+      - summary
+      - files
+      - createdAt
+      - updatedAt
+    AiAgentFile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+          type: string
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        summary:
+          type: string
+        contentHash:
+          type:
+          - string
+          - 'null'
+          description: 'Null until the shared summary row exists. MySQL permits this because a composite
+
+            foreign key with a null part is not checked.'
+        fileCache:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFileCache'
+        status:
+          enum:
+          - processing
+          - completed
+          - failed
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - agentId
+      - agent
+      - createdById
+      - createdBy
+      - createdAt
+      - summary
+      - contentHash
+      - fileCache
+      - status
+    CreateTemplateFileRefDto:
       type: object
       properties:
         name:
           type: string
-        promptText:
+        extension:
           type: string
-        promptGroupId:
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+        fileName:
           type: string
       required:
       - name
-      - promptText
+      - extension
+      - fileName
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
     FunnelDeployment:
       type: object
       properties:
@@ -1527,24 +1611,106 @@ components:
       - deployedBy
       - deployedAt
       - status
-    CreatePromptSectionDto:
+    BestPractice:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        isSystem:
+          type: boolean
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - severity
+      - text
+      - isSystem
+      - applicableDomain
+      - applicableResourceType
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - updatedById
+      - updatedBy
+      - createdAt
+      - updatedAt
+    CreatePromptDto:
       type: object
       properties:
         name:
           type: string
-        prompts:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreatePromptDto'
-        runMode:
+        promptText:
           type: string
-          enum:
-          - individual
-          - queue
+        promptGroupId:
+          type: string
       required:
       - name
-      - prompts
-      - runMode
+      - promptText
+    UpdateProjectDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        visibility:
+          type: string
+          enum:
+          - team
+          - private
+        autonomyMode:
+          type:
+          - string
+          - 'null'
+          enum:
+          - guided
+          - balanced
+          - autonomous
+    UpdateSectionItemDto:
+      type: object
+      properties:
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
     CrmOrg:
       type: object
       properties:
@@ -1646,82 +1812,201 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    Account:
+    ReorderItemsDto:
+      type: object
+      properties:
+        itemIds:
+          maxItems: 500
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - itemIds
+    RoleGroupAccountRole:
+      type: object
+      properties:
+        role:
+          type: object
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - roleGroupId
+      - roleGroup
+    RoleGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    AiAgent:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-        authZeroOrgId:
+        type:
+          enum:
+          - Documentation
+          - Process Optimization
+          - MonitoringV2
+          - Permissions
+          - Support
           type: string
+        contextComponents:
+          type: object
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+        projectId:
+          type:
+          - string
+          - 'null'
+        project:
+          allOf:
+          - $ref: '#/components/schemas/AiProject'
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        bestPractices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentBestPractice'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentMetadataElement'
         createdAt:
           format: date-time
           type: string
         updatedAt:
           format: date-time
           type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       required:
       - id
       - name
-      - authZeroOrgId
+      - type
+      - contextComponents
+      - userInstructions
+      - systemInstructions
+      - projectId
+      - project
+      - orgId
+      - org
+      - files
+      - bestPractices
+      - metadataElements
       - createdAt
       - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    AiProjectOriginTemplate:
+      type: object
+      properties:
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+        originTemplateExternalId:
+          type: string
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+      required:
+      - projectId
+      - project
+      - originTemplateExternalId
     AiChat:
       type: object
       properties:
@@ -1791,271 +2076,30 @@ components:
       - folder
       - chatContext
       - chatSource
-    UpdateProjectDto:
+    SweepAssignmentRule:
       type: object
       properties:
-        name:
+        assignmentId:
           type: string
-        description:
+        ruleName:
           type: string
-        visibility:
+        assignedTo:
           type: string
-          enum:
-          - team
-          - private
-        autonomyMode:
-          type:
-          - string
-          - 'null'
-          enum:
-          - guided
-          - balanced
-          - autonomous
-    DuplicateProjectDto:
-      type: object
-      properties:
-        name:
+        assignedToType:
           type: string
-        mode:
+        criteriaLogic:
           type: string
-          enum:
-          - playbook_only
-          - with_conversations
-        targetOrgId:
-          type: string
-      required:
-      - name
-      - mode
-    Org:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-      required:
-      - id
-      - accountId
-      - account
-    SweepStage:
-      type: object
-      properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
+        criteria:
           type: array
           items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
-          type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
+            type: object
       required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    RoleGroupOrgRole:
-      type: object
-      properties:
-        role:
-          type: object
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - crmOrgId
-      - crmOrg
-      - roleGroupId
-      - roleGroup
-    CreateTemplateFileRefDto:
-      type: object
-      properties:
-        name:
-          type: string
-        extension:
-          type: string
-          enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
-        fileName:
-          type: string
-      required:
-      - name
-      - extension
-      - fileName
-    AiProjectSectionItem:
-      type: object
-      properties:
-        id:
-          type: string
-        sortOrder:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/AiProjectSection'
-        promptId:
-          type:
-          - string
-          - 'null'
-        prompt:
-          allOf:
-          - $ref: '#/components/schemas/AiProjectPrompt'
-        artifactId:
-          type:
-          - string
-          - 'null'
-        artifact:
-          allOf:
-          - $ref: '#/components/schemas/AiArtifact'
-        tableArtifactId:
-          type:
-          - string
-          - 'null'
-        tableArtifact:
-          allOf:
-          - $ref: '#/components/schemas/AiTableArtifact'
-        fileId:
-          type:
-          - string
-          - 'null'
-        file:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFile'
-      required:
-      - id
-      - sortOrder
-      - sectionId
-      - section
-      - promptId
-      - prompt
-      - artifactId
-      - artifact
-      - tableArtifactId
-      - tableArtifact
-      - fileId
-      - file
-    CreateProjectDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        promptSections:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreatePromptSectionDto'
-        artifactSections:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateArtifactSectionDto'
-        fileSections:
-          type: array
-          items:
-            $ref: '#/components/schemas/CreateFileSectionDto'
-        autonomyMode:
-          type: string
-          enum:
-          - guided
-          - balanced
-          - autonomous
-        originTemplateId:
-          type: string
-          enum:
-          - blank
-          - cpq-agentforce-revenue-management
-          - process-builder-to-flow
-          - profiles-permission-set-groups-migration
-          - visualforce-aura-lwc-modernization
-          - field-cleanup-hygiene
-          - salesforce-winter-27-release-prep
-          - ai-security-risk-remediation
-          - product-catalog-rationalization
-          - agentforce-readiness
-        userInstructions:
-          type: string
-        systemInstructions:
-          type: string
-      required:
-      - name
-    AiAgentFileCache:
-      type: object
-      properties:
-        contentHash:
-          type: string
-        name:
-          type: string
-        summary:
-          type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - contentHash
-      - name
-      - summary
-      - files
-      - createdAt
-      - updatedAt
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
   securitySchemes:
     bearer:
       scheme: bearer

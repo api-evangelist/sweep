@@ -32,6 +32,8 @@ paths:
       - bearer: []
       tags:
       - Logo Dev
+      summary: Logo dev controller search logo
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

@@ -31,6 +31,8 @@ paths:
       - bearer: []
       tags:
       - Simulation
+      summary: Simulation controller run simulation
+      x-summary-source: derived
   /simulation/result:
     get:
       operationId: SimulationController_getSimulationResult
@@ -52,6 +54,8 @@ paths:
       - bearer: []
       tags:
       - Simulation
+      summary: Simulation controller get simulation result
+      x-summary-source: derived
 components:
   schemas:
     RunSimulationDto:

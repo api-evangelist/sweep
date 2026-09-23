@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: best-practices
+- name: Best Practices
 paths:
   /best-practices:
     get:
@@ -26,7 +26,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - best-practices
+      - Best Practices
+      summary: Best practices controller get all best practices
+      x-summary-source: derived
     post:
       operationId: BestPracticesController_createBestPractice
       parameters: []
@@ -46,7 +48,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - best-practices
+      - Best Practices
+      summary: Best practices controller create best practice
+      x-summary-source: derived
   /best-practices/{id}:
     patch:
       operationId: BestPracticesController_updateBestPractice
@@ -72,7 +76,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - best-practices
+      - Best Practices
+      summary: Best practices controller update best practice
+      x-summary-source: derived
     delete:
       operationId: BestPracticesController_deleteBestPractice
       parameters:
@@ -87,31 +93,11 @@ paths:
       security:
       - bearer: []
       tags:
-      - best-practices
+      - Best Practices
+      summary: Best practices controller delete best practice
+      x-summary-source: derived
 components:
   schemas:
-    CreateBestPracticeDto:
-      type: object
-      properties:
-        name:
-          type: string
-        severity:
-          type: object
-        text:
-          type: string
-        applicableDomain:
-          type: string
-          enum:
-          - MetadataMonitoring
-          - BusinessProcess
-        applicableResourceType:
-          type: string
-      required:
-      - name
-      - severity
-      - text
-      - applicableDomain
-      - applicableResourceType
     UpdateBestPracticeDto:
       type: object
       properties:
@@ -158,6 +144,28 @@ components:
       - accountId
       - createdAt
       - updatedAt
+    CreateBestPracticeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+      required:
+      - name
+      - severity
+      - text
+      - applicableDomain
+      - applicableResourceType
   securitySchemes:
     bearer:
       scheme: bearer

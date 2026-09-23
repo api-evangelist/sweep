@@ -37,6 +37,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller get automations
+      x-summary-source: derived
     post:
       operationId: AutomationController_createAutomation
       parameters: []
@@ -57,6 +59,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create automation
+      x-summary-source: derived
   /automations/{automationId}:
     get:
       operationId: AutomationController_getAutomationById
@@ -87,6 +91,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller get automation by id
+      x-summary-source: derived
     delete:
       operationId: AutomationController_deleteAutomation
       parameters:
@@ -102,6 +108,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete automation
+      x-summary-source: derived
   /automations/{automationId}/history:
     get:
       operationId: AutomationController_getVersionHistory
@@ -124,6 +132,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller get version history
+      x-summary-source: derived
   /automations/read-only:
     post:
       operationId: AutomationController_createReadOnlyAutomation
@@ -145,6 +155,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create read only automation
+      x-summary-source: derived
   /automations/alerts:
     post:
       operationId: AutomationController_createAlert
@@ -166,6 +178,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create alert
+      x-summary-source: derived
   /automations/marketing-attributions:
     post:
       operationId: AutomationController_createMarketingAttribution
@@ -187,6 +201,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create marketing attribution
+      x-summary-source: derived
   /automations/marketing-attributions/templates:
     post:
       operationId: AutomationController_createMarketingAttributionTemplates
@@ -212,6 +228,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create marketing attribution templates
+      x-summary-source: derived
   /automations/assignments:
     post:
       operationId: AutomationController_createAssignment
@@ -233,6 +251,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create assignment
+      x-summary-source: derived
   /automations/dedupe-matching:
     post:
       operationId: AutomationController_createDedupeOrMatching
@@ -254,6 +274,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create dedupe or matching
+      x-summary-source: derived
   /automations/ai-create:
     post:
       operationId: AutomationController_createAutomationWithAi
@@ -275,6 +297,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create automation with ai
+      x-summary-source: derived
   /automations/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editAutomation
@@ -306,6 +330,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit automation
+      x-summary-source: derived
   /automations/alerts/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editAlert
@@ -337,6 +363,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit alert
+      x-summary-source: derived
   /automations/marketing-attributions/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editMarketingAttribution
@@ -368,6 +396,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit marketing attribution
+      x-summary-source: derived
   /automations/assignments/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editAssignment
@@ -399,6 +429,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit assignment
+      x-summary-source: derived
   /automations/dedupe-matching/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editDedupeOrMatching
@@ -430,6 +462,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit dedupe or matching
+      x-summary-source: derived
   /automations/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployAutomation
@@ -457,6 +491,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy automation
+      x-summary-source: derived
   /automations/alerts/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployAlert
@@ -484,6 +520,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy alert
+      x-summary-source: derived
   /automations/marketing-attributions/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployMarketingAttribution
@@ -511,6 +549,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy marketing attribution
+      x-summary-source: derived
   /automations/assignments/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployAssignment
@@ -538,6 +578,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy assignment
+      x-summary-source: derived
   /automations/dedupe-matching/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployDedupeOrMatching
@@ -565,6 +607,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy dedupe or matching
+      x-summary-source: derived
   /automations/ai-impact-analysis-chat:
     post:
       operationId: AutomationController_createAutomationAiImpactAnalysisChat
@@ -586,6 +630,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create automation ai impact analysis chat
+      x-summary-source: derived
   /automations/assignments/ai-impact-analysis-chat:
     post:
       operationId: AutomationController_createAssignmentAiImpactAnalysisChat
@@ -607,6 +653,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create assignment ai impact analysis chat
+      x-summary-source: derived
   /automations/activation/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_toggleActivation
@@ -634,6 +682,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller toggle activation
+      x-summary-source: derived
   /automations/alerts/activation/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_toggleAlertActivation
@@ -661,6 +711,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller toggle alert activation
+      x-summary-source: derived
   /automations/assignments/activation/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_toggleAssignmentActivation
@@ -688,6 +740,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller toggle assignment activation
+      x-summary-source: derived
   /automations/dedupe-matching/activation/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_toggleDedupeOrMatchingActivation
@@ -715,6 +769,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller toggle dedupe or matching activation
+      x-summary-source: derived
   /automations/admin-notification/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_notifyAdminOnAutomation
@@ -742,6 +798,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller notify admin on automation
+      x-summary-source: derived
   /automations/alerts/admin-notification/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_notifyAdminOnAlert
@@ -769,6 +827,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller notify admin on alert
+      x-summary-source: derived
   /automations/assignments/admin-notification/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_notifyAdminOnAssignment
@@ -796,6 +856,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller notify admin on assignment
+      x-summary-source: derived
   /automations/dedupe-matching/admin-notification/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_notifyAdminOnDedupeOrMatching
@@ -823,6 +885,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller notify admin on dedupe or matching
+      x-summary-source: derived
   /automations/alerts/{automationId}:
     delete:
       operationId: AutomationController_deleteAlert
@@ -839,6 +903,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete alert
+      x-summary-source: derived
   /automations/assignments/{automationId}:
     delete:
       operationId: AutomationController_deleteAssignment
@@ -855,6 +921,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete assignment
+      x-summary-source: derived
   /automations/marketing-attributions/{automationId}:
     delete:
       operationId: AutomationController_deleteMarketingAttribution
@@ -871,6 +939,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete marketing attribution
+      x-summary-source: derived
   /automations/dedupe-matching/{automationId}:
     delete:
       operationId: AutomationController_deleteDedupeOrMatching
@@ -887,6 +957,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete dedupe or matching
+      x-summary-source: derived
   /automations/booking:
     post:
       operationId: AutomationController_createBooking
@@ -908,6 +980,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller create booking
+      x-summary-source: derived
   /automations/booking/{automationId}/{versionId}:
     put:
       operationId: AutomationController_editBooking
@@ -939,6 +1013,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller edit booking
+      x-summary-source: derived
   /automations/booking/deployment/{automationId}/{versionId}:
     post:
       operationId: AutomationController_deployBooking
@@ -966,6 +1042,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy booking
+      x-summary-source: derived
   /automations/booking/activation/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_toggleBookingActivation
@@ -993,6 +1071,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller toggle booking activation
+      x-summary-source: derived
   /automations/booking/{automationId}:
     delete:
       operationId: AutomationController_deleteBooking
@@ -1009,6 +1089,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller delete booking
+      x-summary-source: derived
   /automations/booking/admin-notification/{automationId}/{versionId}:
     patch:
       operationId: AutomationController_notifyAdminOnBooking
@@ -1036,6 +1118,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller notify admin on booking
+      x-summary-source: derived
   /automations/order/Default:
     get:
       operationId: AutomationController_listAutomationsExecutionOrder
@@ -1083,6 +1167,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller list automations execution order
+      x-summary-source: derived
     post:
       operationId: AutomationController_deployAutomationsExecutionOrder
       parameters: []
@@ -1101,6 +1187,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy automations execution order
+      x-summary-source: derived
   /automations/order/Alert:
     get:
       operationId: AutomationController_listAlertsExecutionOrder
@@ -1148,6 +1236,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller list alerts execution order
+      x-summary-source: derived
     post:
       operationId: AutomationController_deployAlertsExecutionOrder
       parameters: []
@@ -1166,6 +1256,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy alerts execution order
+      x-summary-source: derived
   /automations/order/Assignment:
     get:
       operationId: AutomationController_listAssignmentsExecutionOrder
@@ -1213,6 +1305,8 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller list assignments execution order
+      x-summary-source: derived
     post:
       operationId: AutomationController_deployAssignmentsExecutionOrder
       parameters: []
@@ -1231,8 +1325,125 @@ paths:
       - bearer: []
       tags:
       - Automations
+      summary: Automation controller deploy assignments execution order
+      x-summary-source: derived
 components:
   schemas:
+    AutomationTriggerTimeInStep:
+      type: object
+      properties:
+        stage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Hours
+          - Days
+          - Weeks
+      required:
+      - stage
+      - offsetValue
+      - offsetType
+    AiChatDto:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        message:
+          type: string
+        context:
+          type: object
+        isFirstMessage:
+          type: boolean
+      required:
+      - sessionId
+      - message
+      - context
+      - isFirstMessage
+    AutomationTriggerStageTransitionParams:
+      type: object
+      properties:
+        fromStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        toStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+    AutomationActivationDto:
+      type: object
+      properties:
+        isActive:
+          type: boolean
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        deployAs:
+          enum:
+          - AUTOMATION
+          - FLOW
+          type: string
+      required:
+      - isActive
+      - deployToOrgIds
+    AutomationParams:
+      type: object
+      properties:
+        fieldUpdate:
+          $ref: '#/components/schemas/AutomationParamsFieldUpdate'
+        stageExit:
+          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
+        stageEnter:
+          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
+        timeInStep:
+          $ref: '#/components/schemas/AutomationTriggerTimeInStep'
+        dateArrive:
+          $ref: '#/components/schemas/AutomationTriggerDateArrives'
+        schedule:
+          $ref: '#/components/schemas/AutomationSchedule'
+    CreateAutomationOrderHintDto:
+      type: object
+      properties:
+        orderGroupId:
+          type: string
+        insertBeforeAutomationId:
+          type: string
+      required:
+      - orderGroupId
+    AdminNotificationDto:
+      type: object
+      properties:
+        note:
+          type: string
+    AutoTemplatesStructDto:
+      type: object
+      properties:
+        fieldsList:
+          type: array
+          items:
+            type: string
+        automation:
+          type: object
+      required:
+      - fieldsList
+      - automation
+    DelayActionsParams:
+      type: object
+      properties:
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Minutes
+          - Hours
+          - Days
+        shouldReevaluate:
+          type: boolean
+      required:
+      - offsetValue
+      - offsetType
     AutomationTriggerDateArrives:
       type: object
       properties:
@@ -1255,218 +1466,35 @@ components:
       required:
       - relativeTime
       - sourceField
-    FunnelRecordTypeDto:
+    SweepCondition:
       type: object
       properties:
-        name:
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
           type: string
-        objectName:
+      required:
+      - criteria
+      - criteriaLogic
+    AutomationParamsStageReference:
+      type: object
+      properties:
+        _stageId:
           type: string
-        label:
+        stageName:
           type: string
+      required:
+      - _stageId
+      - stageName
+    CreateAutomationWithAiDto:
+      type: object
+      properties:
         description:
           type: string
       required:
-      - name
-      - objectName
-      - label
       - description
-    AutomationImmediateFieldReference:
-      type: object
-      properties:
-        _leadingFieldId:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-      required:
-      - _leadingFieldId
-      - _leadingFieldLabels
-    AutomationSchedule:
-      type: object
-      properties:
-        offset:
-          type: object
-        executeTime:
-          type: string
-          pattern: /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
-        startDate:
-          type: string
-          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
-        endDate:
-          type: string
-          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
-        timezone:
-          type: string
-      required:
-      - executeTime
-      - startDate
-      - timezone
-    AutomationParamsFieldUpdate:
-      type: object
-      properties:
-        _leadingFieldId:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        fieldType:
-          type: string
-          enum:
-          - ADDRESS
-          - BOOLEAN
-          - CURRENCY
-          - DATE
-          - DATETIME
-          - EMAIL
-          - GEOLOCATION
-          - TEXTAREA
-          - LONGTEXTAREA
-          - REFERENCE
-          - MULTIPICKLIST
-          - NUMBER
-          - PERCENT
-          - PHONE
-          - PICKLIST
-          - COMBOBOX
-          - STRING
-          - TIME
-          - URL
-          - INTEGER
-          - DOUBLE
-          - ID
-          - ENCRYPTEDSTRING
-          - Unknown
-        operator:
-          type: string
-        operatorValue:
-          type: object
-      required:
-      - _leadingFieldId
-      - _leadingFieldLabels
-      - operator
-    CreateAutomationDto:
-      type: object
-      properties:
-        name:
-          type: string
-        automationDetails:
-          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
-        objectName:
-          type: string
-        type:
-          enum:
-          - Default
-          - Assignment
-          - Alert
-          - Dedupe
-          - Matching
-          - ScheduledAssignment
-          - ScheduledReport
-          - ScheduledJob
-          - MarketingAttribution
-          - Booking
-          type: string
-        orderHint:
-          $ref: '#/components/schemas/CreateAutomationOrderHintDto'
-      required:
-      - name
-      - automationDetails
-      - type
-    UpdateAutomationDto:
-      type: object
-      properties:
-        name:
-          type: string
-        automationDetails:
-          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
-      required:
-      - name
-      - automationDetails
-    AdminNotificationDto:
-      type: object
-      properties:
-        note:
-          type: string
-    AutomationRecordTypeRef:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-      required:
-      - name
-      - label
-    CreateAutomationOrderHintDto:
-      type: object
-      properties:
-        orderGroupId:
-          type: string
-        insertBeforeAutomationId:
-          type: string
-      required:
-      - orderGroupId
-    AutomationTriggerTimeInStep:
-      type: object
-      properties:
-        stage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
-        offsetValue:
-          type: number
-        offsetType:
-          type: string
-          enum:
-          - Hours
-          - Days
-          - Weeks
-      required:
-      - stage
-      - offsetValue
-      - offsetType
-    AutomationActivationDto:
-      type: object
-      properties:
-        isActive:
-          type: boolean
-        deployToOrgIds:
-          minItems: 1
-          type: array
-          items:
-            type: string
-        deployAs:
-          enum:
-          - AUTOMATION
-          - FLOW
-          type: string
-      required:
-      - isActive
-      - deployToOrgIds
-    DelayActionsParams:
-      type: object
-      properties:
-        offsetValue:
-          type: number
-        offsetType:
-          type: string
-          enum:
-          - Minutes
-          - Hours
-          - Days
-        shouldReevaluate:
-          type: boolean
-      required:
-      - offsetValue
-      - offsetType
-    AutomationTriggerStageTransitionParams:
-      type: object
-      properties:
-        fromStage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
-        toStage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
     AutomationDto:
       type: object
       properties:
@@ -1544,45 +1572,6 @@ components:
       - createdAt
       - updatedById
       - updatedAt
-    AutoTemplatesStructDto:
-      type: object
-      properties:
-        fieldsList:
-          type: array
-          items:
-            type: string
-        automation:
-          type: object
-      required:
-      - fieldsList
-      - automation
-    AutomationParams:
-      type: object
-      properties:
-        fieldUpdate:
-          $ref: '#/components/schemas/AutomationParamsFieldUpdate'
-        stageExit:
-          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
-        stageEnter:
-          $ref: '#/components/schemas/AutomationTriggerStageTransitionParams'
-        timeInStep:
-          $ref: '#/components/schemas/AutomationTriggerTimeInStep'
-        dateArrive:
-          $ref: '#/components/schemas/AutomationTriggerDateArrives'
-        schedule:
-          $ref: '#/components/schemas/AutomationSchedule'
-    SweepCondition:
-      type: object
-      properties:
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - criteria
-      - criteriaLogic
     AutomationDetailsWithFunnelIdDto:
       type: object
       properties:
@@ -1626,6 +1615,79 @@ components:
       - automationParams
       - actions
       - triggerType
+    FunnelRecordTypeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        objectName:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - objectName
+      - label
+      - description
+    CreateAutomationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
+        objectName:
+          type: string
+        type:
+          enum:
+          - Default
+          - Assignment
+          - Alert
+          - Dedupe
+          - Matching
+          - ScheduledAssignment
+          - ScheduledReport
+          - ScheduledJob
+          - MarketingAttribution
+          - Booking
+          type: string
+        orderHint:
+          $ref: '#/components/schemas/CreateAutomationOrderHintDto'
+      required:
+      - name
+      - automationDetails
+      - type
+    AutomationRecordTypeRef:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      required:
+      - name
+      - label
+    AutomationImmediateFieldReference:
+      type: object
+      properties:
+        _leadingFieldId:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+      required:
+      - _leadingFieldId
+      - _leadingFieldLabels
+    OptionalCondition:
+      type: object
+      properties:
+        isCriteria:
+          type: boolean
+        criteria:
+          $ref: '#/components/schemas/SweepCondition'
     DeployAutomationDto:
       type: object
       properties:
@@ -1641,46 +1703,80 @@ components:
           type: string
       required:
       - deployToOrgIds
-    OptionalCondition:
+    UpdateAutomationDto:
       type: object
       properties:
-        isCriteria:
-          type: boolean
-        criteria:
-          $ref: '#/components/schemas/SweepCondition'
-    AutomationParamsStageReference:
-      type: object
-      properties:
-        _stageId:
+        name:
           type: string
-        stageName:
-          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
       required:
-      - _stageId
-      - stageName
-    AiChatDto:
+      - name
+      - automationDetails
+    AutomationParamsFieldUpdate:
       type: object
       properties:
-        sessionId:
+        _leadingFieldId:
           type: string
-        message:
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        fieldType:
           type: string
-        context:
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - EMAIL
+          - GEOLOCATION
+          - TEXTAREA
+          - LONGTEXTAREA
+          - REFERENCE
+          - MULTIPICKLIST
+          - NUMBER
+          - PERCENT
+          - PHONE
+          - PICKLIST
+          - COMBOBOX
+          - STRING
+          - TIME
+          - URL
+          - INTEGER
+          - DOUBLE
+          - ID
+          - ENCRYPTEDSTRING
+          - Unknown
+        operator:
+          type: string
+        operatorValue:
           type: object
-        isFirstMessage:
-          type: boolean
       required:
-      - sessionId
-      - message
-      - context
-      - isFirstMessage
-    CreateAutomationWithAiDto:
+      - _leadingFieldId
+      - _leadingFieldLabels
+      - operator
+    AutomationSchedule:
       type: object
       properties:
-        description:
+        offset:
+          type: object
+        executeTime:
+          type: string
+          pattern: /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
+        startDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        endDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        timezone:
           type: string
       required:
-      - description
+      - executeTime
+      - startDate
+      - timezone
   securitySchemes:
     bearer:
       scheme: bearer

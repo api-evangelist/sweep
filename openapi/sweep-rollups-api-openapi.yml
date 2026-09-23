@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller get rollups
+      x-summary-source: derived
     post:
       operationId: RollupController_createRollup
       parameters: []
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller create rollup
+      x-summary-source: derived
   /rollups/{rollupId}:
     get:
       operationId: RollupController_getRollupById
@@ -77,6 +81,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller get rollup by id
+      x-summary-source: derived
     delete:
       operationId: RollupController_deleteRollup
       parameters:
@@ -96,6 +102,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller delete rollup
+      x-summary-source: derived
   /rollups/read-only:
     post:
       operationId: RollupController_createReadOnlyRollup
@@ -117,6 +125,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller create read only rollup
+      x-summary-source: derived
   /rollups/{rollupId}/{versionId}:
     put:
       operationId: RollupController_editRollup
@@ -148,6 +158,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller edit rollup
+      x-summary-source: derived
     post:
       operationId: RollupController_deployRollup
       parameters:
@@ -174,6 +186,8 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller deploy rollup
+      x-summary-source: derived
   /rollups/admin-notification/{rollupId}/{versionId}:
     patch:
       operationId: RollupController_notifyAdminOnRollup
@@ -201,8 +215,43 @@ paths:
       - bearer: []
       tags:
       - Rollups
+      summary: Rollup controller notify admin on rollup
+      x-summary-source: derived
 components:
   schemas:
+    CreateRollupDto:
+      type: object
+      properties:
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
+        objectName:
+          type: string
+      required:
+      - rollupField
+      - objectName
+    DeployRollupDto:
+      type: object
+      properties:
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - deployToOrgIds
+    AdminNotificationDto:
+      type: object
+      properties:
+        note:
+          type: string
+    UpdateRollupDto:
+      type: object
+      properties:
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
+      required:
+      - rollupField
     SweepFieldOutgoingDto:
       type: object
       properties:
@@ -283,6 +332,63 @@ components:
       - fieldType
       - properties
       - rollup
+    RollupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        rollupId:
+          type: string
+        versionId:
+          type: string
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldOutgoingDto'
+        crmOrgId:
+          type: string
+        accountId:
+          type: string
+        objectName:
+          type: string
+        status:
+          enum:
+          - Draft
+          - Deployed
+          type: string
+        isActive:
+          type: boolean
+        notifyAdmin:
+          type: boolean
+        priority:
+          type: number
+        type:
+          type: string
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - name
+      - rollupId
+      - versionId
+      - rollupField
+      - crmOrgId
+      - accountId
+      - objectName
+      - status
+      - isActive
+      - notifyAdmin
+      - priority
+      - type
+      - createdById
+      - createdAt
+      - updatedById
+      - updatedAt
     SweepFieldRollupDto:
       type: object
       properties:
@@ -391,96 +497,6 @@ components:
       - sweepFieldName
       - fieldType
       - properties
-    RollupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        rollupId:
-          type: string
-        versionId:
-          type: string
-        rollupField:
-          $ref: '#/components/schemas/SweepFieldOutgoingDto'
-        crmOrgId:
-          type: string
-        accountId:
-          type: string
-        objectName:
-          type: string
-        status:
-          enum:
-          - Draft
-          - Deployed
-          type: string
-        isActive:
-          type: boolean
-        notifyAdmin:
-          type: boolean
-        priority:
-          type: number
-        type:
-          type: string
-        createdById:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - name
-      - rollupId
-      - versionId
-      - rollupField
-      - crmOrgId
-      - accountId
-      - objectName
-      - status
-      - isActive
-      - notifyAdmin
-      - priority
-      - type
-      - createdById
-      - createdAt
-      - updatedById
-      - updatedAt
-    CreateRollupDto:
-      type: object
-      properties:
-        rollupField:
-          $ref: '#/components/schemas/SweepFieldRollupDto'
-        objectName:
-          type: string
-      required:
-      - rollupField
-      - objectName
-    DeployRollupDto:
-      type: object
-      properties:
-        deployToOrgIds:
-          minItems: 1
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - deployToOrgIds
-    UpdateRollupDto:
-      type: object
-      properties:
-        rollupField:
-          $ref: '#/components/schemas/SweepFieldRollupDto'
-      required:
-      - rollupField
-    AdminNotificationDto:
-      type: object
-      properties:
-        note:
-          type: string
   securitySchemes:
     bearer:
       scheme: bearer

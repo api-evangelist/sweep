@@ -26,6 +26,8 @@ paths:
       - bearer: []
       tags:
       - graph-db
+      summary: Graph db controller sync org
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

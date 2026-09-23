@@ -21,6 +21,8 @@ paths:
       - bearer: []
       tags:
       - ai-session
+      summary: Ai session controller get sessions
+      x-summary-source: derived
   /ai-session/{sessionId}:
     put:
       operationId: AiSessionController_updateSessionStatus
@@ -43,6 +45,8 @@ paths:
       - bearer: []
       tags:
       - ai-session
+      summary: Ai session controller update session status
+      x-summary-source: derived
 components:
   schemas:
     UpdateSessionStatusDto:

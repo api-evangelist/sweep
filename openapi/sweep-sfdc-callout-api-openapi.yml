@@ -29,6 +29,8 @@ paths:
                 type: object
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller create support chat
+      x-summary-source: derived
     get:
       operationId: SfdcCalloutController_listSupportChats
       parameters:
@@ -48,6 +50,8 @@ paths:
                   type: object
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller list support chats
+      x-summary-source: derived
   /sfdc-callout/ai-support/chats/{chatId}:
     patch:
       operationId: SfdcCalloutController_sendSupportMessage
@@ -72,6 +76,8 @@ paths:
                 type: object
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller send support message
+      x-summary-source: derived
     get:
       operationId: SfdcCalloutController_getSupportChat
       parameters:
@@ -89,6 +95,8 @@ paths:
                 type: object
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller get support chat
+      x-summary-source: derived
   /sfdc-callout/external-messages:
     post:
       operationId: SfdcCalloutController_externalMessage
@@ -106,6 +114,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller external message
+      x-summary-source: derived
   /sfdc-callout/create-channels:
     post:
       operationId: SfdcCalloutController_createChannels
@@ -127,6 +137,8 @@ paths:
                   $ref: '#/components/schemas/SfdcCreateChannelResponse'
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller create channels
+      x-summary-source: derived
   /sfdc-callout/job-execution:
     post:
       operationId: SfdcCalloutController_createJobs
@@ -144,6 +156,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller create jobs
+      x-summary-source: derived
   /sfdc-callout/job-executions:
     post:
       operationId: SfdcCalloutController_createJobExecutions
@@ -165,6 +179,8 @@ paths:
                   type: object
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller create job executions
+      x-summary-source: derived
   /sfdc-callout/job-executions/results:
     post:
       operationId: SfdcCalloutController_getJobExecutionResults
@@ -186,6 +202,8 @@ paths:
                   $ref: '#/components/schemas/JobExecutionResult'
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller get job execution results
+      x-summary-source: derived
   /sfdc-callout/job-execution/results:
     post:
       operationId: SfdcCalloutController_getJobResults
@@ -207,6 +225,8 @@ paths:
                   $ref: '#/components/schemas/JobExecutionResult'
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller get job results
+      x-summary-source: derived
   /sfdc-callout/field-utilization:
     post:
       operationId: SfdcCalloutController_receiveFieldUtilization
@@ -216,6 +236,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout
+      summary: Sfdc callout controller receive field utilization
+      x-summary-source: derived
 components:
   schemas:
     SfdcCreateChannelRequest:
@@ -248,21 +270,18 @@ components:
       required:
       - requestId
       - resultParams
-    Field:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        value:
-          type: string
-      required:
-      - fieldIds
-      - value
-    GetJobExecutionResultDto:
+    CreateJobExecutionsDto:
       type: object
       properties: {}
+    SfdcCreateChannelsRequestDto:
+      type: object
+      properties:
+        createChannelRequests:
+          type: array
+          items:
+            $ref: '#/components/schemas/SfdcCreateChannelRequest'
+      required:
+      - createChannelRequests
     SfdcSupportMessageDto:
       type: object
       properties:
@@ -278,45 +297,6 @@ components:
       - role
       - content
       - createdAt
-    JobExecutionResult:
-      type: object
-      properties: {}
-    SendSupportMessageDto:
-      type: object
-      properties:
-        userId:
-          type: string
-        message:
-          $ref: '#/components/schemas/SfdcSupportMessageDto'
-        timeoutMs:
-          type: number
-      required:
-      - userId
-      - message
-    SfdcCreateChannelsRequestDto:
-      type: object
-      properties:
-        createChannelRequests:
-          type: array
-          items:
-            $ref: '#/components/schemas/SfdcCreateChannelRequest'
-      required:
-      - createChannelRequests
-    CreateChannelResult:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - SUCCESS
-          - PARTIAL_SUCCESS
-          - ERROR
-        channelId:
-          type: string
-        errorMessage:
-          type: string
-      required:
-      - status
     CreateSupportChatDto:
       type: object
       properties:
@@ -337,9 +317,51 @@ components:
       required:
       - userId
       - message
-    CreateJobExecutionsDto:
+    CreateChannelResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - PARTIAL_SUCCESS
+          - ERROR
+        channelId:
+          type: string
+        errorMessage:
+          type: string
+      required:
+      - status
+    JobExecutionResult:
       type: object
       properties: {}
+    Field:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        value:
+          type: string
+      required:
+      - fieldIds
+      - value
+    GetJobExecutionResultDto:
+      type: object
+      properties: {}
+    SendSupportMessageDto:
+      type: object
+      properties:
+        userId:
+          type: string
+        message:
+          $ref: '#/components/schemas/SfdcSupportMessageDto'
+        timeoutMs:
+          type: number
+      required:
+      - userId
+      - message
   securitySchemes:
     bearer:
       scheme: bearer

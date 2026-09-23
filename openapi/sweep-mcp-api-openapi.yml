@@ -21,6 +21,8 @@ paths:
       - bearer: []
       tags:
       - MCP
+      summary: MCP controller get temporary apikey[0]
+      x-summary-source: derived
   /mcp-deprecated/apikey:
     get:
       operationId: MCPController_getTemporaryApikey[1]
@@ -32,6 +34,8 @@ paths:
       - bearer: []
       tags:
       - MCP
+      summary: MCP controller get temporary apikey[1]
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

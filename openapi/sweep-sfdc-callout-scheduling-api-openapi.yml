@@ -24,6 +24,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller get availability settings
+      x-summary-source: derived
     put:
       operationId: SfdcCalloutSchedulingController_updateAvailabilitySettings
       parameters: []
@@ -32,6 +34,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller update availability settings
+      x-summary-source: derived
   /sfdc-callout/scheduling/rep/connection-status:
     get:
       operationId: SfdcCalloutSchedulingController_getConnectionStatus
@@ -46,6 +50,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller get connection status
+      x-summary-source: derived
   /sfdc-callout/scheduling/rep/oauth-url/google:
     get:
       operationId: SfdcCalloutSchedulingController_getGoogleOAuthUrl
@@ -60,6 +66,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller get google OAuth url
+      x-summary-source: derived
   /sfdc-callout/scheduling/rep/oauth-url/zoom:
     get:
       operationId: SfdcCalloutSchedulingController_getZoomOAuthUrl
@@ -74,6 +82,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller get zoom OAuth url
+      x-summary-source: derived
   /sfdc-callout/scheduling/rep/disconnect/google:
     post:
       operationId: SfdcCalloutSchedulingController_disconnectGoogle
@@ -83,6 +93,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller disconnect google
+      x-summary-source: derived
   /sfdc-callout/scheduling/rep/disconnect/zoom:
     post:
       operationId: SfdcCalloutSchedulingController_disconnectZoom
@@ -92,6 +104,8 @@ paths:
           description: ''
       tags:
       - SFDC Callout — Scheduling
+      summary: Sfdc callout scheduling controller disconnect zoom
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

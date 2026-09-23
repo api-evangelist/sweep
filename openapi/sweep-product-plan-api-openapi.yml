@@ -21,6 +21,8 @@ paths:
       - bearer: []
       tags:
       - Product Plan
+      summary: Plan controller get allowed features
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

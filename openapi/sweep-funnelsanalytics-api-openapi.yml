@@ -31,18 +31,10 @@ paths:
       - bearer: []
       tags:
       - FunnelsAnalytics
+      summary: Funnels analytics controller get funnel analytics
+      x-summary-source: derived
 components:
   schemas:
-    FunnelAnalyticsPeriodDto:
-      type: object
-      properties:
-        from:
-          type: string
-        to:
-          type: string
-      required:
-      - from
-      - to
     GetFunnelAnalyticsRequestDto:
       type: object
       properties:
@@ -69,6 +61,16 @@ components:
       required:
       - crmOrgId
       - funnelIds
+    FunnelAnalyticsPeriodDto:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
+          type: string
+      required:
+      - from
+      - to
   securitySchemes:
     bearer:
       scheme: bearer

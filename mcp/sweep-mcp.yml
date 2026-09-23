@@ -11,28 +11,10 @@ docs:
 - https://www.sweep.io/sweep-model-context-protocol
 - https://www.sweep.io/mcp-revenue-leaders
 deployment:
-  mode: remote
-  endpoint: https://sweepmcp.com/sse
-  transport: sse
-  auth: oauth
-  verified: probed
-  checked: '2026-08-14'
-  evidence:
-  - url: https://sweepmcp.com/sse
-    http_status: 401
-    body: '{"error":"invalid_token","error_description":"Missing or invalid access token"}'
-    note: endpoint is live and OAuth-protected
-  - url: https://sweepmcp.com/.well-known/oauth-authorization-server
-    http_status: 200
-    note: RFC 8414 authorization-server metadata; saved verbatim to well-known/sweep-mcp-oauth-authorization-server.json
-  - url: https://sweepmcp.com/mcp
-    http_status: 404
-    note: no streamable-HTTP endpoint at /mcp — SSE only
-  install: null
-  package: null
-  note: 'No stdio/npx package is published. Remote-only. sweepmcp.com is a different registrable domain
-    from sweep.io, and that is justified from the provider''s own documentation: Sweep''s help-centre
-    article "Using the Sweep MCP Server" instructs users to add a connector with Server URL https://sweepmcp.com/sse.'
+  mode: unclear
+  verified: searched
+  checked: '2026-08-12'
+  source: catalog MCP census
 authorization:
   model: OAuth 2.0 authorization code with PKCE and dynamic client registration (RFC 7591)
   issuer: https://sweepmcp.com

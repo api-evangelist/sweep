@@ -23,6 +23,8 @@ paths:
                 type: object
       tags:
       - Python
+      summary: Python controller check python
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

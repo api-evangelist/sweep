@@ -31,6 +31,8 @@ paths:
       - bearer: []
       tags:
       - Workato Orgs
+      summary: Workato org controller create
+      x-summary-source: derived
 components:
   schemas:
     WorkatoCredentialsDto:

@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller get campaigns
+      x-summary-source: derived
     post:
       operationId: CampaignsController_writeCampaign
       parameters: []
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller write campaign
+      x-summary-source: derived
   /campaigns/campaign-member-status/{campaignId}:
     get:
       operationId: CampaignsController_getCampaignMemberStatusOfCampaign
@@ -69,6 +73,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller get campaign member status of campaign
+      x-summary-source: derived
     delete:
       operationId: CampaignsController_deleteCampaignMemberStatus
       parameters:
@@ -90,6 +96,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller delete campaign member status
+      x-summary-source: derived
   /campaigns/campaign/{campaignId}:
     patch:
       operationId: CampaignsController_upsertCampaign
@@ -112,6 +120,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller upsert campaign
+      x-summary-source: derived
     delete:
       operationId: CampaignsController_deleteCampaign
       parameters:
@@ -127,6 +137,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller delete campaign
+      x-summary-source: derived
   /campaigns/all-campaign-member-status:
     get:
       operationId: CampaignsController_getAllCampaignMemberStatus
@@ -144,6 +156,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller get all campaign member status
+      x-summary-source: derived
   /campaigns/campaign-member-status:
     post:
       operationId: CampaignsController_addCampaignMemberStatusToCampaign
@@ -165,6 +179,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller add campaign member status to campaign
+      x-summary-source: derived
   /campaigns/campaign-member-status/{campaignMemberStatusId}:
     patch:
       operationId: CampaignsController_updateCampaignMemberStatus
@@ -187,6 +203,8 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller update campaign member status
+      x-summary-source: derived
   /campaigns/fields:
     get:
       operationId: CampaignsController_getFieldNamesForCampaigns
@@ -198,24 +216,26 @@ paths:
       - bearer: []
       tags:
       - Campaigns
+      summary: Campaigns controller get field names for campaigns
+      x-summary-source: derived
 components:
   schemas:
     UpdateCampaignMemberStatusDto:
-      type: object
-      properties: {}
-    ReplaceStatusDto:
-      type: object
-      properties: {}
-    CampaignDto:
-      type: object
-      properties: {}
-    WriteCampaignDto:
       type: object
       properties: {}
     WriteCampaignMemberStatusDto:
       type: object
       properties: {}
     CampaignMemberStatus:
+      type: object
+      properties: {}
+    WriteCampaignDto:
+      type: object
+      properties: {}
+    CampaignDto:
+      type: object
+      properties: {}
+    ReplaceStatusDto:
       type: object
       properties: {}
   securitySchemes:

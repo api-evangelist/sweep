@@ -32,6 +32,8 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller list skills
+      x-summary-source: derived
     post:
       operationId: AiUserSkillsController_createSkill
       parameters:
@@ -57,6 +59,8 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller create skill
+      x-summary-source: derived
   /ai-agents/{agentId}/user-skills/{skillId}:
     get:
       operationId: AiUserSkillsController_getSkill
@@ -82,6 +86,8 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller get skill
+      x-summary-source: derived
     patch:
       operationId: AiUserSkillsController_updateSkill
       parameters:
@@ -112,6 +118,8 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller update skill
+      x-summary-source: derived
     delete:
       operationId: AiUserSkillsController_deleteSkill
       parameters:
@@ -132,6 +140,8 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller delete skill
+      x-summary-source: derived
   /ai-agents/{agentId}/user-skills/{skillId}/enabled:
     patch:
       operationId: AiUserSkillsController_setSkillEnabled
@@ -163,8 +173,17 @@ paths:
       - bearer: []
       tags:
       - AI User Skills
+      summary: Ai user skills controller set skill enabled
+      x-summary-source: derived
 components:
   schemas:
+    SetUserSkillEnabledDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
     UpdateUserSkillDto:
       type: object
       properties:
@@ -174,13 +193,6 @@ components:
           pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
         instructions:
           type: string
-    SetUserSkillEnabledDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      required:
-      - enabled
     CreateUserSkillDto:
       type: object
       properties:

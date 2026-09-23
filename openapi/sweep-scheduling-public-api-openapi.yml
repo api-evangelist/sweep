@@ -34,6 +34,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller webhook
+      x-summary-source: derived
   /scheduling/booking/{token}:
     get:
       operationId: SchedulingPublicUnauthenticatedController_getBookingDetails
@@ -52,6 +54,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller get booking details
+      x-summary-source: derived
   /scheduling/availability/{token}:
     get:
       operationId: SchedulingPublicUnauthenticatedController_getAvailability
@@ -82,6 +86,8 @@ paths:
                   type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller get availability
+      x-summary-source: derived
   /scheduling/book/{token}:
     post:
       operationId: SchedulingPublicUnauthenticatedController_book
@@ -106,6 +112,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller book
+      x-summary-source: derived
   /scheduling/reschedule/{token}:
     post:
       operationId: SchedulingPublicUnauthenticatedController_reschedule
@@ -130,6 +138,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller reschedule
+      x-summary-source: derived
   /scheduling/book-link/{linkId}:
     get:
       operationId: SchedulingPublicUnauthenticatedController_resolveBookingLink
@@ -148,6 +158,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller resolve booking link
+      x-summary-source: derived
     post:
       operationId: SchedulingPublicUnauthenticatedController_submitBookingLink
       parameters:
@@ -171,6 +183,8 @@ paths:
                 type: object
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller submit booking link
+      x-summary-source: derived
   /scheduling/google/callback:
     get:
       operationId: SchedulingPublicUnauthenticatedController_googleCallback
@@ -190,6 +204,8 @@ paths:
           description: ''
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller google callback
+      x-summary-source: derived
   /scheduling/zoom/callback:
     get:
       operationId: SchedulingPublicUnauthenticatedController_zoomCallback
@@ -209,15 +225,10 @@ paths:
           description: ''
       tags:
       - scheduling (public)
+      summary: Scheduling public unauthenticated controller zoom callback
+      x-summary-source: derived
 components:
   schemas:
-    LeadSubmissionDto:
-      type: object
-      properties:
-        lead:
-          type: object
-      required:
-      - lead
     BookSlotDto:
       type: object
       properties:
@@ -228,6 +239,13 @@ components:
       required:
       - startTime
       - timezone
+    LeadSubmissionDto:
+      type: object
+      properties:
+        lead:
+          type: object
+      required:
+      - lead
   securitySchemes:
     bearer:
       scheme: bearer

@@ -23,7 +23,7 @@ paths:
                 $ref: '#/components/schemas/UserDto'
       security:
       - bearer: []
-      summary: Get current logged in user.
+      summary: Get current logged in user
       tags:
       - Users
     patch:
@@ -54,6 +54,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller get permissions
+      x-summary-source: derived
   /users/{userId}:
     delete:
       operationId: UsersController_deleteUser
@@ -74,6 +76,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller delete user
+      x-summary-source: derived
   /users/account/trial:
     post:
       operationId: UsersController_startTrial
@@ -85,6 +89,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller start trial
+      x-summary-source: derived
   /users/account/onboarding:
     patch:
       operationId: UsersController_updateOnboardingStatus
@@ -102,6 +108,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller update onboarding status
+      x-summary-source: derived
   /users/account/invitations:
     post:
       operationId: UsersController_createInvitation
@@ -119,6 +127,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller create invitation
+      x-summary-source: derived
   /users/account/invitations/{email}:
     delete:
       operationId: UsersController_removeInvitation
@@ -135,6 +145,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller remove invitation
+      x-summary-source: derived
   /users/account:
     get:
       operationId: UsersController_getUsersAndInvitationOfAccount
@@ -149,7 +161,7 @@ paths:
           description: ''
       security:
       - bearer: []
-      summary: Get Users and pending invitations of account.
+      summary: Get Users and pending invitations of account
       tags:
       - Users
   /users/ws-code:
@@ -165,11 +177,7 @@ paths:
                 type: string
       security:
       - bearer: []
-      summary: 'returns WebSocket Registration code.
-
-        This is used to connect between the websocket and the user ID.
-
-        TODO: Deprecate for a more holistic solution that uses the Bearer token in the WebSocket.'
+      summary: returns WebSocket Registration code.
       tags:
       - Users
   /users/preferences:
@@ -266,6 +274,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller upload image
+      x-summary-source: derived
   /users/clearbit-enrichment:
     get:
       operationId: UsersController_getClearbitEnrichment
@@ -281,6 +291,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller get clearbit enrichment
+      x-summary-source: derived
   /users/hubspot-enrichment:
     post:
       operationId: UsersController_setHubspotEnrichment
@@ -296,6 +308,8 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller set hubspot enrichment
+      x-summary-source: derived
   /users/{orgId}/mcp-org:
     post:
       operationId: UsersController_setMcpOrgForUser
@@ -316,40 +330,25 @@ paths:
       - bearer: []
       tags:
       - Users
+      summary: Users controller set mcp org for user
+      x-summary-source: derived
 components:
   schemas:
-    ImageDataDto:
+    UserPreferencesDto:
       type: object
       properties:
-        image:
-          type: string
-      required:
-      - image
-    InvitationDto:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-        roleGroupId:
-          type: string
-        message:
-          type: string
-        template:
-          type: string
-          enum:
-          - FUNNEL
-          - ACCOUNT
-        entryPointId:
-          type: string
-        entryPointName:
-          type: string
-      required:
-      - email
-      - roleGroupId
-      - template
-      - entryPointId
-      - entryPointName
+        getStarted:
+          $ref: '#/components/schemas/GetStartedDto'
+        defaultCreationCrmOrgId:
+          type:
+          - string
+          - 'null'
+        questionnaire:
+          $ref: '#/components/schemas/QuestionnaireDto'
+        tableColumnSettings:
+          type: array
+          items:
+            type: object
     UserRoleDto:
       type: object
       properties:
@@ -367,9 +366,16 @@ components:
           - Completed
       required:
       - status
-    GetStartedDto:
+    UserEmojiDto:
       type: object
-      properties: {}
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
+      required:
+      - content
+      - bgColor
     QuestionnaireDto:
       type: object
       properties:
@@ -382,21 +388,6 @@ components:
           $ref: '#/components/schemas/QuestionnaireDataDto'
       required:
       - status
-    UserPreferencesDto:
-      type: object
-      properties:
-        getStarted:
-          $ref: '#/components/schemas/GetStartedDto'
-        defaultCreationCrmOrgId:
-          type:
-          - string
-          - 'null'
-        questionnaire:
-          $ref: '#/components/schemas/QuestionnaireDto'
-        tableColumnSettings:
-          type: array
-          items:
-            type: object
     QuestionnaireDataDto:
       type: object
       properties:
@@ -426,17 +417,6 @@ components:
             - PLAN
             - TRACK_CHANGES
             - OTHER
-    EditUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        emoji:
-          $ref: '#/components/schemas/UserEmojiDto'
     UserDto:
       type: object
       properties:
@@ -482,16 +462,52 @@ components:
       - account
       - emoji
       - preferences
-    UserEmojiDto:
+    InvitationDto:
       type: object
       properties:
-        content:
+        email:
           type: string
-        bgColor:
+          format: email
+        roleGroupId:
+          type: string
+        message:
+          type: string
+        template:
+          type: string
+          enum:
+          - FUNNEL
+          - ACCOUNT
+        entryPointId:
+          type: string
+        entryPointName:
           type: string
       required:
-      - content
-      - bgColor
+      - email
+      - roleGroupId
+      - template
+      - entryPointId
+      - entryPointName
+    EditUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        emoji:
+          $ref: '#/components/schemas/UserEmojiDto'
+    ImageDataDto:
+      type: object
+      properties:
+        image:
+          type: string
+      required:
+      - image
+    GetStartedDto:
+      type: object
+      properties: {}
   securitySchemes:
     bearer:
       scheme: bearer

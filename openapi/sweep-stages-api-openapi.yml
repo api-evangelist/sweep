@@ -37,7 +37,7 @@ paths:
                   type: object
       security:
       - bearer: []
-      summary: Returns an aggregation of metadata entries for a list of leading fields.
+      summary: Returns an aggregation of metadata entries for a list of leading fields
       tags:
       - Stages
   /stages/{fieldId}/metadata/{stageName}:
@@ -66,6 +66,8 @@ paths:
       - bearer: []
       tags:
       - Stages
+      summary: Stages controller get leading field metadata for single stage
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

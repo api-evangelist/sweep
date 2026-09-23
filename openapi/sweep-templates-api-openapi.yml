@@ -25,7 +25,7 @@ paths:
                   type: object
       security:
       - bearer: []
-      summary: Returns all short templates.
+      summary: Returns all short templates
       tags:
       - Templates
   /templates/{templateId}:
@@ -48,6 +48,8 @@ paths:
       - bearer: []
       tags:
       - Templates
+      summary: Templates controller get template
+      x-summary-source: derived
   /templates/{funnelMapId}:
     post:
       operationId: TemplatesController_funnelMapToTemplate
@@ -74,6 +76,8 @@ paths:
       - bearer: []
       tags:
       - Templates
+      summary: Templates controller funnel map to template
+      x-summary-source: derived
   /templates/{templateId}/convert:
     post:
       operationId: TemplatesController_convertTemplate
@@ -105,8 +109,29 @@ paths:
       - bearer: []
       tags:
       - Templates
+      summary: Templates controller convert template
+      x-summary-source: derived
 components:
   schemas:
+    FieldMappingDto:
+      type: object
+      properties:
+        fromTemplateFieldId:
+          type: string
+        toSweepFieldId:
+          type: string
+      required:
+      - fromTemplateFieldId
+      - toSweepFieldId
+    ConvertTemplateDto:
+      type: object
+      properties:
+        fieldMapping:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldMappingDto'
+      required:
+      - fieldMapping
     CreateTemplateDto:
       type: object
       properties:
@@ -118,25 +143,6 @@ components:
       required:
       - description
       - imageUrl
-    ConvertTemplateDto:
-      type: object
-      properties:
-        fieldMapping:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldMappingDto'
-      required:
-      - fieldMapping
-    FieldMappingDto:
-      type: object
-      properties:
-        fromTemplateFieldId:
-          type: string
-        toSweepFieldId:
-          type: string
-      required:
-      - fromTemplateFieldId
-      - toSweepFieldId
   securitySchemes:
     bearer:
       scheme: bearer

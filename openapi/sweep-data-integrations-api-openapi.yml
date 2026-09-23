@@ -25,6 +25,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller handle slack auth authorization code
+      x-summary-source: derived
   /data-integrations/slack/recipients:
     get:
       operationId: DataIntegrationsController_getSlackRecipients
@@ -52,6 +54,8 @@ paths:
                   type: object
       tags:
       - Data Integrations
+      summary: Data integrations controller get slack recipients
+      x-summary-source: derived
   /data-integrations/slack:
     get:
       operationId: DataIntegrationsController_getSlackConnectionDetails
@@ -65,6 +69,8 @@ paths:
                 $ref: '#/components/schemas/SlackConnectionDto'
       tags:
       - Data Integrations
+      summary: Data integrations controller get slack connection details
+      x-summary-source: derived
     patch:
       operationId: DataIntegrationsController_editSlackConnection
       parameters: []
@@ -79,6 +85,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller edit slack connection
+      x-summary-source: derived
     delete:
       operationId: DataIntegrationsController_disconnectSlackApp
       parameters: []
@@ -87,6 +95,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller disconnect slack app
+      x-summary-source: derived
   /data-integrations/audit:
     get:
       operationId: DataIntegrationsController_getAudit
@@ -149,6 +159,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller get audit
+      x-summary-source: derived
   /data-integrations/custom-integrations:
     get:
       operationId: DataIntegrationsController_getCustomIntegrations
@@ -164,6 +176,8 @@ paths:
                   type: object
       tags:
       - Data Integrations
+      summary: Data integrations controller get custom integrations
+      x-summary-source: derived
     post:
       operationId: DataIntegrationsController_createCustomIntegrations
       parameters: []
@@ -182,6 +196,8 @@ paths:
                 type: object
       tags:
       - Data Integrations
+      summary: Data integrations controller create custom integrations
+      x-summary-source: derived
   /data-integrations/custom-integrations/{integrationId}:
     put:
       operationId: DataIntegrationsController_editCustomIntegrations
@@ -206,6 +222,8 @@ paths:
                 type: object
       tags:
       - Data Integrations
+      summary: Data integrations controller edit custom integrations
+      x-summary-source: derived
     delete:
       operationId: DataIntegrationsController_delete
       parameters:
@@ -224,6 +242,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller delete
+      x-summary-source: derived
   /data-integrations/custom-integrations/{integrationId}/reveal-password:
     get:
       operationId: DataIntegrationsController_getCustomIntegrationPassword
@@ -242,6 +262,8 @@ paths:
                 type: string
       tags:
       - Data Integrations
+      summary: Data integrations controller get custom integration password
+      x-summary-source: derived
   /data-integrations/teams/oauth2-callback:
     post:
       operationId: DataIntegrationsController_oauth2Callback
@@ -261,6 +283,8 @@ paths:
                 type: string
       tags:
       - Data Integrations
+      summary: Data integrations controller oauth2 callback
+      x-summary-source: derived
   /data-integrations/teams/recipients:
     get:
       operationId: DataIntegrationsController_getTeamsRecipients
@@ -281,6 +305,8 @@ paths:
                   $ref: '#/components/schemas/TeamsRecipientInfo'
       tags:
       - Data Integrations
+      summary: Data integrations controller get teams recipients
+      x-summary-source: derived
   /data-integrations/teams/channels/{teamId}:
     get:
       operationId: DataIntegrationsController_getChannelsByTeam
@@ -301,6 +327,8 @@ paths:
                   $ref: '#/components/schemas/TeamsRecipientInfo'
       tags:
       - Data Integrations
+      summary: Data integrations controller get channels by team
+      x-summary-source: derived
   /data-integrations/webhook/test:
     post:
       operationId: DataIntegrationsController_testWebhook
@@ -320,6 +348,8 @@ paths:
                 type: object
       tags:
       - Data Integrations
+      summary: Data integrations controller test webhook
+      x-summary-source: derived
   /data-integrations/teams/connection-status:
     get:
       operationId: DataIntegrationsController_getTeamsConnectionDetails
@@ -329,6 +359,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller get teams connection details
+      x-summary-source: derived
   /data-integrations/teams/recipients-by-id:
     get:
       operationId: DataIntegrationsController_resolveReceipientNames
@@ -351,6 +383,8 @@ paths:
                   $ref: '#/components/schemas/TeamsRecipientInfo'
       tags:
       - Data Integrations
+      summary: Data integrations controller resolve receipient names
+      x-summary-source: derived
   /data-integrations/teams:
     delete:
       operationId: DataIntegrationsController_disconnectTeamsApp
@@ -360,6 +394,8 @@ paths:
           description: ''
       tags:
       - Data Integrations
+      summary: Data integrations controller disconnect teams app
+      x-summary-source: derived
   /data-integrations/teams/recipients/search:
     get:
       operationId: DataIntegrationsController_searchTeamsUsers
@@ -385,6 +421,8 @@ paths:
                   $ref: '#/components/schemas/TeamsRecipientInfo'
       tags:
       - Data Integrations
+      summary: Data integrations controller search teams users
+      x-summary-source: derived
   /data-integrations/teams/users/count:
     get:
       operationId: DataIntegrationsController_getTeamsUsersCount
@@ -398,6 +436,8 @@ paths:
                 type: number
       tags:
       - Data Integrations
+      summary: Data integrations controller get teams users count
+      x-summary-source: derived
   /data-integrations/teams/users-by-team/{teamId}:
     get:
       operationId: DataIntegrationsController_getTeamMembers
@@ -418,6 +458,8 @@ paths:
                   $ref: '#/components/schemas/TeamsRecipientInfo'
       tags:
       - Data Integrations
+      summary: Data integrations controller get team members
+      x-summary-source: derived
   /data-integrations/teams/all:
     get:
       operationId: DataIntegrationsController_getAllTeams
@@ -433,6 +475,8 @@ paths:
                   $ref: '#/components/schemas/TeamsWithInstallationStatus'
       tags:
       - Data Integrations
+      summary: Data integrations controller get all teams
+      x-summary-source: derived
   /data-integrations/teams/install:
     post:
       operationId: DataIntegrationsController_installSweepOnTeams
@@ -448,6 +492,8 @@ paths:
                   $ref: '#/components/schemas/TeamsWithInstallationStatus'
       tags:
       - Data Integrations
+      summary: Data integrations controller install sweep on teams
+      x-summary-source: derived
   /data-integrations/teams/uninstall:
     post:
       operationId: DataIntegrationsController_uninstallSweepOnTeams
@@ -463,8 +509,25 @@ paths:
                   $ref: '#/components/schemas/TeamsWithInstallationStatus'
       tags:
       - Data Integrations
+      summary: Data integrations controller uninstall sweep on teams
+      x-summary-source: derived
 components:
   schemas:
+    AutomationActionWebhook:
+      type: object
+      properties:
+        actionType:
+          enum: []
+          type: number
+          default: WEBHOOK
+        actionParams:
+          $ref: '#/components/schemas/AutomationActionParamsWebhook'
+        _id:
+          type: string
+      required:
+      - actionType
+      - actionParams
+      - _id
     WebhookTestDto:
       type: object
       properties:
@@ -477,29 +540,6 @@ components:
       required:
       - fields
       - action
-    SlackOAuthDto:
-      type: object
-      properties: {}
-    Logo:
-      type: object
-      properties:
-        name:
-          type: string
-        domain:
-          type: string
-      required:
-      - name
-      - domain
-    KeyValueStringTemplate:
-      type: object
-      properties:
-        key:
-          type: string
-        value:
-          $ref: '#/components/schemas/StringTemplate'
-      required:
-      - key
-      - value
     SweepFieldReference:
       type: object
       properties:
@@ -511,6 +551,43 @@ components:
           type: string
       required:
       - fieldIds
+    KeyValueStringTemplate:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          $ref: '#/components/schemas/StringTemplate'
+      required:
+      - key
+      - value
+    EditSlackConnectionDto:
+      type: object
+      properties:
+        includeSandboxes:
+          type: boolean
+      required:
+      - includeSandboxes
+    TeamsRecipientInfo:
+      type: object
+      properties:
+        label:
+          type: string
+        id:
+          type: string
+        type:
+          enum:
+          - channel
+          - user
+          - team
+          - user_stored_in_salesforce_field
+          - channel_stored_in_sweep
+          - channel_stored_in_salesforce_field
+          type: string
+      required:
+      - label
+      - id
+      - type
     OptionalCondition:
       type: object
       properties:
@@ -518,6 +595,96 @@ components:
           type: boolean
         criteria:
           $ref: '#/components/schemas/SweepCondition'
+    StringTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - template
+      - variables
+    AutomationConditionalActions:
+      type: object
+      properties:
+        _id:
+          type: string
+        when:
+          $ref: '#/components/schemas/OptionalCondition'
+        actions:
+          type: array
+          items:
+            type: object
+        _name:
+          type: string
+      required:
+      - _id
+      - actions
+      - _name
+    Logo:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
+    SlackConnectionDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - connected
+          - error
+          - invalid_credentials
+          - initialization
+          - not_initialized
+        upgradeRequired:
+          type: boolean
+        includeSandboxes:
+          type: boolean
+      required:
+      - status
+      - includeSandboxes
+    TeamsWithInstallationStatus:
+      type: object
+      properties:
+        label:
+          type: string
+        id:
+          type: string
+        type:
+          enum:
+          - channel
+          - user
+          - team
+          - user_stored_in_salesforce_field
+          - channel_stored_in_sweep
+          - channel_stored_in_salesforce_field
+          type: string
+        isSweepAppInstalled:
+          type: boolean
+      required:
+      - label
+      - id
+      - type
+      - isSweepAppInstalled
+    TeamsOAuthDto:
+      type: object
+      properties:
+        code:
+          type: string
+        state:
+          type: string
+      required:
+      - code
+      - state
     Field:
       type: object
       properties:
@@ -530,6 +697,9 @@ components:
       required:
       - fieldIds
       - value
+    SlackOAuthDto:
+      type: object
+      properties: {}
     AutomationActionParamsWebhook:
       type: object
       properties:
@@ -579,88 +749,6 @@ components:
       required:
       - criteria
       - criteriaLogic
-    StringTemplate:
-      type: object
-      properties:
-        template:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - template
-      - variables
-    TeamsWithInstallationStatus:
-      type: object
-      properties:
-        label:
-          type: string
-        id:
-          type: string
-        type:
-          enum:
-          - channel
-          - user
-          - team
-          - user_stored_in_salesforce_field
-          - channel_stored_in_sweep
-          - channel_stored_in_salesforce_field
-          type: string
-        isSweepAppInstalled:
-          type: boolean
-      required:
-      - label
-      - id
-      - type
-      - isSweepAppInstalled
-    TeamsOAuthDto:
-      type: object
-      properties:
-        code:
-          type: string
-        state:
-          type: string
-      required:
-      - code
-      - state
-    TeamsRecipientInfo:
-      type: object
-      properties:
-        label:
-          type: string
-        id:
-          type: string
-        type:
-          enum:
-          - channel
-          - user
-          - team
-          - user_stored_in_salesforce_field
-          - channel_stored_in_sweep
-          - channel_stored_in_salesforce_field
-          type: string
-      required:
-      - label
-      - id
-      - type
-    AutomationConditionalActions:
-      type: object
-      properties:
-        _id:
-          type: string
-        when:
-          $ref: '#/components/schemas/OptionalCondition'
-        actions:
-          type: array
-          items:
-            type: object
-        _name:
-          type: string
-      required:
-      - _id
-      - actions
-      - _name
     UpsertCustomIntegrationDto:
       type: object
       properties:
@@ -677,46 +765,6 @@ components:
       - name
       - baseUrl
       - authentication
-    AutomationActionWebhook:
-      type: object
-      properties:
-        actionType:
-          enum: []
-          type: number
-          default: WEBHOOK
-        actionParams:
-          $ref: '#/components/schemas/AutomationActionParamsWebhook'
-        _id:
-          type: string
-      required:
-      - actionType
-      - actionParams
-      - _id
-    SlackConnectionDto:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - connected
-          - error
-          - invalid_credentials
-          - initialization
-          - not_initialized
-        upgradeRequired:
-          type: boolean
-        includeSandboxes:
-          type: boolean
-      required:
-      - status
-      - includeSandboxes
-    EditSlackConnectionDto:
-      type: object
-      properties:
-        includeSandboxes:
-          type: boolean
-      required:
-      - includeSandboxes
   securitySchemes:
     bearer:
       scheme: bearer

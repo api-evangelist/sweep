@@ -42,6 +42,8 @@ paths:
                   type: object
       tags:
       - DevopsCenter
+      summary: Devops center controller get all elements in env
+      x-summary-source: derived
     post:
       operationId: DevopsCenterController_deployElementsInEnv
       parameters:
@@ -63,6 +65,8 @@ paths:
           description: ''
       tags:
       - DevopsCenter
+      summary: Devops center controller deploy elements in env
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

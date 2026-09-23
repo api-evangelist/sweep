@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - ThirdPartyFunnels
+      summary: Third party funnels controller get all funnels
+      x-summary-source: derived
     post:
       operationId: ThirdPartyFunnelsController_createFunnel
       parameters: []
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - ThirdPartyFunnels
+      summary: Third party funnels controller create funnel
+      x-summary-source: derived
   /third-party-funnels/{thirdPartyFunnelId}:
     put:
       operationId: ThirdPartyFunnelsController_updateThirdPartyFunnel
@@ -73,6 +77,8 @@ paths:
       - bearer: []
       tags:
       - ThirdPartyFunnels
+      summary: Third party funnels controller update third party funnel
+      x-summary-source: derived
     delete:
       operationId: ThirdPartyFunnelsController_deleteThirdPartyFunnel
       parameters:
@@ -88,8 +94,43 @@ paths:
       - bearer: []
       tags:
       - ThirdPartyFunnels
+      summary: Third party funnels controller delete third party funnel
+      x-summary-source: derived
 components:
   schemas:
+    ThirdPartyStepsDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        stepConnections:
+          type: array
+          items:
+            $ref: '#/components/schemas/StepConnectionDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        position:
+          $ref: '#/components/schemas/StepPositionDto'
+      required:
+      - id
+      - name
+      - stepConnections
+      - funnelLinks
+      - position
+    ThirdPartySystemDto:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
     StepConnectionDto:
       type: object
       properties:
@@ -100,11 +141,9 @@ components:
       required:
       - _id
       - targetId
-    ThirdPartyFunnelDto:
+    UpsertThirdPartyFunnelDto:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
         description:
@@ -120,7 +159,6 @@ components:
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
       required:
-      - id
       - name
       - description
       - steps
@@ -156,19 +194,11 @@ components:
       - _id
       - _type
       - funnelId
-    ThirdPartySystemDto:
+    ThirdPartyFunnelDto:
       type: object
       properties:
-        name:
+        id:
           type: string
-        domain:
-          type: string
-      required:
-      - name
-      - domain
-    UpsertThirdPartyFunnelDto:
-      type: object
-      properties:
         name:
           type: string
         description:
@@ -184,33 +214,11 @@ components:
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
       required:
+      - id
       - name
       - description
       - steps
       - funnelLinks
-    ThirdPartyStepsDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        stepConnections:
-          type: array
-          items:
-            $ref: '#/components/schemas/StepConnectionDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        position:
-          $ref: '#/components/schemas/StepPositionDto'
-      required:
-      - id
-      - name
-      - stepConnections
-      - funnelLinks
-      - position
   securitySchemes:
     bearer:
       scheme: bearer

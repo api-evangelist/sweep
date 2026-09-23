@@ -76,6 +76,8 @@ paths:
                 $ref: '#/components/schemas/SalesforceChangeFeedDto'
       tags:
       - Salesforce change feed
+      summary: Salesforce change feed controller get change feed
+      x-summary-source: derived
   /sf-change-feed/notifications:
     post:
       operationId: SalesforceChangeFeedController_addNotification
@@ -91,6 +93,8 @@ paths:
           description: ''
       tags:
       - Salesforce change feed
+      summary: Salesforce change feed controller add notification
+      x-summary-source: derived
     get:
       operationId: SalesforceChangeFeedController_getNotifications
       parameters: []
@@ -99,6 +103,8 @@ paths:
           description: ''
       tags:
       - Salesforce change feed
+      summary: Salesforce change feed controller get notifications
+      x-summary-source: derived
   /sf-change-feed/notifications/{id}:
     put:
       operationId: SalesforceChangeFeedController_editNotification
@@ -119,6 +125,8 @@ paths:
           description: ''
       tags:
       - Salesforce change feed
+      summary: Salesforce change feed controller edit notification
+      x-summary-source: derived
     delete:
       operationId: SalesforceChangeFeedController_deleteNotification
       parameters:
@@ -132,28 +140,10 @@ paths:
           description: ''
       tags:
       - Salesforce change feed
+      summary: Salesforce change feed controller delete notification
+      x-summary-source: derived
 components:
   schemas:
-    SalesforceChangeFeedCriterionDto:
-      type: object
-      properties:
-        criterionId:
-          type: string
-          minLength: 1
-        fieldName:
-          type: string
-          minLength: 1
-        operator:
-          type: string
-          minLength: 1
-        value:
-          type: string
-          minLength: 1
-      required:
-      - criterionId
-      - fieldName
-      - operator
-      - value
     UpdateSalesforceChangeFeedNotificationDto:
       type: object
       properties:
@@ -236,6 +226,26 @@ components:
       - section
       - nameSpace
       - timestamp
+    SalesforceChangeFeedCriterionDto:
+      type: object
+      properties:
+        criterionId:
+          type: string
+          minLength: 1
+        fieldName:
+          type: string
+          minLength: 1
+        operator:
+          type: string
+          minLength: 1
+        value:
+          type: string
+          minLength: 1
+      required:
+      - criterionId
+      - fieldName
+      - operator
+      - value
     SalesforceChangeFeedDto:
       type: object
       properties:

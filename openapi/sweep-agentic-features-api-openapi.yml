@@ -25,6 +25,8 @@ paths:
       - bearer: []
       tags:
       - Agentic Features
+      summary: Agentic features controller get agentic feature settings
+      x-summary-source: derived
     patch:
       operationId: AgenticFeaturesController_overrideAgenticFeatureSettings
       parameters: []
@@ -41,6 +43,8 @@ paths:
       - bearer: []
       tags:
       - Agentic Features
+      summary: Agentic features controller override agentic feature settings
+      x-summary-source: derived
   /agentic-features/data-access-settings:
     get:
       operationId: AgenticFeaturesController_getDataAccessSettings
@@ -56,6 +60,8 @@ paths:
       - bearer: []
       tags:
       - Agentic Features
+      summary: Agentic features controller get data access settings
+      x-summary-source: derived
     patch:
       operationId: AgenticFeaturesController_updateDataAccessSettings
       parameters: []
@@ -66,29 +72,22 @@ paths:
       - bearer: []
       tags:
       - Agentic Features
+      summary: Agentic features controller update data access settings
+      x-summary-source: derived
 components:
   schemas:
-    ChatRetentionSettingsDto:
+    UpdateAgenticFeaturesSettingsDto:
       type: object
       properties:
-        enabled:
-          type: boolean
-        value:
-          type: number
-          minimum: 1
-          maximum: 999
-        unit:
-          type: string
-          enum:
-          - days
-          - months
-        excludeFavorites:
-          type: boolean
+        defaults:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+        orgSettings:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrgSettingsDto'
       required:
-      - enabled
-      - value
-      - unit
-      - excludeFavorites
+      - defaults
+      - orgSettings
     OrgSettingsDto:
       type: object
       properties:
@@ -130,18 +129,27 @@ components:
       - enableSweepExecutionLogs
       - dataAccessMode
       - chatRetentionSettings
-    UpdateAgenticFeaturesSettingsDto:
+    ChatRetentionSettingsDto:
       type: object
       properties:
-        defaults:
-          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
-        orgSettings:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrgSettingsDto'
+        enabled:
+          type: boolean
+        value:
+          type: number
+          minimum: 1
+          maximum: 999
+        unit:
+          type: string
+          enum:
+          - days
+          - months
+        excludeFavorites:
+          type: boolean
       required:
-      - defaults
-      - orgSettings
+      - enabled
+      - value
+      - unit
+      - excludeFavorites
   securitySchemes:
     bearer:
       scheme: bearer

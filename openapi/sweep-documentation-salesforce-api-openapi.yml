@@ -30,6 +30,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get documentation data
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/objects:
     get:
       operationId: DocumentationSalesforceController_getObjectTypes
@@ -52,6 +54,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get object types
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/objects/{objectName}:
     post:
       operationId: DocumentationSalesforceController_createObjectDocumentation
@@ -83,6 +87,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller create object documentation
+      x-summary-source: derived
     patch:
       operationId: DocumentationSalesforceController_toggleObjectFavorite
       parameters:
@@ -109,6 +115,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller toggle object favorite
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/metadataTypes:
     get:
       operationId: DocumentationSalesforceController_getMetadataTypes
@@ -131,6 +139,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get metadata types
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/metadataTypes/{metadataTypeName}:
     get:
       operationId: DocumentationSalesforceController_getMetadata
@@ -158,6 +168,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get metadata
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/layouts/{metadataId}:
     get:
       operationId: DocumentationSalesforceController_getLayoutProperties
@@ -183,6 +195,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get layout properties
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/ai-chat:
     post:
       operationId: DocumentationSalesforceController_createAiDocumentationChat
@@ -209,6 +223,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller create ai documentation chat
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/generate-configuration-gpt:
     post:
       operationId: DocumentationSalesforceController_getConfigurationGpt
@@ -235,6 +251,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get configuration gpt
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/configuration/dependencies:
     get:
       operationId: DocumentationSalesforceController_getConfigurationDependencies
@@ -260,6 +278,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get configuration dependencies
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/configuration/consumers:
     get:
       operationId: DocumentationSalesforceController_getConfigurationConsumers
@@ -285,6 +305,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get configuration consumers
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/field-consumers:
     get:
       operationId: DocumentationSalesforceController_getFieldConsumers
@@ -320,6 +342,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get field consumers
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/search:
     get:
       operationId: DocumentationSalesforceController_getSearchResults
@@ -352,6 +376,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get search results
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/search-content:
     get:
       operationId: DocumentationSalesforceController_getSearchContent
@@ -384,6 +410,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get search content
+      x-summary-source: derived
   /documentation-salesforce/{crmOrgId}/nacl-file:
     get:
       operationId: DocumentationSalesforceController_getNaclFile
@@ -409,6 +437,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get nacl file
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/tags:
     get:
       operationId: DocumentationSalesforceController_getUserInputTags
@@ -431,6 +461,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get user input tags
+      x-summary-source: derived
     post:
       operationId: DocumentationSalesforceController_createUserInputTag
       parameters: []
@@ -451,6 +483,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller create user input tag
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/tags/{tagId}:
     patch:
       operationId: DocumentationSalesforceController_editUserInputTag
@@ -473,6 +507,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller edit user input tag
+      x-summary-source: derived
     delete:
       operationId: DocumentationSalesforceController_deleteUserInputTag
       parameters:
@@ -488,6 +524,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller delete user input tag
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/users:
     get:
       operationId: DocumentationSalesforceController_getUserInputsUsersWithMetadataElements
@@ -510,6 +548,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get user inputs users with metadata elements
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/users/{userId}:
     delete:
       operationId: DocumentationSalesforceController_deleteUserInputUserConfigurations
@@ -526,6 +566,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller delete user input user configurations
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/{metadataId}:
     put:
       operationId: DocumentationSalesforceController_updateUserInputConfiguration
@@ -553,6 +595,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller update user input configuration
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/{metadataId}/comments:
     get:
       operationId: DocumentationSalesforceController_getUserInputConfigurationComments
@@ -580,6 +624,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller get user input configuration comments
+      x-summary-source: derived
     post:
       operationId: DocumentationSalesforceController_createUserInputConfigurationComment
       parameters:
@@ -610,6 +656,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller create user input configuration comment
+      x-summary-source: derived
   /documentation-salesforce/user-inputs/{metadataId}/comments/{commentId}:
     patch:
       operationId: DocumentationSalesforceController_editUserInputConfigurationComment
@@ -642,6 +690,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller edit user input configuration comment
+      x-summary-source: derived
     delete:
       operationId: DocumentationSalesforceController_deleteUserInputConfigurationComment
       parameters:
@@ -667,22 +717,17 @@ paths:
       - bearer: []
       tags:
       - Documentation Salesforce
+      summary: Documentation salesforce controller delete user input configuration comment
+      x-summary-source: derived
 components:
   schemas:
-    SweepFieldReference:
+    ConfigurationUserInputComment:
       type: object
       properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
+        id:
           type: string
-      required:
-      - fieldIds
-    UpsertConfigurationCommentDto:
-      type: object
-      properties:
+        metadataId:
+          type: string
         commentBody:
           type: string
         mentionedUserIds:
@@ -690,155 +735,95 @@ components:
           items:
             type: string
         properties:
-          $ref: '#/components/schemas/ConfigurationCommentPropertiesDto'
-      required:
-      - commentBody
-      - mentionedUserIds
-      - properties
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        sub:
-          type: string
-        email:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        preferences:
           type: object
-        name:
+        crmOrgId:
           type: string
-        emoji:
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        createdById:
           type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
         createdAt:
           format: date-time
           type: string
         updatedAt:
           format: date-time
           type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
       required:
       - id
-      - sub
-      - email
-      - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
-      - roleGroupId
+      - metadataId
+      - commentBody
+      - mentionedUserIds
+      - properties
+      - crmOrgId
+      - crmOrg
+      - createdById
+      - createdBy
       - createdAt
       - updatedAt
-    SweepExitCriteria:
+    EditTagDto:
       type: object
       properties:
-        _exitCriteriaId:
+        name:
           type: string
-        _nextStageId:
+        color:
           type: string
-        isAutoMoveToNextStage:
+    Org:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+      - id
+      - accountId
+      - account
+    AiChatDto:
+      type: object
+      properties:
+        sessionId:
+          type: string
+        message:
+          type: string
+        context:
+          type: object
+        isFirstMessage:
           type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
       required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    FunnelLinkDto:
+      - sessionId
+      - message
+      - context
+      - isFirstMessage
+    ConfigurationCommentPropertiesDto:
       type: object
       properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
+        pinned:
+          type: boolean
       required:
-      - _id
-      - _type
-      - funnelId
+      - pinned
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
     FunnelSnapshot:
       type: object
       properties:
@@ -891,67 +876,85 @@ components:
       - funnelDetails
       - deployments
       - createdAt
-    RoleGroup:
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    DocumentationObjectDto:
+      type: object
+      properties:
+        favorite:
+          type: boolean
+      required:
+      - favorite
+    User:
       type: object
       properties:
         id:
           type: string
-        accountId:
+        sub:
+          type: string
+        email:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
+        preferences:
+          type: object
+        name:
           type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
+        emoji:
           type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
         createdAt:
           format: date-time
           type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
         updatedAt:
           format: date-time
           type: string
-        name:
+        deletedAt:
+          format: date-time
           type: string
-        description:
+        lastSeen:
+          format: date-time
           type: string
       required:
       - id
-      - accountId
+      - sub
+      - email
       - account
-      - type
-      - accountRoles
-      - orgRoles
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
+      - preferences
       - name
-    ConfigurationCommentPropertiesDto:
-      type: object
-      properties:
-        pinned:
-          type: boolean
-      required:
-      - pinned
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
     LeadingObjectDto:
       type: object
       properties:
@@ -969,23 +972,117 @@ components:
       - objectName
       - fieldName
       - _leadingFieldId
-    UpdateConfigurationUserInputsDto:
+    SweepFieldReference:
       type: object
       properties:
-        tags:
+        fieldIds:
           type: array
           items:
             type: string
-        owner:
+        fieldSource:
           type: string
-        collaborators:
+      required:
+      - fieldIds
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
           type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
           items:
             type: string
       required:
-      - tags
-      - owner
-      - collaborators
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
     CalcParsedConfigurationGptDto:
       type: object
       properties:
@@ -993,67 +1090,52 @@ components:
           type: string
       required:
       - metadataId
-    RoleGroupAccountRole:
+    SweepStage:
       type: object
       properties:
-        role:
-          type: object
-        roleGroupId:
+        stageName:
           type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - roleGroupId
-      - roleGroup
-    ConfigurationUserInputComment:
-      type: object
-      properties:
-        id:
+        _stageId:
           type: string
-        metadataId:
+        stageDescription:
           type: string
-        commentBody:
-          type: string
-        mentionedUserIds:
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
           type: array
           items:
-            type: string
-        properties:
-          type: object
-        crmOrgId:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
           type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        createdById:
+        stageType:
           type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
       required:
-      - id
-      - metadataId
-      - commentBody
-      - mentionedUserIds
-      - properties
-      - crmOrgId
-      - crmOrg
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedAt
-    EditTagDto:
-      type: object
-      properties:
-        name:
-          type: string
-        color:
-          type: string
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
     FunnelDeployment:
       type: object
       properties:
@@ -1187,165 +1269,34 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    Account:
+    UpdateConfigurationUserInputsDto:
       type: object
       properties:
-        id:
-          type: string
-        name:
-          type: string
-        authZeroOrgId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
+        tags:
           type: array
           items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
+            type: string
+        owner:
           type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
+        collaborators:
+          type: array
           items:
             type: string
       required:
-      - id
-      - name
-      - authZeroOrgId
-      - createdAt
-      - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
-    Org:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-      required:
-      - id
-      - accountId
-      - account
-    SweepStage:
-      type: object
-      properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
-          type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    DocumentationObjectDto:
-      type: object
-      properties:
-        favorite:
-          type: boolean
-      required:
-      - favorite
-    RoleGroupOrgRole:
+      - tags
+      - owner
+      - collaborators
+    RoleGroupAccountRole:
       type: object
       properties:
         role:
           type: object
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
         roleGroupId:
           type: string
         roleGroup:
           $ref: '#/components/schemas/RoleGroup'
       required:
       - role
-      - crmOrgId
-      - crmOrg
       - roleGroupId
       - roleGroup
     CreateTagDto:
@@ -1358,25 +1309,126 @@ components:
       required:
       - name
       - color
-    AiChatDto:
+    RoleGroup:
       type: object
       properties:
-        sessionId:
+        id:
           type: string
-        message:
+        accountId:
           type: string
-        context:
-          type: object
-        isFirstMessage:
-          type: boolean
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
       required:
-      - sessionId
-      - message
-      - context
-      - isFirstMessage
-    FunnelPluginsDto:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    FunnelDetailsDto:
       type: object
-      properties: {}
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    UpsertConfigurationCommentDto:
+      type: object
+      properties:
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+        properties:
+          $ref: '#/components/schemas/ConfigurationCommentPropertiesDto'
+      required:
+      - commentBody
+      - mentionedUserIds
+      - properties
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
   securitySchemes:
     bearer:
       scheme: bearer

@@ -31,6 +31,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller fetch comment threads by funnel map id
+      x-summary-source: derived
     post:
       operationId: CommentsController_createCommentThread
       parameters:
@@ -56,6 +58,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller create comment thread
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}/resolved:
     patch:
       operationId: CommentsController_updateCommentThreadResolved
@@ -81,6 +85,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller update comment thread resolved
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}/position:
     patch:
       operationId: CommentsController_updateCommentThreadPosition
@@ -112,6 +118,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller update comment thread position
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}/read:
     patch:
       operationId: CommentsController_updateCommentThreadReadBy
@@ -137,6 +145,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller update comment thread read by
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}/commentReplies:
     post:
       operationId: CommentsController_createCommentReply
@@ -168,6 +178,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller create comment reply
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}:
     delete:
       operationId: CommentsController_deleteCommentThread
@@ -189,6 +201,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller delete comment thread
+      x-summary-source: derived
   /comments/{funnelMapId}/{commentThreadId}/commentReplies/{commentReplyId}:
     delete:
       operationId: CommentsController_deleteCommentReply
@@ -215,6 +229,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller delete comment reply
+      x-summary-source: derived
     patch:
       operationId: CommentsController_updateCommentReply
       parameters:
@@ -250,6 +266,8 @@ paths:
       - bearer: []
       tags:
       - Comments
+      summary: Comments controller update comment reply
+      x-summary-source: derived
 components:
   schemas:
     CreateCommentReplyDto:
@@ -265,50 +283,6 @@ components:
           type: string
       required:
       - commentBody
-      - mentionedUserIds
-    CreateCommentThreadDto:
-      type: object
-      properties:
-        positionX:
-          type: number
-        positionY:
-          type: number
-        commentBody:
-          type: string
-        mentionedUserIds:
-          type: array
-          items:
-            type: string
-      required:
-      - positionX
-      - positionY
-      - commentBody
-      - mentionedUserIds
-    CommentReplyDto:
-      type: object
-      properties:
-        id:
-          type: string
-        commentBody:
-          type: string
-        createdById:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        mentionedUserIds:
-          type: array
-          items:
-            type: string
-      required:
-      - id
-      - commentBody
-      - createdById
-      - createdAt
-      - updatedAt
       - mentionedUserIds
     UpdateCommentReplyDto:
       type: object
@@ -355,6 +329,50 @@ components:
       - createdById
       - createdAt
       - funnelMapId
+    CreateCommentThreadDto:
+      type: object
+      properties:
+        positionX:
+          type: number
+        positionY:
+          type: number
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - positionX
+      - positionY
+      - commentBody
+      - mentionedUserIds
+    CommentReplyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        commentBody:
+          type: string
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - commentBody
+      - createdById
+      - createdAt
+      - updatedAt
+      - mentionedUserIds
     UpdateCommentThreadPositionDto:
       type: object
       properties:

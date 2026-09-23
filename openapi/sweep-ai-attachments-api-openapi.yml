@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - ai-attachments
+      summary: Ai attachments controller parse
+      x-summary-source: derived
   /ai-attachments/{id}/download-url:
     get:
       operationId: AiAttachmentsController_getDownloadUrl
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - ai-attachments
+      summary: Ai attachments controller get download url
+      x-summary-source: derived
   /ai-attachments/{id}/preview:
     get:
       operationId: AiAttachmentsController_getPreview
@@ -67,6 +71,8 @@ paths:
       - bearer: []
       tags:
       - ai-attachments
+      summary: Ai attachments controller get preview
+      x-summary-source: derived
   /ai-attachments/chats/{chatId}/upload-urls:
     post:
       operationId: AiAttachmentsController_getUploadUrls
@@ -89,6 +95,8 @@ paths:
       - bearer: []
       tags:
       - ai-attachments
+      summary: Ai attachments controller get upload urls
+      x-summary-source: derived
 components:
   schemas:
     ChatAttachmentsUploadUrlsDto:

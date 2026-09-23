@@ -19,6 +19,8 @@ paths:
           description: ''
       tags:
       - Health
+      summary: Health controller health
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

@@ -30,6 +30,8 @@ paths:
       - bearer: []
       tags:
       - Global
+      summary: Global controller get all
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

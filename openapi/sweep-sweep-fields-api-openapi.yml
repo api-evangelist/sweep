@@ -66,6 +66,8 @@ paths:
       - bearer: []
       tags:
       - Sweep Fields
+      summary: Sweep fields controller get sweep fields
+      x-summary-source: derived
     post:
       operationId: SweepFieldsController_createSweepField
       parameters:
@@ -96,6 +98,8 @@ paths:
       - bearer: []
       tags:
       - Sweep Fields
+      summary: Sweep fields controller create sweep field
+      x-summary-source: derived
   /sweep_fields/ids-by-names:
     get:
       operationId: SweepFieldsController_getSweepFieldIdsByApiName
@@ -123,6 +127,8 @@ paths:
       - bearer: []
       tags:
       - Sweep Fields
+      summary: Sweep fields controller get sweep field ids by api name
+      x-summary-source: derived
   /sweep_fields/{id}:
     get:
       operationId: SweepFieldsController_getSweepField
@@ -149,6 +155,8 @@ paths:
       - bearer: []
       tags:
       - Sweep Fields
+      summary: Sweep fields controller get sweep field
+      x-summary-source: derived
   /sweep_fields/{fieldId}:
     put:
       operationId: SweepFieldsController_updateSweepFields
@@ -180,17 +188,22 @@ paths:
       - bearer: []
       tags:
       - Sweep Fields
+      summary: Sweep fields controller update sweep fields
+      x-summary-source: derived
 components:
   schemas:
-    FieldUpdateDto:
+    FieldIdsDto:
       type: object
       properties:
-        field:
-          $ref: '#/components/schemas/SweepFieldBaseDto'
-        enableDeduceValuesOrder:
-          type: boolean
+        fieldIds:
+          type: array
+          items:
+            required: true
+            type: array
+            items:
+              type: string
       required:
-      - field
+      - fieldIds
     SweepFieldBaseDto:
       type: object
       properties:
@@ -297,18 +310,15 @@ components:
       - sweepFieldName
       - fieldType
       - properties
-    FieldIdsDto:
+    FieldUpdateDto:
       type: object
       properties:
-        fieldIds:
-          type: array
-          items:
-            required: true
-            type: array
-            items:
-              type: string
+        field:
+          $ref: '#/components/schemas/SweepFieldBaseDto'
+        enableDeduceValuesOrder:
+          type: boolean
       required:
-      - fieldIds
+      - field
   securitySchemes:
     bearer:
       scheme: bearer

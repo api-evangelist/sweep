@@ -19,6 +19,8 @@ paths:
           description: ''
       tags:
       - Teams Integrations (Unauthenticated)
+      summary: Teams integration unauthenticated controller handle message
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

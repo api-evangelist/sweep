@@ -32,6 +32,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get orgs
+      x-summary-source: derived
   /crm-orgs/new:
     post:
       operationId: CrmOrgsController_createOrgs
@@ -58,6 +60,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller create orgs
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/salesforce-oauth:
     get:
       operationId: CrmOrgsController_getSFDCOAuthPath
@@ -74,6 +78,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get SFDCO auth path
+      x-summary-source: derived
   /crm-orgs/org/{orgId}:
     get:
       operationId: CrmOrgsController_getOrg
@@ -94,6 +100,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get org
+      x-summary-source: derived
     patch:
       operationId: CrmOrgsController_updateOrg
       parameters:
@@ -119,6 +127,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller update org
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/emailTemplates:
     get:
       operationId: CrmOrgsController_getEmailTemplates
@@ -135,6 +145,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get email templates
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/object-types/{objectName}/child-relationship-names:
     get:
       operationId: CrmOrgsController_getChildRelationshipNames
@@ -156,6 +168,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get child relationship names
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/apex-classes:
     get:
       operationId: CrmOrgsController_getApexClasses
@@ -172,6 +186,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get apex classes
+      x-summary-source: derived
   /crm-orgs/salesforce-oauth2-code:
     post:
       operationId: CrmOrgsController_handleSFDCOAuthAuthorizationCode
@@ -189,6 +205,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller handle SFDCO auth authorization code
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/connect-anyway:
     post:
       operationId: CrmOrgsController_connectAnyway
@@ -205,6 +223,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller connect anyway
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/object-types:
     get:
       operationId: CrmOrgsController_getObjectTypes
@@ -352,6 +372,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller create user time off
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/users/{userId}/timeOff/{timeOffId}:
     put:
       operationId: CrmOrgsController_updateUserTimeOff
@@ -384,6 +406,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller update user time off
+      x-summary-source: derived
     delete:
       operationId: CrmOrgsController_deleteUserTimeOff
       parameters:
@@ -409,6 +433,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller delete user time off
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/queues:
     get:
       operationId: CrmOrgsController_listQueues
@@ -455,6 +481,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get all funnels and record types
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/objects:
     get:
       operationId: CrmOrgsController_getSalesforceObjectTypes
@@ -477,6 +505,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get salesforce object types
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/objects/{objectName}/funnels-and-record-types:
     get:
       operationId: CrmOrgsController_getObjectFunnelsAndRecordTypes
@@ -502,6 +532,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get object funnels and record types
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/objects/{objectName}/record-types/{recordTypeName}:
     get:
       operationId: CrmOrgsController_getLeadingFieldCandidatesForRecordType
@@ -534,6 +566,8 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller get leading field candidates for record type
+      x-summary-source: derived
   /crm-orgs/org/{orgId}/sweep-permission-set-group-assignment:
     post:
       operationId: CrmOrgsController_assignPermissionSetGroup
@@ -555,49 +589,10 @@ paths:
       - bearer: []
       tags:
       - CRM Orgs
+      summary: Crm orgs controller assign permission set group
+      x-summary-source: derived
 components:
   schemas:
-    CrmOrgCreateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        platform:
-          type: string
-          enum:
-          - salesforce
-        isSandbox:
-          type: boolean
-        isMain:
-          type: boolean
-        customEca:
-          $ref: '#/components/schemas/CustomEcaDto'
-      required:
-      - name
-      - platform
-      - isSandbox
-    FunnelsAndRecordTypesDto:
-      type: object
-      properties:
-        orgId:
-          type: string
-        activeOnly:
-          type: boolean
-        objectsData:
-          type: array
-          items:
-            type: object
-      required:
-      - orgId
-      - activeOnly
-      - objectsData
-    CrmOrgUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
     CustomEcaDto:
       type: object
       properties:
@@ -608,6 +603,21 @@ components:
       required:
       - clientId
       - clientSecret
+    CrmOrgOAuthDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        authCode:
+          type: string
+        isSandbox:
+          type: boolean
+        isOnboardingFastFetch:
+          type: boolean
+      required:
+      - crmOrgId
+      - authCode
+      - isSandbox
     CrmOrgUserTimeOff:
       type: object
       properties:
@@ -635,21 +645,47 @@ components:
       - startDate
       - endDate
       - timezone
-    CrmOrgOAuthDto:
+    FunnelsAndRecordTypesDto:
       type: object
       properties:
-        crmOrgId:
+        orgId:
           type: string
-        authCode:
+        activeOnly:
+          type: boolean
+        objectsData:
+          type: array
+          items:
+            type: object
+      required:
+      - orgId
+      - activeOnly
+      - objectsData
+    CrmOrgCreateDto:
+      type: object
+      properties:
+        name:
           type: string
+        platform:
+          type: string
+          enum:
+          - salesforce
         isSandbox:
           type: boolean
-        isOnboardingFastFetch:
+        isMain:
           type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
       required:
-      - crmOrgId
-      - authCode
+      - name
+      - platform
       - isSandbox
+    CrmOrgUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
   securitySchemes:
     bearer:
       scheme: bearer

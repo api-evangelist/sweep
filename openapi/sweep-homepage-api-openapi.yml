@@ -25,6 +25,8 @@ paths:
       - bearer: []
       tags:
       - Homepage
+      summary: Homepage controller load homepage stuff
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

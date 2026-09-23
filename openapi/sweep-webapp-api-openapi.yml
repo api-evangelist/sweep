@@ -32,6 +32,8 @@ paths:
       - bearer: []
       tags:
       - Webapp
+      summary: Webapp controller get opportunity stage options
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

@@ -26,6 +26,8 @@ paths:
       - bearer: []
       tags:
       - User SFDC Connection
+      summary: User sfdc connection controller get connection status
+      x-summary-source: derived
   /user-sfdc-connection/{crmOrgId}/oauth/url:
     get:
       operationId: UserSfdcConnectionController_getOAuthUrl
@@ -42,6 +44,8 @@ paths:
       - bearer: []
       tags:
       - User SFDC Connection
+      summary: User sfdc connection controller get OAuth url
+      x-summary-source: derived
   /user-sfdc-connection/{crmOrgId}/oauth/callback:
     post:
       operationId: UserSfdcConnectionController_handleOAuthCallback
@@ -58,6 +62,8 @@ paths:
       - bearer: []
       tags:
       - User SFDC Connection
+      summary: User sfdc connection controller handle OAuth callback
+      x-summary-source: derived
   /user-sfdc-connection/{crmOrgId}:
     delete:
       operationId: UserSfdcConnectionController_disconnect
@@ -74,6 +80,8 @@ paths:
       - bearer: []
       tags:
       - User SFDC Connection
+      summary: User sfdc connection controller disconnect
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

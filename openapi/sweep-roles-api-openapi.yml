@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: roles
+- name: Roles
 paths:
   /roles/groups:
     get:
@@ -26,7 +26,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - roles
+      - Roles
+      summary: Roles controller get role groups
+      x-summary-source: derived
   /roles/group:
     post:
       operationId: RolesController_createRoleGroup
@@ -47,7 +49,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - roles
+      - Roles
+      summary: Roles controller create role group
+      x-summary-source: derived
   /roles/group/{id}:
     put:
       operationId: RolesController_updateRoleGroup
@@ -73,7 +77,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - roles
+      - Roles
+      summary: Roles controller update role group
+      x-summary-source: derived
     delete:
       operationId: RolesController_deleteRoleGroup
       parameters:
@@ -88,7 +94,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - roles
+      - Roles
+      summary: Roles controller delete role group
+      x-summary-source: derived
 components:
   schemas:
     UpsertRoleGroupDto:

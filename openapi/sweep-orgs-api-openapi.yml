@@ -35,7 +35,7 @@ paths:
                   type: object
       security:
       - bearer: []
-      summary: Returns a unified view of CRM orgs, Snowflake orgs, Data360 orgs, and ServiceNow orgs.
+      summary: Returns a unified view of CRM orgs, Snowflake orgs, Data360 orgs, and…
       tags:
       - Orgs
   /orgs/{orgId}:
@@ -54,6 +54,8 @@ paths:
       - bearer: []
       tags:
       - Orgs
+      summary: Orgs controller delete org
+      x-summary-source: derived
     get:
       operationId: OrgsController_getOrg
       parameters:
@@ -73,6 +75,8 @@ paths:
       - bearer: []
       tags:
       - Orgs
+      summary: Orgs controller get org
+      x-summary-source: derived
     patch:
       operationId: OrgsController_renameOrg
       parameters:
@@ -88,6 +92,8 @@ paths:
       - bearer: []
       tags:
       - Orgs
+      summary: Orgs controller rename org
+      x-summary-source: derived
   /orgs/{orgId}/fetch:
     post:
       operationId: OrgsController_fetchWorkspace
@@ -113,6 +119,8 @@ paths:
       - bearer: []
       tags:
       - Orgs
+      summary: Orgs controller fetch workspace
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

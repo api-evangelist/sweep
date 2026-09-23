@@ -30,6 +30,8 @@ paths:
           description: ''
       tags:
       - ai-stream
+      summary: Ai stream controller handle stream completion
+      x-summary-source: derived
 components:
   schemas:
     StreamCompletionDto:

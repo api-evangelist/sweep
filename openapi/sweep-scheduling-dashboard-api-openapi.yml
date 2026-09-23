@@ -32,6 +32,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get team calendars
+      x-summary-source: derived
   /scheduling-dashboard/team-calendars/{userId}/working-hours:
     put:
       operationId: SchedulingDashboardController_updateWorkingHours
@@ -53,6 +55,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update working hours
+      x-summary-source: derived
   /scheduling-dashboard/team-calendars/invite:
     post:
       operationId: SchedulingDashboardController_sendInvite
@@ -73,6 +77,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller send invite
+      x-summary-source: derived
   /scheduling-dashboard/meeting-types:
     get:
       operationId: SchedulingDashboardController_listMeetingTypes
@@ -95,6 +101,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller list meeting types
+      x-summary-source: derived
     post:
       operationId: SchedulingDashboardController_createMeetingType
       parameters:
@@ -114,6 +122,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller create meeting type
+      x-summary-source: derived
   /scheduling-dashboard/meeting-types/{meetingTypeId}:
     patch:
       operationId: SchedulingDashboardController_updateMeetingType
@@ -139,6 +149,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update meeting type
+      x-summary-source: derived
     delete:
       operationId: SchedulingDashboardController_deleteMeetingType
       parameters:
@@ -159,6 +171,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller delete meeting type
+      x-summary-source: derived
   /scheduling-dashboard/forms:
     get:
       operationId: SchedulingDashboardController_listForms
@@ -181,6 +195,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller list forms
+      x-summary-source: derived
     post:
       operationId: SchedulingDashboardController_createForm
       parameters:
@@ -200,6 +216,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller create form
+      x-summary-source: derived
   /scheduling-dashboard/forms/{formId}:
     put:
       operationId: SchedulingDashboardController_updateForm
@@ -225,6 +243,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update form
+      x-summary-source: derived
     delete:
       operationId: SchedulingDashboardController_deleteForm
       parameters:
@@ -245,6 +265,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller delete form
+      x-summary-source: derived
   /scheduling-dashboard/booking-links:
     get:
       operationId: SchedulingDashboardController_listBookingLinks
@@ -267,6 +289,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller list booking links
+      x-summary-source: derived
     post:
       operationId: SchedulingDashboardController_createBookingLink
       parameters:
@@ -286,6 +310,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller create booking link
+      x-summary-source: derived
   /scheduling-dashboard/booking-links/{linkId}:
     put:
       operationId: SchedulingDashboardController_updateBookingLink
@@ -311,6 +337,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update booking link
+      x-summary-source: derived
     delete:
       operationId: SchedulingDashboardController_deleteBookingLink
       parameters:
@@ -331,6 +359,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller delete booking link
+      x-summary-source: derived
   /scheduling-dashboard/routing-rules/{routingRuleId}/usage:
     get:
       operationId: SchedulingDashboardController_getRoutingRuleUsage
@@ -352,6 +382,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get routing rule usage
+      x-summary-source: derived
   /scheduling-dashboard/routing-rules/{routingRuleId}/deactivate-dependents:
     post:
       operationId: SchedulingDashboardController_deactivateRoutingRuleDependents
@@ -373,6 +405,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller deactivate routing rule dependents
+      x-summary-source: derived
   /scheduling-dashboard/connected-users:
     get:
       operationId: SchedulingDashboardController_getConnectedUsers
@@ -389,6 +423,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get connected users
+      x-summary-source: derived
   /scheduling-dashboard/settings/data-fields:
     get:
       operationId: SchedulingDashboardController_getDataFields
@@ -411,6 +447,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get data fields
+      x-summary-source: derived
     post:
       operationId: SchedulingDashboardController_addDataField
       parameters:
@@ -430,6 +468,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller add data field
+      x-summary-source: derived
   /scheduling-dashboard/settings/data-fields/{fieldId}:
     patch:
       operationId: SchedulingDashboardController_updateDataField
@@ -455,6 +495,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update data field
+      x-summary-source: derived
     delete:
       operationId: SchedulingDashboardController_deleteDataField
       parameters:
@@ -475,6 +517,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller delete data field
+      x-summary-source: derived
   /scheduling-dashboard/settings/default-hours:
     get:
       operationId: SchedulingDashboardController_getDefaultHours
@@ -495,6 +539,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get default hours
+      x-summary-source: derived
     put:
       operationId: SchedulingDashboardController_updateDefaultHours
       parameters:
@@ -514,6 +560,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update default hours
+      x-summary-source: derived
   /scheduling-dashboard/settings/branding:
     get:
       operationId: SchedulingDashboardController_getBranding
@@ -534,6 +582,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get branding
+      x-summary-source: derived
     put:
       operationId: SchedulingDashboardController_updateBranding
       parameters:
@@ -553,6 +603,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update branding
+      x-summary-source: derived
   /scheduling-dashboard/settings/integrations:
     get:
       operationId: SchedulingDashboardController_getIntegrationSettings
@@ -573,6 +625,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get integration settings
+      x-summary-source: derived
     put:
       operationId: SchedulingDashboardController_updateIntegrationSettings
       parameters:
@@ -598,6 +652,8 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller update integration settings
+      x-summary-source: derived
   /scheduling-dashboard/logs/{sourceType}/{sourceId}:
     get:
       operationId: SchedulingDashboardController_getLogs
@@ -630,215 +686,42 @@ paths:
       - bearer: []
       tags:
       - Scheduling Dashboard
+      summary: Scheduling dashboard controller get logs
+      x-summary-source: derived
 components:
   schemas:
-    SchedulingSubmissionLog:
+    Org:
       type: object
       properties:
         id:
           type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+      required:
+      - id
+      - accountId
+      - account
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
         crmOrgId:
           type: string
         crmOrg:
           $ref: '#/components/schemas/CrmOrg'
-        sourceType:
-          type: object
-        sourceId:
-          type: string
-        email:
-          type: string
-        referrerUrl:
-          type:
-          - string
-          - 'null'
-        status:
-          type: object
-        assignedToUserId:
-          type:
-          - string
-          - 'null'
-        assignedToName:
-          type:
-          - string
-          - 'null'
-        assignmentRuleType:
-          type:
-          - string
-          - 'null'
-        crmRecordId:
-          type:
-          - string
-          - 'null'
-        sessionToken:
-          type:
-          - string
-          - 'null'
-        capturedData:
-          type:
-          - object
-          - 'null'
-        errorMessage:
-          type:
-          - string
-          - 'null'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - crmOrgId
-      - crmOrg
-      - sourceType
-      - sourceId
-      - email
-      - referrerUrl
-      - status
-      - assignedToUserId
-      - assignedToName
-      - assignmentRuleType
-      - crmRecordId
-      - sessionToken
-      - capturedData
-      - errorMessage
-      - createdAt
-      - updatedAt
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        sub:
-          type: string
-        email:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        preferences:
-          type: object
-        name:
-          type: string
-        emoji:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
+        roleGroupId:
           type: string
         roleGroup:
           $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
       required:
-      - id
-      - sub
-      - email
-      - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
+      - role
+      - crmOrgId
+      - crmOrg
       - roleGroupId
-      - createdAt
-      - updatedAt
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
+      - roleGroup
     FunnelLinkDto:
       type: object
       properties:
@@ -912,60 +795,57 @@ components:
       - funnelDetails
       - deployments
       - createdAt
-    RoleGroup:
+    User:
       type: object
       properties:
         id:
           type: string
-        accountId:
+        sub:
+          type: string
+        email:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
+        preferences:
+          type: object
+        name:
           type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
+        emoji:
           type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
         createdAt:
           format: date-time
           type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
         updatedAt:
           format: date-time
           type: string
-        name:
+        deletedAt:
+          format: date-time
           type: string
-        description:
+        lastSeen:
+          format: date-time
           type: string
       required:
       - id
-      - accountId
+      - sub
+      - email
       - account
-      - type
-      - accountRoles
-      - orgRoles
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
+      - preferences
       - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
     LeadingObjectDto:
       type: object
       properties:
@@ -983,19 +863,175 @@ components:
       - objectName
       - fieldName
       - _leadingFieldId
-    RoleGroupAccountRole:
+    SweepFieldReference:
       type: object
       properties:
-        role:
-          type: object
-        roleGroupId:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
           type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
       required:
-      - role
-      - roleGroupId
-      - roleGroup
+      - fieldIds
+    UpdateIntegrationSettingsDto:
+      type: object
+      properties:
+        calendarProvider:
+          type: string
+          enum:
+          - google_calendar
+        videoConferencingProvider:
+          type: string
+          enum:
+          - zoom
+          - google_meet
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
     FunnelDeployment:
       type: object
       properties:
@@ -1028,6 +1064,79 @@ components:
       - deployedBy
       - deployedAt
       - status
+    SchedulingSubmissionLog:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        sourceType:
+          type: object
+        sourceId:
+          type: string
+        email:
+          type: string
+        referrerUrl:
+          type:
+          - string
+          - 'null'
+        status:
+          type: object
+        assignedToUserId:
+          type:
+          - string
+          - 'null'
+        assignedToName:
+          type:
+          - string
+          - 'null'
+        assignmentRuleType:
+          type:
+          - string
+          - 'null'
+        crmRecordId:
+          type:
+          - string
+          - 'null'
+        sessionToken:
+          type:
+          - string
+          - 'null'
+        capturedData:
+          type:
+          - object
+          - 'null'
+        errorMessage:
+          type:
+          - string
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - crmOrgId
+      - crmOrg
+      - sourceType
+      - sourceId
+      - email
+      - referrerUrl
+      - status
+      - assignedToUserId
+      - assignedToName
+      - assignmentRuleType
+      - crmRecordId
+      - sessionToken
+      - capturedData
+      - errorMessage
+      - createdAt
+      - updatedAt
     CrmOrg:
       type: object
       properties:
@@ -1129,83 +1238,20 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    Account:
+    RoleGroupAccountRole:
       type: object
       properties:
-        id:
+        role:
+          type: object
+        roleGroupId:
           type: string
-        name:
-          type: string
-        authZeroOrgId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
       required:
-      - id
-      - name
-      - authZeroOrgId
-      - createdAt
-      - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
-    Org:
+      - role
+      - roleGroupId
+      - roleGroup
+    RoleGroup:
       type: object
       properties:
         id:
@@ -1214,90 +1260,102 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
       required:
       - id
       - accountId
       - account
-    SweepStage:
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    FunnelDetailsDto:
       type: object
       properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
           type: array
           items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
           type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
         funnelLinks:
           type: array
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
+        stageMetadata:
           type: array
           items:
-            $ref: '#/components/schemas/SweepFieldReference'
+            type: object
       required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    RoleGroupOrgRole:
+      - leadingObject
+      - stages
+      - plugins
+    SweepAssignmentRule:
       type: object
       properties:
-        role:
-          type: object
-        crmOrgId:
+        assignmentId:
           type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        roleGroupId:
+        ruleName:
           type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
       required:
-      - role
-      - crmOrgId
-      - crmOrg
-      - roleGroupId
-      - roleGroup
-    UpdateIntegrationSettingsDto:
-      type: object
-      properties:
-        calendarProvider:
-          type: string
-          enum:
-          - google_calendar
-        videoConferencingProvider:
-          type: string
-          enum:
-          - zoom
-          - google_meet
-    FunnelPluginsDto:
-      type: object
-      properties: {}
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
   securitySchemes:
     bearer:
       scheme: bearer

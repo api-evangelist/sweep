@@ -28,6 +28,8 @@ paths:
                 type: object
       tags:
       - Non Admin Salesforce Connector (unauthenticated)
+      summary: Non admin salesforce connector unauthenticated controller redirect to SFDCO…
+      x-summary-source: derived
   /non-admin-sfdc-connector/oauth2-callback:
     get:
       operationId: NonAdminSalesforceConnectorUnauthenticatedController_oauth2Callback
@@ -51,6 +53,8 @@ paths:
                 type: object
       tags:
       - Non Admin Salesforce Connector (unauthenticated)
+      summary: Non admin salesforce connector unauthenticated controller oauth2 callback
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

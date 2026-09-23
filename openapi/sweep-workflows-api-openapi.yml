@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: workflows
+- name: Workflows
 paths:
   /workflows:
     get:
@@ -26,7 +26,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - workflows
+      - Workflows
+      summary: Workflow controller get workflows
+      x-summary-source: derived
     post:
       operationId: WorkflowController_createWorkflow
       parameters: []
@@ -46,7 +48,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - workflows
+      - Workflows
+      summary: Workflow controller create workflow
+      x-summary-source: derived
     put:
       operationId: WorkflowController_updateWorkflow
       parameters: []
@@ -66,7 +70,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - workflows
+      - Workflows
+      summary: Workflow controller update workflow
+      x-summary-source: derived
   /workflows/{workflowId}:
     delete:
       operationId: WorkflowController_deleteWorkflow
@@ -82,23 +88,41 @@ paths:
       security:
       - bearer: []
       tags:
-      - workflows
+      - Workflows
+      summary: Workflow controller delete workflow
+      x-summary-source: derived
 components:
   schemas:
-    WorkflowDetailsDto:
+    UpdateWorkflowDto:
       type: object
       properties:
-        when:
-          type: object
-        actions:
-          type: array
-          items:
-            type: object
-        onlyEnrollsManually:
+        workflowId:
+          type: string
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        enrollExistingContacts:
           type: boolean
       required:
-      - actions
-      - onlyEnrollsManually
+      - workflowId
+      - name
+      - workflowDetails
+    CreateWorkflowDto:
+      type: object
+      properties:
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        objectName:
+          type: string
+        enrollExistingContacts:
+          type: boolean
+      required:
+      - name
+      - workflowDetails
+      - objectName
     WorkflowDto:
       type: object
       properties:
@@ -135,36 +159,20 @@ components:
       - createdAt
       - updatedById
       - updatedAt
-    CreateWorkflowDto:
+    WorkflowDetailsDto:
       type: object
       properties:
-        name:
-          type: string
-        workflowDetails:
-          $ref: '#/components/schemas/WorkflowDetailsDto'
-        objectName:
-          type: string
-        enrollExistingContacts:
+        when:
+          type: object
+        actions:
+          type: array
+          items:
+            type: object
+        onlyEnrollsManually:
           type: boolean
       required:
-      - name
-      - workflowDetails
-      - objectName
-    UpdateWorkflowDto:
-      type: object
-      properties:
-        workflowId:
-          type: string
-        name:
-          type: string
-        workflowDetails:
-          $ref: '#/components/schemas/WorkflowDetailsDto'
-        enrollExistingContacts:
-          type: boolean
-      required:
-      - workflowId
-      - name
-      - workflowDetails
+      - actions
+      - onlyEnrollsManually
   securitySchemes:
     bearer:
       scheme: bearer

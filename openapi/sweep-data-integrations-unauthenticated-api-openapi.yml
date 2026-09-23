@@ -24,6 +24,8 @@ paths:
           description: ''
       tags:
       - Data Integrations (Unauthenticated)
+      summary: Data integrations unauthenticated controller redirect to slack auth path
+      x-summary-source: derived
   /data-integrations/slack/incoming-events:
     post:
       operationId: DataIntegrationsUnauthenticatedController_SlackIncomingEvents
@@ -49,6 +51,8 @@ paths:
           description: ''
       tags:
       - Data Integrations (Unauthenticated)
+      summary: Data integrations unauthenticated controller slack incoming events
+      x-summary-source: derived
   /data-integrations/slack/interactive-components-events:
     post:
       operationId: DataIntegrationsUnauthenticatedController_SlackInteractiveEvents
@@ -68,6 +72,8 @@ paths:
           description: ''
       tags:
       - Data Integrations (Unauthenticated)
+      summary: Data integrations unauthenticated controller slack interactive events
+      x-summary-source: derived
   /data-integrations/slack/external-select:
     post:
       operationId: DataIntegrationsUnauthenticatedController_SlackExternalSelect
@@ -93,6 +99,8 @@ paths:
           description: ''
       tags:
       - Data Integrations (Unauthenticated)
+      summary: Data integrations unauthenticated controller slack external select
+      x-summary-source: derived
   /data-integrations/teams/redirect-to-oauth:
     get:
       operationId: DataIntegrationsUnauthenticatedController_redirectToMsTeamsOAuthPath
@@ -107,6 +115,8 @@ paths:
           description: ''
       tags:
       - Data Integrations (Unauthenticated)
+      summary: Data integrations unauthenticated controller redirect to ms teams OAuth path
+      x-summary-source: derived
 components:
   schemas:
     Buffer:

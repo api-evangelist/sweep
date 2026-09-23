@@ -25,6 +25,8 @@ paths:
       - bearer: []
       tags:
       - Dashboard
+      summary: Dashboard controller get account status
+      x-summary-source: derived
   /dashboard/accountDetails:
     put:
       operationId: DashboardController_updateUserAndAccountName
@@ -42,6 +44,8 @@ paths:
       - bearer: []
       tags:
       - Dashboard
+      summary: Dashboard controller update user and account name
+      x-summary-source: derived
 components:
   schemas:
     UpdateUserAndAccountDetails:

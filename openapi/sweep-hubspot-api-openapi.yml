@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: hubspot
+- name: Hubspot
 paths:
   /hubspot:
     get:
@@ -26,7 +26,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get orgs
+      x-summary-source: derived
   /hubspot/org/{orgId}:
     get:
       operationId: HubSpotController_getOrg
@@ -46,7 +48,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get org
+      x-summary-source: derived
   /hubspot/oauth2-callback:
     get:
       operationId: HubSpotController_oauth2Callback
@@ -61,7 +65,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller oauth2 callback
+      x-summary-source: derived
   /hubspot/new:
     post:
       operationId: HubSpotController_createOrgs
@@ -87,7 +93,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller create orgs
+      x-summary-source: derived
   /hubspot/fields/{orgId}/{objectName}:
     get:
       operationId: HubSpotController_getFields
@@ -114,7 +122,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get fields
+      x-summary-source: derived
   /hubspot/{orgId}:
     delete:
       operationId: HubSpotController_deleteOrg
@@ -130,7 +140,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller delete org
+      x-summary-source: derived
   /hubspot/workflow/{workflowId}:
     get:
       operationId: HubSpotController_getWorkflowFromHubpsot
@@ -150,7 +162,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get workflow from hubpsot
+      x-summary-source: derived
   /hubspot/event-components:
     get:
       operationId: HubSpotController_getOrgByType
@@ -170,7 +184,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get org by type
+      x-summary-source: derived
   /hubspot/membership-lists:
     get:
       operationId: HubSpotController_getMembershipLists
@@ -187,7 +203,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - hubspot
+      - Hubspot
+      summary: Hub spot controller get membership lists
+      x-summary-source: derived
 components:
   schemas:
     HubspotCrmOrgCreateDto:

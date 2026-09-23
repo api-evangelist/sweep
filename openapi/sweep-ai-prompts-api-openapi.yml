@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller get prompt groups
+      x-summary-source: derived
     post:
       operationId: AiPromptsController_createPromptGroup
       parameters: []
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller create prompt group
+      x-summary-source: derived
   /ai-prompts:
     get:
       operationId: AiPromptsController_getPrompts
@@ -64,6 +68,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller get prompts
+      x-summary-source: derived
     post:
       operationId: AiPromptsController_createPrompt
       parameters: []
@@ -84,6 +90,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller create prompt
+      x-summary-source: derived
   /ai-prompts/prompt-groups/{groupId}:
     patch:
       operationId: AiPromptsController_updatePromptGroup
@@ -110,6 +118,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller update prompt group
+      x-summary-source: derived
     delete:
       operationId: AiPromptsController_deletePromptGroup
       parameters:
@@ -125,6 +135,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller delete prompt group
+      x-summary-source: derived
   /ai-prompts/{promptId}:
     patch:
       operationId: AiPromptsController_updatePrompt
@@ -151,6 +163,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller update prompt
+      x-summary-source: derived
     delete:
       operationId: AiPromptsController_deletePrompt
       parameters:
@@ -166,6 +180,8 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller delete prompt
+      x-summary-source: derived
   /ai-prompts/optimize:
     post:
       operationId: AiPromptsController_optimizePrompt
@@ -187,9 +203,11 @@ paths:
       - bearer: []
       tags:
       - AI Prompts
+      summary: Ai prompts controller optimize prompt
+      x-summary-source: derived
 components:
   schemas:
-    UpdatePromptDto:
+    CreatePromptDto:
       type: object
       properties:
         name:
@@ -198,6 +216,9 @@ components:
           type: string
         promptGroupId:
           type: string
+      required:
+      - name
+      - promptText
     OptimizePromptDto:
       type: object
       properties:
@@ -205,47 +226,6 @@ components:
           type: string
       required:
       - promptText
-    UpdatePromptGroupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
-    PromptResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        promptText:
-          type: string
-        promptGroupId:
-          type:
-          - string
-          - 'null'
-        accountId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        createdById:
-          type: string
-        updatedById:
-          type: string
-      required:
-      - id
-      - name
-      - promptText
-      - accountId
-      - createdAt
-      - updatedAt
     PromptGroupResponseDto:
       type: object
       properties:
@@ -278,18 +258,6 @@ components:
       - accountId
       - createdAt
       - updatedAt
-    CreatePromptDto:
-      type: object
-      properties:
-        name:
-          type: string
-        promptText:
-          type: string
-        promptGroupId:
-          type: string
-      required:
-      - name
-      - promptText
     CreatePromptGroupDto:
       type: object
       properties:
@@ -304,6 +272,56 @@ components:
       required:
       - name
       - isPinned
+    PromptResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type:
+          - string
+          - 'null'
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        updatedById:
+          type: string
+      required:
+      - id
+      - name
+      - promptText
+      - accountId
+      - createdAt
+      - updatedAt
+    UpdatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
+    UpdatePromptGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
   securitySchemes:
     bearer:
       scheme: bearer

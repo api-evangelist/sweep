@@ -37,6 +37,8 @@ paths:
       - bearer: []
       tags:
       - Diff
+      summary: Diff controller diff by snapshot id
+      x-summary-source: derived
   /diff/funnels/{funnelId}:
     get:
       operationId: DiffController_diffByFunnelId
@@ -64,6 +66,8 @@ paths:
       - bearer: []
       tags:
       - Diff
+      summary: Diff controller diff by funnel id
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

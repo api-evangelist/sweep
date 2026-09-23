@@ -19,6 +19,8 @@ paths:
           description: ''
       tags:
       - hubspot connector (unauthenticated)
+      summary: Hub spot connector controller redirect to hubspot OAuth path
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

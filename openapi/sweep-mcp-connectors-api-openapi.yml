@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller get connectors
+      x-summary-source: derived
     post:
       operationId: McpConnectorsController_createConnector
       parameters: []
@@ -47,6 +49,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller create connector
+      x-summary-source: derived
   /mcp-connectors/{serverId}/oauth/url:
     get:
       operationId: McpConnectorsController_getOAuthAuthorizationUrl
@@ -63,6 +67,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller get OAuth authorization url
+      x-summary-source: derived
   /mcp-connectors/{serverId}/oauth/callback:
     post:
       operationId: McpConnectorsController_handleOAuthCallback
@@ -85,6 +91,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller handle OAuth callback
+      x-summary-source: derived
   /mcp-connectors/{serverId}:
     delete:
       operationId: McpConnectorsController_deleteConnector
@@ -101,6 +109,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller delete connector
+      x-summary-source: derived
   /mcp-connectors/connections/{connectionId}/tool-policies:
     get:
       operationId: McpConnectorsController_getConnectionTools
@@ -123,6 +133,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller get connection tools
+      x-summary-source: derived
   /mcp-connectors/connections/{connectionId}:
     put:
       operationId: McpConnectorsController_updateConnectionToolPolicies
@@ -145,6 +157,8 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller update connection tool policies
+      x-summary-source: derived
     delete:
       operationId: McpConnectorsController_deleteConnection
       parameters:
@@ -160,22 +174,10 @@ paths:
       - bearer: []
       tags:
       - MCP Connectors
+      summary: Mcp connectors controller delete connection
+      x-summary-source: derived
 components:
   schemas:
-    ToolPolicyDto:
-      type: object
-      properties:
-        name:
-          type: string
-        policy:
-          type: string
-          enum:
-          - allowed
-          - denied
-          - needs_approval
-      required:
-      - name
-      - policy
     RegisterServerDto:
       type: object
       properties:
@@ -191,15 +193,20 @@ components:
           $ref: '#/components/schemas/ClientCredentialsDto'
       required:
       - serverType
-    ClientCredentialsDto:
+    ToolPolicyDto:
       type: object
       properties:
-        clientId:
+        name:
           type: string
-        clientSecret:
+        policy:
           type: string
+          enum:
+          - allowed
+          - denied
+          - needs_approval
       required:
-      - clientId
+      - name
+      - policy
     UpdateToolPoliciesDto:
       type: object
       properties:
@@ -209,6 +216,15 @@ components:
             $ref: '#/components/schemas/ToolPolicyDto'
       required:
       - toolPolicies
+    ClientCredentialsDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
     OAuthCallbackDto:
       type: object
       properties:

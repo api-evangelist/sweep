@@ -27,6 +27,8 @@ paths:
       - bearer: []
       tags:
       - Utility-bar
+      summary: Utility bar controller toggle ai support for apps
+      x-summary-source: derived
   /utility-bar/apps:
     get:
       operationId: UtilityBarController_getApps
@@ -44,8 +46,21 @@ paths:
       - bearer: []
       tags:
       - Utility-bar
+      summary: Utility bar controller get apps
+      x-summary-source: derived
 components:
   schemas:
+    ToggleUtilityBarDto:
+      type: object
+      properties:
+        toggleOn:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
+        toggleOff:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
     SalesforceAppDto:
       type: object
       properties:
@@ -62,17 +77,6 @@ components:
       - label
       - logoUrl
       - hasSweepSupport
-    ToggleUtilityBarDto:
-      type: object
-      properties:
-        toggleOn:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppUtilityBarDto'
-        toggleOff:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppUtilityBarDto'
     AppUtilityBarDto:
       type: object
       properties:

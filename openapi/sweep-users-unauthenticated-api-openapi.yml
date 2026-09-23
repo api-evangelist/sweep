@@ -24,6 +24,8 @@ paths:
           description: ''
       tags:
       - Users (unauthenticated)
+      summary: Users unauthenticated controller resend verification email
+      x-summary-source: derived
 components:
   securitySchemes:
     bearer:

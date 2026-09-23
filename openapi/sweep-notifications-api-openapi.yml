@@ -25,6 +25,8 @@ paths:
       - bearer: []
       tags:
       - Notifications
+      summary: Notifications controller get notifications
+      x-summary-source: derived
   /notifications/events/read:
     post:
       operationId: NotificationsController_eventReadNotifications
@@ -36,6 +38,8 @@ paths:
       - bearer: []
       tags:
       - Notifications
+      summary: Notifications controller event read notifications
+      x-summary-source: derived
   /notifications/events/read-all:
     post:
       operationId: NotificationsController_eventReadAllNotifications
@@ -47,6 +51,8 @@ paths:
       - bearer: []
       tags:
       - Notifications
+      summary: Notifications controller event read all notifications
+      x-summary-source: derived
 components:
   schemas:
     GetNotificationsResponseDto:

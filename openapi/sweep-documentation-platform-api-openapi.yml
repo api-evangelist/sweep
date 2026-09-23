@@ -47,6 +47,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller search elements
+      x-summary-source: derived
   /documentation-platform/snowflake/search-by-metadata:
     get:
       operationId: DocumentationPlatformController_findElementByName
@@ -84,6 +86,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller find element by name
+      x-summary-source: derived
   /documentation-platform/snowflake/{metadataId}/dependencies:
     get:
       operationId: DocumentationPlatformController_getElementDependencies
@@ -109,6 +113,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get element dependencies
+      x-summary-source: derived
   /documentation-platform/snowflake/{metadataId}/dependents:
     get:
       operationId: DocumentationPlatformController_getElementDependents
@@ -134,6 +140,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get element dependents
+      x-summary-source: derived
   /documentation-platform/snowflake/{metadataId}/summary:
     get:
       operationId: DocumentationPlatformController_getElementSummary
@@ -159,6 +167,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get element summary
+      x-summary-source: derived
   /documentation-platform/snowflake/{metadataId}/source:
     get:
       operationId: DocumentationPlatformController_getElementSource
@@ -184,6 +194,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get element source
+      x-summary-source: derived
   /documentation-platform/snowflake/{metadataId}/chat:
     post:
       operationId: DocumentationPlatformController_chatWithElement
@@ -215,6 +227,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller chat with element
+      x-summary-source: derived
   /documentation-platform/snowflake/{elementType}:
     get:
       operationId: DocumentationPlatformController_listElements
@@ -242,6 +256,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list elements
+      x-summary-source: derived
   /documentation-platform/data360/search:
     get:
       operationId: DocumentationPlatformController_searchData360Elements
@@ -274,6 +290,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller search data360 elements
+      x-summary-source: derived
   /documentation-platform/data360/search-by-metadata:
     get:
       operationId: DocumentationPlatformController_findData360ElementByName
@@ -306,6 +324,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller find data360 element by name
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/dependencies:
     get:
       operationId: DocumentationPlatformController_getData360ElementDependencies
@@ -331,6 +351,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get data360 element dependencies
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/dependents:
     get:
       operationId: DocumentationPlatformController_getData360ElementDependents
@@ -356,6 +378,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get data360 element dependents
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/children:
     get:
       operationId: DocumentationPlatformController_getData360ElementChildren
@@ -381,6 +405,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get data360 element children
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/summary:
     get:
       operationId: DocumentationPlatformController_getData360ElementSummary
@@ -406,6 +432,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get data360 element summary
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/source:
     get:
       operationId: DocumentationPlatformController_getData360ElementSource
@@ -431,6 +459,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get data360 element source
+      x-summary-source: derived
   /documentation-platform/data360/{metadataId}/chat:
     post:
       operationId: DocumentationPlatformController_chatWithData360Element
@@ -462,6 +492,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller chat with data360 element
+      x-summary-source: derived
   /documentation-platform/data360/{elementType}:
     get:
       operationId: DocumentationPlatformController_listData360Elements
@@ -489,6 +521,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list data360 elements
+      x-summary-source: derived
   /documentation-platform/workato/search:
     get:
       operationId: DocumentationPlatformController_searchWorkatoElements
@@ -521,6 +555,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller search workato elements
+      x-summary-source: derived
   /documentation-platform/workato/search-by-metadata:
     get:
       operationId: DocumentationPlatformController_findWorkatoElementByName
@@ -553,6 +589,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller find workato element by name
+      x-summary-source: derived
   /documentation-platform/workato/{metadataId}/dependencies:
     get:
       operationId: DocumentationPlatformController_getWorkatoElementDependencies
@@ -578,6 +616,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get workato element dependencies
+      x-summary-source: derived
   /documentation-platform/workato/{metadataId}/dependents:
     get:
       operationId: DocumentationPlatformController_getWorkatoElementDependents
@@ -603,6 +643,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get workato element dependents
+      x-summary-source: derived
   /documentation-platform/workato/{metadataId}/children:
     get:
       operationId: DocumentationPlatformController_getWorkatoElementChildren
@@ -628,6 +670,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get workato element children
+      x-summary-source: derived
   /documentation-platform/workato/{metadataId}/source:
     get:
       operationId: DocumentationPlatformController_getWorkatoElementSource
@@ -653,6 +697,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get workato element source
+      x-summary-source: derived
   /documentation-platform/workato/{metadataId}/summary:
     get:
       operationId: DocumentationPlatformController_getWorkatoElementSummary
@@ -678,6 +724,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get workato element summary
+      x-summary-source: derived
   /documentation-platform/workato/{elementType}:
     get:
       operationId: DocumentationPlatformController_listWorkatoElements
@@ -705,6 +753,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list workato elements
+      x-summary-source: derived
   /documentation-platform/hubspot/search:
     get:
       operationId: DocumentationPlatformController_searchHubspotElements
@@ -737,6 +787,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller search hubspot elements
+      x-summary-source: derived
   /documentation-platform/hubspot/search-by-metadata:
     get:
       operationId: DocumentationPlatformController_findHubspotElementByName
@@ -769,6 +821,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller find hubspot element by name
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/dependencies:
     get:
       operationId: DocumentationPlatformController_getHubspotElementDependencies
@@ -794,6 +848,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get hubspot element dependencies
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/dependents:
     get:
       operationId: DocumentationPlatformController_getHubspotElementDependents
@@ -819,6 +875,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get hubspot element dependents
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/children:
     get:
       operationId: DocumentationPlatformController_getHubspotElementChildren
@@ -844,6 +902,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get hubspot element children
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/summary:
     get:
       operationId: DocumentationPlatformController_getHubspotElementSummary
@@ -869,6 +929,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get hubspot element summary
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/source:
     get:
       operationId: DocumentationPlatformController_getHubspotElementSource
@@ -894,6 +956,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get hubspot element source
+      x-summary-source: derived
   /documentation-platform/hubspot/{metadataId}/chat:
     post:
       operationId: DocumentationPlatformController_chatWithHubspotElement
@@ -925,6 +989,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller chat with hubspot element
+      x-summary-source: derived
   /documentation-platform/hubspot/{elementType}:
     get:
       operationId: DocumentationPlatformController_listHubspotElements
@@ -952,6 +1018,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list hubspot elements
+      x-summary-source: derived
   /documentation-platform/servicenow/search:
     get:
       operationId: DocumentationPlatformController_searchServiceNowElements
@@ -977,6 +1045,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller search service now elements
+      x-summary-source: derived
   /documentation-platform/servicenow/search-by-metadata:
     get:
       operationId: DocumentationPlatformController_findServiceNowElementByName
@@ -1002,6 +1072,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller find service now element by name
+      x-summary-source: derived
   /documentation-platform/servicenow/tables/{tableName}/fields:
     get:
       operationId: DocumentationPlatformController_getServiceNowTableFields
@@ -1032,6 +1104,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get service now table fields
+      x-summary-source: derived
   /documentation-platform/servicenow/{metadataId}/summary:
     get:
       operationId: DocumentationPlatformController_getServiceNowElementSummary
@@ -1057,6 +1131,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get service now element summary
+      x-summary-source: derived
   /documentation-platform/servicenow/{metadataId}/chat:
     post:
       operationId: DocumentationPlatformController_chatWithServiceNowElement
@@ -1088,6 +1164,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller chat with service now element
+      x-summary-source: derived
   /documentation-platform/servicenow/{metadataId}/source:
     get:
       operationId: DocumentationPlatformController_getServiceNowElementSource
@@ -1113,6 +1191,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get service now element source
+      x-summary-source: derived
   /documentation-platform/servicenow/{metadataId}/choices:
     get:
       operationId: DocumentationPlatformController_getServiceNowFieldChoices
@@ -1138,6 +1218,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get service now field choices
+      x-summary-source: derived
   /documentation-platform/servicenow/{elementType}:
     get:
       operationId: DocumentationPlatformController_listServiceNowElements
@@ -1165,6 +1247,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list service now elements
+      x-summary-source: derived
   /documentation-platform/salesforce/objects:
     get:
       operationId: DocumentationPlatformController_listSalesforceObjects
@@ -1185,6 +1269,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list salesforce objects
+      x-summary-source: derived
   /documentation-platform/salesforce/element-types:
     get:
       operationId: DocumentationPlatformController_listSalesforceElementTypes
@@ -1205,6 +1291,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list salesforce element types
+      x-summary-source: derived
   /documentation-platform/salesforce/objects/{objectName}/elements:
     get:
       operationId: DocumentationPlatformController_getSalesforceObjectDetailElements
@@ -1237,6 +1325,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get salesforce object detail elements
+      x-summary-source: derived
   /documentation-platform/salesforce/objects/{objectName}/counters:
     get:
       operationId: DocumentationPlatformController_getSalesforceObjectCounters
@@ -1262,6 +1352,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get salesforce object counters
+      x-summary-source: derived
   /documentation-platform/salesforce/{elementType}:
     get:
       operationId: DocumentationPlatformController_listSalesforceElements
@@ -1289,6 +1381,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller list salesforce elements
+      x-summary-source: derived
   /documentation-platform/salesforce/{metadataId}/dependencies:
     get:
       operationId: DocumentationPlatformController_getSalesforceElementDependencies
@@ -1314,6 +1408,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get salesforce element dependencies
+      x-summary-source: derived
   /documentation-platform/salesforce/{metadataId}/dependents:
     get:
       operationId: DocumentationPlatformController_getSalesforceElementDependents
@@ -1339,6 +1435,8 @@ paths:
       - bearer: []
       tags:
       - Documentation Platform
+      summary: Documentation platform controller get salesforce element dependents
+      x-summary-source: derived
 components:
   schemas:
     DocumentationChatRequestDto:

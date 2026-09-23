@@ -8,7 +8,7 @@ servers:
 - url: https://api.sweep.io
   description: Sweep production API — the host this document was harvested from (GET /api-json); /health responds here
 tags:
-- name: Ai Agents
+- name: AI Agents
 paths:
   /ai-agents:
     get:
@@ -26,7 +26,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get agents
+      x-summary-source: derived
     post:
       operationId: AiAgentsController_createAgent
       parameters: []
@@ -46,7 +48,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller create agent
+      x-summary-source: derived
   /ai-agents/{agentId}/name:
     patch:
       operationId: AiAgentsController_renameAgent
@@ -68,7 +72,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller rename agent
+      x-summary-source: derived
   /ai-agents/{agentId}/user-instructions:
     patch:
       operationId: AiAgentsController_editAgentUserInstructions
@@ -90,7 +96,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller edit agent user instructions
+      x-summary-source: derived
   /ai-agents/{agentId}/system-instructions:
     patch:
       operationId: AiAgentsController_editAgentSystemInstructions
@@ -112,7 +120,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller edit agent system instructions
+      x-summary-source: derived
   /ai-agents/{agentId}/configurations:
     patch:
       operationId: AiAgentsController_patchAgentConfigurations
@@ -138,7 +148,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller patch agent configurations
+      x-summary-source: derived
   /ai-agents/{agentId}:
     delete:
       operationId: AiAgentsController_deleteAgent
@@ -154,7 +166,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller delete agent
+      x-summary-source: derived
   /ai-agents/{agentId}/files/upload-url:
     post:
       operationId: AiAgentsController_generateFileUploadUrl
@@ -176,7 +190,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller generate file upload url
+      x-summary-source: derived
   /ai-agents/{agentId}/files/confirm-upload:
     post:
       operationId: AiAgentsController_confirmFileUpload
@@ -202,7 +218,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller confirm file upload
+      x-summary-source: derived
   /ai-agents/{agentId}/files/{fileId}:
     delete:
       operationId: AiAgentsController_deleteAgentFile
@@ -223,7 +241,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller delete agent file
+      x-summary-source: derived
   /ai-agents/{agentId}/files/{fileId}/download-url:
     get:
       operationId: AiAgentsController_generateFileDownloadUrl
@@ -248,7 +268,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller generate file download url
+      x-summary-source: derived
   /ai-agents/{agentId}/files/{fileId}/preview:
     get:
       operationId: AiAgentsController_generateFilePreview
@@ -273,7 +295,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller generate file preview
+      x-summary-source: derived
   /ai-agents/{agentId}/chats/{chatId}/add-to-agent:
     post:
       operationId: AiAgentsController_addChatToAgentFiles
@@ -298,7 +322,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller add chat to agent files
+      x-summary-source: derived
   /ai-agents/{agentId}/chats:
     post:
       operationId: AiAgentsController_createChat
@@ -329,7 +355,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller create chat
+      x-summary-source: derived
     get:
       operationId: AiAgentsController_getAiChats
       parameters:
@@ -350,7 +378,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get ai chats
+      x-summary-source: derived
   /ai-agents/chats/{chatId}:
     patch:
       operationId: AiAgentsController_sendMessage
@@ -381,7 +411,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller send message
+      x-summary-source: derived
     get:
       operationId: AiAgentsController_getChat
       parameters:
@@ -400,7 +432,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get chat
+      x-summary-source: derived
     delete:
       operationId: AiAgentsController_deleteChat
       parameters:
@@ -419,7 +453,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller delete chat
+      x-summary-source: derived
   /ai-agents/stream/{id}:
     delete:
       operationId: AiAgentsController_cancelStream
@@ -445,7 +481,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller cancel stream
+      x-summary-source: derived
     get:
       operationId: AiAgentsController_streamChatResponse
       parameters:
@@ -474,7 +512,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller stream chat response
+      x-summary-source: derived
   /ai-agents/{agentId}/chats/{chatId}/mcp-tool-approval:
     post:
       operationId: AiAgentsController_handleMcpToolApproval
@@ -501,7 +541,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller handle mcp tool approval
+      x-summary-source: derived
   /ai-agents/chats/{chatId}/name:
     patch:
       operationId: AiAgentsController_rename
@@ -521,7 +563,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller rename
+      x-summary-source: derived
   /ai-agents/chats/{chatId}/favorite:
     patch:
       operationId: AiAgentsController_setIsFavorite
@@ -541,7 +585,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller set is favorite
+      x-summary-source: derived
   /ai-agents/monitoring/{agentId}/metadata-elements:
     get:
       operationId: AiAgentsController_getMonitoringMetadataElements
@@ -563,7 +609,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get monitoring metadata elements
+      x-summary-source: derived
   /ai-agents/monitoring/{agentId}/issues:
     get:
       operationId: AiAgentsController_getMonitoringV2PotentialIssues
@@ -583,7 +631,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get monitoring V2 potential issues
+      x-summary-source: derived
   /ai-agents/monitoring/{agentId}/issues/{issueId}:
     patch:
       operationId: AiAgentsController_setMonitoringIssueStatus
@@ -610,7 +660,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller set monitoring issue status
+      x-summary-source: derived
   /ai-agents/{agentId}/folders:
     post:
       operationId: AiAgentsController_createFolder
@@ -630,7 +682,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller create folder
+      x-summary-source: derived
     get:
       operationId: AiAgentsController_getFolders
       parameters:
@@ -651,7 +705,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get folders
+      x-summary-source: derived
   /ai-agents/{agentId}/folders/{folderId}/name:
     patch:
       operationId: AiAgentsController_renameFolder
@@ -676,7 +732,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller rename folder
+      x-summary-source: derived
   /ai-agents/{agentId}/folders/{folderId}:
     delete:
       operationId: AiAgentsController_deleteFolder
@@ -706,7 +764,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller delete folder
+      x-summary-source: derived
   /ai-agents/{agentId}/chats/{chatId}/folder:
     patch:
       operationId: AiAgentsController_setChatFolder
@@ -731,7 +791,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller set chat folder
+      x-summary-source: derived
   /ai-agents/chats:
     get:
       operationId: AiAgentsController_getAiChatsDeprecated
@@ -753,7 +815,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get ai chats deprecated
+      x-summary-source: derived
   /ai-agents/{agentId}/chats/sfdc:
     get:
       operationId: AiAgentsController_getSupportSalesforceChats
@@ -775,7 +839,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get support salesforce chats
+      x-summary-source: derived
   /ai-agents/chats/search:
     get:
       operationId: AiAgentsController_searchDeprecated
@@ -797,7 +863,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller search deprecated
+      x-summary-source: derived
   /ai-agents/{agentId}/chats/search:
     get:
       operationId: AiAgentsController_search
@@ -824,7 +892,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller search
+      x-summary-source: derived
   /ai-agents/chats/{chatId}/messages/{messageIndex}:
     delete:
       operationId: AiAgentsController_deleteChatMessagePair
@@ -851,7 +921,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller delete chat message pair
+      x-summary-source: derived
   /ai-agents/chats/{chatId}/feedback/{runId}:
     post:
       operationId: AiAgentsController_submitFeedback
@@ -878,7 +950,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller submit feedback
+      x-summary-source: derived
   /ai-agents/{agentId}/best-practices:
     post:
       operationId: AiAgentsController_addBestPracticesToAgent
@@ -900,7 +974,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller add best practices to agent
+      x-summary-source: derived
     delete:
       operationId: AiAgentsController_removeBestPracticesFromAgent
       parameters:
@@ -921,7 +997,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller remove best practices from agent
+      x-summary-source: derived
   /ai-agents/{agentId}/artifacts:
     get:
       operationId: AiAgentsController_getArtifacts
@@ -943,7 +1021,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get artifacts
+      x-summary-source: derived
   /ai-agents/artifacts/by-artifact-id/{artifactId}/versions:
     get:
       operationId: AiAgentsController_getArtifactVersionsSummaries
@@ -965,7 +1045,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get artifact versions summaries
+      x-summary-source: derived
   /ai-agents/artifacts/shared/{id}:
     get:
       operationId: AiAgentsController_getSharedArtifact
@@ -984,13 +1066,9 @@ paths:
                 $ref: '#/components/schemas/AiArtifact'
       security:
       - bearer: []
-      summary: 'Resolve a company-share link. `:id` may be a logical artifactId (stable) or a
-
-        legacy version UUID. Returns the currently shared version for that family,
-
-        or the latest version when nothing is shared and the caller is the creator.'
+      summary: Resolve a company-share link.
       tags:
-      - Ai Agents
+      - AI Agents
   /ai-agents/artifacts/{versionId}:
     get:
       operationId: AiAgentsController_getArtifact
@@ -1010,7 +1088,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get artifact
+      x-summary-source: derived
   /ai-agents/artifacts/{id}/share:
     patch:
       operationId: AiAgentsController_shareArtifact
@@ -1026,7 +1106,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller share artifact
+      x-summary-source: derived
   /ai-agents/artifacts/{id}/public:
     patch:
       operationId: AiAgentsController_setArtifactPublic
@@ -1042,7 +1124,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller set artifact public
+      x-summary-source: derived
   /ai-agents/artifacts/{id}/public-url-token:
     get:
       operationId: AiAgentsController_getArtifactPublicToken
@@ -1058,7 +1142,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get artifact public token
+      x-summary-source: derived
   /ai-agents/table-artifacts/{tableId}:
     get:
       operationId: AiAgentsController_getTableArtifact
@@ -1078,7 +1164,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get table artifact
+      x-summary-source: derived
   /ai-agents/build-definitions/{buildDefinitionId}:
     get:
       operationId: AiAgentsController_getBuildDefinition
@@ -1098,7 +1186,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller get build definition
+      x-summary-source: derived
   /ai-agents/process-mining/{funnelMapId}:
     post:
       operationId: AiAgentsController_processMiningSingleRequest
@@ -1120,513 +1210,12 @@ paths:
       security:
       - bearer: []
       tags:
-      - Ai Agents
+      - AI Agents
+      summary: Ai agents controller process mining single request
+      x-summary-source: derived
 components:
   schemas:
-    BestPractice:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        severity:
-          type: object
-        text:
-          type: string
-        isSystem:
-          type: boolean
-        applicableDomain:
-          type: string
-          enum:
-          - MetadataMonitoring
-          - BusinessProcess
-        applicableResourceType:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - severity
-      - text
-      - isSystem
-      - applicableDomain
-      - applicableResourceType
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - updatedById
-      - updatedBy
-      - createdAt
-      - updatedAt
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    AiAgentBestPractice:
-      type: object
-      properties:
-        aiAgentId:
-          type: string
-        bestPracticeId:
-          type: string
-        aiAgent:
-          $ref: '#/components/schemas/AiAgent'
-        bestPractice:
-          $ref: '#/components/schemas/BestPractice'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - aiAgentId
-      - bestPracticeId
-      - aiAgent
-      - bestPractice
-      - createdAt
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    IncludeConfigurationDto:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: string
-      required:
-      - name
-      - type
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        sub:
-          type: string
-        email:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        preferences:
-          type: object
-        name:
-          type: string
-        emoji:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
-      required:
-      - id
-      - sub
-      - email
-      - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
-      - roleGroupId
-      - createdAt
-      - updatedAt
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    AiProjectPrompt:
-      type: object
-      properties:
-        id:
-          type: string
-        promptTitle:
-          type: string
-        promptText:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - researchMode
-          - buildMode
-          - multiOrgMode
-          - artifactMode
-        isCompleted:
-          type: boolean
-        completedById:
-          type:
-          - string
-          - 'null'
-        completedAt:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        projectId:
-          type: string
-        project:
-          $ref: '#/components/schemas/AiProject'
-      required:
-      - id
-      - promptTitle
-      - promptText
-      - mode
-      - isCompleted
-      - completedById
-      - completedAt
-      - projectId
-      - project
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    ProcessMiningAgentDto:
-      type: object
-      properties:
-        message:
-          $ref: '#/components/schemas/AiChatMessageDto'
-      required:
-      - message
-    AiAgent:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - Documentation
-          - Process Optimization
-          - MonitoringV2
-          - Permissions
-          - Support
-          type: string
-        contextComponents:
-          type: object
-        userInstructions:
-          type: string
-        systemInstructions:
-          type: string
-        projectId:
-          type:
-          - string
-          - 'null'
-        project:
-          allOf:
-          - $ref: '#/components/schemas/AiProject'
-        orgId:
-          type: string
-        org:
-          $ref: '#/components/schemas/Org'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        bestPractices:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentBestPractice'
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentMetadataElement'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - contextComponents
-      - userInstructions
-      - systemInstructions
-      - projectId
-      - project
-      - orgId
-      - org
-      - files
-      - bestPractices
-      - metadataElements
-      - createdAt
-      - updatedAt
-    McpToolApprovalDto:
-      type: object
-      properties:
-        decisions:
-          type: array
-          items:
-            $ref: '#/components/schemas/McpToolApprovalDecisionDto'
-        mcpConnectionIds:
-          type: array
-          items:
-            type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - researchMode
-          - buildMode
-          - multiOrgMode
-          - artifactMode
-        enableArtifactsVersioning:
-          type: boolean
-        enableResearchRubric:
-          type: boolean
-      required:
-      - decisions
-      - mcpConnectionIds
-    FunnelSnapshot:
-      type: object
-      properties:
-        id:
-          type: string
-        ord:
-          type: number
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        apiName:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        funnelName:
-          type: string
-        description:
-          type: string
-        recordTypeName:
-          type: string
-        restoredFromSnapshot:
-          type: number
-        funnelDetails:
-          $ref: '#/components/schemas/FunnelDetailsDto'
-        deployments:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelDeployment'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - ord
-      - createdById
-      - createdBy
-      - apiName
-      - accountId
-      - account
-      - name
-      - funnelName
-      - description
-      - recordTypeName
-      - restoredFromSnapshot
-      - funnelDetails
-      - deployments
-      - createdAt
-    AiAgentFile:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
-          type: string
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        summary:
-          type: string
-        contentHash:
-          type:
-          - string
-          - 'null'
-          description: 'Null until the shared summary row exists. MySQL permits this because a composite
-
-            foreign key with a null part is not checked.'
-        fileCache:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFileCache'
-        status:
-          enum:
-          - processing
-          - completed
-          - failed
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - agentId
-      - agent
-      - createdById
-      - createdBy
-      - createdAt
-      - summary
-      - contentHash
-      - fileCache
-      - status
-    FunnelPluginsDto:
-      type: object
-      properties: {}
-    RoleGroup:
+    Org:
       type: object
       properties:
         id:
@@ -1635,174 +1224,10 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
-          type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        updatedAt:
-          format: date-time
-          type: string
-        name:
-          type: string
-        description:
-          type: string
       required:
       - id
       - accountId
       - account
-      - type
-      - accountRoles
-      - orgRoles
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
-      - name
-    AiChatFolder:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - createdById
-      - createdBy
-      - agentId
-      - agent
-      - createdAt
-      - updatedAt
-    AiTableArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        chatId:
-          type: string
-        chat:
-          $ref: '#/components/schemas/AiChat'
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        title:
-          type: string
-        markdown:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - chatId
-      - chat
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - title
-      - markdown
-      - createdAt
-      - updatedAt
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    DeleteAiChatMessagePairDto:
-      type: object
-      properties:
-        expectedUserCreatedAt:
-          type: string
-        expectedAssistantCreatedAt:
-          type: string
-      required:
-      - expectedUserCreatedAt
-      - expectedAssistantCreatedAt
-    EditAgentSystemInstructionsDto:
-      type: object
-      properties:
-        systemInstructions:
-          type: string
-      required:
-      - systemInstructions
-    McpToolApprovalDecisionDto:
-      type: object
-      properties:
-        toolName:
-          type: string
-        serverType:
-          type: string
-        connectionId:
-          type: string
-        decision:
-          type: string
-          enum:
-          - allow_once
-          - always_allow
-          - deny
-      required:
-      - toolName
-      - serverType
-      - connectionId
-      - decision
     AiProjectSection:
       type: object
       properties:
@@ -1857,30 +1282,212 @@ components:
       - projectId
       - project
       - items
-    AiProjectOriginTemplate:
+    ManageBestPracticesDto:
       type: object
       properties:
+        bestPracticeIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - bestPracticeIds
+    SupportContextDto:
+      type: object
+      properties:
+        recordId:
+          type: string
+        objectName:
+          type: string
+        sfdcUserId:
+          type: string
+    AiProjectSectionItem:
+      type: object
+      properties:
+        id:
+          type: string
+        sortOrder:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/AiProjectSection'
+        promptId:
+          type:
+          - string
+          - 'null'
+        prompt:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectPrompt'
+        artifactId:
+          type:
+          - string
+          - 'null'
+        artifact:
+          allOf:
+          - $ref: '#/components/schemas/AiArtifact'
+        tableArtifactId:
+          type:
+          - string
+          - 'null'
+        tableArtifact:
+          allOf:
+          - $ref: '#/components/schemas/AiTableArtifact'
+        fileId:
+          type:
+          - string
+          - 'null'
+        file:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFile'
+      required:
+      - id
+      - sortOrder
+      - sectionId
+      - section
+      - promptId
+      - prompt
+      - artifactId
+      - artifact
+      - tableArtifactId
+      - tableArtifact
+      - fileId
+      - file
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
+      - createdById
+      - createdBy
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    AiProjectPrompt:
+      type: object
+      properties:
+        id:
+          type: string
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+        isCompleted:
+          type: boolean
+        completedById:
+          type:
+          - string
+          - 'null'
+        completedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
         projectId:
           type: string
         project:
           $ref: '#/components/schemas/AiProject'
-        originTemplateExternalId:
-          type: string
-          enum:
-          - blank
-          - cpq-agentforce-revenue-management
-          - process-builder-to-flow
-          - profiles-permission-set-groups-migration
-          - visualforce-aura-lwc-modernization
-          - field-cleanup-hygiene
-          - salesforce-winter-27-release-prep
-          - ai-security-risk-remediation
-          - product-catalog-rationalization
-          - agentforce-readiness
       required:
+      - id
+      - promptTitle
+      - promptText
+      - mode
+      - isCompleted
+      - completedById
+      - completedAt
       - projectId
       - project
-      - originTemplateExternalId
     AiAgentMetadataElement:
       type: object
       properties:
@@ -1901,6 +1508,303 @@ components:
       - type
       - aiAgent
       - createdAt
+    AiAgentBestPractice:
+      type: object
+      properties:
+        aiAgentId:
+          type: string
+        bestPracticeId:
+          type: string
+        aiAgent:
+          $ref: '#/components/schemas/AiAgent'
+        bestPractice:
+          $ref: '#/components/schemas/BestPractice'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - aiAgentId
+      - bestPracticeId
+      - aiAgent
+      - bestPractice
+      - createdAt
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    ProcessMiningAgentDto:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/AiChatMessageDto'
+      required:
+      - message
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    ChatMessageDto:
+      type: object
+      properties:
+        message:
+          $ref: '#/components/schemas/AiChatMessageDto'
+        mode:
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+          type: string
+        additionalOrgIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        enableArtifactsVersioning:
+          type: boolean
+        enableUnifiedArtifactFilePath:
+          type: boolean
+        enableResearchRubric:
+          type: boolean
+        useRedis:
+          type: boolean
+        mcpConnectionIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        chatName:
+          type: string
+        folderId:
+          type: string
+          format: uuid
+        promptId:
+          type: string
+          format: uuid
+        supportContext:
+          $ref: '#/components/schemas/SupportContextDto'
+      required:
+      - message
+    AiTableArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        markdown:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - markdown
+      - createdAt
+      - updatedAt
+    McpToolApprovalDecisionDto:
+      type: object
+      properties:
+        toolName:
+          type: string
+        serverType:
+          type: string
+        connectionId:
+          type: string
+        decision:
+          type: string
+          enum:
+          - allow_once
+          - always_allow
+          - deny
+      required:
+      - toolName
+      - serverType
+      - connectionId
+      - decision
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    PatchAgentConfigurationsDto:
+      type: object
+      properties:
+        includeConfigurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/IncludeConfigurationDto'
+      required:
+      - includeConfigurations
+    CreateAgentDto:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: object
+        contextComponents:
+          type: object
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+        bestPracticeIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/IncludeConfigurationDto'
+      required:
+      - name
+      - type
+      - contextComponents
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    AiChatFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - createdById
+      - createdBy
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
     AiArtifact:
       type: object
       properties:
@@ -1957,74 +1861,6 @@ components:
       - toolResults
       - createdAt
       - updatedAt
-    EditAgentUserInstructionsDto:
-      type: object
-      properties:
-        userInstructions:
-          type: string
-      required:
-      - userInstructions
-    RoleGroupAccountRole:
-      type: object
-      properties:
-        role:
-          type: object
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - roleGroupId
-      - roleGroup
-    AiChatMessageDto:
-      type: object
-      properties:
-        role:
-          type: number
-          enum: []
-        content:
-          type: object
-        replyTo:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        hidden:
-          type: boolean
-      required:
-      - role
-      - content
-      - createdAt
-    SubmitFeedbackDto:
-      type: object
-      properties:
-        satisfaction:
-          type: number
-          minimum: 0
-          maximum: 1
-      required:
-      - satisfaction
-    ManageBestPracticesDto:
-      type: object
-      properties:
-        bestPracticeIds:
-          minItems: 1
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - bestPracticeIds
-    PatchAgentConfigurationsDto:
-      type: object
-      properties:
-        includeConfigurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/IncludeConfigurationDto'
-      required:
-      - includeConfigurations
     AiProject:
       type: object
       properties:
@@ -2101,6 +1937,384 @@ components:
       - sections
       - createdAt
       - updatedAt
+    UpdateIssueDto:
+      type: object
+      properties:
+        status:
+          type: object
+        severity:
+          type: object
+    ConfirmFileUploadDto:
+      type: object
+      properties:
+        fileKey:
+          type: string
+        fileName:
+          type: string
+        fileType:
+          type: string
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+      required:
+      - fileKey
+      - fileName
+      - fileType
+    EditAgentUserInstructionsDto:
+      type: object
+      properties:
+        userInstructions:
+          type: string
+      required:
+      - userInstructions
+    DeleteAiChatMessagePairDto:
+      type: object
+      properties:
+        expectedUserCreatedAt:
+          type: string
+        expectedAssistantCreatedAt:
+          type: string
+      required:
+      - expectedUserCreatedAt
+      - expectedAssistantCreatedAt
+    GenerateFileUploadUrlDto:
+      type: object
+      properties:
+        fileName:
+          type: string
+        fileType:
+          type: string
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+        contentType:
+          type: string
+      required:
+      - fileName
+      - fileType
+      - contentType
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    EditAgentSystemInstructionsDto:
+      type: object
+      properties:
+        systemInstructions:
+          type: string
+      required:
+      - systemInstructions
+    AiAgentFileCache:
+      type: object
+      properties:
+        contentHash:
+          type: string
+        name:
+          type: string
+        summary:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - contentHash
+      - name
+      - summary
+      - files
+      - createdAt
+      - updatedAt
+    SubmitFeedbackDto:
+      type: object
+      properties:
+        satisfaction:
+          type: number
+          minimum: 0
+          maximum: 1
+      required:
+      - satisfaction
+    AiAgentFile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+          type: string
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        summary:
+          type: string
+        contentHash:
+          type:
+          - string
+          - 'null'
+          description: 'Null until the shared summary row exists. MySQL permits this because a composite
+
+            foreign key with a null part is not checked.'
+        fileCache:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFileCache'
+        status:
+          enum:
+          - processing
+          - completed
+          - failed
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - agentId
+      - agent
+      - createdById
+      - createdBy
+      - createdAt
+      - summary
+      - contentHash
+      - fileCache
+      - status
+    EditAgentNameDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    IncludeConfigurationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+      required:
+      - name
+      - type
+    AiChatMessageDto:
+      type: object
+      properties:
+        role:
+          type: number
+          enum: []
+        content:
+          type: object
+        replyTo:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        hidden:
+          type: boolean
+      required:
+      - role
+      - content
+      - createdAt
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    McpToolApprovalDto:
+      type: object
+      properties:
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/McpToolApprovalDecisionDto'
+        mcpConnectionIds:
+          type: array
+          items:
+            type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+        enableArtifactsVersioning:
+          type: boolean
+        enableResearchRubric:
+          type: boolean
+      required:
+      - decisions
+      - mcpConnectionIds
     FunnelDeployment:
       type: object
       properties:
@@ -2133,36 +2347,60 @@ components:
       - deployedBy
       - deployedAt
       - status
-    ConfirmFileUploadDto:
+    BestPractice:
       type: object
       properties:
-        fileKey:
+        id:
           type: string
-        fileName:
+        name:
           type: string
-        fileType:
+        severity:
+          type: object
+        text:
+          type: string
+        isSystem:
+          type: boolean
+        applicableDomain:
           type: string
           enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
       required:
-      - fileKey
-      - fileName
-      - fileType
+      - id
+      - name
+      - severity
+      - text
+      - isSystem
+      - applicableDomain
+      - applicableResourceType
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - updatedById
+      - updatedBy
+      - createdAt
+      - updatedAt
     CrmOrg:
       type: object
       properties:
@@ -2264,91 +2502,214 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    SupportContextDto:
+    SweepAssignmentRule:
       type: object
       properties:
-        recordId:
+        assignmentId:
           type: string
-        objectName:
+        ruleName:
           type: string
-        sfdcUserId:
+        assignedTo:
           type: string
-    Account:
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    RoleGroupAccountRole:
+      type: object
+      properties:
+        role:
+          type: object
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - roleGroupId
+      - roleGroup
+    RoleGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    AiAgent:
       type: object
       properties:
         id:
           type: string
         name:
           type: string
-        authZeroOrgId:
+        type:
+          enum:
+          - Documentation
+          - Process Optimization
+          - MonitoringV2
+          - Permissions
+          - Support
           type: string
+        contextComponents:
+          type: object
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+        projectId:
+          type:
+          - string
+          - 'null'
+        project:
+          allOf:
+          - $ref: '#/components/schemas/AiProject'
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        bestPractices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentBestPractice'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentMetadataElement'
         createdAt:
           format: date-time
           type: string
         updatedAt:
           format: date-time
           type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
       required:
       - id
       - name
-      - authZeroOrgId
+      - type
+      - contextComponents
+      - userInstructions
+      - systemInstructions
+      - projectId
+      - project
+      - orgId
+      - org
+      - files
+      - bestPractices
+      - metadataElements
       - createdAt
       - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    AiProjectOriginTemplate:
+      type: object
+      properties:
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+        originTemplateExternalId:
+          type: string
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+      required:
+      - projectId
+      - project
+      - originTemplateExternalId
     AiChat:
       type: object
       properties:
@@ -2418,216 +2779,6 @@ components:
       - folder
       - chatContext
       - chatSource
-    Org:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-      required:
-      - id
-      - accountId
-      - account
-    SweepStage:
-      type: object
-      properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
-          type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    RoleGroupOrgRole:
-      type: object
-      properties:
-        role:
-          type: object
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - crmOrgId
-      - crmOrg
-      - roleGroupId
-      - roleGroup
-    GenerateFileUploadUrlDto:
-      type: object
-      properties:
-        fileName:
-          type: string
-        fileType:
-          type: string
-          enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
-        contentType:
-          type: string
-      required:
-      - fileName
-      - fileType
-      - contentType
-    UpdateIssueDto:
-      type: object
-      properties:
-        status:
-          type: object
-        severity:
-          type: object
-    AiProjectSectionItem:
-      type: object
-      properties:
-        id:
-          type: string
-        sortOrder:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/AiProjectSection'
-        promptId:
-          type:
-          - string
-          - 'null'
-        prompt:
-          allOf:
-          - $ref: '#/components/schemas/AiProjectPrompt'
-        artifactId:
-          type:
-          - string
-          - 'null'
-        artifact:
-          allOf:
-          - $ref: '#/components/schemas/AiArtifact'
-        tableArtifactId:
-          type:
-          - string
-          - 'null'
-        tableArtifact:
-          allOf:
-          - $ref: '#/components/schemas/AiTableArtifact'
-        fileId:
-          type:
-          - string
-          - 'null'
-        file:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFile'
-      required:
-      - id
-      - sortOrder
-      - sectionId
-      - section
-      - promptId
-      - prompt
-      - artifactId
-      - artifact
-      - tableArtifactId
-      - tableArtifact
-      - fileId
-      - file
-    ChatMessageDto:
-      type: object
-      properties:
-        message:
-          $ref: '#/components/schemas/AiChatMessageDto'
-        mode:
-          enum:
-          - none
-          - researchMode
-          - buildMode
-          - multiOrgMode
-          - artifactMode
-          type: string
-        additionalOrgIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        enableArtifactsVersioning:
-          type: boolean
-        enableUnifiedArtifactFilePath:
-          type: boolean
-        enableResearchRubric:
-          type: boolean
-        useRedis:
-          type: boolean
-        mcpConnectionIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        chatName:
-          type: string
-        folderId:
-          type: string
-          format: uuid
-        promptId:
-          type: string
-          format: uuid
-        supportContext:
-          $ref: '#/components/schemas/SupportContextDto'
-      required:
-      - message
     AiBuildDefinition:
       type: object
       properties:
@@ -2661,65 +2812,6 @@ components:
       - status
       - createdAt
       - updatedAt
-    CreateAgentDto:
-      type: object
-      properties:
-        name:
-          type: string
-        type:
-          type: object
-        contextComponents:
-          type: object
-        userInstructions:
-          type: string
-        systemInstructions:
-          type: string
-        bestPracticeIds:
-          type: array
-          items:
-            type: string
-            format: uuid
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/IncludeConfigurationDto'
-      required:
-      - name
-      - type
-      - contextComponents
-    AiAgentFileCache:
-      type: object
-      properties:
-        contentHash:
-          type: string
-        name:
-          type: string
-        summary:
-          type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - contentHash
-      - name
-      - summary
-      - files
-      - createdAt
-      - updatedAt
-    EditAgentNameDto:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
   securitySchemes:
     bearer:
       scheme: bearer
