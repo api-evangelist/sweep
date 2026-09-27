@@ -113,6 +113,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ConvertTemplateDto:
+      type: object
+      properties:
+        fieldMapping:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldMappingDto'
+      required:
+      - fieldMapping
     FieldMappingDto:
       type: object
       properties:
@@ -123,15 +132,6 @@ components:
       required:
       - fromTemplateFieldId
       - toSweepFieldId
-    ConvertTemplateDto:
-      type: object
-      properties:
-        fieldMapping:
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldMappingDto'
-      required:
-      - fieldMapping
     CreateTemplateDto:
       type: object
       properties:

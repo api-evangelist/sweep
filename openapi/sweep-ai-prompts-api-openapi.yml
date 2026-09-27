@@ -207,25 +207,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreatePromptDto:
-      type: object
-      properties:
-        name:
-          type: string
-        promptText:
-          type: string
-        promptGroupId:
-          type: string
-      required:
-      - name
-      - promptText
-    OptimizePromptDto:
-      type: object
-      properties:
-        promptText:
-          type: string
-      required:
-      - promptText
     PromptGroupResponseDto:
       type: object
       properties:
@@ -258,20 +239,6 @@ components:
       - accountId
       - createdAt
       - updatedAt
-    CreatePromptGroupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
-        iconName:
-          type: string
-      required:
-      - name
-      - isPinned
     PromptResponseDto:
       type: object
       properties:
@@ -304,6 +271,18 @@ components:
       - accountId
       - createdAt
       - updatedAt
+    CreatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
+      required:
+      - name
+      - promptText
     UpdatePromptDto:
       type: object
       properties:
@@ -313,6 +292,20 @@ components:
           type: string
         promptGroupId:
           type: string
+    CreatePromptGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+        iconName:
+          type: string
+      required:
+      - name
+      - isPinned
     UpdatePromptGroupDto:
       type: object
       properties:
@@ -322,6 +315,13 @@ components:
           type: string
         isPinned:
           type: boolean
+    OptimizePromptDto:
+      type: object
+      properties:
+        promptText:
+          type: string
+      required:
+      - promptText
   securitySchemes:
     bearer:
       scheme: bearer

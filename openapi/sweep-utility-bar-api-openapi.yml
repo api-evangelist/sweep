@@ -50,17 +50,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ToggleUtilityBarDto:
+    AppUtilityBarDto:
       type: object
       properties:
-        toggleOn:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppUtilityBarDto'
-        toggleOff:
-          type: array
-          items:
-            $ref: '#/components/schemas/AppUtilityBarDto'
+        appDeveloperName:
+          type: string
+        hasSweepSupport:
+          type: boolean
+      required:
+      - appDeveloperName
+      - hasSweepSupport
     SalesforceAppDto:
       type: object
       properties:
@@ -77,16 +76,17 @@ components:
       - label
       - logoUrl
       - hasSweepSupport
-    AppUtilityBarDto:
+    ToggleUtilityBarDto:
       type: object
       properties:
-        appDeveloperName:
-          type: string
-        hasSweepSupport:
-          type: boolean
-      required:
-      - appDeveloperName
-      - hasSweepSupport
+        toggleOn:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
+        toggleOff:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppUtilityBarDto'
   securitySchemes:
     bearer:
       scheme: bearer

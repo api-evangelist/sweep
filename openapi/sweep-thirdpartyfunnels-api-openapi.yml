@@ -98,6 +98,51 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    StepPositionDto:
+      type: object
+      properties:
+        row:
+          type: number
+        column:
+          type: number
+      required:
+      - row
+      - column
+    ThirdPartySystemDto:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
+    ThirdPartyFunnelDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          $ref: '#/components/schemas/ThirdPartySystemDto'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThirdPartyStepsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+      required:
+      - id
+      - name
+      - description
+      - steps
+      - funnelLinks
     ThirdPartyStepsDto:
       type: object
       properties:
@@ -121,16 +166,6 @@ components:
       - stepConnections
       - funnelLinks
       - position
-    ThirdPartySystemDto:
-      type: object
-      properties:
-        name:
-          type: string
-        domain:
-          type: string
-      required:
-      - name
-      - domain
     StepConnectionDto:
       type: object
       properties:
@@ -141,38 +176,6 @@ components:
       required:
       - _id
       - targetId
-    UpsertThirdPartyFunnelDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        system:
-          $ref: '#/components/schemas/ThirdPartySystemDto'
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThirdPartyStepsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-      required:
-      - name
-      - description
-      - steps
-      - funnelLinks
-    StepPositionDto:
-      type: object
-      properties:
-        row:
-          type: number
-        column:
-          type: number
-      required:
-      - row
-      - column
     FunnelLinkDto:
       type: object
       properties:
@@ -194,11 +197,9 @@ components:
       - _id
       - _type
       - funnelId
-    ThirdPartyFunnelDto:
+    UpsertThirdPartyFunnelDto:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
         description:
@@ -214,7 +215,6 @@ components:
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
       required:
-      - id
       - name
       - description
       - steps

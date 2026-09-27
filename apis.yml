@@ -91,7 +91,7 @@ apis:
   baseURL: https://sweepmcp.com/sse
   tags:
   - MCP
-  - agent-native
+  - Agent-Native
   - Salesforce
   - Metadata
   - Authentication

@@ -192,18 +192,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FieldIdsDto:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            required: true
-            type: array
-            items:
-              type: string
-      required:
-      - fieldIds
     SweepFieldBaseDto:
       type: object
       properties:
@@ -310,6 +298,18 @@ components:
       - sweepFieldName
       - fieldType
       - properties
+    FieldIdsDto:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            required: true
+            type: array
+            items:
+              type: string
+      required:
+      - fieldIds
     FieldUpdateDto:
       type: object
       properties:

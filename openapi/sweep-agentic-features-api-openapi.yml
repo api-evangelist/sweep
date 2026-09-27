@@ -76,31 +76,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateAgenticFeaturesSettingsDto:
-      type: object
-      properties:
-        defaults:
-          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
-        orgSettings:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrgSettingsDto'
-      required:
-      - defaults
-      - orgSettings
-    OrgSettingsDto:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
-        name:
-          type: string
-        settings:
-          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
-      required:
-      - crmOrgId
-      - name
-      - settings
     AgenticFeaturesSettingsDto:
       type: object
       properties:
@@ -129,6 +104,18 @@ components:
       - enableSweepExecutionLogs
       - dataAccessMode
       - chatRetentionSettings
+    UpdateAgenticFeaturesSettingsDto:
+      type: object
+      properties:
+        defaults:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+        orgSettings:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrgSettingsDto'
+      required:
+      - defaults
+      - orgSettings
     ChatRetentionSettingsDto:
       type: object
       properties:
@@ -150,6 +137,19 @@ components:
       - value
       - unit
       - excludeFavorites
+    OrgSettingsDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        settings:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+      required:
+      - crmOrgId
+      - name
+      - settings
   securitySchemes:
     bearer:
       scheme: bearer

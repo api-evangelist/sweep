@@ -334,89 +334,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserPreferencesDto:
-      type: object
-      properties:
-        getStarted:
-          $ref: '#/components/schemas/GetStartedDto'
-        defaultCreationCrmOrgId:
-          type:
-          - string
-          - 'null'
-        questionnaire:
-          $ref: '#/components/schemas/QuestionnaireDto'
-        tableColumnSettings:
-          type: array
-          items:
-            type: object
-    UserRoleDto:
-      type: object
-      properties:
-        roleGroupId:
-          type: string
-      required:
-      - roleGroupId
-    UpdateOnboardingStatusDto:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-      required:
-      - status
-    UserEmojiDto:
-      type: object
-      properties:
-        content:
-          type: string
-        bgColor:
-          type: string
-      required:
-      - content
-      - bgColor
-    QuestionnaireDto:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - COMPLETED
-          - NOT_COMPLETED
-        data:
-          $ref: '#/components/schemas/QuestionnaireDataDto'
-      required:
-      - status
-    QuestionnaireDataDto:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-          - ADMIN
-          - BUSINESS_SYSTEMS
-          - OPERATIONS
-          - SALES
-          - MARKETING
-          - CUSTOMER_SUCCESS
-          - CONSULTANT
-          - OTHER
-        interests:
-          type: array
-          items:
-            type: string
-            enum:
-            - DOCUMENTATION
-            - AUTOMATIONS
-            - ALERTS
-            - ROLLUPS
-            - ROUTING
-            - DEDUPE
-            - VISUALIZE
-            - PLAN
-            - TRACK_CHANGES
-            - OTHER
     UserDto:
       type: object
       properties:
@@ -462,6 +379,46 @@ components:
       - account
       - emoji
       - preferences
+    EditUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        emoji:
+          $ref: '#/components/schemas/UserEmojiDto'
+    ImageDataDto:
+      type: object
+      properties:
+        image:
+          type: string
+      required:
+      - image
+    UserRoleDto:
+      type: object
+      properties:
+        roleGroupId:
+          type: string
+      required:
+      - roleGroupId
+    UserPreferencesDto:
+      type: object
+      properties:
+        getStarted:
+          $ref: '#/components/schemas/GetStartedDto'
+        defaultCreationCrmOrgId:
+          type:
+          - string
+          - 'null'
+        questionnaire:
+          $ref: '#/components/schemas/QuestionnaireDto'
+        tableColumnSettings:
+          type: array
+          items:
+            type: object
     InvitationDto:
       type: object
       properties:
@@ -487,27 +444,70 @@ components:
       - template
       - entryPointId
       - entryPointName
-    EditUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        emoji:
-          $ref: '#/components/schemas/UserEmojiDto'
-    ImageDataDto:
-      type: object
-      properties:
-        image:
-          type: string
-      required:
-      - image
     GetStartedDto:
       type: object
       properties: {}
+    QuestionnaireDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - COMPLETED
+          - NOT_COMPLETED
+        data:
+          $ref: '#/components/schemas/QuestionnaireDataDto'
+      required:
+      - status
+    UserEmojiDto:
+      type: object
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
+      required:
+      - content
+      - bgColor
+    UpdateOnboardingStatusDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+      required:
+      - status
+    QuestionnaireDataDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - ADMIN
+          - BUSINESS_SYSTEMS
+          - OPERATIONS
+          - SALES
+          - MARKETING
+          - CUSTOMER_SUCCESS
+          - CONSULTANT
+          - OTHER
+        interests:
+          type: array
+          items:
+            type: string
+            enum:
+            - DOCUMENTATION
+            - AUTOMATIONS
+            - ALERTS
+            - ROLLUPS
+            - ROUTING
+            - DEDUPE
+            - VISUALIZE
+            - PLAN
+            - TRACK_CHANGES
+            - OTHER
   securitySchemes:
     bearer:
       scheme: bearer

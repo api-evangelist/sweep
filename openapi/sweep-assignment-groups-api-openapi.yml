@@ -177,24 +177,15 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AssignmentGroupMemberSetterDto:
+    AssignmentGroupAvatarDto:
       type: object
       properties:
-        userId:
+        emoji:
+          $ref: '#/components/schemas/EmojiDto'
+        imageUrl:
           type: string
-        membershipActive:
-          type: boolean
-        weight:
-          type: number
-        limitValue:
-          type: number
-        creditCount:
-          type: number
-          minimum: 0
-      required:
-      - userId
-      - membershipActive
-      - weight
+        imageUploadBase64:
+          type: string
     CreditQueueCreateRecordDto:
       type: object
       properties:
@@ -205,6 +196,13 @@ components:
       required:
       - userId
       - creditsTargetAmount
+    EmojiDto:
+      type: object
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
     CreditQueueCreateConfigDto:
       type: object
       properties:
@@ -217,23 +215,6 @@ components:
       required:
       - groupApiName
       - creditsList
-    CreditQueueUpdateRecordDto:
-      type: object
-      properties:
-        sfId:
-          type: string
-        index:
-          type: number
-      required:
-      - sfId
-      - index
-    EmojiDto:
-      type: object
-      properties:
-        content:
-          type: string
-        bgColor:
-          type: string
     AssignmentGroupSetterDto:
       type: object
       properties:
@@ -254,6 +235,16 @@ components:
       - description
       - avatar
       - members
+    CreditQueueUpdateRecordDto:
+      type: object
+      properties:
+        sfId:
+          type: string
+        index:
+          type: number
+      required:
+      - sfId
+      - index
     CreditQueueUpdateConfigDto:
       type: object
       properties:
@@ -265,15 +256,24 @@ components:
           type: array
           items:
             type: string
-    AssignmentGroupAvatarDto:
+    AssignmentGroupMemberSetterDto:
       type: object
       properties:
-        emoji:
-          $ref: '#/components/schemas/EmojiDto'
-        imageUrl:
+        userId:
           type: string
-        imageUploadBase64:
-          type: string
+        membershipActive:
+          type: boolean
+        weight:
+          type: number
+        limitValue:
+          type: number
+        creditCount:
+          type: number
+          minimum: 0
+      required:
+      - userId
+      - membershipActive
+      - weight
   securitySchemes:
     bearer:
       scheme: bearer

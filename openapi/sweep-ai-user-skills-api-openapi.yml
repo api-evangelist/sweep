@@ -177,13 +177,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SetUserSkillEnabledDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      required:
-      - enabled
     UpdateUserSkillDto:
       type: object
       properties:
@@ -193,6 +186,13 @@ components:
           pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
         instructions:
           type: string
+    SetUserSkillEnabledDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
     CreateUserSkillDto:
       type: object
       properties:

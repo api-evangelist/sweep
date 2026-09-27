@@ -593,6 +593,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FunnelsAndRecordTypesDto:
+      type: object
+      properties:
+        orgId:
+          type: string
+        activeOnly:
+          type: boolean
+        objectsData:
+          type: array
+          items:
+            type: object
+      required:
+      - orgId
+      - activeOnly
+      - objectsData
     CustomEcaDto:
       type: object
       properties:
@@ -603,20 +618,24 @@ components:
       required:
       - clientId
       - clientSecret
-    CrmOrgOAuthDto:
+    CrmOrgCreateDto:
       type: object
       properties:
-        crmOrgId:
+        name:
           type: string
-        authCode:
+        platform:
           type: string
+          enum:
+          - salesforce
         isSandbox:
           type: boolean
-        isOnboardingFastFetch:
+        isMain:
           type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
       required:
-      - crmOrgId
-      - authCode
+      - name
+      - platform
       - isSandbox
     CrmOrgUserTimeOff:
       type: object
@@ -645,40 +664,6 @@ components:
       - startDate
       - endDate
       - timezone
-    FunnelsAndRecordTypesDto:
-      type: object
-      properties:
-        orgId:
-          type: string
-        activeOnly:
-          type: boolean
-        objectsData:
-          type: array
-          items:
-            type: object
-      required:
-      - orgId
-      - activeOnly
-      - objectsData
-    CrmOrgCreateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        platform:
-          type: string
-          enum:
-          - salesforce
-        isSandbox:
-          type: boolean
-        isMain:
-          type: boolean
-        customEca:
-          $ref: '#/components/schemas/CustomEcaDto'
-      required:
-      - name
-      - platform
-      - isSandbox
     CrmOrgUpdateDto:
       type: object
       properties:
@@ -686,6 +671,21 @@ components:
           type: string
       required:
       - name
+    CrmOrgOAuthDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        authCode:
+          type: string
+        isSandbox:
+          type: boolean
+        isOnboardingFastFetch:
+          type: boolean
+      required:
+      - crmOrgId
+      - authCode
+      - isSandbox
   securitySchemes:
     bearer:
       scheme: bearer

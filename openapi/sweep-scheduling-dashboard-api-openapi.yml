@@ -690,7 +690,137 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Org:
+    CrmOrg:
+      type: object
+      properties:
+        id:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        name:
+          type: string
+        platform:
+          type: string
+        instanceUrl:
+          type: string
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        isDemo:
+          type: boolean
+        isConnected:
+          type: object
+          default: false
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        fetchStatus:
+          enum:
+          - fetching
+          - initial_fetching
+          - error
+          - fetched
+          - invalid_credentials
+          type: string
+        lastSuccessfulFetchTs:
+          type: number
+        disconnectedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        accountId:
+          type: string
+        connectedUser:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        optMonitoring:
+          type: boolean
+        graphVersion:
+          type:
+          - string
+          - 'null'
+        graphDbReleaseChannel:
+          enum:
+          - stable
+          - beta
+          - shadow
+          type:
+          - string
+          - 'null'
+        tier:
+          enum:
+          - T0
+          - T1
+          type: string
+      required:
+      - id
+      - org
+      - name
+      - platform
+      - instanceUrl
+      - isSandbox
+      - isMain
+      - isDemo
+      - isConnected
+      - createdById
+      - createdBy
+      - fetchStatus
+      - lastSuccessfulFetchTs
+      - disconnectedAt
+      - createdAt
+      - updatedAt
+      - accountId
+      - connectedUser
+      - account
+      - deployments
+      - optMonitoring
+      - graphVersion
+      - graphDbReleaseChannel
+      - tier
+    UpdateIntegrationSettingsDto:
+      type: object
+      properties:
+        calendarProvider:
+          type: string
+          enum:
+          - google_calendar
+        videoConferencingProvider:
+          type: string
+          enum:
+          - zoom
+          - google_meet
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    RoleGroup:
       type: object
       properties:
         id:
@@ -699,10 +829,51 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
       required:
       - id
       - accountId
       - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
     RoleGroupOrgRole:
       type: object
       properties:
@@ -722,79 +893,33 @@ components:
       - crmOrg
       - roleGroupId
       - roleGroup
-    FunnelLinkDto:
+    FunnelDetailsDto:
       type: object
       properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    FunnelSnapshot:
-      type: object
-      properties:
-        id:
-          type: string
-        ord:
-          type: number
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        apiName:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        funnelName:
-          type: string
-        description:
-          type: string
-        recordTypeName:
-          type: string
-        restoredFromSnapshot:
-          type: number
-        funnelDetails:
-          $ref: '#/components/schemas/FunnelDetailsDto'
-        deployments:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
           type: array
           items:
-            $ref: '#/components/schemas/FunnelDeployment'
-        createdAt:
-          format: date-time
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
           type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
       required:
-      - id
-      - ord
-      - createdById
-      - createdBy
-      - apiName
-      - accountId
-      - account
-      - name
-      - funnelName
-      - description
-      - recordTypeName
-      - restoredFromSnapshot
-      - funnelDetails
-      - deployments
-      - createdAt
+      - leadingObject
+      - stages
+      - plugins
     User:
       type: object
       properties:
@@ -846,146 +971,6 @@ components:
       - roleGroupId
       - createdAt
       - updatedAt
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    UpdateIntegrationSettingsDto:
-      type: object
-      properties:
-        calendarProvider:
-          type: string
-          enum:
-          - google_calendar
-        videoConferencingProvider:
-          type: string
-          enum:
-          - zoom
-          - google_meet
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    FunnelPluginsDto:
-      type: object
-      properties: {}
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        authZeroOrgId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      required:
-      - id
-      - name
-      - authZeroOrgId
-      - createdAt
-      - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
     SweepStage:
       type: object
       properties:
@@ -1032,6 +1017,51 @@ components:
       - stageDescription
       - exitCriteria
       - assignmentRules
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
     FunnelDeployment:
       type: object
       properties:
@@ -1137,107 +1167,30 @@ components:
       - errorMessage
       - createdAt
       - updatedAt
-    CrmOrg:
+    FunnelLinkDto:
       type: object
       properties:
-        id:
+        _id:
           type: string
-        org:
-          $ref: '#/components/schemas/Org'
-        name:
+        _type:
           type: string
-        platform:
-          type: string
-        instanceUrl:
-          type: string
-        isSandbox:
-          type: boolean
-        isMain:
-          type: boolean
-        isDemo:
-          type: boolean
-        isConnected:
-          type: object
-          default: false
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        fetchStatus:
           enum:
-          - fetching
-          - initial_fetching
-          - error
-          - fetched
-          - invalid_credentials
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
           type: string
-        lastSuccessfulFetchTs:
-          type: number
-        disconnectedAt:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        accountId:
-          type: string
-        connectedUser:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        deployments:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelDeployment'
-        optMonitoring:
-          type: boolean
-        graphVersion:
-          type:
-          - string
-          - 'null'
-        graphDbReleaseChannel:
-          enum:
-          - stable
-          - beta
-          - shadow
-          type:
-          - string
-          - 'null'
-        tier:
-          enum:
-          - T0
-          - T1
+        stageId:
           type: string
       required:
-      - id
-      - org
-      - name
-      - platform
-      - instanceUrl
-      - isSandbox
-      - isMain
-      - isDemo
-      - isConnected
-      - createdById
-      - createdBy
-      - fetchStatus
-      - lastSuccessfulFetchTs
-      - disconnectedAt
-      - createdAt
-      - updatedAt
-      - accountId
-      - connectedUser
-      - account
-      - deployments
-      - optMonitoring
-      - graphVersion
-      - graphDbReleaseChannel
-      - tier
+      - _id
+      - _type
+      - funnelId
+    FunnelPluginsDto:
+      type: object
+      properties: {}
     RoleGroupAccountRole:
       type: object
       properties:
@@ -1251,7 +1204,18 @@ components:
       - role
       - roleGroupId
       - roleGroup
-    RoleGroup:
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    Org:
       type: object
       properties:
         id:
@@ -1260,102 +1224,138 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
-          type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        updatedAt:
-          format: date-time
-          type: string
-        name:
-          type: string
-        description:
-          type: string
       required:
       - id
       - accountId
       - account
-      - type
-      - accountRoles
-      - orgRoles
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
       - createdById
       - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
+      - apiName
+      - accountId
+      - account
       - name
-    FunnelDetailsDto:
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    Account:
       type: object
       properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
+        id:
           type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
           type: array
           items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
           type: array
           items:
-            type: object
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       required:
-      - leadingObject
-      - stages
-      - plugins
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
   securitySchemes:
     bearer:
       scheme: bearer

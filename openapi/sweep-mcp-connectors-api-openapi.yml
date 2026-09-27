@@ -178,21 +178,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RegisterServerDto:
+    OAuthCallbackDto:
       type: object
       properties:
-        serverType:
+        code:
           type: string
-          maxLength: 255
-          pattern: /^[a-zA-Z0-9_-]+$/
-        serverUrl:
-          type: string
-          maxLength: 500
-          format: uri
-        clientCredentials:
-          $ref: '#/components/schemas/ClientCredentialsDto'
       required:
-      - serverType
+      - code
+    ClientCredentialsDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
     ToolPolicyDto:
       type: object
       properties:
@@ -216,22 +217,21 @@ components:
             $ref: '#/components/schemas/ToolPolicyDto'
       required:
       - toolPolicies
-    ClientCredentialsDto:
+    RegisterServerDto:
       type: object
       properties:
-        clientId:
+        serverType:
           type: string
-        clientSecret:
+          maxLength: 255
+          pattern: /^[a-zA-Z0-9_-]+$/
+        serverUrl:
           type: string
+          maxLength: 500
+          format: uri
+        clientCredentials:
+          $ref: '#/components/schemas/ClientCredentialsDto'
       required:
-      - clientId
-    OAuthCallbackDto:
-      type: object
-      properties:
-        code:
-          type: string
-      required:
-      - code
+      - serverType
   securitySchemes:
     bearer:
       scheme: bearer

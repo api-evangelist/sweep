@@ -108,6 +108,20 @@ components:
       - workflowId
       - name
       - workflowDetails
+    WorkflowDetailsDto:
+      type: object
+      properties:
+        when:
+          type: object
+        actions:
+          type: array
+          items:
+            type: object
+        onlyEnrollsManually:
+          type: boolean
+      required:
+      - actions
+      - onlyEnrollsManually
     CreateWorkflowDto:
       type: object
       properties:
@@ -159,20 +173,6 @@ components:
       - createdAt
       - updatedById
       - updatedAt
-    WorkflowDetailsDto:
-      type: object
-      properties:
-        when:
-          type: object
-        actions:
-          type: array
-          items:
-            type: object
-        onlyEnrollsManually:
-          type: boolean
-      required:
-      - actions
-      - onlyEnrollsManually
   securitySchemes:
     bearer:
       scheme: bearer

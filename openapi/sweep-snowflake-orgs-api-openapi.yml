@@ -75,15 +75,26 @@ paths:
       - Snowflake Orgs
 components:
   schemas:
-    GetDatabasesDto:
+    SnowflakeCredentialsDto:
       type: object
       properties:
-        credentials:
-          description: Snowflake credentials for temporary connection
-          allOf:
-          - $ref: '#/components/schemas/SnowflakeCredentialsDto'
+        snowflakeAccountIdentifier:
+          type: string
+          pattern: /^[a-zA-Z0-9_\-]+$/i
+          description: Snowflake account identifier (e.g., ORGNAME-ACCOUNTNAME or account locator)
+          example: MYORG-MYACCOUNT
+        username:
+          type: string
+          description: Snowflake username for authentication
+          example: my_user
+        privateKey:
+          type: string
+          description: RSA private key in PEM format for key pair authentication
+          example: REDACTED_PRIVATE_KEY_EXAMPLE
       required:
-      - credentials
+      - snowflakeAccountIdentifier
+      - username
+      - privateKey
     CreateSnowflakeOrgDto:
       type: object
       properties:
@@ -116,26 +127,15 @@ components:
       - privateKey
       - name
       - database
-    SnowflakeCredentialsDto:
+    GetDatabasesDto:
       type: object
       properties:
-        snowflakeAccountIdentifier:
-          type: string
-          pattern: /^[a-zA-Z0-9_\-]+$/i
-          description: Snowflake account identifier (e.g., ORGNAME-ACCOUNTNAME or account locator)
-          example: MYORG-MYACCOUNT
-        username:
-          type: string
-          description: Snowflake username for authentication
-          example: my_user
-        privateKey:
-          type: string
-          description: RSA private key in PEM format for key pair authentication
-          example: REDACTED_PRIVATE_KEY_EXAMPLE
+        credentials:
+          description: Snowflake credentials for temporary connection
+          allOf:
+          - $ref: '#/components/schemas/SnowflakeCredentialsDto'
       required:
-      - snowflakeAccountIdentifier
-      - username
-      - privateKey
+      - credentials
   securitySchemes:
     bearer:
       scheme: bearer

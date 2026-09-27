@@ -144,6 +144,30 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SalesforceChangeFeedFilterList:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+        sfUserNames:
+          type: array
+          items:
+            type: string
+        crmOrgs:
+          type: array
+          items:
+            type: string
+        nameSpaces:
+          type: array
+          items:
+            type: string
+      required:
+      - sections
+      - sfUserNames
+      - crmOrgs
+      - nameSpaces
     UpdateSalesforceChangeFeedNotificationDto:
       type: object
       properties:
@@ -176,56 +200,6 @@ components:
       - isActive
       - criteria
       - actions
-    SalesforceChangeFeedFilterList:
-      type: object
-      properties:
-        sections:
-          type: array
-          items:
-            type: string
-        sfUserNames:
-          type: array
-          items:
-            type: string
-        crmOrgs:
-          type: array
-          items:
-            type: string
-        nameSpaces:
-          type: array
-          items:
-            type: string
-      required:
-      - sections
-      - sfUserNames
-      - crmOrgs
-      - nameSpaces
-    SalesforceChangeFeedItem:
-      type: object
-      properties:
-        sfId:
-          type: string
-        crmOrgId:
-          type: string
-        sfUserName:
-          type: string
-        action:
-          type: string
-        section:
-          type: string
-        nameSpace:
-          type: string
-        timestamp:
-          format: date-time
-          type: string
-      required:
-      - sfId
-      - crmOrgId
-      - sfUserName
-      - action
-      - section
-      - nameSpace
-      - timestamp
     SalesforceChangeFeedCriterionDto:
       type: object
       properties:
@@ -257,6 +231,32 @@ components:
           $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
       required:
       - changeFeedList
+    SalesforceChangeFeedItem:
+      type: object
+      properties:
+        sfId:
+          type: string
+        crmOrgId:
+          type: string
+        sfUserName:
+          type: string
+        action:
+          type: string
+        section:
+          type: string
+        nameSpace:
+          type: string
+        timestamp:
+          format: date-time
+          type: string
+      required:
+      - sfId
+      - crmOrgId
+      - sfUserName
+      - action
+      - section
+      - nameSpace
+      - timestamp
   securitySchemes:
     bearer:
       scheme: bearer

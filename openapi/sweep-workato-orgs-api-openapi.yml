@@ -35,20 +35,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    WorkatoCredentialsDto:
-      type: object
-      properties:
-        baseUrl:
-          type: string
-          format: uri
-          description: Workato Developer API base URL (`https://{workspace}/api` only; not the bare workspace origin)
-          example: https://www.workato.com/api
-        apiToken:
-          type: string
-          description: 'Workato API client secret only (no "Bearer" prefix; the server sends Authorization: Bearer on each request)'
-      required:
-      - baseUrl
-      - apiToken
     CreateWorkatoOrgDto:
       type: object
       properties:
@@ -70,6 +56,20 @@ components:
       - name
       - credentials
       - environmentType
+    WorkatoCredentialsDto:
+      type: object
+      properties:
+        baseUrl:
+          type: string
+          format: uri
+          description: Workato Developer API base URL (`https://{workspace}/api` only; not the bare workspace origin)
+          example: https://www.workato.com/api
+        apiToken:
+          type: string
+          description: 'Workato API client secret only (no "Bearer" prefix; the server sends Authorization: Bearer on each request)'
+      required:
+      - baseUrl
+      - apiToken
   securitySchemes:
     bearer:
       scheme: bearer
