@@ -224,97 +224,23 @@ components:
       properties:
         note:
           type: string
-    DeployRollupDto:
+    CreateRollupDto:
       type: object
       properties:
-        deployToOrgIds:
-          minItems: 1
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - deployToOrgIds
-    SweepFieldOutgoingDto:
-      type: object
-      properties:
-        id:
-          type: string
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
         objectName:
           type: string
-        sweepFieldName:
-          type: string
-        sfFieldName:
-          type: string
-        fieldType:
-          type: string
-          enum:
-          - Id
-          - Address
-          - AutoNumber
-          - Checkbox
-          - Currency
-          - Date
-          - DateTime
-          - Email
-          - Html
-          - EncryptedText
-          - Geolocation
-          - Hierarchy
-          - LongTextArea
-          - Lookup
-          - MasterDetail
-          - MultiselectPicklist
-          - Name
-          - Name2
-          - Number
-          - Percent
-          - Phone
-          - Picklist
-          - Summary
-          - Text
-          - TextArea
-          - Time
-          - Unknown
-          - Url
-          - FormulaCheckbox
-          - FormulaCurrency
-          - FormulaDate
-          - FormulaDateTime
-          - FormulaNumber
-          - FormulaPercent
-          - FormulaText
-          - FormulaTime
-          - Combobox
-        isCompound:
-          type: boolean
-        properties:
-          type: object
-        origin:
-          type: string
-          enum:
-          - SF_STANDARD
-          - SF_CUSTOM
-          - SWEEP_CUSTOM
-          - MP_CUSTOM
-        isRequired:
-          type: boolean
-        isCreatedInSweep:
-          type: boolean
-        helpText:
-          type: string
-        description:
-          type: string
-        compoundFieldId:
-          type: string
-        rollup:
-          type: object
       required:
+      - rollupField
       - objectName
-      - sweepFieldName
-      - fieldType
-      - properties
-      - rollup
+    UpdateRollupDto:
+      type: object
+      properties:
+        rollupField:
+          $ref: '#/components/schemas/SweepFieldRollupDto'
+      required:
+      - rollupField
     SweepFieldRollupDto:
       type: object
       properties:
@@ -423,23 +349,97 @@ components:
       - sweepFieldName
       - fieldType
       - properties
-    UpdateRollupDto:
+    DeployRollupDto:
       type: object
       properties:
-        rollupField:
-          $ref: '#/components/schemas/SweepFieldRollupDto'
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+            format: uuid
       required:
-      - rollupField
-    CreateRollupDto:
+      - deployToOrgIds
+    SweepFieldOutgoingDto:
       type: object
       properties:
-        rollupField:
-          $ref: '#/components/schemas/SweepFieldRollupDto'
+        id:
+          type: string
         objectName:
           type: string
+        sweepFieldName:
+          type: string
+        sfFieldName:
+          type: string
+        fieldType:
+          type: string
+          enum:
+          - Id
+          - Address
+          - AutoNumber
+          - Checkbox
+          - Currency
+          - Date
+          - DateTime
+          - Email
+          - Html
+          - EncryptedText
+          - Geolocation
+          - Hierarchy
+          - LongTextArea
+          - Lookup
+          - MasterDetail
+          - MultiselectPicklist
+          - Name
+          - Name2
+          - Number
+          - Percent
+          - Phone
+          - Picklist
+          - Summary
+          - Text
+          - TextArea
+          - Time
+          - Unknown
+          - Url
+          - FormulaCheckbox
+          - FormulaCurrency
+          - FormulaDate
+          - FormulaDateTime
+          - FormulaNumber
+          - FormulaPercent
+          - FormulaText
+          - FormulaTime
+          - Combobox
+        isCompound:
+          type: boolean
+        properties:
+          type: object
+        origin:
+          type: string
+          enum:
+          - SF_STANDARD
+          - SF_CUSTOM
+          - SWEEP_CUSTOM
+          - MP_CUSTOM
+        isRequired:
+          type: boolean
+        isCreatedInSweep:
+          type: boolean
+        helpText:
+          type: string
+        description:
+          type: string
+        compoundFieldId:
+          type: string
+        rollup:
+          type: object
       required:
-      - rollupField
       - objectName
+      - sweepFieldName
+      - fieldType
+      - properties
+      - rollup
     RollupDto:
       type: object
       properties:

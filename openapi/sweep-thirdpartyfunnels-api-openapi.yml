@@ -108,16 +108,27 @@ components:
       required:
       - row
       - column
-    ThirdPartySystemDto:
+    FunnelLinkDto:
       type: object
       properties:
-        name:
+        _id:
           type: string
-        domain:
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
           type: string
       required:
-      - name
-      - domain
+      - _id
+      - _type
+      - funnelId
     ThirdPartyFunnelDto:
       type: object
       properties:
@@ -166,37 +177,16 @@ components:
       - stepConnections
       - funnelLinks
       - position
-    StepConnectionDto:
+    ThirdPartySystemDto:
       type: object
       properties:
-        _id:
+        name:
           type: string
-        targetId:
-          type: string
-      required:
-      - _id
-      - targetId
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
+        domain:
           type: string
       required:
-      - _id
-      - _type
-      - funnelId
+      - name
+      - domain
     UpsertThirdPartyFunnelDto:
       type: object
       properties:
@@ -219,6 +209,16 @@ components:
       - description
       - steps
       - funnelLinks
+    StepConnectionDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        targetId:
+          type: string
+      required:
+      - _id
+      - targetId
   securitySchemes:
     bearer:
       scheme: bearer

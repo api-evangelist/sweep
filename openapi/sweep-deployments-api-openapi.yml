@@ -118,6 +118,194 @@ paths:
       - Deployments
 components:
   schemas:
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelDeploymentDto:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrgName:
+          type: string
+        crmOrgIsSandbox:
+          type: boolean
+        snapshotName:
+          type: string
+        deployedById:
+          type: string
+        deployedAt:
+          format: date-time
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshotDto'
+        apiName:
+          type: string
+        name:
+          type: string
+        moreAdvancedDraft:
+          type: boolean
+        moreAdvancedSnapshots:
+          type: number
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrgName
+      - crmOrgIsSandbox
+      - snapshotName
+      - deployedById
+      - deployedAt
+      - snapshot
+      - apiName
+      - name
+      - moreAdvancedDraft
+      - moreAdvancedSnapshots
+      - status
+    FunnelSnapshotDto:
+      type: object
+      properties:
+        apiName:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        ord:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeploymentDto'
+      required:
+      - apiName
+      - id
+      - name
+      - createdAt
+      - createdById
+      - ord
+      - funnelDetails
+      - deployments
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    DeploymentRequestDto:
+      type: object
+      properties:
+        snapshotId:
+          type: string
+        funnelId:
+          type: string
+      required:
+      - snapshotId
+      - funnelId
     SweepStage:
       type: object
       properties:
@@ -185,194 +373,6 @@ components:
       - _exitCriteriaId
       - criteria
       - criteriaLogic
-    DeploymentRequestDto:
-      type: object
-      properties:
-        snapshotId:
-          type: string
-        funnelId:
-          type: string
-      required:
-      - snapshotId
-      - funnelId
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    FunnelSnapshotDto:
-      type: object
-      properties:
-        apiName:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        createdById:
-          type: string
-        ord:
-          type: number
-        funnelDetails:
-          $ref: '#/components/schemas/FunnelDetailsDto'
-        deployments:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelDeploymentDto'
-      required:
-      - apiName
-      - id
-      - name
-      - createdAt
-      - createdById
-      - ord
-      - funnelDetails
-      - deployments
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    FunnelDeploymentDto:
-      type: object
-      properties:
-        id:
-          type: string
-        crmOrgId:
-          type: string
-        crmOrgName:
-          type: string
-        crmOrgIsSandbox:
-          type: boolean
-        snapshotName:
-          type: string
-        deployedById:
-          type: string
-        deployedAt:
-          format: date-time
-          type: string
-        snapshot:
-          $ref: '#/components/schemas/FunnelSnapshotDto'
-        apiName:
-          type: string
-        name:
-          type: string
-        moreAdvancedDraft:
-          type: boolean
-        moreAdvancedSnapshots:
-          type: number
-        status:
-          type: object
-      required:
-      - id
-      - crmOrgId
-      - crmOrgName
-      - crmOrgIsSandbox
-      - snapshotName
-      - deployedById
-      - deployedAt
-      - snapshot
-      - apiName
-      - name
-      - moreAdvancedDraft
-      - moreAdvancedSnapshots
-      - status
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    FunnelPluginsDto:
-      type: object
-      properties: {}
   securitySchemes:
     bearer:
       scheme: bearer

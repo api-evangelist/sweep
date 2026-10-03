@@ -144,30 +144,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SalesforceChangeFeedFilterList:
+    SalesforceChangeFeedDto:
       type: object
       properties:
-        sections:
+        changeFeedList:
           type: array
           items:
-            type: string
-        sfUserNames:
-          type: array
-          items:
-            type: string
-        crmOrgs:
-          type: array
-          items:
-            type: string
-        nameSpaces:
-          type: array
-          items:
-            type: string
+            $ref: '#/components/schemas/SalesforceChangeFeedItem'
+        filters:
+          $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
       required:
-      - sections
-      - sfUserNames
-      - crmOrgs
-      - nameSpaces
+      - changeFeedList
     UpdateSalesforceChangeFeedNotificationDto:
       type: object
       properties:
@@ -200,37 +187,6 @@ components:
       - isActive
       - criteria
       - actions
-    SalesforceChangeFeedCriterionDto:
-      type: object
-      properties:
-        criterionId:
-          type: string
-          minLength: 1
-        fieldName:
-          type: string
-          minLength: 1
-        operator:
-          type: string
-          minLength: 1
-        value:
-          type: string
-          minLength: 1
-      required:
-      - criterionId
-      - fieldName
-      - operator
-      - value
-    SalesforceChangeFeedDto:
-      type: object
-      properties:
-        changeFeedList:
-          type: array
-          items:
-            $ref: '#/components/schemas/SalesforceChangeFeedItem'
-        filters:
-          $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
-      required:
-      - changeFeedList
     SalesforceChangeFeedItem:
       type: object
       properties:
@@ -257,6 +213,50 @@ components:
       - section
       - nameSpace
       - timestamp
+    SalesforceChangeFeedCriterionDto:
+      type: object
+      properties:
+        criterionId:
+          type: string
+          minLength: 1
+        fieldName:
+          type: string
+          minLength: 1
+        operator:
+          type: string
+          minLength: 1
+        value:
+          type: string
+          minLength: 1
+      required:
+      - criterionId
+      - fieldName
+      - operator
+      - value
+    SalesforceChangeFeedFilterList:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+        sfUserNames:
+          type: array
+          items:
+            type: string
+        crmOrgs:
+          type: array
+          items:
+            type: string
+        nameSpaces:
+          type: array
+          items:
+            type: string
+      required:
+      - sections
+      - sfUserNames
+      - crmOrgs
+      - nameSpaces
   securitySchemes:
     bearer:
       scheme: bearer

@@ -270,56 +270,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CommentReplyDto:
-      type: object
-      properties:
-        id:
-          type: string
-        commentBody:
-          type: string
-        createdById:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        mentionedUserIds:
-          type: array
-          items:
-            type: string
-      required:
-      - id
-      - commentBody
-      - createdById
-      - createdAt
-      - updatedAt
-      - mentionedUserIds
-    UpdateCommentThreadPositionDto:
-      type: object
-      properties:
-        positionX:
-          type: number
-        positionY:
-          type: number
-      required:
-      - positionX
-      - positionY
-    CreateCommentReplyDto:
-      type: object
-      properties:
-        commentBody:
-          type: string
-        mentionedUserIds:
-          type: array
-          items:
-            type: string
-        transientId:
-          type: string
-      required:
-      - commentBody
-      - mentionedUserIds
     CreateCommentThreadDto:
       type: object
       properties:
@@ -336,18 +286,6 @@ components:
       required:
       - positionX
       - positionY
-      - commentBody
-      - mentionedUserIds
-    UpdateCommentReplyDto:
-      type: object
-      properties:
-        commentBody:
-          type: string
-        mentionedUserIds:
-          type: array
-          items:
-            type: string
-      required:
       - commentBody
       - mentionedUserIds
     CommentThreadDto:
@@ -383,6 +321,68 @@ components:
       - createdById
       - createdAt
       - funnelMapId
+    CommentReplyDto:
+      type: object
+      properties:
+        id:
+          type: string
+        commentBody:
+          type: string
+        createdById:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - commentBody
+      - createdById
+      - createdAt
+      - updatedAt
+      - mentionedUserIds
+    UpdateCommentReplyDto:
+      type: object
+      properties:
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+      required:
+      - commentBody
+      - mentionedUserIds
+    CreateCommentReplyDto:
+      type: object
+      properties:
+        commentBody:
+          type: string
+        mentionedUserIds:
+          type: array
+          items:
+            type: string
+        transientId:
+          type: string
+      required:
+      - commentBody
+      - mentionedUserIds
+    UpdateCommentThreadPositionDto:
+      type: object
+      properties:
+        positionX:
+          type: number
+        positionY:
+          type: number
+      required:
+      - positionX
+      - positionY
   securitySchemes:
     bearer:
       scheme: bearer

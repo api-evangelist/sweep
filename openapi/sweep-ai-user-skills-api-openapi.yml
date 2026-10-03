@@ -177,22 +177,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateUserSkillDto:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 1024
-          pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
-        instructions:
-          type: string
-    SetUserSkillEnabledDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-      required:
-      - enabled
     CreateUserSkillDto:
       type: object
       properties:
@@ -210,6 +194,22 @@ components:
       - name
       - description
       - instructions
+    UpdateUserSkillDto:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 1024
+          pattern: USER_SKILL_DESCRIPTION_NO_ANGLE_BRACKETS_REGEX
+        instructions:
+          type: string
+    SetUserSkillEnabledDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+      required:
+      - enabled
   securitySchemes:
     bearer:
       scheme: bearer

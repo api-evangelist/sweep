@@ -76,6 +76,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OrgSettingsDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        settings:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+      required:
+      - crmOrgId
+      - name
+      - settings
     AgenticFeaturesSettingsDto:
       type: object
       properties:
@@ -137,19 +150,6 @@ components:
       - value
       - unit
       - excludeFavorites
-    OrgSettingsDto:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
-        name:
-          type: string
-        settings:
-          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
-      required:
-      - crmOrgId
-      - name
-      - settings
   securitySchemes:
     bearer:
       scheme: bearer

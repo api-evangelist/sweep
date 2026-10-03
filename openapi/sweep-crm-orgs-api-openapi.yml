@@ -618,24 +618,20 @@ components:
       required:
       - clientId
       - clientSecret
-    CrmOrgCreateDto:
+    CrmOrgOAuthDto:
       type: object
       properties:
-        name:
+        crmOrgId:
           type: string
-        platform:
+        authCode:
           type: string
-          enum:
-          - salesforce
         isSandbox:
           type: boolean
-        isMain:
+        isOnboardingFastFetch:
           type: boolean
-        customEca:
-          $ref: '#/components/schemas/CustomEcaDto'
       required:
-      - name
-      - platform
+      - crmOrgId
+      - authCode
       - isSandbox
     CrmOrgUserTimeOff:
       type: object
@@ -664,6 +660,25 @@ components:
       - startDate
       - endDate
       - timezone
+    CrmOrgCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        platform:
+          type: string
+          enum:
+          - salesforce
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
+      required:
+      - name
+      - platform
+      - isSandbox
     CrmOrgUpdateDto:
       type: object
       properties:
@@ -671,21 +686,6 @@ components:
           type: string
       required:
       - name
-    CrmOrgOAuthDto:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
-        authCode:
-          type: string
-        isSandbox:
-          type: boolean
-        isOnboardingFastFetch:
-          type: boolean
-      required:
-      - crmOrgId
-      - authCode
-      - isSandbox
   securitySchemes:
     bearer:
       scheme: bearer

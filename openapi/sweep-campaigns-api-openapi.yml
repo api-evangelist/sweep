@@ -220,22 +220,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ReplaceStatusDto:
-      type: object
-      properties: {}
-    WriteCampaignDto:
-      type: object
-      properties: {}
     CampaignMemberStatus:
+      type: object
+      properties: {}
+    ReplaceStatusDto:
       type: object
       properties: {}
     CampaignDto:
       type: object
       properties: {}
-    WriteCampaignMemberStatusDto:
+    UpdateCampaignMemberStatusDto:
       type: object
       properties: {}
-    UpdateCampaignMemberStatusDto:
+    WriteCampaignDto:
+      type: object
+      properties: {}
+    WriteCampaignMemberStatusDto:
       type: object
       properties: {}
   securitySchemes:

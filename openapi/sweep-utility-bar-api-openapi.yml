@@ -50,16 +50,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AppUtilityBarDto:
-      type: object
-      properties:
-        appDeveloperName:
-          type: string
-        hasSweepSupport:
-          type: boolean
-      required:
-      - appDeveloperName
-      - hasSweepSupport
     SalesforceAppDto:
       type: object
       properties:
@@ -87,6 +77,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AppUtilityBarDto'
+    AppUtilityBarDto:
+      type: object
+      properties:
+        appDeveloperName:
+          type: string
+        hasSweepSupport:
+          type: boolean
+      required:
+      - appDeveloperName
+      - hasSweepSupport
   securitySchemes:
     bearer:
       scheme: bearer

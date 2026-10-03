@@ -2583,6 +2583,757 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    AiAgent:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - Documentation
+          - Process Optimization
+          - MonitoringV2
+          - Permissions
+          - Support
+          type: string
+        contextComponents:
+          type: object
+        userInstructions:
+          type: string
+        systemInstructions:
+          type: string
+        projectId:
+          type:
+          - string
+          - 'null'
+        project:
+          allOf:
+          - $ref: '#/components/schemas/AiProject'
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        bestPractices:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentBestPractice'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentMetadataElement'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - contextComponents
+      - userInstructions
+      - systemInstructions
+      - projectId
+      - project
+      - orgId
+      - org
+      - files
+      - bestPractices
+      - metadataElements
+      - createdAt
+      - updatedAt
+    FunnelSnapshot:
+      type: object
+      properties:
+        id:
+          type: string
+        ord:
+          type: number
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        apiName:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        funnelName:
+          type: string
+        description:
+          type: string
+        recordTypeName:
+          type: string
+        restoredFromSnapshot:
+          type: number
+        funnelDetails:
+          $ref: '#/components/schemas/FunnelDetailsDto'
+        deployments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelDeployment'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - ord
+      - createdById
+      - createdBy
+      - apiName
+      - accountId
+      - account
+      - name
+      - funnelName
+      - description
+      - recordTypeName
+      - restoredFromSnapshot
+      - funnelDetails
+      - deployments
+      - createdAt
+    BISettingsDto:
+      type: object
+      properties:
+        flags:
+          type: array
+          items:
+            $ref: '#/components/schemas/BIFlagDto'
+      required:
+      - flags
+    BIFlagDto:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - TIMESTAMP
+          - OWNER
+          - OWNER_ROLE
+        value:
+          type: boolean
+      required:
+      - name
+      - value
+    DocumentationObjectCounters:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        name:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        label:
+          type: string
+        namespace:
+          type: string
+        customFields:
+          type: number
+        standardFields:
+          type: number
+        flows:
+          type: number
+        processBuilderFlows:
+          type: number
+        workflowRules:
+          type: number
+        apexTriggers:
+          type: number
+        apexClasses:
+          type: number
+        approvalProcesses:
+          type: number
+        validationRules:
+          type: number
+        layouts:
+          type: number
+        recordTypes:
+          type: number
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - crmOrgId
+      - name
+      - crmOrg
+      - label
+      - namespace
+      - customFields
+      - standardFields
+      - flows
+      - processBuilderFlows
+      - workflowRules
+      - apexTriggers
+      - apexClasses
+      - approvalProcesses
+      - validationRules
+      - layouts
+      - recordTypes
+      - createdAt
+      - updatedAt
+    SearchMetadataDto:
+      type: object
+      properties: {}
+    CreateProjectToolsPromptDto:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
+        sortOrder:
+          type: number
+          minimum: 0
+      required:
+      - title
+      - body
+      - mode
+    AiTableArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        markdown:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - markdown
+      - createdAt
+      - updatedAt
+    ThirdPartyFunnel:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          type: object
+        steps:
+          type: array
+          items:
+            type: object
+        funnelLinks:
+          type: array
+          items:
+            type: object
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+      required:
+      - id
+      - accountId
+      - account
+      - name
+      - description
+      - steps
+      - funnelLinks
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+    AiChat:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        aiChatDetails:
+          type: object
+        orgId:
+          type: string
+        org:
+          $ref: '#/components/schemas/Org'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        userId:
+          type:
+          - string
+          - 'null'
+        sfdcUserId:
+          type:
+          - string
+          - 'null'
+        isFavorite:
+          type: boolean
+        folderId:
+          type:
+          - string
+          - 'null'
+        folder:
+          $ref: '#/components/schemas/AiChatFolder'
+        chatContext:
+          type: string
+        chatSource:
+          enum:
+          - Sweep
+          - Salesforce
+          type: string
+      required:
+      - id
+      - name
+      - aiChatDetails
+      - orgId
+      - org
+      - accountId
+      - account
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
+      - userId
+      - sfdcUserId
+      - isFavorite
+      - folderId
+      - folder
+      - chatContext
+      - chatSource
+    UpdateProjectToolsPromptDto:
+      type: object
+      properties:
+        title:
+          type: string
+        body:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - artifactMode
+          - researchMode
+          - buildMode
+    AiProjectSectionItem:
+      type: object
+      properties:
+        id:
+          type: string
+        sortOrder:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/AiProjectSection'
+        promptId:
+          type:
+          - string
+          - 'null'
+        prompt:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectPrompt'
+        artifactId:
+          type:
+          - string
+          - 'null'
+        artifact:
+          allOf:
+          - $ref: '#/components/schemas/AiArtifact'
+        tableArtifactId:
+          type:
+          - string
+          - 'null'
+        tableArtifact:
+          allOf:
+          - $ref: '#/components/schemas/AiTableArtifact'
+        fileId:
+          type:
+          - string
+          - 'null'
+        file:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFile'
+      required:
+      - id
+      - sortOrder
+      - sectionId
+      - section
+      - promptId
+      - prompt
+      - artifactId
+      - artifact
+      - tableArtifactId
+      - tableArtifact
+      - fileId
+      - file
+    AiProjectPrompt:
+      type: object
+      properties:
+        id:
+          type: string
+        promptTitle:
+          type: string
+        promptText:
+          type: string
+        mode:
+          type: string
+          enum:
+          - none
+          - researchMode
+          - buildMode
+          - multiOrgMode
+          - artifactMode
+        isCompleted:
+          type: boolean
+        completedById:
+          type:
+          - string
+          - 'null'
+        completedAt:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+      required:
+      - id
+      - promptTitle
+      - promptText
+      - mode
+      - isCompleted
+      - completedById
+      - completedAt
+      - projectId
+      - project
+    FunnelMapRecordType:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        recordTypeName:
+          type: string
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - recordTypeName
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    RoleGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        type:
+          type: string
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        updatedAt:
+          format: date-time
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - id
+      - accountId
+      - account
+      - type
+      - accountRoles
+      - orgRoles
+      - createdById
+      - createdBy
+      - createdAt
+      - updatedById
+      - updatedBy
+      - updatedAt
+      - name
+    AiArtifact:
+      type: object
+      properties:
+        id:
+          type: string
+        artifactId:
+          type: string
+        chatId:
+          type: string
+        chat:
+          $ref: '#/components/schemas/AiChat'
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        title:
+          type: string
+        code:
+          type: string
+        version:
+          type: number
+        isShared:
+          type: boolean
+        isPublic:
+          type: boolean
+        toolResults:
+          type:
+          - object
+          - 'null'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - artifactId
+      - chatId
+      - chat
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - title
+      - code
+      - version
+      - isShared
+      - isPublic
+      - toolResults
+      - createdAt
+      - updatedAt
+    DeploySalesforceRecordsDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        records:
+          description: 'Array of plain JSON objects keyed by Salesforce field API name.
+
+            For `UPDATE`, each record MUST include an `Id` field.'
+          type: array
+          items:
+            type: object
+        operation:
+          type: string
+          enum:
+          - CREATE
+          - UPDATE
+        allOrNothing:
+          type: boolean
+          description: 'If true (default), Salesforce rolls back the whole batch when any record
+
+            fails. If false, each record is committed independently.'
+      required:
+      - objectName
+      - records
+      - operation
+    AiAgentFile:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          enum:
+          - txt
+          - json
+          - xml
+          - csv
+          - tsv
+          - log
+          - env
+          - md
+          - config
+          - pdf
+          - docx
+          - png
+          - jpg
+          - jpeg
+          - webp
+          - avif
+          type: string
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        summary:
+          type: string
+        contentHash:
+          type:
+          - string
+          - 'null'
+          description: 'Null until the shared summary row exists. MySQL permits this because a composite
+
+            foreign key with a null part is not checked.'
+        fileCache:
+          allOf:
+          - $ref: '#/components/schemas/AiAgentFileCache'
+        status:
+          enum:
+          - processing
+          - completed
+          - failed
+          type: string
+      required:
+      - id
+      - name
+      - type
+      - agentId
+      - agent
+      - createdById
+      - createdBy
+      - createdAt
+      - summary
+      - contentHash
+      - fileCache
+      - status
+    FunnelMapMember:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        funnelId:
+          type: string
+        funnel:
+          $ref: '#/components/schemas/Funnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - funnelId
+      - funnel
+      - row
+      - column
+      - sectionId
+      - section
     AiAgentBestPractice:
       type: object
       properties:
@@ -2603,6 +3354,219 @@ components:
       - aiAgent
       - bestPractice
       - createdAt
+    FreePosition:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+      required:
+      - x
+      - y
+    FunnelMapUpdateFunnelMapDto:
+      type: object
+      properties:
+        operations:
+          type: array
+          items:
+            type: object
+        version:
+          type: number
+      required:
+      - operations
+      - version
+    AiAgentMetadataElement:
+      type: object
+      properties:
+        aiAgentId:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        aiAgent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - aiAgentId
+      - name
+      - type
+      - aiAgent
+      - createdAt
+    AiProjectOriginTemplate:
+      type: object
+      properties:
+        projectId:
+          type: string
+        project:
+          $ref: '#/components/schemas/AiProject'
+        originTemplateExternalId:
+          type: string
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+      required:
+      - projectId
+      - project
+      - originTemplateExternalId
+    RoleGroupAccountRole:
+      type: object
+      properties:
+        role:
+          type: object
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - roleGroupId
+      - roleGroup
+    ConfigurationsSummariesDto:
+      type: object
+      properties: {}
+    AiAgentFileCache:
+      type: object
+      properties:
+        contentHash:
+          type: string
+        name:
+          type: string
+        summary:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiAgentFile'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - contentHash
+      - name
+      - summary
+      - files
+      - createdAt
+      - updatedAt
+    ReorderProjectToolsPromptsDto:
+      type: object
+      properties:
+        promptIds:
+          maxItems: 500
+          type: array
+          items:
+            type: string
+            format: uuid
+      required:
+      - promptIds
+    FunnelMapSection:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        sectionId:
+          type: string
+        backgroundColor:
+          type: string
+        name:
+          type: string
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - sectionId
+      - backgroundColor
+      - name
+      - xyPosition
+      - width
+      - height
+    DeployMetadataDto:
+      type: object
+      properties: {}
+    SweepAssignmentRule:
+      type: object
+      properties:
+        assignmentId:
+          type: string
+        ruleName:
+          type: string
+        assignedTo:
+          type: string
+        assignedToType:
+          type: string
+        criteriaLogic:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+      required:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    FunnelMapHubspot:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
     EventMonitoringListEventsDto:
       type: object
       properties:
@@ -2630,48 +3594,483 @@ components:
       - eventType
       - startDate
       - endDate
-    FunnelMapMetadataElement:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    BestPractice:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        isSystem:
+          type: boolean
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        updatedById:
+          type: string
+        updatedBy:
+          $ref: '#/components/schemas/User'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - severity
+      - text
+      - isSystem
+      - applicableDomain
+      - applicableResourceType
+      - accountId
+      - account
+      - createdById
+      - createdBy
+      - updatedById
+      - updatedBy
+      - createdAt
+      - updatedAt
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    AiChatFolder:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdById:
+          type: string
+        createdBy:
+          $ref: '#/components/schemas/User'
+        agentId:
+          type: string
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - createdById
+      - createdBy
+      - agentId
+      - agent
+      - createdAt
+      - updatedAt
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    FunnelMapText:
       type: object
       properties:
         funnelMapId:
           type: string
         funnelMap:
           $ref: '#/components/schemas/FunnelMap'
-        org:
-          $ref: '#/components/schemas/Org'
-        crmOrgId:
+        textId:
           type: string
-        metadataId:
+        richText:
           type: string
-        funnelLinks:
-          type: array
-          items:
-            type: object
-        color:
-          type: string
-        icon:
-          type: string
-        row:
-          type: number
-        column:
+        textScale:
           type: number
         sectionId:
           type: string
         section:
           $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
       required:
       - funnelMapId
       - funnelMap
-      - org
-      - crmOrgId
-      - metadataId
-      - funnelLinks
-      - color
-      - icon
-      - row
-      - column
+      - textId
+      - richText
+      - textScale
       - sectionId
       - section
+      - xyPosition
+      - width
+      - height
+    UpdateProjectToolsDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        instructions:
+          type: string
+    RetrieveMetadataTypesDto:
+      type: object
+      properties: {}
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        authZeroOrgId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
+          type: string
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      required:
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelMapStickyNote:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        stickyNoteId:
+          type: string
+        backgroundColor:
+          type: string
+        richText:
+          type: string
+        textScale:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - stickyNoteId
+      - backgroundColor
+      - richText
+      - textScale
+      - sectionId
+      - section
+      - xyPosition
+      - width
+      - height
+    AiProject:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        visibility:
+          enum:
+          - team
+          - private
+          type: string
+        accountId:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        createdById:
+          type: string
+        autonomyMode:
+          enum:
+          - guided
+          - balanced
+          - autonomous
+          type:
+          - string
+          - 'null'
+        originTemplateId:
+          description: 'API-facing origin template id. Not a DB column — populated from
+
+            `originTemplate.originTemplateExternalId` when that relation is loaded.'
+          enum:
+          - blank
+          - cpq-agentforce-revenue-management
+          - process-builder-to-flow
+          - profiles-permission-set-groups-migration
+          - visualforce-aura-lwc-modernization
+          - field-cleanup-hygiene
+          - salesforce-winter-27-release-prep
+          - ai-security-risk-remediation
+          - product-catalog-rationalization
+          - agentforce-readiness
+          type:
+          - string
+          - 'null'
+        originTemplate:
+          allOf:
+          - $ref: '#/components/schemas/AiProjectOriginTemplate'
+        agent:
+          $ref: '#/components/schemas/AiAgent'
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/AiProjectSection'
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+      required:
+      - id
+      - name
+      - description
+      - visibility
+      - accountId
+      - account
+      - createdById
+      - autonomyMode
+      - agent
+      - sections
+      - createdAt
+      - updatedAt
     CreateProjectToolsSectionDto:
       type: object
       properties:
@@ -2688,6 +4087,128 @@ components:
       required:
       - name
       - runMode
+    SweepFieldToFunnelMapPin:
+      type: object
+      properties:
+        accountId:
+          type: string
+        sweepFieldId:
+          type: string
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+      required:
+      - accountId
+      - sweepFieldId
+      - funnelMapId
+      - funnelMap
+    SfdcRunSoqlNextQueryDto:
+      type: object
+      properties: {}
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    FunnelDeployment:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        snapshotId:
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshot'
+        deployedById:
+          type: string
+        deployedBy:
+          $ref: '#/components/schemas/User'
+        deployedAt:
+          format: date-time
+          type: string
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrg
+      - snapshotId
+      - snapshot
+      - deployedById
+      - deployedBy
+      - deployedAt
+      - status
+    FunnelMapThirdParty:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        thirdPartyFunnelId:
+          type: string
+        thirdPartyFunnel:
+          $ref: '#/components/schemas/ThirdPartyFunnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - thirdPartyFunnelId
+      - thirdPartyFunnel
+      - row
+      - column
+      - sectionId
+      - section
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    WorkatoListElementsDto:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            $ref: '#/components/schemas/WorkatoEdgePredicateDto'
+        limit:
+          type: number
+          minimum: 1
+        offset:
+          type: number
+          minimum: 0
     CrmOrg:
       type: object
       properties:
@@ -2789,163 +4310,15 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    AiProjectOriginTemplate:
+    UpdateProjectToolsSectionDto:
       type: object
       properties:
-        projectId:
-          type: string
-        project:
-          $ref: '#/components/schemas/AiProject'
-        originTemplateExternalId:
-          type: string
-          enum:
-          - blank
-          - cpq-agentforce-revenue-management
-          - process-builder-to-flow
-          - profiles-permission-set-groups-migration
-          - visualforce-aura-lwc-modernization
-          - field-cleanup-hygiene
-          - salesforce-winter-27-release-prep
-          - ai-security-risk-remediation
-          - product-catalog-rationalization
-          - agentforce-readiness
-      required:
-      - projectId
-      - project
-      - originTemplateExternalId
-    WorkatoListElementsDto:
-      type: object
-      properties:
-        filters:
-          type: array
-          items:
-            $ref: '#/components/schemas/WorkatoEdgePredicateDto'
-        limit:
-          type: number
-          minimum: 1
-        offset:
-          type: number
-          minimum: 0
-    DocumentationObjectCounters:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
         name:
           type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        label:
-          type: string
-        namespace:
-          type: string
-        customFields:
+        sortOrder:
           type: number
-        standardFields:
-          type: number
-        flows:
-          type: number
-        processBuilderFlows:
-          type: number
-        workflowRules:
-          type: number
-        apexTriggers:
-          type: number
-        apexClasses:
-          type: number
-        approvalProcesses:
-          type: number
-        validationRules:
-          type: number
-        layouts:
-          type: number
-        recordTypes:
-          type: number
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - crmOrgId
-      - name
-      - crmOrg
-      - label
-      - namespace
-      - customFields
-      - standardFields
-      - flows
-      - processBuilderFlows
-      - workflowRules
-      - apexTriggers
-      - apexClasses
-      - approvalProcesses
-      - validationRules
-      - layouts
-      - recordTypes
-      - createdAt
-      - updatedAt
-    AiProjectPrompt:
-      type: object
-      properties:
-        id:
-          type: string
-        promptTitle:
-          type: string
-        promptText:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - researchMode
-          - buildMode
-          - multiOrgMode
-          - artifactMode
-        isCompleted:
-          type: boolean
-        completedById:
-          type:
-          - string
-          - 'null'
-        completedAt:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        projectId:
-          type: string
-        project:
-          $ref: '#/components/schemas/AiProject'
-      required:
-      - id
-      - promptTitle
-      - promptText
-      - mode
-      - isCompleted
-      - completedById
-      - completedAt
-      - projectId
-      - project
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    RoleGroup:
+          minimum: 0
+    Org:
       type: object
       properties:
         id:
@@ -2954,70 +4327,10 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
-          type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        updatedAt:
-          format: date-time
-          type: string
-        name:
-          type: string
-        description:
-          type: string
       required:
       - id
       - accountId
       - account
-      - type
-      - accountRoles
-      - orgRoles
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-      - updatedAt
-      - name
-    RoleGroupOrgRole:
-      type: object
-      properties:
-        role:
-          type: object
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - crmOrgId
-      - crmOrg
-      - roleGroupId
-      - roleGroup
     AiProjectSection:
       type: object
       properties:
@@ -3072,55 +4385,76 @@ components:
       - projectId
       - project
       - items
-    AiChatFolder:
+    EventMonitoringAggregateDto:
       type: object
       properties:
-        id:
+        eventType:
           type: string
-        name:
+        startDate:
           type: string
-        createdById:
+          pattern: ISO_DATE
+        endDate:
           type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        agentId:
+          pattern: ISO_DATE
+        groupBy:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        filters:
+          type: object
+        orderBy:
           type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
+        limit:
+          type: number
+          minimum: 1
+          maximum: 200000
       required:
-      - id
-      - name
-      - createdById
-      - createdBy
-      - agentId
-      - agent
-      - createdAt
-      - updatedAt
-    SfdcRunSoqlNextQueryDto:
-      type: object
-      properties: {}
-    SweepFieldToFunnelMapPin:
+      - eventType
+      - startDate
+      - endDate
+      - groupBy
+    LeadingObjectDto:
       type: object
       properties:
-        accountId:
+        objectName:
           type: string
-        sweepFieldId:
+        fieldName:
           type: string
-        funnelMapId:
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
           type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
       required:
-      - accountId
-      - sweepFieldId
-      - funnelMapId
-      - funnelMap
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    WorkatoEdgePredicateDto:
+      type: object
+      properties:
+        field:
+          type: string
+          enum:
+          - projectId
+          - folderId
+          - connectionId
+          - collaboratorId
+          - tag
+          - app
+          - recipeId
+        op:
+          type: string
+          enum:
+          - has
+          - hasNot
+        value:
+          type: string
+      required:
+      - field
+      - op
+      - value
     FunnelMap:
       type: object
       properties:
@@ -3214,276 +4548,9 @@ components:
       - stickyNotes
       - texts
       - sweepFieldsPins
-    ThirdPartyFunnel:
+    SfdcRunSoqlQueryDto:
       type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        description:
-          type: string
-        system:
-          type: object
-        steps:
-          type: array
-          items:
-            type: object
-        funnelLinks:
-          type: array
-          items:
-            type: object
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-      required:
-      - id
-      - accountId
-      - account
-      - name
-      - description
-      - steps
-      - funnelLinks
-      - createdById
-      - createdBy
-      - createdAt
-      - updatedById
-      - updatedBy
-    FunnelMapRecordType:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        recordTypeName:
-          type: string
-        objectName:
-          type: string
-        leadingFieldName:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - recordTypeName
-      - objectName
-      - leadingFieldName
-      - row
-      - column
-      - sectionId
-      - section
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    AiProject:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        visibility:
-          enum:
-          - team
-          - private
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        autonomyMode:
-          enum:
-          - guided
-          - balanced
-          - autonomous
-          type:
-          - string
-          - 'null'
-        originTemplateId:
-          description: 'API-facing origin template id. Not a DB column — populated from
-
-            `originTemplate.originTemplateExternalId` when that relation is loaded.'
-          enum:
-          - blank
-          - cpq-agentforce-revenue-management
-          - process-builder-to-flow
-          - profiles-permission-set-groups-migration
-          - visualforce-aura-lwc-modernization
-          - field-cleanup-hygiene
-          - salesforce-winter-27-release-prep
-          - ai-security-risk-remediation
-          - product-catalog-rationalization
-          - agentforce-readiness
-          type:
-          - string
-          - 'null'
-        originTemplate:
-          allOf:
-          - $ref: '#/components/schemas/AiProjectOriginTemplate'
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiProjectSection'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - description
-      - visibility
-      - accountId
-      - account
-      - createdById
-      - autonomyMode
-      - agent
-      - sections
-      - createdAt
-      - updatedAt
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        sub:
-          type: string
-        email:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        preferences:
-          type: object
-        name:
-          type: string
-        emoji:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
-      required:
-      - id
-      - sub
-      - email
-      - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
-      - roleGroupId
-      - createdAt
-      - updatedAt
-    BIFlagDto:
-      type: object
-      properties:
-        name:
-          type: string
-          enum:
-          - TIMESTAMP
-          - OWNER
-          - OWNER_ROLE
-        value:
-          type: boolean
-      required:
-      - name
-      - value
-    WorkatoEdgePredicateDto:
-      type: object
-      properties:
-        field:
-          type: string
-          enum:
-          - projectId
-          - folderId
-          - connectionId
-          - collaboratorId
-          - tag
-          - app
-          - recipeId
-        op:
-          type: string
-          enum:
-          - has
-          - hasNot
-        value:
-          type: string
-      required:
-      - field
-      - op
-      - value
+      properties: {}
     Funnel:
       type: object
       properties:
@@ -3553,1111 +4620,44 @@ components:
       - biSettings
       - crmOrgId
       - crmOrg
-    AiAgentFileCache:
+    FunnelMapMetadataElement:
       type: object
       properties:
-        contentHash:
+        funnelMapId:
           type: string
-        name:
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        org:
+          $ref: '#/components/schemas/Org'
+        crmOrgId:
           type: string
-        summary:
+        metadataId:
           type: string
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - contentHash
-      - name
-      - summary
-      - files
-      - createdAt
-      - updatedAt
-    ConfigurationsSummariesDto:
-      type: object
-      properties: {}
-    RetrieveMetadataTypesDto:
-      type: object
-      properties: {}
-    BestPractice:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        severity:
-          type: object
-        text:
-          type: string
-        isSystem:
-          type: boolean
-        applicableDomain:
-          type: string
-          enum:
-          - MetadataMonitoring
-          - BusinessProcess
-        applicableResourceType:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        updatedById:
-          type: string
-        updatedBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - severity
-      - text
-      - isSystem
-      - applicableDomain
-      - applicableResourceType
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - updatedById
-      - updatedBy
-      - createdAt
-      - updatedAt
-    ReorderProjectToolsPromptsDto:
-      type: object
-      properties:
-        promptIds:
-          maxItems: 500
-          type: array
-          items:
-            type: string
-            format: uuid
-      required:
-      - promptIds
-    SweepStage:
-      type: object
-      properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
-          type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
         funnelLinks:
           type: array
           items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
             type: object
-        criteriaLogic:
+        color:
           type: string
+        icon:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
       required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    SweepAssignmentRule:
-      type: object
-      properties:
-        assignmentId:
-          type: string
-        ruleName:
-          type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    FunnelDeployment:
-      type: object
-      properties:
-        id:
-          type: string
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        snapshotId:
-          type: string
-        snapshot:
-          $ref: '#/components/schemas/FunnelSnapshot'
-        deployedById:
-          type: string
-        deployedBy:
-          $ref: '#/components/schemas/User'
-        deployedAt:
-          format: date-time
-          type: string
-        status:
-          type: object
-      required:
-      - id
+      - funnelMapId
+      - funnelMap
+      - org
       - crmOrgId
-      - crmOrg
-      - snapshotId
-      - snapshot
-      - deployedById
-      - deployedBy
-      - deployedAt
-      - status
-    SfdcRunSoqlQueryDto:
-      type: object
-      properties: {}
-    AiProjectSectionItem:
-      type: object
-      properties:
-        id:
-          type: string
-        sortOrder:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/AiProjectSection'
-        promptId:
-          type:
-          - string
-          - 'null'
-        prompt:
-          allOf:
-          - $ref: '#/components/schemas/AiProjectPrompt'
-        artifactId:
-          type:
-          - string
-          - 'null'
-        artifact:
-          allOf:
-          - $ref: '#/components/schemas/AiArtifact'
-        tableArtifactId:
-          type:
-          - string
-          - 'null'
-        tableArtifact:
-          allOf:
-          - $ref: '#/components/schemas/AiTableArtifact'
-        fileId:
-          type:
-          - string
-          - 'null'
-        file:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFile'
-      required:
-      - id
-      - sortOrder
-      - sectionId
-      - section
-      - promptId
-      - prompt
-      - artifactId
-      - artifact
-      - tableArtifactId
-      - tableArtifact
-      - fileId
-      - file
-    AiAgentFile:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - txt
-          - json
-          - xml
-          - csv
-          - tsv
-          - log
-          - env
-          - md
-          - config
-          - pdf
-          - docx
-          - png
-          - jpg
-          - jpeg
-          - webp
-          - avif
-          type: string
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        createdAt:
-          format: date-time
-          type: string
-        summary:
-          type: string
-        contentHash:
-          type:
-          - string
-          - 'null'
-          description: 'Null until the shared summary row exists. MySQL permits this because a composite
-
-            foreign key with a null part is not checked.'
-        fileCache:
-          allOf:
-          - $ref: '#/components/schemas/AiAgentFileCache'
-        status:
-          enum:
-          - processing
-          - completed
-          - failed
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - agentId
-      - agent
-      - createdById
-      - createdBy
-      - createdAt
-      - summary
-      - contentHash
-      - fileCache
-      - status
-    EventMonitoringAggregateDto:
-      type: object
-      properties:
-        eventType:
-          type: string
-        startDate:
-          type: string
-          pattern: ISO_DATE
-        endDate:
-          type: string
-          pattern: ISO_DATE
-        groupBy:
-          minItems: 1
-          type: array
-          items:
-            type: string
-        filters:
-          type: object
-        orderBy:
-          type: string
-        limit:
-          type: number
-          minimum: 1
-          maximum: 200000
-      required:
-      - eventType
-      - startDate
-      - endDate
-      - groupBy
-    AiAgentMetadataElement:
-      type: object
-      properties:
-        aiAgentId:
-          type: string
-        name:
-          type: string
-        type:
-          type: string
-        aiAgent:
-          $ref: '#/components/schemas/AiAgent'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - aiAgentId
-      - name
-      - type
-      - aiAgent
-      - createdAt
-    FunnelMapStickyNote:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        stickyNoteId:
-          type: string
-        backgroundColor:
-          type: string
-        richText:
-          type: string
-        textScale:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-        xyPosition:
-          $ref: '#/components/schemas/FreePosition'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - funnelMapId
-      - funnelMap
-      - stickyNoteId
-      - backgroundColor
-      - richText
-      - textScale
-      - sectionId
-      - section
-      - xyPosition
-      - width
-      - height
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    FunnelPluginsDto:
-      type: object
-      properties: {}
-    UpdateProjectToolsDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        instructions:
-          type: string
-    FunnelMapMember:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        funnelId:
-          type: string
-        funnel:
-          $ref: '#/components/schemas/Funnel'
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - funnelId
-      - funnel
-      - row
-      - column
-      - sectionId
-      - section
-    RoleGroupAccountRole:
-      type: object
-      properties:
-        role:
-          type: object
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - roleGroupId
-      - roleGroup
-    DeploySalesforceRecordsDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        records:
-          description: 'Array of plain JSON objects keyed by Salesforce field API name.
-
-            For `UPDATE`, each record MUST include an `Id` field.'
-          type: array
-          items:
-            type: object
-        operation:
-          type: string
-          enum:
-          - CREATE
-          - UPDATE
-        allOrNothing:
-          type: boolean
-          description: 'If true (default), Salesforce rolls back the whole batch when any record
-
-            fails. If false, each record is committed independently.'
-      required:
-      - objectName
-      - records
-      - operation
-    FunnelMapSection:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        sectionId:
-          type: string
-        backgroundColor:
-          type: string
-        name:
-          type: string
-        xyPosition:
-          $ref: '#/components/schemas/FreePosition'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - funnelMapId
-      - funnelMap
-      - sectionId
-      - backgroundColor
-      - name
-      - xyPosition
-      - width
-      - height
-    FunnelMapUpdateFunnelMapDto:
-      type: object
-      properties:
-        operations:
-          type: array
-          items:
-            type: object
-        version:
-          type: number
-      required:
-      - operations
-      - version
-    DeployMetadataDto:
-      type: object
-      properties: {}
-    UpdateProjectToolsSectionDto:
-      type: object
-      properties:
-        name:
-          type: string
-        sortOrder:
-          type: number
-          minimum: 0
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    Org:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-      required:
-      - id
-      - accountId
-      - account
-    FreePosition:
-      type: object
-      properties:
-        x:
-          type: number
-        y:
-          type: number
-      required:
-      - x
-      - y
-    UpdateProjectToolsPromptDto:
-      type: object
-      properties:
-        title:
-          type: string
-        body:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - artifactMode
-          - researchMode
-          - buildMode
-    SearchMetadataDto:
-      type: object
-      properties: {}
-    FunnelSnapshot:
-      type: object
-      properties:
-        id:
-          type: string
-        ord:
-          type: number
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        apiName:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        funnelName:
-          type: string
-        description:
-          type: string
-        recordTypeName:
-          type: string
-        restoredFromSnapshot:
-          type: number
-        funnelDetails:
-          $ref: '#/components/schemas/FunnelDetailsDto'
-        deployments:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelDeployment'
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - ord
-      - createdById
-      - createdBy
-      - apiName
-      - accountId
-      - account
-      - name
-      - funnelName
-      - description
-      - recordTypeName
-      - restoredFromSnapshot
-      - funnelDetails
-      - deployments
-      - createdAt
-    CreateProjectToolsPromptDto:
-      type: object
-      properties:
-        title:
-          type: string
-        body:
-          type: string
-        mode:
-          type: string
-          enum:
-          - none
-          - artifactMode
-          - researchMode
-          - buildMode
-        sortOrder:
-          type: number
-          minimum: 0
-      required:
-      - title
-      - body
-      - mode
-    AiAgent:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        type:
-          enum:
-          - Documentation
-          - Process Optimization
-          - MonitoringV2
-          - Permissions
-          - Support
-          type: string
-        contextComponents:
-          type: object
-        userInstructions:
-          type: string
-        systemInstructions:
-          type: string
-        projectId:
-          type:
-          - string
-          - 'null'
-        project:
-          allOf:
-          - $ref: '#/components/schemas/AiProject'
-        orgId:
-          type: string
-        org:
-          $ref: '#/components/schemas/Org'
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentFile'
-        bestPractices:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentBestPractice'
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/AiAgentMetadataElement'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - name
-      - type
-      - contextComponents
-      - userInstructions
-      - systemInstructions
-      - projectId
-      - project
-      - orgId
-      - org
-      - files
-      - bestPractices
-      - metadataElements
-      - createdAt
-      - updatedAt
-    AiTableArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        chatId:
-          type: string
-        chat:
-          $ref: '#/components/schemas/AiChat'
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        title:
-          type: string
-        markdown:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - chatId
-      - chat
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - title
-      - markdown
-      - createdAt
-      - updatedAt
-    AiChat:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        aiChatDetails:
-          type: object
-        orgId:
-          type: string
-        org:
-          $ref: '#/components/schemas/Org'
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        agentId:
-          type: string
-        agent:
-          $ref: '#/components/schemas/AiAgent'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        userId:
-          type:
-          - string
-          - 'null'
-        sfdcUserId:
-          type:
-          - string
-          - 'null'
-        isFavorite:
-          type: boolean
-        folderId:
-          type:
-          - string
-          - 'null'
-        folder:
-          $ref: '#/components/schemas/AiChatFolder'
-        chatContext:
-          type: string
-        chatSource:
-          enum:
-          - Sweep
-          - Salesforce
-          type: string
-      required:
-      - id
-      - name
-      - aiChatDetails
-      - orgId
-      - org
-      - accountId
-      - account
-      - agentId
-      - agent
-      - createdAt
-      - updatedAt
-      - userId
-      - sfdcUserId
-      - isFavorite
-      - folderId
-      - folder
-      - chatContext
-      - chatSource
-    BISettingsDto:
-      type: object
-      properties:
-        flags:
-          type: array
-          items:
-            $ref: '#/components/schemas/BIFlagDto'
-      required:
-      - flags
-    FunnelMapText:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        textId:
-          type: string
-        richText:
-          type: string
-        textScale:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-        xyPosition:
-          $ref: '#/components/schemas/FreePosition'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - funnelMapId
-      - funnelMap
-      - textId
-      - richText
-      - textScale
-      - sectionId
-      - section
-      - xyPosition
-      - width
-      - height
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        authZeroOrgId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      required:
-      - id
-      - name
-      - authZeroOrgId
-      - createdAt
-      - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
-    AiArtifact:
-      type: object
-      properties:
-        id:
-          type: string
-        artifactId:
-          type: string
-        chatId:
-          type: string
-        chat:
-          $ref: '#/components/schemas/AiChat'
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        createdById:
-          type: string
-        createdBy:
-          $ref: '#/components/schemas/User'
-        title:
-          type: string
-        code:
-          type: string
-        version:
-          type: number
-        isShared:
-          type: boolean
-        isPublic:
-          type: boolean
-        toolResults:
-          type:
-          - object
-          - 'null'
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-      required:
-      - id
-      - artifactId
-      - chatId
-      - chat
-      - accountId
-      - account
-      - createdById
-      - createdBy
-      - title
-      - code
-      - version
-      - isShared
-      - isPublic
-      - toolResults
-      - createdAt
-      - updatedAt
-    FunnelMapThirdParty:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        thirdPartyFunnelId:
-          type: string
-        thirdPartyFunnel:
-          $ref: '#/components/schemas/ThirdPartyFunnel'
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - thirdPartyFunnelId
-      - thirdPartyFunnel
-      - row
-      - column
-      - sectionId
-      - section
-    FunnelMapHubspot:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        objectName:
-          type: string
-        leadingFieldName:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - objectName
-      - leadingFieldName
+      - metadataId
+      - funnelLinks
+      - color
+      - icon
       - row
       - column
       - sectionId

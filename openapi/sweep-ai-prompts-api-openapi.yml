@@ -207,38 +207,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PromptGroupResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
-        iconName:
-          type: string
-        accountId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        createdById:
-          type: string
-        updatedById:
-          type: string
-      required:
-      - id
-      - name
-      - isPinned
-      - accountId
-      - createdAt
-      - updatedAt
     PromptResponseDto:
       type: object
       properties:
@@ -271,6 +239,56 @@ components:
       - accountId
       - createdAt
       - updatedAt
+    UpdatePromptGroupDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+    PromptGroupResponseDto:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        isPinned:
+          type: boolean
+        iconName:
+          type: string
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        updatedById:
+          type: string
+      required:
+      - id
+      - name
+      - isPinned
+      - accountId
+      - createdAt
+      - updatedAt
+    UpdatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
     CreatePromptDto:
       type: object
       properties:
@@ -283,15 +301,13 @@ components:
       required:
       - name
       - promptText
-    UpdatePromptDto:
+    OptimizePromptDto:
       type: object
       properties:
-        name:
-          type: string
         promptText:
           type: string
-        promptGroupId:
-          type: string
+      required:
+      - promptText
     CreatePromptGroupDto:
       type: object
       properties:
@@ -306,22 +322,6 @@ components:
       required:
       - name
       - isPinned
-    UpdatePromptGroupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
-    OptimizePromptDto:
-      type: object
-      properties:
-        promptText:
-          type: string
-      required:
-      - promptText
   securitySchemes:
     bearer:
       scheme: bearer

@@ -240,51 +240,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SfdcSupportMessageDto:
-      type: object
-      properties:
-        role:
-          type: number
-          enum: []
-        content:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-      required:
-      - role
-      - content
-      - createdAt
-    SfdcCreateChannelsRequestDto:
-      type: object
-      properties:
-        createChannelRequests:
-          type: array
-          items:
-            $ref: '#/components/schemas/SfdcCreateChannelRequest'
-      required:
-      - createChannelRequests
-    CreateChannelResult:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - SUCCESS
-          - PARTIAL_SUCCESS
-          - ERROR
-        channelId:
-          type: string
-        errorMessage:
-          type: string
-      required:
-      - status
-    JobExecutionResult:
-      type: object
-      properties: {}
-    CreateJobExecutionsDto:
-      type: object
-      properties: {}
     SfdcCreateChannelRequest:
       type: object
       properties:
@@ -317,6 +272,33 @@ components:
       required:
       - userId
       - message
+    CreateJobExecutionsDto:
+      type: object
+      properties: {}
+    SfdcSupportMessageDto:
+      type: object
+      properties:
+        role:
+          type: number
+          enum: []
+        content:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+      required:
+      - role
+      - content
+      - createdAt
+    SfdcCreateChannelsRequestDto:
+      type: object
+      properties:
+        createChannelRequests:
+          type: array
+          items:
+            $ref: '#/components/schemas/SfdcCreateChannelRequest'
+      required:
+      - createChannelRequests
     Field:
       type: object
       properties:
@@ -329,19 +311,9 @@ components:
       required:
       - fieldIds
       - value
-    GetJobExecutionResultDto:
+    JobExecutionResult:
       type: object
       properties: {}
-    SfdcCreateChannelResponse:
-      type: object
-      properties:
-        requestId:
-          type: string
-        resultParams:
-          $ref: '#/components/schemas/CreateChannelResult'
-      required:
-      - requestId
-      - resultParams
     CreateSupportChatDto:
       type: object
       properties:
@@ -362,6 +334,34 @@ components:
       required:
       - userId
       - message
+    GetJobExecutionResultDto:
+      type: object
+      properties: {}
+    SfdcCreateChannelResponse:
+      type: object
+      properties:
+        requestId:
+          type: string
+        resultParams:
+          $ref: '#/components/schemas/CreateChannelResult'
+      required:
+      - requestId
+      - resultParams
+    CreateChannelResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - PARTIAL_SUCCESS
+          - ERROR
+        channelId:
+          type: string
+        errorMessage:
+          type: string
+      required:
+      - status
   securitySchemes:
     bearer:
       scheme: bearer
