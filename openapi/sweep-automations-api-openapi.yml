@@ -1329,37 +1329,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateAutomationOrderHintDto:
-      type: object
-      properties:
-        orderGroupId:
-          type: string
-        insertBeforeAutomationId:
-          type: string
-      required:
-      - orderGroupId
-    AutomationImmediateFieldReference:
-      type: object
-      properties:
-        _leadingFieldId:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-      required:
-      - _leadingFieldId
-      - _leadingFieldLabels
-    AutomationRecordTypeRef:
-      type: object
-      properties:
-        name:
-          type: string
-        label:
-          type: string
-      required:
-      - name
-      - label
     AutomationParams:
       type: object
       properties:
@@ -1375,103 +1344,22 @@ components:
           $ref: '#/components/schemas/AutomationTriggerDateArrives'
         schedule:
           $ref: '#/components/schemas/AutomationSchedule'
-    CreateAutomationWithAiDto:
+    OptionalCondition:
       type: object
       properties:
-        description:
-          type: string
-      required:
-      - description
-    AutomationParamsStageReference:
-      type: object
-      properties:
-        _stageId:
-          type: string
-        stageName:
-          type: string
-      required:
-      - _stageId
-      - stageName
-    AutomationTriggerTimeInStep:
-      type: object
-      properties:
-        stage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
-        offsetValue:
-          type: number
-        offsetType:
-          type: string
-          enum:
-          - Hours
-          - Days
-          - Weeks
-      required:
-      - stage
-      - offsetValue
-      - offsetType
-    AutomationSchedule:
-      type: object
-      properties:
-        offset:
-          type: object
-        executeTime:
-          type: string
-          pattern: /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
-        startDate:
-          type: string
-          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
-        endDate:
-          type: string
-          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
-        timezone:
-          type: string
-      required:
-      - executeTime
-      - startDate
-      - timezone
-    DelayActionsParams:
-      type: object
-      properties:
-        offsetValue:
-          type: number
-        offsetType:
-          type: string
-          enum:
-          - Minutes
-          - Hours
-          - Days
-        shouldReevaluate:
+        isCriteria:
           type: boolean
-      required:
-      - offsetValue
-      - offsetType
-    DeployAutomationDto:
-      type: object
-      properties:
-        deployToOrgIds:
-          minItems: 1
-          type: array
-          items:
-            type: string
-        deployAs:
-          enum:
-          - AUTOMATION
-          - FLOW
-          type: string
-      required:
-      - deployToOrgIds
-    SweepCondition:
-      type: object
-      properties:
         criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
+          $ref: '#/components/schemas/SweepCondition'
+    CreateAutomationOrderHintDto:
+      type: object
+      properties:
+        orderGroupId:
+          type: string
+        insertBeforeAutomationId:
           type: string
       required:
-      - criteria
-      - criteriaLogic
+      - orderGroupId
     AutomationDetailsWithFunnelIdDto:
       type: object
       properties:
@@ -1515,6 +1403,78 @@ components:
       - automationParams
       - actions
       - triggerType
+    CreateAutomationDto:
+      type: object
+      properties:
+        name:
+          type: string
+        automationDetails:
+          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
+        objectName:
+          type: string
+        type:
+          enum:
+          - Default
+          - Assignment
+          - Alert
+          - Dedupe
+          - Matching
+          - ScheduledAssignment
+          - ScheduledReport
+          - ScheduledJob
+          - MarketingAttribution
+          - Booking
+          type: string
+        orderHint:
+          $ref: '#/components/schemas/CreateAutomationOrderHintDto'
+      required:
+      - name
+      - automationDetails
+      - type
+    AutomationParamsFieldUpdate:
+      type: object
+      properties:
+        _leadingFieldId:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        fieldType:
+          type: string
+          enum:
+          - ADDRESS
+          - BOOLEAN
+          - CURRENCY
+          - DATE
+          - DATETIME
+          - EMAIL
+          - GEOLOCATION
+          - TEXTAREA
+          - LONGTEXTAREA
+          - REFERENCE
+          - MULTIPICKLIST
+          - NUMBER
+          - PERCENT
+          - PHONE
+          - PICKLIST
+          - COMBOBOX
+          - STRING
+          - TIME
+          - URL
+          - INTEGER
+          - DOUBLE
+          - ID
+          - ENCRYPTEDSTRING
+          - Unknown
+        operator:
+          type: string
+        operatorValue:
+          type: object
+      required:
+      - _leadingFieldId
+      - _leadingFieldLabels
+      - operator
     AutomationDto:
       type: object
       properties:
@@ -1592,6 +1552,80 @@ components:
       - createdAt
       - updatedById
       - updatedAt
+    AutomationSchedule:
+      type: object
+      properties:
+        offset:
+          type: object
+        executeTime:
+          type: string
+          pattern: /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/
+        startDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        endDate:
+          type: string
+          pattern: /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/
+        timezone:
+          type: string
+      required:
+      - executeTime
+      - startDate
+      - timezone
+    AutomationImmediateFieldReference:
+      type: object
+      properties:
+        _leadingFieldId:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+      required:
+      - _leadingFieldId
+      - _leadingFieldLabels
+    AutoTemplatesStructDto:
+      type: object
+      properties:
+        fieldsList:
+          type: array
+          items:
+            type: string
+        automation:
+          type: object
+      required:
+      - fieldsList
+      - automation
+    AdminNotificationDto:
+      type: object
+      properties:
+        note:
+          type: string
+    AutomationParamsStageReference:
+      type: object
+      properties:
+        _stageId:
+          type: string
+        stageName:
+          type: string
+      required:
+      - _stageId
+      - stageName
+    DeployAutomationDto:
+      type: object
+      properties:
+        deployToOrgIds:
+          minItems: 1
+          type: array
+          items:
+            type: string
+        deployAs:
+          enum:
+          - AUTOMATION
+          - FLOW
+          type: string
+      required:
+      - deployToOrgIds
     AutomationTriggerDateArrives:
       type: object
       properties:
@@ -1614,18 +1648,6 @@ components:
       required:
       - relativeTime
       - sourceField
-    AdminNotificationDto:
-      type: object
-      properties:
-        note:
-          type: string
-    AutomationTriggerStageTransitionParams:
-      type: object
-      properties:
-        fromStage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
-        toStage:
-          $ref: '#/components/schemas/AutomationParamsStageReference'
     AiChatDto:
       type: object
       properties:
@@ -1642,18 +1664,40 @@ components:
       - message
       - context
       - isFirstMessage
-    AutoTemplatesStructDto:
+    CreateAutomationWithAiDto:
       type: object
       properties:
-        fieldsList:
-          type: array
-          items:
-            type: string
-        automation:
-          type: object
+        description:
+          type: string
       required:
-      - fieldsList
-      - automation
+      - description
+    AutomationRecordTypeRef:
+      type: object
+      properties:
+        name:
+          type: string
+        label:
+          type: string
+      required:
+      - name
+      - label
+    AutomationTriggerTimeInStep:
+      type: object
+      properties:
+        stage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        offsetValue:
+          type: number
+        offsetType:
+          type: string
+          enum:
+          - Hours
+          - Days
+          - Weeks
+      required:
+      - stage
+      - offsetValue
+      - offsetType
     AutomationActivationDto:
       type: object
       properties:
@@ -1672,34 +1716,41 @@ components:
       required:
       - isActive
       - deployToOrgIds
-    CreateAutomationDto:
+    DelayActionsParams:
       type: object
       properties:
-        name:
+        offsetValue:
+          type: number
+        offsetType:
           type: string
-        automationDetails:
-          $ref: '#/components/schemas/AutomationDetailsWithFunnelIdDto'
-        objectName:
-          type: string
-        type:
           enum:
-          - Default
-          - Assignment
-          - Alert
-          - Dedupe
-          - Matching
-          - ScheduledAssignment
-          - ScheduledReport
-          - ScheduledJob
-          - MarketingAttribution
-          - Booking
-          type: string
-        orderHint:
-          $ref: '#/components/schemas/CreateAutomationOrderHintDto'
+          - Minutes
+          - Hours
+          - Days
+        shouldReevaluate:
+          type: boolean
       required:
-      - name
-      - automationDetails
-      - type
+      - offsetValue
+      - offsetType
+    AutomationTriggerStageTransitionParams:
+      type: object
+      properties:
+        fromStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+        toStage:
+          $ref: '#/components/schemas/AutomationParamsStageReference'
+    SweepCondition:
+      type: object
+      properties:
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - criteria
+      - criteriaLogic
     UpdateAutomationDto:
       type: object
       properties:
@@ -1710,57 +1761,6 @@ components:
       required:
       - name
       - automationDetails
-    AutomationParamsFieldUpdate:
-      type: object
-      properties:
-        _leadingFieldId:
-          type: string
-        _leadingFieldLabels:
-          type: array
-          items:
-            type: string
-        fieldType:
-          type: string
-          enum:
-          - ADDRESS
-          - BOOLEAN
-          - CURRENCY
-          - DATE
-          - DATETIME
-          - EMAIL
-          - GEOLOCATION
-          - TEXTAREA
-          - LONGTEXTAREA
-          - REFERENCE
-          - MULTIPICKLIST
-          - NUMBER
-          - PERCENT
-          - PHONE
-          - PICKLIST
-          - COMBOBOX
-          - STRING
-          - TIME
-          - URL
-          - INTEGER
-          - DOUBLE
-          - ID
-          - ENCRYPTEDSTRING
-          - Unknown
-        operator:
-          type: string
-        operatorValue:
-          type: object
-      required:
-      - _leadingFieldId
-      - _leadingFieldLabels
-      - operator
-    OptionalCondition:
-      type: object
-      properties:
-        isCriteria:
-          type: boolean
-        criteria:
-          $ref: '#/components/schemas/SweepCondition'
     FunnelRecordTypeDto:
       type: object
       properties:

@@ -334,6 +334,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    QuestionnaireDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - COMPLETED
+          - NOT_COMPLETED
+        data:
+          $ref: '#/components/schemas/QuestionnaireDataDto'
+      required:
+      - status
+    GetStartedDto:
+      type: object
+      properties: {}
     UserRoleDto:
       type: object
       properties:
@@ -341,6 +356,88 @@ components:
           type: string
       required:
       - roleGroupId
+    QuestionnaireDataDto:
+      type: object
+      properties:
+        role:
+          type: string
+          enum:
+          - ADMIN
+          - BUSINESS_SYSTEMS
+          - OPERATIONS
+          - SALES
+          - MARKETING
+          - CUSTOMER_SUCCESS
+          - CONSULTANT
+          - OTHER
+        interests:
+          type: array
+          items:
+            type: string
+            enum:
+            - DOCUMENTATION
+            - AUTOMATIONS
+            - ALERTS
+            - ROLLUPS
+            - ROUTING
+            - DEDUPE
+            - VISUALIZE
+            - PLAN
+            - TRACK_CHANGES
+            - OTHER
+    EditUserDto:
+      type: object
+      properties:
+        name:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        emoji:
+          $ref: '#/components/schemas/UserEmojiDto'
+    InvitationDto:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        roleGroupId:
+          type: string
+        message:
+          type: string
+        template:
+          type: string
+          enum:
+          - FUNNEL
+          - ACCOUNT
+        entryPointId:
+          type: string
+        entryPointName:
+          type: string
+      required:
+      - email
+      - roleGroupId
+      - template
+      - entryPointId
+      - entryPointName
+    ImageDataDto:
+      type: object
+      properties:
+        image:
+          type: string
+      required:
+      - image
+    UserEmojiDto:
+      type: object
+      properties:
+        content:
+          type: string
+        bgColor:
+          type: string
+      required:
+      - content
+      - bgColor
     UserDto:
       type: object
       properties:
@@ -401,93 +498,6 @@ components:
           type: array
           items:
             type: object
-    GetStartedDto:
-      type: object
-      properties: {}
-    ImageDataDto:
-      type: object
-      properties:
-        image:
-          type: string
-      required:
-      - image
-    QuestionnaireDataDto:
-      type: object
-      properties:
-        role:
-          type: string
-          enum:
-          - ADMIN
-          - BUSINESS_SYSTEMS
-          - OPERATIONS
-          - SALES
-          - MARKETING
-          - CUSTOMER_SUCCESS
-          - CONSULTANT
-          - OTHER
-        interests:
-          type: array
-          items:
-            type: string
-            enum:
-            - DOCUMENTATION
-            - AUTOMATIONS
-            - ALERTS
-            - ROLLUPS
-            - ROUTING
-            - DEDUPE
-            - VISUALIZE
-            - PLAN
-            - TRACK_CHANGES
-            - OTHER
-    QuestionnaireDto:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - COMPLETED
-          - NOT_COMPLETED
-        data:
-          $ref: '#/components/schemas/QuestionnaireDataDto'
-      required:
-      - status
-    EditUserDto:
-      type: object
-      properties:
-        name:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        emoji:
-          $ref: '#/components/schemas/UserEmojiDto'
-    InvitationDto:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-        roleGroupId:
-          type: string
-        message:
-          type: string
-        template:
-          type: string
-          enum:
-          - FUNNEL
-          - ACCOUNT
-        entryPointId:
-          type: string
-        entryPointName:
-          type: string
-      required:
-      - email
-      - roleGroupId
-      - template
-      - entryPointId
-      - entryPointName
     UpdateOnboardingStatusDto:
       type: object
       properties:
@@ -498,16 +508,6 @@ components:
           - Completed
       required:
       - status
-    UserEmojiDto:
-      type: object
-      properties:
-        content:
-          type: string
-        bgColor:
-          type: string
-      required:
-      - content
-      - bgColor
   securitySchemes:
     bearer:
       scheme: bearer

@@ -513,100 +513,13 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TeamsOAuthDto:
+    OptionalCondition:
       type: object
       properties:
-        code:
-          type: string
-        state:
-          type: string
-      required:
-      - code
-      - state
-    AutomationConditionalActions:
-      type: object
-      properties:
-        _id:
-          type: string
-        when:
-          $ref: '#/components/schemas/OptionalCondition'
-        actions:
-          type: array
-          items:
-            type: object
-        _name:
-          type: string
-      required:
-      - _id
-      - actions
-      - _name
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
-    AutomationActionWebhook:
-      type: object
-      properties:
-        actionType:
-          enum: []
-          type: number
-          default: WEBHOOK
-        actionParams:
-          $ref: '#/components/schemas/AutomationActionParamsWebhook'
-        _id:
-          type: string
-      required:
-      - actionType
-      - actionParams
-      - _id
-    UpsertCustomIntegrationDto:
-      type: object
-      properties:
-        name:
-          type: string
-        baseUrl:
-          type: string
-          format: uri
-        authentication:
-          type: object
-        logo:
-          $ref: '#/components/schemas/Logo'
-      required:
-      - name
-      - baseUrl
-      - authentication
-    StringTemplate:
-      type: object
-      properties:
-        template:
-          type: string
-        variables:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - template
-      - variables
-    SlackOAuthDto:
-      type: object
-      properties: {}
-    Logo:
-      type: object
-      properties:
-        name:
-          type: string
-        domain:
-          type: string
-      required:
-      - name
-      - domain
+        isCriteria:
+          type: boolean
+        criteria:
+          $ref: '#/components/schemas/SweepCondition'
     TeamsRecipientInfo:
       type: object
       properties:
@@ -627,36 +540,54 @@ components:
       - label
       - id
       - type
-    Field:
+    SlackOAuthDto:
+      type: object
+      properties: {}
+    TeamsWithInstallationStatus:
       type: object
       properties:
-        fieldIds:
+        label:
+          type: string
+        id:
+          type: string
+        type:
+          enum:
+          - channel
+          - user
+          - team
+          - user_stored_in_salesforce_field
+          - channel_stored_in_sweep
+          - channel_stored_in_salesforce_field
+          type: string
+        isSweepAppInstalled:
+          type: boolean
+      required:
+      - label
+      - id
+      - type
+      - isSweepAppInstalled
+    WebhookTestDto:
+      type: object
+      properties:
+        fields:
           type: array
           items:
-            type: string
-        value:
-          type: string
+            $ref: '#/components/schemas/Field'
+        action:
+          $ref: '#/components/schemas/AutomationActionWebhook'
       required:
-      - fieldIds
-      - value
-    SlackConnectionDto:
+      - fields
+      - action
+    TeamsOAuthDto:
       type: object
       properties:
-        status:
+        code:
           type: string
-          enum:
-          - connected
-          - error
-          - invalid_credentials
-          - initialization
-          - not_initialized
-        upgradeRequired:
-          type: boolean
-        includeSandboxes:
-          type: boolean
+        state:
+          type: string
       required:
-      - status
-      - includeSandboxes
+      - code
+      - state
     SweepCondition:
       type: object
       properties:
@@ -669,22 +600,17 @@ components:
       required:
       - criteria
       - criteriaLogic
-    OptionalCondition:
+    Field:
       type: object
       properties:
-        isCriteria:
-          type: boolean
-        criteria:
-          $ref: '#/components/schemas/SweepCondition'
-    KeyValueStringTemplate:
-      type: object
-      properties:
-        key:
-          type: string
+        fieldIds:
+          type: array
+          items:
+            type: string
         value:
-          $ref: '#/components/schemas/StringTemplate'
+          type: string
       required:
-      - key
+      - fieldIds
       - value
     AutomationActionParamsWebhook:
       type: object
@@ -723,6 +649,52 @@ components:
       - body
       - integrationId
       - followUpActions
+    AutomationConditionalActions:
+      type: object
+      properties:
+        _id:
+          type: string
+        when:
+          $ref: '#/components/schemas/OptionalCondition'
+        actions:
+          type: array
+          items:
+            type: object
+        _name:
+          type: string
+      required:
+      - _id
+      - actions
+      - _name
+    SlackConnectionDto:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - connected
+          - error
+          - invalid_credentials
+          - initialization
+          - not_initialized
+        upgradeRequired:
+          type: boolean
+        includeSandboxes:
+          type: boolean
+      required:
+      - status
+      - includeSandboxes
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
     EditSlackConnectionDto:
       type: object
       properties:
@@ -730,41 +702,69 @@ components:
           type: boolean
       required:
       - includeSandboxes
-    WebhookTestDto:
+    UpsertCustomIntegrationDto:
       type: object
       properties:
-        fields:
+        name:
+          type: string
+        baseUrl:
+          type: string
+          format: uri
+        authentication:
+          type: object
+        logo:
+          $ref: '#/components/schemas/Logo'
+      required:
+      - name
+      - baseUrl
+      - authentication
+    Logo:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+      required:
+      - name
+      - domain
+    AutomationActionWebhook:
+      type: object
+      properties:
+        actionType:
+          enum: []
+          type: number
+          default: WEBHOOK
+        actionParams:
+          $ref: '#/components/schemas/AutomationActionParamsWebhook'
+        _id:
+          type: string
+      required:
+      - actionType
+      - actionParams
+      - _id
+    KeyValueStringTemplate:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          $ref: '#/components/schemas/StringTemplate'
+      required:
+      - key
+      - value
+    StringTemplate:
+      type: object
+      properties:
+        template:
+          type: string
+        variables:
           type: array
           items:
-            $ref: '#/components/schemas/Field'
-        action:
-          $ref: '#/components/schemas/AutomationActionWebhook'
+            $ref: '#/components/schemas/SweepFieldReference'
       required:
-      - fields
-      - action
-    TeamsWithInstallationStatus:
-      type: object
-      properties:
-        label:
-          type: string
-        id:
-          type: string
-        type:
-          enum:
-          - channel
-          - user
-          - team
-          - user_stored_in_salesforce_field
-          - channel_stored_in_sweep
-          - channel_stored_in_salesforce_field
-          type: string
-        isSweepAppInstalled:
-          type: boolean
-      required:
-      - label
-      - id
-      - type
-      - isSweepAppInstalled
+      - template
+      - variables
   securitySchemes:
     bearer:
       scheme: bearer

@@ -178,6 +178,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ToolPolicyDto:
+      type: object
+      properties:
+        name:
+          type: string
+        policy:
+          type: string
+          enum:
+          - allowed
+          - denied
+          - needs_approval
+      required:
+      - name
+      - policy
     RegisterServerDto:
       type: object
       properties:
@@ -193,29 +207,13 @@ components:
           $ref: '#/components/schemas/ClientCredentialsDto'
       required:
       - serverType
-    UpdateToolPoliciesDto:
+    OAuthCallbackDto:
       type: object
       properties:
-        toolPolicies:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolPolicyDto'
-      required:
-      - toolPolicies
-    ToolPolicyDto:
-      type: object
-      properties:
-        name:
+        code:
           type: string
-        policy:
-          type: string
-          enum:
-          - allowed
-          - denied
-          - needs_approval
       required:
-      - name
-      - policy
+      - code
     ClientCredentialsDto:
       type: object
       properties:
@@ -225,13 +223,15 @@ components:
           type: string
       required:
       - clientId
-    OAuthCallbackDto:
+    UpdateToolPoliciesDto:
       type: object
       properties:
-        code:
-          type: string
+        toolPolicies:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolPolicyDto'
       required:
-      - code
+      - toolPolicies
   securitySchemes:
     bearer:
       scheme: bearer

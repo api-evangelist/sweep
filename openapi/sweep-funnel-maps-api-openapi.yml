@@ -233,328 +233,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateThirdPartyFunnelMapMember:
-      type: object
-      properties:
-        thirdPartyFunnelId:
-          type: string
-        sectionId:
-          type: string
-          format: uuid
-        row:
-          type: number
-        column:
-          type: number
-      required:
-      - thirdPartyFunnelId
-      - sectionId
-      - row
-      - column
-    CalculatePillsDto:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrgPillFunnelsDto'
-      required:
-      - items
-    UpdateSection:
-      type: object
-      properties:
-        sectionId:
-          type: string
-          format: uuid
-        backgroundColor:
-          type: string
-        name:
-          type: string
-        xyPosition:
-          $ref: '#/components/schemas/FreePositionDto'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - sectionId
-      - backgroundColor
-      - name
-      - xyPosition
-      - width
-      - height
-    FreePositionDto:
-      type: object
-      properties:
-        x:
-          type: number
-        y:
-          type: number
-      required:
-      - x
-      - y
-    UpdateHubspotFunnelMapMember:
-      type: object
-      properties:
-        id:
-          type: string
-        sectionId:
-          type: string
-          format: uuid
-        objectName:
-          type: string
-        leadingFieldName:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-      required:
-      - id
-      - sectionId
-      - objectName
-      - leadingFieldName
-      - row
-      - column
-    UpdateMetadataElementMapMember:
-      type: object
-      properties:
-        metadataId:
-          type: string
-        sectionId:
-          type: string
-          format: uuid
-        crmOrgId:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        color:
-          type: string
-        icon:
-          type: string
-      required:
-      - metadataId
-      - sectionId
-      - crmOrgId
-      - row
-      - column
-      - funnelLinks
-    UpdateRecordTypeMapMember:
-      type: object
-      properties:
-        recordTypeName:
-          type: string
-        sectionId:
-          type: string
-          format: uuid
-        objectName:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        leadingFieldName:
-          type: string
-      required:
-      - recordTypeName
-      - sectionId
-      - objectName
-      - row
-      - column
-      - leadingFieldName
-    EnrichMetadataElementsRequestDto:
-      type: object
-      properties:
-        targets:
-          type: array
-          items:
-            type: object
-        context:
-          type: array
-          items:
-            type: object
-        parentElementId:
-          type: string
-        commonChildId:
-          type: string
-      required:
-      - targets
-    PillStageDto:
-      type: object
-      properties:
-        stageId:
-          type: string
-        stageName:
-          type: string
-      required:
-      - stageId
-      - stageName
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    PillFunnelDto:
-      type: object
-      properties:
-        id:
-          type: string
-        objectName:
-          type: string
-        leadingFieldName:
-          type: string
-        recordTypeId:
-          type: string
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/PillStageDto'
-      required:
-      - id
-      - objectName
-      - leadingFieldName
-      - recordTypeId
-      - stages
-    CreateAiProcessMiningFunnelsDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-      required:
-      - objectName
-    UpdateText:
-      type: object
-      properties:
-        textId:
-          type: string
-          format: uuid
-        sectionId:
-          type: string
-          format: uuid
-        richText:
-          type: string
-        xyPosition:
-          $ref: '#/components/schemas/FreePositionDto'
-        width:
-          type: number
-        height:
-          type: number
-        textScale:
-          type: number
-      required:
-      - textId
-      - sectionId
-      - richText
-      - xyPosition
-      - width
-      - height
-      - textScale
-    CreateFunnelMapDto:
-      type: object
-      properties:
-        name:
-          type: string
-        defaultCrmOrgId:
-          type: string
-        funnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateFunnelMapMember'
-        recordTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateRecordTypeMapMember'
-        hubspotFunnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateHubspotFunnelMapMember'
-        thirdPartyFunnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateThirdPartyFunnelMapMember'
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateMetadataElementMapMember'
-        stickyNotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateStickyNote'
-        texts:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateText'
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateSection'
-      required:
-      - name
-      - defaultCrmOrgId
-      - funnels
-    UpdateStickyNote:
-      type: object
-      properties:
-        stickyNoteId:
-          type: string
-          format: uuid
-        sectionId:
-          type: string
-          format: uuid
-        backgroundColor:
-          type: string
-        richText:
-          type: string
-        xyPosition:
-          $ref: '#/components/schemas/FreePositionDto'
-        width:
-          type: number
-        height:
-          type: number
-        textScale:
-          type: number
-      required:
-      - stickyNoteId
-      - sectionId
-      - backgroundColor
-      - richText
-      - xyPosition
-      - width
-      - height
-      - textScale
-    OrgPillFunnelsDto:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
-        funnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/PillFunnelDto'
-      required:
-      - crmOrgId
-      - funnels
     UpdateFunnelMapDto:
       type: object
       properties:
@@ -618,6 +296,328 @@ components:
       - sectionId
       - row
       - column
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    UpdateMetadataElementMapMember:
+      type: object
+      properties:
+        metadataId:
+          type: string
+        sectionId:
+          type: string
+          format: uuid
+        crmOrgId:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        color:
+          type: string
+        icon:
+          type: string
+      required:
+      - metadataId
+      - sectionId
+      - crmOrgId
+      - row
+      - column
+      - funnelLinks
+    UpdateHubspotFunnelMapMember:
+      type: object
+      properties:
+        id:
+          type: string
+        sectionId:
+          type: string
+          format: uuid
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+      required:
+      - id
+      - sectionId
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+    OrgPillFunnelsDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        funnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/PillFunnelDto'
+      required:
+      - crmOrgId
+      - funnels
+    CalculatePillsDto:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrgPillFunnelsDto'
+      required:
+      - items
+    FreePositionDto:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+      required:
+      - x
+      - y
+    UpdateSection:
+      type: object
+      properties:
+        sectionId:
+          type: string
+          format: uuid
+        backgroundColor:
+          type: string
+        name:
+          type: string
+        xyPosition:
+          $ref: '#/components/schemas/FreePositionDto'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - sectionId
+      - backgroundColor
+      - name
+      - xyPosition
+      - width
+      - height
+    CreateFunnelMapDto:
+      type: object
+      properties:
+        name:
+          type: string
+        defaultCrmOrgId:
+          type: string
+        funnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateFunnelMapMember'
+        recordTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateRecordTypeMapMember'
+        hubspotFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateHubspotFunnelMapMember'
+        thirdPartyFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateThirdPartyFunnelMapMember'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateMetadataElementMapMember'
+        stickyNotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateStickyNote'
+        texts:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateText'
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateSection'
+      required:
+      - name
+      - defaultCrmOrgId
+      - funnels
+    UpdateThirdPartyFunnelMapMember:
+      type: object
+      properties:
+        thirdPartyFunnelId:
+          type: string
+        sectionId:
+          type: string
+          format: uuid
+        row:
+          type: number
+        column:
+          type: number
+      required:
+      - thirdPartyFunnelId
+      - sectionId
+      - row
+      - column
+    EnrichMetadataElementsRequestDto:
+      type: object
+      properties:
+        targets:
+          type: array
+          items:
+            type: object
+        context:
+          type: array
+          items:
+            type: object
+        parentElementId:
+          type: string
+        commonChildId:
+          type: string
+      required:
+      - targets
+    CreateAiProcessMiningFunnelsDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+      required:
+      - objectName
+    UpdateText:
+      type: object
+      properties:
+        textId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        richText:
+          type: string
+        xyPosition:
+          $ref: '#/components/schemas/FreePositionDto'
+        width:
+          type: number
+        height:
+          type: number
+        textScale:
+          type: number
+      required:
+      - textId
+      - sectionId
+      - richText
+      - xyPosition
+      - width
+      - height
+      - textScale
+    PillFunnelDto:
+      type: object
+      properties:
+        id:
+          type: string
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        recordTypeId:
+          type: string
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/PillStageDto'
+      required:
+      - id
+      - objectName
+      - leadingFieldName
+      - recordTypeId
+      - stages
+    UpdateStickyNote:
+      type: object
+      properties:
+        stickyNoteId:
+          type: string
+          format: uuid
+        sectionId:
+          type: string
+          format: uuid
+        backgroundColor:
+          type: string
+        richText:
+          type: string
+        xyPosition:
+          $ref: '#/components/schemas/FreePositionDto'
+        width:
+          type: number
+        height:
+          type: number
+        textScale:
+          type: number
+      required:
+      - stickyNoteId
+      - sectionId
+      - backgroundColor
+      - richText
+      - xyPosition
+      - width
+      - height
+      - textScale
+    UpdateRecordTypeMapMember:
+      type: object
+      properties:
+        recordTypeName:
+          type: string
+        sectionId:
+          type: string
+          format: uuid
+        objectName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        leadingFieldName:
+          type: string
+      required:
+      - recordTypeName
+      - sectionId
+      - objectName
+      - row
+      - column
+      - leadingFieldName
+    PillStageDto:
+      type: object
+      properties:
+        stageId:
+          type: string
+        stageName:
+          type: string
+      required:
+      - stageId
+      - stageName
   securitySchemes:
     bearer:
       scheme: bearer

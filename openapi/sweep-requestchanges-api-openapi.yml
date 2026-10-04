@@ -98,6 +98,370 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RoleGroupOrgRole:
+      type: object
+      properties:
+        role:
+          type: object
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        roleGroupId:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+      required:
+      - role
+      - crmOrgId
+      - crmOrg
+      - roleGroupId
+      - roleGroup
+    SweepExitCriteria:
+      type: object
+      properties:
+        _exitCriteriaId:
+          type: string
+        _nextStageId:
+          type: string
+        isAutoMoveToNextStage:
+          type: boolean
+        guidance:
+          type: string
+        criteria:
+          type: array
+          items:
+            type: object
+        criteriaLogic:
+          type: string
+      required:
+      - _exitCriteriaId
+      - criteria
+      - criteriaLogic
+    FunnelMapMetadataElement:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        org:
+          $ref: '#/components/schemas/Org'
+        crmOrgId:
+          type: string
+        metadataId:
+          type: string
+        funnelLinks:
+          type: array
+          items:
+            type: object
+        color:
+          type: string
+        icon:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - org
+      - crmOrgId
+      - metadataId
+      - funnelLinks
+      - color
+      - icon
+      - row
+      - column
+      - sectionId
+      - section
+    SweepStage:
+      type: object
+      properties:
+        stageName:
+          type: string
+        _stageId:
+          type: string
+        stageDescription:
+          type: string
+        _branchIndex:
+          type: number
+        _stageColumnIndex:
+          type: number
+        exitCriteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepExitCriteria'
+        assignmentRules:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepAssignmentRule'
+        _team:
+          type: string
+        stageType:
+          type: string
+          enum:
+          - regular
+          - lost
+          - nurturing
+        preventBackwardStages:
+          type: boolean
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        additionalFields:
+          default: []
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldReference'
+      required:
+      - stageName
+      - _stageId
+      - stageDescription
+      - exitCriteria
+      - assignmentRules
+    FunnelMapStickyNote:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        stickyNoteId:
+          type: string
+        backgroundColor:
+          type: string
+        richText:
+          type: string
+        textScale:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - stickyNoteId
+      - backgroundColor
+      - richText
+      - textScale
+      - sectionId
+      - section
+      - xyPosition
+      - width
+      - height
+    FunnelDetailsDto:
+      type: object
+      properties:
+        leadingObject:
+          $ref: '#/components/schemas/LeadingObjectDto'
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepStage'
+        _firstStageId:
+          type: string
+        plugins:
+          default: {}
+          allOf:
+          - $ref: '#/components/schemas/FunnelPluginsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+        stageMetadata:
+          type: array
+          items:
+            type: object
+      required:
+      - leadingObject
+      - stages
+      - plugins
+    RequestChangesActionDto:
+      type: object
+      properties:
+        requestChangeId:
+          type: string
+        note:
+          type: string
+      required:
+      - requestChangeId
+      - note
+    LeadingObjectDto:
+      type: object
+      properties:
+        objectName:
+          type: string
+        fieldName:
+          type: string
+        _leadingFieldLabels:
+          type: array
+          items:
+            type: string
+        _leadingFieldId:
+          type: string
+      required:
+      - objectName
+      - fieldName
+      - _leadingFieldId
+    FunnelMapHubspot:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        sub:
+          type: string
+        email:
+          type: string
+        account:
+          $ref: '#/components/schemas/Account'
+        preferences:
+          type: object
+        name:
+          type: string
+        emoji:
+          type: string
+        imageUrl:
+          type: string
+        jobTitle:
+          type: string
+        roleGroup:
+          $ref: '#/components/schemas/RoleGroup'
+        roleGroupId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        lastSeen:
+          format: date-time
+          type: string
+      required:
+      - id
+      - sub
+      - email
+      - account
+      - preferences
+      - name
+      - emoji
+      - imageUrl
+      - jobTitle
+      - roleGroup
+      - roleGroupId
+      - createdAt
+      - updatedAt
+    FunnelMapText:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        textId:
+          type: string
+        richText:
+          type: string
+        textScale:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+        xyPosition:
+          $ref: '#/components/schemas/FreePosition'
+        width:
+          type: number
+        height:
+          type: number
+      required:
+      - funnelMapId
+      - funnelMap
+      - textId
+      - richText
+      - textScale
+      - sectionId
+      - section
+      - xyPosition
+      - width
+      - height
+    FunnelDeployment:
+      type: object
+      properties:
+        id:
+          type: string
+        crmOrgId:
+          type: string
+        crmOrg:
+          $ref: '#/components/schemas/CrmOrg'
+        snapshotId:
+          type: string
+        snapshot:
+          $ref: '#/components/schemas/FunnelSnapshot'
+        deployedById:
+          type: string
+        deployedBy:
+          $ref: '#/components/schemas/User'
+        deployedAt:
+          format: date-time
+          type: string
+        status:
+          type: object
+      required:
+      - id
+      - crmOrgId
+      - crmOrg
+      - snapshotId
+      - snapshot
+      - deployedById
+      - deployedBy
+      - deployedAt
+      - status
     FunnelSnapshot:
       type: object
       properties:
@@ -150,29 +514,34 @@ components:
       - funnelDetails
       - deployments
       - createdAt
-    BISettingsDto:
+    FunnelMapThirdParty:
       type: object
       properties:
-        flags:
-          type: array
-          items:
-            $ref: '#/components/schemas/BIFlagDto'
-      required:
-      - flags
-    BIFlagDto:
-      type: object
-      properties:
-        name:
+        funnelMapId:
           type: string
-          enum:
-          - TIMESTAMP
-          - OWNER
-          - OWNER_ROLE
-        value:
-          type: boolean
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        thirdPartyFunnelId:
+          type: string
+        thirdPartyFunnel:
+          $ref: '#/components/schemas/ThirdPartyFunnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
       required:
-      - name
-      - value
+      - funnelMapId
+      - funnelMap
+      - thirdPartyFunnelId
+      - thirdPartyFunnel
+      - row
+      - column
+      - sectionId
+      - section
     ThirdPartyFunnel:
       type: object
       properties:
@@ -220,38 +589,34 @@ components:
       - createdAt
       - updatedById
       - updatedBy
-    FunnelMapRecordType:
+    SweepAssignmentRule:
       type: object
       properties:
-        funnelMapId:
+        assignmentId:
           type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        recordTypeName:
+        ruleName:
           type: string
-        objectName:
+        assignedTo:
           type: string
-        leadingFieldName:
+        assignedToType:
           type: string
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
+        criteriaLogic:
           type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
+        criteria:
+          type: array
+          items:
+            type: object
       required:
-      - funnelMapId
-      - funnelMap
-      - recordTypeName
-      - objectName
-      - leadingFieldName
-      - row
-      - column
-      - sectionId
-      - section
-    RoleGroup:
+      - assignmentId
+      - ruleName
+      - assignedTo
+      - assignedToType
+      - criteriaLogic
+      - criteria
+    FunnelPluginsDto:
+      type: object
+      properties: {}
+    FunnelMap:
       type: object
       properties:
         id:
@@ -260,19 +625,12 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        type:
+        name:
           type: string
-          enum:
-          - SYSTEM
-          - USER_CREATED
-        accountRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupAccountRole'
-        orgRoles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroupOrgRole'
+        defaultCrmOrgId:
+          type: string
+        defaultCrmOrg:
+          $ref: '#/components/schemas/CrmOrg'
         createdById:
           type: string
         createdBy:
@@ -287,75 +645,70 @@ components:
         updatedAt:
           format: date-time
           type: string
-        name:
-          type: string
-        description:
-          type: string
+        version:
+          type: number
+        isPinned:
+          type: boolean
+        sections:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapSection'
+        funnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapMember'
+        thirdPartyFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapThirdParty'
+        recordTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapRecordType'
+        hubspotFunnels:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapHubspot'
+        metadataElements:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapMetadataElement'
+        stickyNotes:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapStickyNote'
+        texts:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelMapText'
+        sweepFieldsPins:
+          type: array
+          items:
+            $ref: '#/components/schemas/SweepFieldToFunnelMapPin'
       required:
       - id
       - accountId
       - account
-      - type
-      - accountRoles
-      - orgRoles
+      - name
+      - defaultCrmOrgId
+      - defaultCrmOrg
       - createdById
       - createdBy
       - createdAt
       - updatedById
       - updatedBy
       - updatedAt
-      - name
-    FunnelMapMember:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        funnelId:
-          type: string
-        funnel:
-          $ref: '#/components/schemas/Funnel'
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - funnelId
-      - funnel
-      - row
-      - column
-      - sectionId
-      - section
-    FreePosition:
-      type: object
-      properties:
-        x:
-          type: number
-        y:
-          type: number
-      required:
-      - x
-      - y
-    RoleGroupAccountRole:
-      type: object
-      properties:
-        role:
-          type: object
-        roleGroupId:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-      required:
-      - role
-      - roleGroupId
-      - roleGroup
+      - version
+      - isPinned
+      - sections
+      - funnels
+      - thirdPartyFunnels
+      - recordTypes
+      - hubspotFunnels
+      - metadataElements
+      - stickyNotes
+      - texts
+      - sweepFieldsPins
     FunnelMapSection:
       type: object
       properties:
@@ -400,69 +753,22 @@ components:
       - funnelMapId
       - crmOrgId
       - note
-    SweepAssignmentRule:
+    SweepFieldToFunnelMapPin:
       type: object
       properties:
-        assignmentId:
+        accountId:
           type: string
-        ruleName:
+        sweepFieldId:
           type: string
-        assignedTo:
-          type: string
-        assignedToType:
-          type: string
-        criteriaLogic:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-      required:
-      - assignmentId
-      - ruleName
-      - assignedTo
-      - assignedToType
-      - criteriaLogic
-      - criteria
-    FunnelMapHubspot:
-      type: object
-      properties:
         funnelMapId:
           type: string
         funnelMap:
           $ref: '#/components/schemas/FunnelMap'
-        objectName:
-          type: string
-        leadingFieldName:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
       required:
+      - accountId
+      - sweepFieldId
       - funnelMapId
       - funnelMap
-      - objectName
-      - leadingFieldName
-      - row
-      - column
-      - sectionId
-      - section
-    SweepFieldReference:
-      type: object
-      properties:
-        fieldIds:
-          type: array
-          items:
-            type: string
-        fieldSource:
-          type: string
-      required:
-      - fieldIds
     RequestChange:
       type: object
       properties:
@@ -514,417 +820,32 @@ components:
       - note
       - status
       - createdAt
-    User:
+    Org:
       type: object
       properties:
         id:
           type: string
-        sub:
-          type: string
-        email:
+        accountId:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-        preferences:
-          type: object
-        name:
-          type: string
-        emoji:
-          type: string
-        imageUrl:
-          type: string
-        jobTitle:
-          type: string
-        roleGroup:
-          $ref: '#/components/schemas/RoleGroup'
-        roleGroupId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        lastSeen:
-          format: date-time
-          type: string
       required:
       - id
-      - sub
-      - email
+      - accountId
       - account
-      - preferences
-      - name
-      - emoji
-      - imageUrl
-      - jobTitle
-      - roleGroup
-      - roleGroupId
-      - createdAt
-      - updatedAt
-    FunnelLinkDto:
-      type: object
-      properties:
-        _id:
-          type: string
-        _type:
-          type: string
-          enum:
-          - salesforce
-          - thirdParty
-          - recordType
-          - hubspot
-          - metadataElement
-        funnelId:
-          type: string
-        stageId:
-          type: string
-      required:
-      - _id
-      - _type
-      - funnelId
-    RoleGroupOrgRole:
+    RoleGroupAccountRole:
       type: object
       properties:
         role:
           type: object
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
         roleGroupId:
           type: string
         roleGroup:
           $ref: '#/components/schemas/RoleGroup'
       required:
       - role
-      - crmOrgId
-      - crmOrg
       - roleGroupId
       - roleGroup
-    FunnelMapText:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        textId:
-          type: string
-        richText:
-          type: string
-        textScale:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-        xyPosition:
-          $ref: '#/components/schemas/FreePosition'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - funnelMapId
-      - funnelMap
-      - textId
-      - richText
-      - textScale
-      - sectionId
-      - section
-      - xyPosition
-      - width
-      - height
-    Account:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        authZeroOrgId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        deletedAt:
-          format: date-time
-          type: string
-        onboardingStep:
-          type: string
-          enum:
-          - ConnectOrg
-          - Completed
-        trialStartDate:
-          format: date-time
-          type: string
-        trialEndDate:
-          format: date-time
-          type: string
-        type:
-          type: string
-          enum:
-          - Customer
-          - POC
-          - Inactive
-          - SI
-          - Free
-          - Internal
-        roleGroups:
-          type: array
-          items:
-            $ref: '#/components/schemas/RoleGroup'
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/User'
-        disableAi:
-          type: boolean
-        isBuildModeEnabled:
-          type: boolean
-        lastSeen:
-          format: date-time
-          type: string
-        allowedIpRanges:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-      required:
-      - id
-      - name
-      - authZeroOrgId
-      - createdAt
-      - updatedAt
-      - deletedAt
-      - onboardingStep
-      - trialStartDate
-      - trialEndDate
-      - type
-      - roleGroups
-      - users
-      - disableAi
-      - isBuildModeEnabled
-      - lastSeen
-      - allowedIpRanges
-    SweepStage:
-      type: object
-      properties:
-        stageName:
-          type: string
-        _stageId:
-          type: string
-        stageDescription:
-          type: string
-        _branchIndex:
-          type: number
-        _stageColumnIndex:
-          type: number
-        exitCriteria:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepExitCriteria'
-        assignmentRules:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepAssignmentRule'
-        _team:
-          type: string
-        stageType:
-          type: string
-          enum:
-          - regular
-          - lost
-          - nurturing
-        preventBackwardStages:
-          type: boolean
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        additionalFields:
-          default: []
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldReference'
-      required:
-      - stageName
-      - _stageId
-      - stageDescription
-      - exitCriteria
-      - assignmentRules
-    SweepExitCriteria:
-      type: object
-      properties:
-        _exitCriteriaId:
-          type: string
-        _nextStageId:
-          type: string
-        isAutoMoveToNextStage:
-          type: boolean
-        guidance:
-          type: string
-        criteria:
-          type: array
-          items:
-            type: object
-        criteriaLogic:
-          type: string
-      required:
-      - _exitCriteriaId
-      - criteria
-      - criteriaLogic
-    FunnelMapStickyNote:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        stickyNoteId:
-          type: string
-        backgroundColor:
-          type: string
-        richText:
-          type: string
-        textScale:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-        xyPosition:
-          $ref: '#/components/schemas/FreePosition'
-        width:
-          type: number
-        height:
-          type: number
-      required:
-      - funnelMapId
-      - funnelMap
-      - stickyNoteId
-      - backgroundColor
-      - richText
-      - textScale
-      - sectionId
-      - section
-      - xyPosition
-      - width
-      - height
-    SweepFieldToFunnelMapPin:
-      type: object
-      properties:
-        accountId:
-          type: string
-        sweepFieldId:
-          type: string
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-      required:
-      - accountId
-      - sweepFieldId
-      - funnelMapId
-      - funnelMap
-    FunnelDetailsDto:
-      type: object
-      properties:
-        leadingObject:
-          $ref: '#/components/schemas/LeadingObjectDto'
-        stages:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepStage'
-        _firstStageId:
-          type: string
-        plugins:
-          default: {}
-          allOf:
-          - $ref: '#/components/schemas/FunnelPluginsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
-        stageMetadata:
-          type: array
-          items:
-            type: object
-      required:
-      - leadingObject
-      - stages
-      - plugins
-    FunnelDeployment:
-      type: object
-      properties:
-        id:
-          type: string
-        crmOrgId:
-          type: string
-        crmOrg:
-          $ref: '#/components/schemas/CrmOrg'
-        snapshotId:
-          type: string
-        snapshot:
-          $ref: '#/components/schemas/FunnelSnapshot'
-        deployedById:
-          type: string
-        deployedBy:
-          $ref: '#/components/schemas/User'
-        deployedAt:
-          format: date-time
-          type: string
-        status:
-          type: object
-      required:
-      - id
-      - crmOrgId
-      - crmOrg
-      - snapshotId
-      - snapshot
-      - deployedById
-      - deployedBy
-      - deployedAt
-      - status
-    FunnelMapThirdParty:
-      type: object
-      properties:
-        funnelMapId:
-          type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        thirdPartyFunnelId:
-          type: string
-        thirdPartyFunnel:
-          $ref: '#/components/schemas/ThirdPartyFunnel'
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
-      required:
-      - funnelMapId
-      - funnelMap
-      - thirdPartyFunnelId
-      - thirdPartyFunnel
-      - row
-      - column
-      - sectionId
-      - section
-    FunnelPluginsDto:
-      type: object
-      properties: {}
     CrmOrg:
       type: object
       properties:
@@ -1026,7 +947,7 @@ components:
       - graphVersion
       - graphDbReleaseChannel
       - tier
-    Org:
+    RoleGroup:
       type: object
       properties:
         id:
@@ -1035,52 +956,19 @@ components:
           type: string
         account:
           $ref: '#/components/schemas/Account'
-      required:
-      - id
-      - accountId
-      - account
-    RequestChangesActionDto:
-      type: object
-      properties:
-        requestChangeId:
+        type:
           type: string
-        note:
-          type: string
-      required:
-      - requestChangeId
-      - note
-    LeadingObjectDto:
-      type: object
-      properties:
-        objectName:
-          type: string
-        fieldName:
-          type: string
-        _leadingFieldLabels:
+          enum:
+          - SYSTEM
+          - USER_CREATED
+        accountRoles:
           type: array
           items:
-            type: string
-        _leadingFieldId:
-          type: string
-      required:
-      - objectName
-      - fieldName
-      - _leadingFieldId
-    FunnelMap:
-      type: object
-      properties:
-        id:
-          type: string
-        accountId:
-          type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        name:
-          type: string
-        defaultCrmOrgId:
-          type: string
-        defaultCrmOrg:
-          $ref: '#/components/schemas/CrmOrg'
+            $ref: '#/components/schemas/RoleGroupAccountRole'
+        orgRoles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RoleGroupOrgRole'
         createdById:
           type: string
         createdBy:
@@ -1095,70 +983,148 @@ components:
         updatedAt:
           format: date-time
           type: string
-        version:
-          type: number
-        isPinned:
-          type: boolean
-        sections:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapSection'
-        funnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapMember'
-        thirdPartyFunnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapThirdParty'
-        recordTypes:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapRecordType'
-        hubspotFunnels:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapHubspot'
-        metadataElements:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapMetadataElement'
-        stickyNotes:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapStickyNote'
-        texts:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelMapText'
-        sweepFieldsPins:
-          type: array
-          items:
-            $ref: '#/components/schemas/SweepFieldToFunnelMapPin'
+        name:
+          type: string
+        description:
+          type: string
       required:
       - id
       - accountId
       - account
-      - name
-      - defaultCrmOrgId
-      - defaultCrmOrg
+      - type
+      - accountRoles
+      - orgRoles
       - createdById
       - createdBy
       - createdAt
       - updatedById
       - updatedBy
       - updatedAt
-      - version
-      - isPinned
-      - sections
-      - funnels
-      - thirdPartyFunnels
-      - recordTypes
-      - hubspotFunnels
-      - metadataElements
-      - stickyNotes
-      - texts
-      - sweepFieldsPins
+      - name
+    FunnelLinkDto:
+      type: object
+      properties:
+        _id:
+          type: string
+        _type:
+          type: string
+          enum:
+          - salesforce
+          - thirdParty
+          - recordType
+          - hubspot
+          - metadataElement
+        funnelId:
+          type: string
+        stageId:
+          type: string
+      required:
+      - _id
+      - _type
+      - funnelId
+    FunnelMapRecordType:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        recordTypeName:
+          type: string
+        objectName:
+          type: string
+        leadingFieldName:
+          type: string
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - recordTypeName
+      - objectName
+      - leadingFieldName
+      - row
+      - column
+      - sectionId
+      - section
+    FreePosition:
+      type: object
+      properties:
+        x:
+          type: number
+        y:
+          type: number
+      required:
+      - x
+      - y
+    BISettingsDto:
+      type: object
+      properties:
+        flags:
+          type: array
+          items:
+            $ref: '#/components/schemas/BIFlagDto'
+      required:
+      - flags
+    FunnelMapMember:
+      type: object
+      properties:
+        funnelMapId:
+          type: string
+        funnelMap:
+          $ref: '#/components/schemas/FunnelMap'
+        funnelId:
+          type: string
+        funnel:
+          $ref: '#/components/schemas/Funnel'
+        row:
+          type: number
+        column:
+          type: number
+        sectionId:
+          type: string
+        section:
+          $ref: '#/components/schemas/FunnelMapSection'
+      required:
+      - funnelMapId
+      - funnelMap
+      - funnelId
+      - funnel
+      - row
+      - column
+      - sectionId
+      - section
+    SweepFieldReference:
+      type: object
+      properties:
+        fieldIds:
+          type: array
+          items:
+            type: string
+        fieldSource:
+          type: string
+      required:
+      - fieldIds
+    BIFlagDto:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - TIMESTAMP
+          - OWNER
+          - OWNER_ROLE
+        value:
+          type: boolean
+      required:
+      - name
+      - value
     Funnel:
       type: object
       properties:
@@ -1228,48 +1194,82 @@ components:
       - biSettings
       - crmOrgId
       - crmOrg
-    FunnelMapMetadataElement:
+    Account:
       type: object
       properties:
-        funnelMapId:
+        id:
           type: string
-        funnelMap:
-          $ref: '#/components/schemas/FunnelMap'
-        org:
-          $ref: '#/components/schemas/Org'
-        crmOrgId:
+        name:
           type: string
-        metadataId:
+        authZeroOrgId:
           type: string
-        funnelLinks:
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        deletedAt:
+          format: date-time
+          type: string
+        onboardingStep:
+          type: string
+          enum:
+          - ConnectOrg
+          - Completed
+        trialStartDate:
+          format: date-time
+          type: string
+        trialEndDate:
+          format: date-time
+          type: string
+        type:
+          type: string
+          enum:
+          - Customer
+          - POC
+          - Inactive
+          - SI
+          - Free
+          - Internal
+        roleGroups:
           type: array
           items:
-            type: object
-        color:
+            $ref: '#/components/schemas/RoleGroup'
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/User'
+        disableAi:
+          type: boolean
+        isBuildModeEnabled:
+          type: boolean
+        lastSeen:
+          format: date-time
           type: string
-        icon:
-          type: string
-        row:
-          type: number
-        column:
-          type: number
-        sectionId:
-          type: string
-        section:
-          $ref: '#/components/schemas/FunnelMapSection'
+        allowedIpRanges:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
       required:
-      - funnelMapId
-      - funnelMap
-      - org
-      - crmOrgId
-      - metadataId
-      - funnelLinks
-      - color
-      - icon
-      - row
-      - column
-      - sectionId
-      - section
+      - id
+      - name
+      - authZeroOrgId
+      - createdAt
+      - updatedAt
+      - deletedAt
+      - onboardingStep
+      - trialStartDate
+      - trialEndDate
+      - type
+      - roleGroups
+      - users
+      - disableAi
+      - isBuildModeEnabled
+      - lastSeen
+      - allowedIpRanges
   securitySchemes:
     bearer:
       scheme: bearer

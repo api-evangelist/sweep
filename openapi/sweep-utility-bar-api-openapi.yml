@@ -66,6 +66,16 @@ components:
       - label
       - logoUrl
       - hasSweepSupport
+    AppUtilityBarDto:
+      type: object
+      properties:
+        appDeveloperName:
+          type: string
+        hasSweepSupport:
+          type: boolean
+      required:
+      - appDeveloperName
+      - hasSweepSupport
     ToggleUtilityBarDto:
       type: object
       properties:
@@ -77,16 +87,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/AppUtilityBarDto'
-    AppUtilityBarDto:
-      type: object
-      properties:
-        appDeveloperName:
-          type: string
-        hasSweepSupport:
-          type: boolean
-      required:
-      - appDeveloperName
-      - hasSweepSupport
   securitySchemes:
     bearer:
       scheme: bearer

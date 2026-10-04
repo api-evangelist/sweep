@@ -207,47 +207,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PromptResponseDto:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        promptText:
-          type: string
-        promptGroupId:
-          type:
-          - string
-          - 'null'
-        accountId:
-          type: string
-        createdAt:
-          format: date-time
-          type: string
-        updatedAt:
-          format: date-time
-          type: string
-        createdById:
-          type: string
-        updatedById:
-          type: string
-      required:
-      - id
-      - name
-      - promptText
-      - accountId
-      - createdAt
-      - updatedAt
-    UpdatePromptGroupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
     PromptGroupResponseDto:
       type: object
       properties:
@@ -280,15 +239,22 @@ components:
       - accountId
       - createdAt
       - updatedAt
-    UpdatePromptDto:
+    OptimizePromptDto:
+      type: object
+      properties:
+        promptText:
+          type: string
+      required:
+      - promptText
+    UpdatePromptGroupDto:
       type: object
       properties:
         name:
           type: string
-        promptText:
+        description:
           type: string
-        promptGroupId:
-          type: string
+        isPinned:
+          type: boolean
     CreatePromptDto:
       type: object
       properties:
@@ -301,13 +267,38 @@ components:
       required:
       - name
       - promptText
-    OptimizePromptDto:
+    PromptResponseDto:
       type: object
       properties:
+        id:
+          type: string
+        name:
+          type: string
         promptText:
           type: string
+        promptGroupId:
+          type:
+          - string
+          - 'null'
+        accountId:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        updatedAt:
+          format: date-time
+          type: string
+        createdById:
+          type: string
+        updatedById:
+          type: string
       required:
+      - id
+      - name
       - promptText
+      - accountId
+      - createdAt
+      - updatedAt
     CreatePromptGroupDto:
       type: object
       properties:
@@ -322,6 +313,15 @@ components:
       required:
       - name
       - isPinned
+    UpdatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
   securitySchemes:
     bearer:
       scheme: bearer

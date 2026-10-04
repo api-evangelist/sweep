@@ -98,16 +98,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    StepPositionDto:
+    ThirdPartySystemDto:
       type: object
       properties:
-        row:
-          type: number
-        column:
-          type: number
+        name:
+          type: string
+        domain:
+          type: string
       required:
-      - row
-      - column
+      - name
+      - domain
     FunnelLinkDto:
       type: object
       properties:
@@ -129,11 +129,9 @@ components:
       - _id
       - _type
       - funnelId
-    ThirdPartyFunnelDto:
+    UpsertThirdPartyFunnelDto:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
         description:
@@ -149,7 +147,6 @@ components:
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
       required:
-      - id
       - name
       - description
       - steps
@@ -177,19 +174,21 @@ components:
       - stepConnections
       - funnelLinks
       - position
-    ThirdPartySystemDto:
+    StepConnectionDto:
       type: object
       properties:
-        name:
+        _id:
           type: string
-        domain:
+        targetId:
           type: string
       required:
-      - name
-      - domain
-    UpsertThirdPartyFunnelDto:
+      - _id
+      - targetId
+    ThirdPartyFunnelDto:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
         description:
@@ -205,20 +204,21 @@ components:
           items:
             $ref: '#/components/schemas/FunnelLinkDto'
       required:
+      - id
       - name
       - description
       - steps
       - funnelLinks
-    StepConnectionDto:
+    StepPositionDto:
       type: object
       properties:
-        _id:
-          type: string
-        targetId:
-          type: string
+        row:
+          type: number
+        column:
+          type: number
       required:
-      - _id
-      - targetId
+      - row
+      - column
   securitySchemes:
     bearer:
       scheme: bearer

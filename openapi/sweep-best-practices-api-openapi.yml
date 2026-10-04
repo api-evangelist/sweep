@@ -98,35 +98,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateBestPracticeDto:
-      type: object
-      properties:
-        severity:
-          type: object
-      required:
-      - severity
-    CreateBestPracticeDto:
-      type: object
-      properties:
-        name:
-          type: string
-        severity:
-          type: object
-        text:
-          type: string
-        applicableDomain:
-          type: string
-          enum:
-          - MetadataMonitoring
-          - BusinessProcess
-        applicableResourceType:
-          type: string
-      required:
-      - name
-      - severity
-      - text
-      - applicableDomain
-      - applicableResourceType
     BestPracticeResponseDto:
       type: object
       properties:
@@ -166,6 +137,35 @@ components:
       - accountId
       - createdAt
       - updatedAt
+    UpdateBestPracticeDto:
+      type: object
+      properties:
+        severity:
+          type: object
+      required:
+      - severity
+    CreateBestPracticeDto:
+      type: object
+      properties:
+        name:
+          type: string
+        severity:
+          type: object
+        text:
+          type: string
+        applicableDomain:
+          type: string
+          enum:
+          - MetadataMonitoring
+          - BusinessProcess
+        applicableResourceType:
+          type: string
+      required:
+      - name
+      - severity
+      - text
+      - applicableDomain
+      - applicableResourceType
   securitySchemes:
     bearer:
       scheme: bearer

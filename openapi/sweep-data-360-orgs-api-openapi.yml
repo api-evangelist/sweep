@@ -99,23 +99,6 @@ paths:
       - Data 360 Orgs
 components:
   schemas:
-    Data360OAuthDto:
-      type: object
-      properties:
-        orgId:
-          type: string
-          description: Data 360 Org ID
-        authCode:
-          type: string
-          description: OAuth authorization code
-        isSandbox:
-          type: boolean
-          description: Is sandbox org
-          example: false
-      required:
-      - orgId
-      - authCode
-      - isSandbox
     Data360OrgResponseDto:
       type: object
       properties:
@@ -184,6 +167,23 @@ components:
           example: false
       required:
       - name
+      - isSandbox
+    Data360OAuthDto:
+      type: object
+      properties:
+        orgId:
+          type: string
+          description: Data 360 Org ID
+        authCode:
+          type: string
+          description: OAuth authorization code
+        isSandbox:
+          type: boolean
+          description: Is sandbox org
+          example: false
+      required:
+      - orgId
+      - authCode
       - isSandbox
   securitySchemes:
     bearer:

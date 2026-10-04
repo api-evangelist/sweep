@@ -593,21 +593,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FunnelsAndRecordTypesDto:
-      type: object
-      properties:
-        orgId:
-          type: string
-        activeOnly:
-          type: boolean
-        objectsData:
-          type: array
-          items:
-            type: object
-      required:
-      - orgId
-      - activeOnly
-      - objectsData
     CustomEcaDto:
       type: object
       properties:
@@ -618,6 +603,13 @@ components:
       required:
       - clientId
       - clientSecret
+    CrmOrgUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
     CrmOrgOAuthDto:
       type: object
       properties:
@@ -632,6 +624,25 @@ components:
       required:
       - crmOrgId
       - authCode
+      - isSandbox
+    CrmOrgCreateDto:
+      type: object
+      properties:
+        name:
+          type: string
+        platform:
+          type: string
+          enum:
+          - salesforce
+        isSandbox:
+          type: boolean
+        isMain:
+          type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
+      required:
+      - name
+      - platform
       - isSandbox
     CrmOrgUserTimeOff:
       type: object
@@ -660,32 +671,21 @@ components:
       - startDate
       - endDate
       - timezone
-    CrmOrgCreateDto:
+    FunnelsAndRecordTypesDto:
       type: object
       properties:
-        name:
+        orgId:
           type: string
-        platform:
-          type: string
-          enum:
-          - salesforce
-        isSandbox:
+        activeOnly:
           type: boolean
-        isMain:
-          type: boolean
-        customEca:
-          $ref: '#/components/schemas/CustomEcaDto'
+        objectsData:
+          type: array
+          items:
+            type: object
       required:
-      - name
-      - platform
-      - isSandbox
-    CrmOrgUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
+      - orgId
+      - activeOnly
+      - objectsData
   securitySchemes:
     bearer:
       scheme: bearer

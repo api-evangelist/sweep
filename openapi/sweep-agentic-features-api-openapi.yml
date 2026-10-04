@@ -76,6 +76,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    UpdateAgenticFeaturesSettingsDto:
+      type: object
+      properties:
+        defaults:
+          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
+        orgSettings:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrgSettingsDto'
+      required:
+      - defaults
+      - orgSettings
     OrgSettingsDto:
       type: object
       properties:
@@ -117,18 +129,6 @@ components:
       - enableSweepExecutionLogs
       - dataAccessMode
       - chatRetentionSettings
-    UpdateAgenticFeaturesSettingsDto:
-      type: object
-      properties:
-        defaults:
-          $ref: '#/components/schemas/AgenticFeaturesSettingsDto'
-        orgSettings:
-          type: array
-          items:
-            $ref: '#/components/schemas/OrgSettingsDto'
-      required:
-      - defaults
-      - orgSettings
     ChatRetentionSettingsDto:
       type: object
       properties:

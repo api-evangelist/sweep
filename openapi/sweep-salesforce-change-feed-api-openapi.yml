@@ -144,17 +144,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SalesforceChangeFeedDto:
-      type: object
-      properties:
-        changeFeedList:
-          type: array
-          items:
-            $ref: '#/components/schemas/SalesforceChangeFeedItem'
-        filters:
-          $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
-      required:
-      - changeFeedList
     UpdateSalesforceChangeFeedNotificationDto:
       type: object
       properties:
@@ -187,6 +176,61 @@ components:
       - isActive
       - criteria
       - actions
+    SalesforceChangeFeedFilterList:
+      type: object
+      properties:
+        sections:
+          type: array
+          items:
+            type: string
+        sfUserNames:
+          type: array
+          items:
+            type: string
+        crmOrgs:
+          type: array
+          items:
+            type: string
+        nameSpaces:
+          type: array
+          items:
+            type: string
+      required:
+      - sections
+      - sfUserNames
+      - crmOrgs
+      - nameSpaces
+    SalesforceChangeFeedDto:
+      type: object
+      properties:
+        changeFeedList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SalesforceChangeFeedItem'
+        filters:
+          $ref: '#/components/schemas/SalesforceChangeFeedFilterList'
+      required:
+      - changeFeedList
+    SalesforceChangeFeedCriterionDto:
+      type: object
+      properties:
+        criterionId:
+          type: string
+          minLength: 1
+        fieldName:
+          type: string
+          minLength: 1
+        operator:
+          type: string
+          minLength: 1
+        value:
+          type: string
+          minLength: 1
+      required:
+      - criterionId
+      - fieldName
+      - operator
+      - value
     SalesforceChangeFeedItem:
       type: object
       properties:
@@ -213,50 +257,6 @@ components:
       - section
       - nameSpace
       - timestamp
-    SalesforceChangeFeedCriterionDto:
-      type: object
-      properties:
-        criterionId:
-          type: string
-          minLength: 1
-        fieldName:
-          type: string
-          minLength: 1
-        operator:
-          type: string
-          minLength: 1
-        value:
-          type: string
-          minLength: 1
-      required:
-      - criterionId
-      - fieldName
-      - operator
-      - value
-    SalesforceChangeFeedFilterList:
-      type: object
-      properties:
-        sections:
-          type: array
-          items:
-            type: string
-        sfUserNames:
-          type: array
-          items:
-            type: string
-        crmOrgs:
-          type: array
-          items:
-            type: string
-        nameSpaces:
-          type: array
-          items:
-            type: string
-      required:
-      - sections
-      - sfUserNames
-      - crmOrgs
-      - nameSpaces
   securitySchemes:
     bearer:
       scheme: bearer
