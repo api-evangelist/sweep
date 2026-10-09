@@ -102,3 +102,37 @@ api_access: No API-specific or metered API plan is published. API and MCP access
   MCP is listed as a Platform-tier and above feature.
 notes: Prices are list prices published on the public pricing page as of the generated date. No per-call,
   per-token or quota pricing is published for the REST API.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Agentic Starter
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Foundation
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Platform
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
