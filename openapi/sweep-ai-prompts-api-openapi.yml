@@ -207,6 +207,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
+      required:
+      - name
+      - promptText
     PromptGroupResponseDto:
       type: object
       properties:
@@ -246,27 +258,6 @@ components:
           type: string
       required:
       - promptText
-    UpdatePromptGroupDto:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        isPinned:
-          type: boolean
-    CreatePromptDto:
-      type: object
-      properties:
-        name:
-          type: string
-        promptText:
-          type: string
-        promptGroupId:
-          type: string
-      required:
-      - name
-      - promptText
     PromptResponseDto:
       type: object
       properties:
@@ -299,6 +290,15 @@ components:
       - accountId
       - createdAt
       - updatedAt
+    UpdatePromptDto:
+      type: object
+      properties:
+        name:
+          type: string
+        promptText:
+          type: string
+        promptGroupId:
+          type: string
     CreatePromptGroupDto:
       type: object
       properties:
@@ -313,15 +313,15 @@ components:
       required:
       - name
       - isPinned
-    UpdatePromptDto:
+    UpdatePromptGroupDto:
       type: object
       properties:
         name:
           type: string
-        promptText:
+        description:
           type: string
-        promptGroupId:
-          type: string
+        isPinned:
+          type: boolean
   securitySchemes:
     bearer:
       scheme: bearer

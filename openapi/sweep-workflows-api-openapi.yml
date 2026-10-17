@@ -93,6 +93,50 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreateWorkflowDto:
+      type: object
+      properties:
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        objectName:
+          type: string
+        enrollExistingContacts:
+          type: boolean
+      required:
+      - name
+      - workflowDetails
+      - objectName
+    UpdateWorkflowDto:
+      type: object
+      properties:
+        workflowId:
+          type: string
+        name:
+          type: string
+        workflowDetails:
+          $ref: '#/components/schemas/WorkflowDetailsDto'
+        enrollExistingContacts:
+          type: boolean
+      required:
+      - workflowId
+      - name
+      - workflowDetails
+    WorkflowDetailsDto:
+      type: object
+      properties:
+        when:
+          type: object
+        actions:
+          type: array
+          items:
+            type: object
+        onlyEnrollsManually:
+          type: boolean
+      required:
+      - actions
+      - onlyEnrollsManually
     WorkflowDto:
       type: object
       properties:
@@ -129,50 +173,6 @@ components:
       - createdAt
       - updatedById
       - updatedAt
-    WorkflowDetailsDto:
-      type: object
-      properties:
-        when:
-          type: object
-        actions:
-          type: array
-          items:
-            type: object
-        onlyEnrollsManually:
-          type: boolean
-      required:
-      - actions
-      - onlyEnrollsManually
-    UpdateWorkflowDto:
-      type: object
-      properties:
-        workflowId:
-          type: string
-        name:
-          type: string
-        workflowDetails:
-          $ref: '#/components/schemas/WorkflowDetailsDto'
-        enrollExistingContacts:
-          type: boolean
-      required:
-      - workflowId
-      - name
-      - workflowDetails
-    CreateWorkflowDto:
-      type: object
-      properties:
-        name:
-          type: string
-        workflowDetails:
-          $ref: '#/components/schemas/WorkflowDetailsDto'
-        objectName:
-          type: string
-        enrollExistingContacts:
-          type: boolean
-      required:
-      - name
-      - workflowDetails
-      - objectName
   securitySchemes:
     bearer:
       scheme: bearer

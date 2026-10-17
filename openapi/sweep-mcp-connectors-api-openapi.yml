@@ -178,6 +178,31 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    OAuthCallbackDto:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+    UpdateToolPoliciesDto:
+      type: object
+      properties:
+        toolPolicies:
+          type: array
+          items:
+            $ref: '#/components/schemas/ToolPolicyDto'
+      required:
+      - toolPolicies
+    ClientCredentialsDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
     ToolPolicyDto:
       type: object
       properties:
@@ -207,31 +232,6 @@ components:
           $ref: '#/components/schemas/ClientCredentialsDto'
       required:
       - serverType
-    OAuthCallbackDto:
-      type: object
-      properties:
-        code:
-          type: string
-      required:
-      - code
-    ClientCredentialsDto:
-      type: object
-      properties:
-        clientId:
-          type: string
-        clientSecret:
-          type: string
-      required:
-      - clientId
-    UpdateToolPoliciesDto:
-      type: object
-      properties:
-        toolPolicies:
-          type: array
-          items:
-            $ref: '#/components/schemas/ToolPolicyDto'
-      required:
-      - toolPolicies
   securitySchemes:
     bearer:
       scheme: bearer

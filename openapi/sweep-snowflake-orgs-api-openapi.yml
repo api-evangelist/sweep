@@ -75,6 +75,15 @@ paths:
       - Snowflake Orgs
 components:
   schemas:
+    GetDatabasesDto:
+      type: object
+      properties:
+        credentials:
+          description: Snowflake credentials for temporary connection
+          allOf:
+          - $ref: '#/components/schemas/SnowflakeCredentialsDto'
+      required:
+      - credentials
     CreateSnowflakeOrgDto:
       type: object
       properties:
@@ -107,15 +116,6 @@ components:
       - privateKey
       - name
       - database
-    GetDatabasesDto:
-      type: object
-      properties:
-        credentials:
-          description: Snowflake credentials for temporary connection
-          allOf:
-          - $ref: '#/components/schemas/SnowflakeCredentialsDto'
-      required:
-      - credentials
     SnowflakeCredentialsDto:
       type: object
       properties:

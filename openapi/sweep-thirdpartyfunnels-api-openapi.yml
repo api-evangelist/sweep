@@ -98,16 +98,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ThirdPartySystemDto:
+    StepPositionDto:
       type: object
       properties:
-        name:
-          type: string
-        domain:
-          type: string
+        row:
+          type: number
+        column:
+          type: number
       required:
-      - name
-      - domain
+      - row
+      - column
     FunnelLinkDto:
       type: object
       properties:
@@ -129,28 +129,16 @@ components:
       - _id
       - _type
       - funnelId
-    UpsertThirdPartyFunnelDto:
+    ThirdPartySystemDto:
       type: object
       properties:
         name:
           type: string
-        description:
+        domain:
           type: string
-        system:
-          $ref: '#/components/schemas/ThirdPartySystemDto'
-        steps:
-          type: array
-          items:
-            $ref: '#/components/schemas/ThirdPartyStepsDto'
-        funnelLinks:
-          type: array
-          items:
-            $ref: '#/components/schemas/FunnelLinkDto'
       required:
       - name
-      - description
-      - steps
-      - funnelLinks
+      - domain
     ThirdPartyStepsDto:
       type: object
       properties:
@@ -174,6 +162,28 @@ components:
       - stepConnections
       - funnelLinks
       - position
+    UpsertThirdPartyFunnelDto:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        system:
+          $ref: '#/components/schemas/ThirdPartySystemDto'
+        steps:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThirdPartyStepsDto'
+        funnelLinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunnelLinkDto'
+      required:
+      - name
+      - description
+      - steps
+      - funnelLinks
     StepConnectionDto:
       type: object
       properties:
@@ -209,16 +219,6 @@ components:
       - description
       - steps
       - funnelLinks
-    StepPositionDto:
-      type: object
-      properties:
-        row:
-          type: number
-        column:
-          type: number
-      required:
-      - row
-      - column
   securitySchemes:
     bearer:
       scheme: bearer

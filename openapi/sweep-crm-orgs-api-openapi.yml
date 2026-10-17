@@ -593,57 +593,21 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CustomEcaDto:
+    FunnelsAndRecordTypesDto:
       type: object
       properties:
-        clientId:
+        orgId:
           type: string
-        clientSecret:
-          type: string
-      required:
-      - clientId
-      - clientSecret
-    CrmOrgUpdateDto:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    CrmOrgOAuthDto:
-      type: object
-      properties:
-        crmOrgId:
-          type: string
-        authCode:
-          type: string
-        isSandbox:
+        activeOnly:
           type: boolean
-        isOnboardingFastFetch:
-          type: boolean
+        objectsData:
+          type: array
+          items:
+            type: object
       required:
-      - crmOrgId
-      - authCode
-      - isSandbox
-    CrmOrgCreateDto:
-      type: object
-      properties:
-        name:
-          type: string
-        platform:
-          type: string
-          enum:
-          - salesforce
-        isSandbox:
-          type: boolean
-        isMain:
-          type: boolean
-        customEca:
-          $ref: '#/components/schemas/CustomEcaDto'
-      required:
-      - name
-      - platform
-      - isSandbox
+      - orgId
+      - activeOnly
+      - objectsData
     CrmOrgUserTimeOff:
       type: object
       properties:
@@ -671,21 +635,57 @@ components:
       - startDate
       - endDate
       - timezone
-    FunnelsAndRecordTypesDto:
+    CrmOrgCreateDto:
       type: object
       properties:
-        orgId:
+        name:
           type: string
-        activeOnly:
+        platform:
+          type: string
+          enum:
+          - salesforce
+        isSandbox:
           type: boolean
-        objectsData:
-          type: array
-          items:
-            type: object
+        isMain:
+          type: boolean
+        customEca:
+          $ref: '#/components/schemas/CustomEcaDto'
       required:
-      - orgId
-      - activeOnly
-      - objectsData
+      - name
+      - platform
+      - isSandbox
+    CrmOrgUpdateDto:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    CustomEcaDto:
+      type: object
+      properties:
+        clientId:
+          type: string
+        clientSecret:
+          type: string
+      required:
+      - clientId
+      - clientSecret
+    CrmOrgOAuthDto:
+      type: object
+      properties:
+        crmOrgId:
+          type: string
+        authCode:
+          type: string
+        isSandbox:
+          type: boolean
+        isOnboardingFastFetch:
+          type: boolean
+      required:
+      - crmOrgId
+      - authCode
+      - isSandbox
   securitySchemes:
     bearer:
       scheme: bearer

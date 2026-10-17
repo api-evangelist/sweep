@@ -113,6 +113,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    FieldMappingDto:
+      type: object
+      properties:
+        fromTemplateFieldId:
+          type: string
+        toSweepFieldId:
+          type: string
+      required:
+      - fromTemplateFieldId
+      - toSweepFieldId
     CreateTemplateDto:
       type: object
       properties:
@@ -133,16 +143,6 @@ components:
             $ref: '#/components/schemas/FieldMappingDto'
       required:
       - fieldMapping
-    FieldMappingDto:
-      type: object
-      properties:
-        fromTemplateFieldId:
-          type: string
-        toSweepFieldId:
-          type: string
-      required:
-      - fromTemplateFieldId
-      - toSweepFieldId
   securitySchemes:
     bearer:
       scheme: bearer

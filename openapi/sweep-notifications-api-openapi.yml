@@ -55,18 +55,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    GetNotificationsResponseDto:
-      type: object
-      properties:
-        totalUnread:
-          type: number
-        notifications:
-          type: array
-          items:
-            $ref: '#/components/schemas/ClientNotificationDto'
-      required:
-      - totalUnread
-      - notifications
     ClientNotificationDto:
       type: object
       properties:
@@ -95,6 +83,18 @@ components:
       - deepLink
       - isRead
       - createdAt
+    GetNotificationsResponseDto:
+      type: object
+      properties:
+        totalUnread:
+          type: number
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientNotificationDto'
+      required:
+      - totalUnread
+      - notifications
   securitySchemes:
     bearer:
       scheme: bearer

@@ -101,6 +101,27 @@ components:
       - crmOrgId
       - name
       - settings
+    ChatRetentionSettingsDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        value:
+          type: number
+          minimum: 1
+          maximum: 999
+        unit:
+          type: string
+          enum:
+          - days
+          - months
+        excludeFavorites:
+          type: boolean
+      required:
+      - enabled
+      - value
+      - unit
+      - excludeFavorites
     AgenticFeaturesSettingsDto:
       type: object
       properties:
@@ -129,27 +150,6 @@ components:
       - enableSweepExecutionLogs
       - dataAccessMode
       - chatRetentionSettings
-    ChatRetentionSettingsDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        value:
-          type: number
-          minimum: 1
-          maximum: 999
-        unit:
-          type: string
-          enum:
-          - days
-          - months
-        excludeFavorites:
-          type: boolean
-      required:
-      - enabled
-      - value
-      - unit
-      - excludeFavorites
   securitySchemes:
     bearer:
       scheme: bearer
